@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383762c026ef287438c029d433d52ef4, type: 3}
+  m_Name: VegetalChestplate
+  m_EditorClassIdentifier: 
+  itemId: 040007
+  itemName: 
+  description: 
+  sprite: {fileID: 21300000, guid: a8ee272fd4c20854b8c796dc7f6876bf, type: 3}
+  colorEnchant1: {r: 0, g: 0, b: 0, a: 0}
+  colorEnchant2: {r: 0, g: 0, b: 0, a: 0}
+  rarity: 2
+  value: 0
+  level: 0
+  defense: 0
+  life: 0
+  damage: 0
+  critChance: 0
+  critDamage: 0
+  knockbackResistance: 0
+  knockbackPower: 0
+  armorEnchant: 0
+  enchantLevel: 0
+  baseDefense: -3
+  baseLife: 4
+  baseDamage: 0
+  baseCritChance: 0
+  baseCritDamage: 0
+  baseKnockbackResistance: 0
+  baseKnockbackPower: 0
+  dragonSkin: 0
+  regenRate: 4
+  negativeEffectReducer: 0
+  mineralChance: 0
+  dodgeChance: 0
+  doubleMineralDropChance: 0

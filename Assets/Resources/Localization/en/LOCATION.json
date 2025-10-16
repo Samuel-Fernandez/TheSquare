@@ -1,0 +1,197 @@
+{
+  "entries": [
+    {
+      "key": "TEST_REGION",
+      "value": "Test Region"
+    },
+    {
+      "key": "TEST_CAVE_SCENE",
+      "value": "Test Cave"
+    },
+    {
+      "key": "TEST_OUTSIDE_SCENE",
+      "value": "Test Outside"
+    },
+    {
+      "key": "???_REGION",
+      "value": "...Somewhere..."
+    },
+    {
+      "key": "???_SCENE",
+      "value": "???"
+    },
+    {
+      "key": "SQUARE_FOREST_REGION",
+      "value": "Square Forest"
+    },
+    {
+      "key": "PLAIN_OF_TEARS_REGION",
+      "value": "Plain of Tears"
+    },
+    {
+      "key": "DESERT_OF_ILLUSION_REGION",
+      "value": "Desert of Illusion"
+    },
+    {
+      "key": "GRAVITY_SANCTUARY_ENTRANCE_SCENE",
+      "value": "Gravity sanctuary - Entrance"
+    },
+    {
+      "key": "ARAXIE_GARDEN_SOUTH_SCENE",
+      "value": "Araxie's garden - South"
+    },
+    {
+      "key": "ARAXIE_GARDEN_CENTER_SCENE",
+      "value": "Araxie's garden - Center"
+    },
+    {
+      "key": "ARAXIE_HOUSE_SCENE",
+      "value": "Araxie's house"
+    },
+    {
+      "key": "SQUARE_FOREST_SOUTH_WEST_SCENE",
+      "value": "Square Forest - South West"
+    },
+    {
+      "key": "SQUARE_FOREST_CAVE_SOUTH_WEST_SCENE",
+      "value": "Cave"
+    },
+    {
+      "key": "SQUARE_FOREST_BRIDGE_OF_TEARS_SCENE",
+      "value": "Bridge of tears"
+    },
+    {
+      "key": "SKELETON_CAMP_WEST_ENTRY_SCENE",
+      "value": "Skeleton's Camp - West entrance"
+    },
+    {
+      "key": "SKELETON_CAMP_WEST_SCENE",
+      "value": "Skeleton's Camp - West entrance"
+    },
+    {
+      "key": "SKELETON_CAMP_CENTER_ENTRY_SCENE",
+      "value": "Skeleton's Camp - Entrance"
+    },
+    {
+      "key": "SKELETON_CAMP_CENTER_SCENE",
+      "value": "Skeleton's Camp - Center"
+    },
+    {
+      "key": "SKELETON_DUNGEON_ENTRY_SCENE",
+      "value": "Skeleton's dungeon - Entry"
+    },
+    {
+      "key": "SKELETON_DUNGEON_MAIN_SCENE",
+      "value": "Skeleton's dungeon - Main room"
+    },
+    {
+      "key": "SKELETON_DUNGEON_LEFT_WING_SCENE",
+      "value": "Skeleton's dungeon - Left wing"
+    },
+    {
+      "key": "SKELETON_DUNGEON_RIGHT_WING_SCENE",
+      "value": "Skeleton's dungeon - Right wing"
+    },
+    {
+      "key": "SKELETON_DUNGEON_THRONE_ROOM_SCENE",
+      "value": "Skeleton's dungeon - Throne room"
+    },
+    {
+      "key": "SKELETON_DUNGEON_BEHIND_THRONE_ROOM_SCENE",
+      "value": "Skeleton's dungeon - Behind Throne room"
+    },
+    {
+      "key": "SKELETON_CAMP_NORTH_SCENE",
+      "value": "Skeleton's Camp - North"
+    },
+    {
+      "key": "SQUARE_FOREST_CENTER_SCENE",
+      "value": "Square Forest - Center"
+    },
+    {
+      "key": "SQUARE_FOREST_CENTER_CAVE_SCENE",
+      "value": "Square Forest - Cave"
+    },
+    {
+      "key": "SQUARE_FOREST_SLIME_CAVE_ENTRANCE_SCENE",
+      "value": "Slime cave entrance"
+    },
+    {
+      "key": "SLIME_CAVE_ENTRANCE_SCENE",
+      "value": "Slime cave"
+    },
+    {
+      "key": "SLIME_CAVE_MAIN_ROOM_SCENE",
+      "value": "Slime cave - Main Room"
+    },
+    {
+      "key": "SLIME_CAVE_BOSS_ROOM_SCENE",
+      "value": "Slime cave - Boss Room"
+    },
+    {
+      "key": "SQUARE_FOREST_NORTH_SCENE",
+      "value": "Square Forest - North"
+    },
+    {
+      "key": "SQUARE_FOREST_EAST_SCENE",
+      "value": "Square Forest - East"
+    },
+    {
+      "key": "SQUARE_FOREST_HOUSE_RUINS_SCENE",
+      "value": "Square Forest- House ruins"
+    },
+    {
+      "key": "VILLAGE_OF_TEARS_SCENE",
+      "value": "Village of Tears"
+    },
+    {
+      "key": "TAVERN_OF_TEARS_SCENE",
+      "value": "Village of tears - Tavern"
+    },
+    {
+      "key": "LIBRARY_OF_TEARS_SCENE",
+      "value": "Village of tears - Library"
+    },
+    {
+      "key": "FOUNDRY_OF_TEARS_SCENE",
+      "value": "Village of tears - Foundry"
+    },
+    {
+      "key": "HOUSE_OF_TEARS_SCENE",
+      "value": "Village of tears - House"
+    },
+    {
+      "key": "FARM_OF_TEARS_SCENE",
+      "value": "Village of tears - Farm"
+    },
+    {
+      "key": "SHOP_OF_TEARS_SCENE",
+      "value": "Village of tears - Shop"
+    },
+    {
+      "key": "CASERN_OF_TEARS_SCENE",
+      "value": "Village of tears - Casern"
+    },
+    {
+      "key": "DESERT_OF_ILLUSION_CENTER_SCENE",
+      "value": "Center"
+    },
+    {
+      "key": "DESERT_OF_ILLUSION_ABANDONNED_HOUSE_SCENE",
+      "value": "Abandonned House"
+    },
+    {
+      "key": "DESERT_OF_ILLUSION_EAST_SCENE",
+      "value": "East"
+    },
+    {
+      "key": "DESERT_OF_ILLUSION_MAIN_CAVE_SCENE",
+      "value": "Cave"
+    },
+    {
+      "key": "TEMPLE_OF_ILLUSION_ENTRY_SCENE",
+      "value": "Temple of illusion - Entry"
+    }
+  ]
+}
+

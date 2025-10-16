@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f58ca6bc198484697ad4653ec7f9c9, type: 3}
+  m_Name: beggining_3
+  m_EditorClassIdentifier: 
+  sceneType: 2
+  filter: 2
+  sceneID: ???
+  dungeonName: 
+  music: {fileID: 8300000, guid: ab0d9b3e1ec9e9241804f95564abe958, type: 3}
+  ambientSound: []
+  playerCantOpenInventory: 1
+  sceneAsset: {fileID: 102900000, guid: 2a3fe6a708ec40a4793a4fcab811c7f8, type: 3}
+  sceneName: Beggining-3

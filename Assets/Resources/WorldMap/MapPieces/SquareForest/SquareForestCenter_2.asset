@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b3ea2927ca5794c841d5196101a70a, type: 3}
+  m_Name: SquareForestCenter_2
+  m_EditorClassIdentifier: 
+  sceneAssets:
+  - {fileID: 102900000, guid: ebecaa257e05af044aca6686115801b0, type: 3}
+  - {fileID: 102900000, guid: 9c4ff966dbbb5ac48aba949f43855031, type: 3}
+  - {fileID: 102900000, guid: f930075810d59004aa837c16a6f104d8, type: 3}
+  - {fileID: 102900000, guid: 448a05f7540ff07408c1941b842e3332, type: 3}
+  - {fileID: 102900000, guid: 4c7d76c58b3768443b7e275249bf74e7, type: 3}
+  - {fileID: 102900000, guid: d557ef2bf1572b645a84a1158c54f535, type: 3}
+  scenes:
+  - SquareForestCenter
+  - SquareForestCenterCave
+  - SquareForestSlimeCaveEntrance
+  - SlimeCaveEntrance
+  - SlimeCaveMainRoom
+  - SlimeCaveBossRoom
+  icon: {fileID: -590551889, guid: cc17a8c31cd85e2448246a4df1edfc27, type: 3}
+  coords:
+    x: 6
+    y: 2

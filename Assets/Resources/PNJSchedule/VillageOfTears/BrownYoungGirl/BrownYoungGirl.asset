@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187e70050bce968488ec0a8ed56df286, type: 3}
+  m_Name: BrownYoungGirl
+  m_EditorClassIdentifier: 
+  pnj: {fileID: 5929625965344047211, guid: a00955ec626850446b6334d55b8f335d, type: 3}
+  requirement: {fileID: 0}
+  schedule:
+  - scene: {fileID: 11400000, guid: 6a4c7aa06d589aa4f9934ee3b6ee2728, type: 2}
+    position: {x: 10, y: 35.5}
+    beginTime: 10
+    endTime: 12
+    movement: {fileID: 11400000, guid: 9fe8a1343b722274a8a61bb5cf212f47, type: 2}
+    pnjID: brownYoungGirl-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}
+  - scene: {fileID: 11400000, guid: 50f4d1e409654f04ab153c9207ed9025, type: 2}
+    position: {x: 11.5, y: 28.25}
+    beginTime: 12
+    endTime: 20
+    movement: {fileID: 11400000, guid: a0f4d283575a2ab41b5483c952588435, type: 2}
+    pnjID: brownYoungGirl-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}
+  - scene: {fileID: 11400000, guid: 41276ea02621ef441b21ead25481eade, type: 2}
+    position: {x: 16.5, y: 24.75}
+    beginTime: 20
+    endTime: 23
+    movement: {fileID: 0}
+    pnjID: brownYoungGirl-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}
+  - scene: {fileID: 11400000, guid: 41276ea02621ef441b21ead25481eade, type: 2}
+    position: {x: 16.5, y: 24.75}
+    beginTime: 0
+    endTime: 10
+    movement: {fileID: 0}
+    pnjID: brownYoungGirl-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}

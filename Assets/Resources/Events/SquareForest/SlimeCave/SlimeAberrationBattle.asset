@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: SlimeAberrationBattle
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 420390
+  eventsList:
+  - {fileID: 11400000, guid: cae6002834ab2604493a932d19e4363a, type: 2}
+  - {fileID: 11400000, guid: a641c299319a5cf47a3912256bbe87d6, type: 2}
+  - {fileID: 11400000, guid: aafa4ad6091563046bfad122985dc009, type: 2}
+  - {fileID: 11400000, guid: 7874589ef248a894585af1bb0ac1e0e4, type: 2}
+  - {fileID: 11400000, guid: 4e50ac04c5ec85f478fb1f1a6f0417cc, type: 2}
+  - {fileID: 11400000, guid: 2caf8b66a371f1e4c85e7855a0b9beb7, type: 2}
+  - {fileID: 11400000, guid: 1b5f1a141f269fd4db0b4934a870b995, type: 2}
+  - {fileID: 11400000, guid: ffcfc71dd17f06a43b52116bc038a719, type: 2}
+  - {fileID: 11400000, guid: df12e0cb8b4dff245a31aa211578db61, type: 2}
+  - {fileID: 11400000, guid: 63bbb932c3b5d804ea6ecd4db02a7138, type: 2}
+  - {fileID: 11400000, guid: 5abb6db6b50744c43b4d5c614bf4d411, type: 2}
+  - {fileID: 11400000, guid: 0f7530feab8a4cc459c286dc61a8e826, type: 2}
+  - {fileID: 11400000, guid: afa7e4ba0e9e4ca41af3cf07614528c9, type: 2}
+  - {fileID: 11400000, guid: 04fc0a72ff8ce25479bf9646fad41605, type: 2}
+  - {fileID: 11400000, guid: 6ea3642341829c1478f2b0aec47f2e02, type: 2}
+  - {fileID: 11400000, guid: 8ff363141c4bcbd45a53c9161ed1f70c, type: 2}
+  - {fileID: 11400000, guid: 401707a8d88ef9a4f8c6b95638870fd5, type: 2}
+  - {fileID: 11400000, guid: 4d0ca7901f9544443a0555526861df71, type: 2}
+  - {fileID: 11400000, guid: ad84c7a694f00274f8cc0706fe438f4a, type: 2}
+  - {fileID: 11400000, guid: dce15f3ee42b39147b866f02dbd8b4e2, type: 2}
+  - {fileID: 11400000, guid: 23e85db114df721429d943b1bd662a22, type: 2}
+  - {fileID: 11400000, guid: f3cef7183ce06334e9365f844e2201d4, type: 2}
+  - {fileID: 11400000, guid: d2ac4cdd129935d45a2e57a468e09d56, type: 2}
+  - {fileID: 11400000, guid: 62653ce7fb0ee464aa5d76210850e8bb, type: 2}
+  - {fileID: 11400000, guid: 7f80ae58c90f9d5409430ad2bacd8a2d, type: 2}
+  - {fileID: 11400000, guid: ea391da752c56f947b92b5e16ab2d446, type: 2}
+  - {fileID: 11400000, guid: 9c7f26866482cd948b4260c815663107, type: 2}
+  requirements: []

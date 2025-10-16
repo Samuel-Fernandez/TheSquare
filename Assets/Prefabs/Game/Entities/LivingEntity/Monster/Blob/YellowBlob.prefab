@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8939180030494593319
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.34921
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.924929
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.054391198
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711731741609190002, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_Name
+      value: YellowBlob
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056800347154251852, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: loots
+      value: 
+      objectReference: {fileID: 11400000, guid: c66ac1bd3d565184a99e02747e5fad7c, type: 2}
+    - target: {fileID: 4517948283568479763, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517948283568479763, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9778552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517948283568479763, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354876317407888414, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: maxInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354876317407888414, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: minInterval
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: money
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: speed
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: health
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: defense
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: strength
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}

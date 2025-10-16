@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: ArrivalInDesert
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: AraxieFairy
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: arrivalInDesert
+  eventsList:
+  - {fileID: 11400000, guid: 6a9f7249d6ddfba40af0e1ef0a7d5290, type: 2}
+  - {fileID: 11400000, guid: 9dc4113d0e4d5d0408ddaf3f5d8dc99d, type: 2}
+  - {fileID: 11400000, guid: b1595d73c05dbc8458a8a8ea4fe7187a, type: 2}
+  - {fileID: 11400000, guid: 3a671642c14d4244389d3fab846c853b, type: 2}
+  - {fileID: 11400000, guid: 1ad92de5d0b47ad4682c621398d14237, type: 2}
+  - {fileID: 11400000, guid: d9b7e72dde558d44fb704a976aadaca3, type: 2}
+  - {fileID: 11400000, guid: cda2fde9f004ab949b03ffeea1992a6b, type: 2}
+  - {fileID: 11400000, guid: 01a9fa5c759e634478bf204f201e1a88, type: 2}
+  - {fileID: 11400000, guid: b45db7ebbd672ce42ab00be0966c885b, type: 2}
+  - {fileID: 11400000, guid: c08d4e8bc5ee22f458201219e9150861, type: 2}
+  - {fileID: 11400000, guid: d903b974d14923a4fb21e0000b45ef43, type: 2}
+  - {fileID: 11400000, guid: e70a6109906c72140ace27aa9bbcb6fd, type: 2}
+  - {fileID: 11400000, guid: 5a6199c939f596242b7b93b283a48f9c, type: 2}
+  - {fileID: 11400000, guid: d56948d996a95904bb2444b90f65b990, type: 2}
+  - {fileID: 11400000, guid: 049fce280f6d90a48bfb942f24fae660, type: 2}
+  - {fileID: 11400000, guid: 57957a27773c4cd4bb0111423680401e, type: 2}
+  - {fileID: 11400000, guid: fd5ff2db3773f06428c45adfe28d7602, type: 2}
+  - {fileID: 11400000, guid: d8a6277b711cc6b418f430bff8bfcab5, type: 2}
+  - {fileID: 11400000, guid: 4ed4cbbe354857648a0b2eec5748c013, type: 2}
+  - {fileID: 11400000, guid: 019b341a6bb972b4994131fb41f4dd05, type: 2}
+  - {fileID: 11400000, guid: d918a54143804224c87b06e6e9351228, type: 2}
+  - {fileID: 11400000, guid: ac80643bc4794e34d85f2e0fcc8394ae, type: 2}
+  requirements: []

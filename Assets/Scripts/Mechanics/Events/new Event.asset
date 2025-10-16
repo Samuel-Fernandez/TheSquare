@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3638ded9b7cf29849a688eabc524b2ab, type: 3}
+  m_Name: new Event
+  m_EditorClassIdentifier: 
+  eventType: 4
+  music: 
+  sound: {fileID: 8300000, guid: d9088ecf79d6a2d408f24bdaddc151a1, type: 3}
+  stopTime: 1
+  playerCanMove: 0
+  position: {x: 0, y: 0}
+  duration: 0
+  pnjType: 0
+  idPnj: []
+  idText: 
+  emotions: 0
+  cameraType: 0
+  cameraEffect: 0
+  amplitudeShake: 0
+  frequencyShake: 0
+  zoomPower: 0
+  colorChange: {r: 0, g: 0, b: 0, a: 0}
+  canLeave: 0
+  battleType: 0
+  colliderRadius: 3
+  idMonster:
+  - blob1
+  - blob2
+  - blob3
+  - blob4
+  spawnMonsterPosition:
+  - {x: 2, y: 0}
+  - {x: -2, y: 0}
+  - {x: 0, y: 2}
+  - {x: 0, y: -2}

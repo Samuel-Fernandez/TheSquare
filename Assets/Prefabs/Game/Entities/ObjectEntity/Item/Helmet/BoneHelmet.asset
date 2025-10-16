@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9472bbe69383745b4ebee7dea304e2, type: 3}
+  m_Name: BoneHelmet
+  m_EditorClassIdentifier: 
+  itemId: 030003
+  itemName: BoneHelmet
+  description: BoneHelmet
+  sprite: {fileID: 21300000, guid: b68d2731154838446980dab26d909e4e, type: 3}
+  colorEnchant1: {r: 0, g: 0, b: 0, a: 0}
+  colorEnchant2: {r: 0, g: 0, b: 0, a: 0}
+  rarity: 2
+  value: 0
+  level: 0
+  defense: 0
+  life: 0
+  damage: 0
+  armorEnchant: 0
+  enchantLevel: 0
+  baseDefense: 0
+  baseLife: 4
+  baseDamage: 0
+  vampire: 0
+  dragonSkin: 0
+  fireAttackChance: 0
+  iceAttackChance: 0
+  poisonAttackChance: 0.05
+  regenRate: 0
+  doubleSquareCoinsChances: 0
+  negativeEffectReducer: 0
+  mineralChance: 0
+  dodgeChance: 0
+  doubleMineralDropChance: 0
+  dropChance: 0

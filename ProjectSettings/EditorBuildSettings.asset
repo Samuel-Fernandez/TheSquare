@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/World/MainMenu.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/World/0-Cinematics/0-Cinematic-Beggining.unity
+    guid: f38624a0d44e43548a181ba3e19155d2
+  - enabled: 1
+    path: Assets/Scenes/World/Beggining/Beggining-1.unity
+    guid: e9ac256d05f13244a970868219ee964d
+  - enabled: 1
+    path: Assets/Scenes/World/Beggining/Beggining-2.unity
+    guid: ff153c08c86f7fe449c41943096073d1
+  - enabled: 1
+    path: Assets/Scenes/World/Beggining/Beggining-3.unity
+    guid: 2a3fe6a708ec40a4793a4fcab811c7f8
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/AraxieGarden/GravitySanctuaryEntrance.unity
+    guid: e39101db406e2c949b6a696a762d45be
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/AraxieGarden/AraxieGardenGravitySenctuaryEntrance.unity
+    guid: 8417a3c93626356468d3380f3a2ec9c5
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/AraxieGarden/AraxieGardenCenter.unity
+    guid: 6ac0837cba7cf9b4d848c2d306b809c4
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/AraxieGarden/AraxieHouse.unity
+    guid: 96da9984bf0a2d241aa0adef00a0b669
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestSouthWest.unity
+    guid: 9d968e79d6b3dee49b7be08cddafef65
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestCaveSouthWest.unity
+    guid: 1ecc2e555014e8f439c5e176b27f2b77
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestBridgeOfTears.unity
+    guid: f28bdfa274c241e488cb7d7c3ee180ee
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonCampWestEntry.unity
+    guid: e462cb37fcadf27459ab14c08557811b
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonCampWest.unity
+    guid: 482ca896005020344b5d611cb69d014d
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonCampWestLittleCave.unity
+    guid: 8d8134f09eeef7945987e694945def18
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonCampCenterEntry.unity
+    guid: 20fe324d37350974284e572cbc171320
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonCampCenter.unity
+    guid: 02727486ea43517429a82625a3ff9918
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonEntry.unity
+    guid: c7cf796387798114e9561137896dde3f
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonPiece-1.unity
+    guid: 4251b3550c98e624fafde2150357aa4c
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonPiece-2.unity
+    guid: 9efc366eae361344993ec4b60df52e6b
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonMainPiece.unity
+    guid: add99d385e634a446a0d2f33970c473d
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonMainPieceSecret.unity
+    guid: faa52df7f032ac740a554c2120a18d2d
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonLeftWing.unity
+    guid: d17d0dd6f674fe24a9fb8f2e9cc0ed2c
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonRightWing.unity
+    guid: c57f6301a5b1f6749bd3f40c372eaae3
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonRightWingSecret.unity
+    guid: f2b5ff7f56fdd904998a29d10f1d6c93
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonThroneRoom.unity
+    guid: 8080f7d0b454f3c498184ba724535925
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonDungeon/SkeletonDungeonBehindThrone.unity
+    guid: d3ae520bf8682494990d513348a770c4
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SkeletonCamp/SkeletonCampNorth.unity
+    guid: 5ce9ae1e7fe00dd42b6dd473c2b06ee7
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestCenter.unity
+    guid: ebecaa257e05af044aca6686115801b0
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestCenterCave.unity
+    guid: 9c4ff966dbbb5ac48aba949f43855031
+  - enabled: 1
+    path: Assets/Scenes/Test/TestMap.unity
+    guid: ce9ef8f42ac118c41a83960c200a9a6f
+  - enabled: 1
+    path: Assets/Scenes/Test/TestMine.unity
+    guid: 87fbb62bd34d064438d0750ae9ca7ebe
+  - enabled: 1
+    path: Assets/Scenes/Test/TestDungeon.unity
+    guid: 17513a1101f53754bb2b53990f0ac1bc
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestSlimeCaveEntrance.unity
+    guid: f930075810d59004aa837c16a6f104d8
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SlimeCave/SlimeCaveEntrance.unity
+    guid: 448a05f7540ff07408c1941b842e3332
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SlimeCave/SlimeCaveMainRoom.unity
+    guid: 4c7d76c58b3768443b7e275249bf74e7
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SlimeCave/SlimeCaveBossRoom.unity
+    guid: d557ef2bf1572b645a84a1158c54f535
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestNorth.unity
+    guid: ed77dd7d5966a1445a34f6bad4281a0e
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/VillageOfTears.unity
+    guid: c11ae89310b66d44bba3d6d7d4473db5
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/Tavern.unity
+    guid: c9e7943b3b20ff54f80b9de2412ff910
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/Library.unity
+    guid: 5ba7bcd904cd00a41880455c816ac519
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/Foundry.unity
+    guid: 1f941f7ef4f545448b63a4f2cc13f6c2
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/House_1.unity
+    guid: a8ac0def880ca164fa26f58044845b1b
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/House_2.unity
+    guid: 1882023fdc20ae74fa62339f8214fe0b
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/House_3.unity
+    guid: d2dcc040d0d981848852d6b3cf7e396c
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/Farm.unity
+    guid: 9111ad5a196847840a7adb4df2a0ac7b
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/Shop.unity
+    guid: eb88b91728bee464594e8428c2e24b0f
+  - enabled: 1
+    path: Assets/Scenes/World/PlainOfTears/VillageOfTears/Casern.unity
+    guid: 87b55fe891f6e1c47a1ce2b63f5e753e
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestHouseRuins.unity
+    guid: 75a7231ea8b694f42b020e8eaf2048e6
+  - enabled: 1
+    path: Assets/Scenes/World/SquareForest/SquareForestEast.unity
+    guid: 0a133185170b8154081f84853acb2dbd
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusion.unity
+    guid: a8c13f55720bbd147bc36390ccb1b64a
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionAbandonnedHouse.unity
+    guid: aa1bc354500a1974785101a2a1ea7f49
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionEast.unity
+    guid: 79d3bca3f2edc724aa804ba07f8c53ae
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionMainCave.unity
+    guid: a6c729b8212a7ad49b4bfdee7e89dde6
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionTempleEntry.unity
+    guid: 5e1d7ae49b500f84e9268cbb847f9526
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionTempleEntry2.unity
+    guid: e5442540464b492468216c4f30019ad9
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionTempleTombalPiece.unity
+    guid: 5def2e1d82f74f0428db587dddb639a3
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionTempleMainPiece.unity
+    guid: 9acbc07f6e720a04ea704e0dc53b41b7
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionTempleWagonPiece.unity
+    guid: 8ecb382c4b3a05f4d96d64c80a748ccc
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionTempleMainPiece2.unity
+    guid: 7dd313c195b91674a876c56908e79542
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionMinibossRoom.unity
+    guid: afd6a2c2f530f6e4d867163f4b0fa014
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionHiddenPiece.unity
+    guid: 8259d9ea2be650949a16890ffa4035f8
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionMummyPiece.unity
+    guid: dddeb620ad601b14a92c0b93fc0799a4
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionEyePiece.unity
+    guid: 87e3f8697db075341953132cc5def023
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionBossRoom.unity
+    guid: e8f6d932f1a0c1446b11bea4cd778abf
+  m_configObjects: {}

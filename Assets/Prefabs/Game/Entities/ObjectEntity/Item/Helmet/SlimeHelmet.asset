@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9472bbe69383745b4ebee7dea304e2, type: 3}
+  m_Name: SlimeHelmet
+  m_EditorClassIdentifier: 
+  itemId: 030001
+  itemName: Slime Helmet
+  description: Slime Helmet
+  sprite: {fileID: 21300000, guid: 0ce927688ada9fe4f8ad2c509dffa745, type: 3}
+  colorEnchant1: {r: 0, g: 0, b: 0, a: 0}
+  colorEnchant2: {r: 0, g: 0, b: 0, a: 0}
+  rarity: 2
+  value: 0
+  level: 0
+  defense: 0
+  life: 0
+  damage: 0
+  armorEnchant: 0
+  enchantLevel: 0
+  baseDefense: 1
+  baseLife: 0
+  baseDamage: 0
+  vampire: 0
+  dragonSkin: 0.025
+  fireAttackChance: 0
+  iceAttackChance: 0
+  poisonAttackChance: 0
+  regenRate: 0
+  doubleSquareCoinsChances: 0
+  negativeEffectReducer: 0
+  mineralChance: 0
+  dodgeChance: 0
+  doubleMineralDropChance: 0
+  dropChance: 0

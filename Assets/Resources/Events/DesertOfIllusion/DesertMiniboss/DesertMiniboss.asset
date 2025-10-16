@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: DesertMiniboss
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 8184861536507313432, guid: eb6a92240a6a3bb4b9477e5a72d13a2e, type: 3}
+    id: DarkBower
+  monsterContainer:
+  - monster: {fileID: 8184861536507313432, guid: 4e80740515dd0a24594db4ee70f00ff9, type: 3}
+    id: darkBower
+    isBattleObject: 0
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb1
+    isBattleObject: 1
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb2
+    isBattleObject: 1
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: DesertMiniBoss
+  eventsList:
+  - {fileID: 11400000, guid: 6e8d750273eb2b0488afb43265fa4277, type: 2}
+  - {fileID: 11400000, guid: 49e42daa32a2ff6448802d26f5d06c7b, type: 2}
+  - {fileID: 11400000, guid: 8e3662e871902824d951f4893cc3df7e, type: 2}
+  - {fileID: 11400000, guid: b8e5029d6efdc524b8801a1d79aac54d, type: 2}
+  - {fileID: 11400000, guid: 453ddc4a5c445ae4aaad71b5a85b9479, type: 2}
+  requirements: []

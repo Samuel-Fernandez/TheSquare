@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "key": "FIRST_SIGN",
+      "value": "East: Gardens of Araxie\nWest: Skeleton Camps\nNorth: Village of Tears\n"
+    },
+    {
+      "key": "BRIDGE_OF_TEARS",
+      "value": "We destroyed the waypoint to prevent the monster from reaching our village.|If you're a survivor and wish to join us, go around either through the skeleton camp."
+    },
+    {
+      "key": "SKELETON_CAMP_WEST",
+      "value": "Be careful not to let any Slimes escape when you open the door, otherwise, your bones will be used as tableware."
+    },
+    {
+      "key": "SKELETON_FOREST_NORTH",
+      "value": "North: Village of Tears\n East: White lake\n South: Bridge of Tears\n West: Desert of Illusion"
+    },
+    {
+      "key": "DESERT_OF_ILLUSION_ABANDONNED_HOUSE",
+      "value": "The desert, mirror of death, the ultimate fate of all life.|To reach its heart, one must understand the dance of existence.|From the first being to the fulfilled being, knowledge of evolution reveals the path.|And it lifts the seal that holds the bridge between the two worlds."
+    }
+  ]
+}

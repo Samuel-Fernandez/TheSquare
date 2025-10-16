@@ -1,0 +1,81 @@
+# =======================================
+# UNITY - GITIGNORE GLOBAL
+# =======================================
+
+# --- Dossiers temporaires et caches ---
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+[Bb]uilds/
+[Oo]bj/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# --- Données générées automatiquement ---
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.csproj
+*.unityproj
+*.sln
+*.booproj
+*.tmp
+*.svd
+
+# --- Fichiers système ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Fichiers de cache et backup ---
+*.bak
+*.old
+*.orig
+*.rej
+*.dif
+*.patch
+*.swp
+*.tmp
+*.temp
+*.log
+
+# --- Packages et dépendances ---
+*.unitypackage
+Packages/com.unity.testtools.codecoverage/
+Packages/com.unity.ide.vscode/
+.vscode/
+
+# --- Builds et exports ---
+[Bb]uilds/
+[Bb]in/
+[Dd]ebug*/
+[Rr]elease*/
+
+# --- Collab & Version Control ---
+.collabignore
+.vs/
+.idea/
+*.code-workspace
+
+# --- JetBrains Rider ---
+.idea/
+*.sln.iml
+
+# --- Autres dossiers Unity ---
+sysinfo.txt
+*.apk
+*.aab
+
+# --- Unity Cloud / Plastic SCM ---
+PlasticSCM/
+.plastic/
+
+# --- Crash Dumps ---
+*.stacktrace
+*.dmp
+
+# --- Visual Studio Cache ---
+.vscode/
+.vs/

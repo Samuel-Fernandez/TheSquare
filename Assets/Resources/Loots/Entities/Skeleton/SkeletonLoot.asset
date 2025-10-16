@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9c97a80a015184ebacc0c90b2262db, type: 3}
+  m_Name: SkeletonLoot
+  m_EditorClassIdentifier: 
+  loots:
+  - item: {fileID: 825423999109376273, guid: 1a48f5bd0e7729447b7bd9ebafe48e54, type: 3}
+    lootChance: 30
+  - item: {fileID: 7500601372771816494, guid: faeab726cd03afb40a357cb07095ad91, type: 3}
+    lootChance: 60
+  - item: {fileID: 405510180018779390, guid: 3fcf901d66417ea41adef3e5a7bf41d9, type: 3}
+    lootChance: 150
+  - item: {fileID: 7797097648409138479, guid: 7d2129a9d6c04cc448d8fc45c6d0f7c2, type: 3}
+    lootChance: 5
+  - item: {fileID: 7147522476223202614, guid: 0ccfad51b4521a541a4041c0c45cea46, type: 3}
+    lootChance: 5
+  - item: {fileID: 3577675995761348019, guid: 702a5ac3e6812b04fa01aa9e5475ae61, type: 3}
+    lootChance: 1
+  - item: {fileID: 8210642798853171078, guid: 1c2e8bf1ca2c755468ca59fb1af55756, type: 3}
+    lootChance: 5
+  - item: {fileID: 2763443352096288562, guid: 5986ab7914fa4834fbfcc52bc2aa63aa, type: 3}
+    lootChance: 2
+  - item: {fileID: 0}
+    lootChance: 700

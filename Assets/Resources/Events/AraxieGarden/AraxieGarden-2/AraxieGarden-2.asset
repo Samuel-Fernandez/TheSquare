@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: AraxieGarden-2
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 0a436e0197304c94e94b8067c1f46e5f, type: 3}
+    id: AraxieStatic
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 476137
+  eventsList:
+  - {fileID: 11400000, guid: ae2e04da9ba112a4aafee3c2b89cb93e, type: 2}
+  - {fileID: 11400000, guid: a4bf29f73eb4687488d3e26543582749, type: 2}
+  - {fileID: 11400000, guid: 6fbbb230bcb5f3043862d4bef7ea8711, type: 2}
+  - {fileID: 11400000, guid: ae2aa110b70dd1b46a3211c8a67c5b43, type: 2}
+  - {fileID: 11400000, guid: 45ec728445cbb734f9e119b5f0d85a3a, type: 2}
+  - {fileID: 11400000, guid: 52cef8b87fba18c4dab8a2fc9cbc7205, type: 2}
+  - {fileID: 11400000, guid: 0d073d81fd925f549816620abc21fd3a, type: 2}
+  - {fileID: 11400000, guid: 498d5a534dc9ed24ab92fabfadf74b07, type: 2}
+  requirement: {fileID: 0}

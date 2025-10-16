@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187e70050bce968488ec0a8ed56df286, type: 3}
+  m_Name: Bartender-1
+  m_EditorClassIdentifier: 
+  pnj: {fileID: 6517077041696520145, guid: b172a16994956bb4b93138f33a637d90, type: 3}
+  requirement: {fileID: 11400000, guid: 29634d9b622cf3e438bed47af4e7ee33, type: 2}
+  schedule:
+  - scene: {fileID: 11400000, guid: 6a4c7aa06d589aa4f9934ee3b6ee2728, type: 2}
+    position: {x: 17.5, y: 22.5}
+    beginTime: 8
+    endTime: 9
+    movement: {fileID: 11400000, guid: f4d3c88df2b7a4e4bb71e6057d98ffec, type: 2}
+    pnjID: bartender-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}
+  - scene: {fileID: 11400000, guid: 5deed1598299f564aac845e418c7426c, type: 2}
+    position: {x: 14, y: 30.5}
+    beginTime: 9
+    endTime: 22
+    movement: {fileID: 11400000, guid: ac36fa1009a635d4bbd3f3ad591070c6, type: 2}
+    pnjID: bartender-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}

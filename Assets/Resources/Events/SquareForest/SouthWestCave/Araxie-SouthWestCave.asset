@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: Araxie-SouthWestCave
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: Araxie
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 799397
+  eventsList:
+  - {fileID: 11400000, guid: 8273ed57e5072144fb67bdd60509abde, type: 2}
+  - {fileID: 11400000, guid: dfe2aba6111357d45b2d3909a2e7bc82, type: 2}
+  - {fileID: 11400000, guid: 431b2752e1c256e4fa766a41170a8afb, type: 2}
+  - {fileID: 11400000, guid: 81694b944f97dca40aed153814e312d9, type: 2}
+  - {fileID: 11400000, guid: a22c8dc4f78e9ca489a6acab68bd2493, type: 2}
+  - {fileID: 11400000, guid: e859fef287f28664da645ee383ed264e, type: 2}
+  - {fileID: 11400000, guid: b8a43c12e7a95f946bd99c1235ecffe3, type: 2}
+  - {fileID: 11400000, guid: d381b20ce32eec24686bacd994538ac6, type: 2}
+  - {fileID: 11400000, guid: d03365af4fde365469d3660e81d2f79a, type: 2}
+  requirement: {fileID: 0}

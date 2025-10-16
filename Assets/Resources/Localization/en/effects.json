@@ -1,0 +1,32 @@
+{
+  "entries": [
+    {
+      "key": "DRAGON_SKIN",
+      "value": "+{0}% of received damage is absorbed"
+    },
+    {
+      "key": "REGEN",
+      "value": "+{0} health regenerated every 60 seconds"
+    },
+    {
+      "key": "FANTOM_DODGE",
+      "value": "+{0}% chance to dodge an attack"
+    },
+    {
+      "key": "VAMPIRE",
+      "value": "+{0}% chance to recover 10% of damage dealt as health"
+    },
+    {
+      "key": "ICE",
+      "value": "+{0}% chance to inflict ice effect after an attack"
+    },
+    {
+      "key": "FLAME",
+      "value": "+{0}% chance to inflict flame effect after an attack"
+    },
+    {
+      "key": "POISON",
+      "value": "+{0}% chance to inflict poison effect after an attack"
+    }
+  ]
+}

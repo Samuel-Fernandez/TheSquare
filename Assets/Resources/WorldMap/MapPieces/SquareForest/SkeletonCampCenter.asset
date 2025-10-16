@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b3ea2927ca5794c841d5196101a70a, type: 3}
+  m_Name: SkeletonCampCenter
+  m_EditorClassIdentifier: 
+  sceneAssets:
+  - {fileID: 102900000, guid: 02727486ea43517429a82625a3ff9918, type: 3}
+  - {fileID: 102900000, guid: 20fe324d37350974284e572cbc171320, type: 3}
+  - {fileID: 102900000, guid: 5ce9ae1e7fe00dd42b6dd473c2b06ee7, type: 3}
+  - {fileID: 102900000, guid: d3ae520bf8682494990d513348a770c4, type: 3}
+  - {fileID: 102900000, guid: d17d0dd6f674fe24a9fb8f2e9cc0ed2c, type: 3}
+  - {fileID: 102900000, guid: c7cf796387798114e9561137896dde3f, type: 3}
+  - {fileID: 102900000, guid: add99d385e634a446a0d2f33970c473d, type: 3}
+  - {fileID: 102900000, guid: faa52df7f032ac740a554c2120a18d2d, type: 3}
+  - {fileID: 102900000, guid: 4251b3550c98e624fafde2150357aa4c, type: 3}
+  - {fileID: 102900000, guid: 9efc366eae361344993ec4b60df52e6b, type: 3}
+  - {fileID: 102900000, guid: c57f6301a5b1f6749bd3f40c372eaae3, type: 3}
+  - {fileID: 102900000, guid: f2b5ff7f56fdd904998a29d10f1d6c93, type: 3}
+  - {fileID: 102900000, guid: 8080f7d0b454f3c498184ba724535925, type: 3}
+  scenes:
+  - SkeletonCampCenter
+  - SkeletonCampCenterEntry
+  - SkeletonCampNorth
+  - SkeletonDungeonBehindThrone
+  - SkeletonDungeonLeftWing
+  - SkeletonDungeonEntry
+  - SkeletonDungeonMainPiece
+  - SkeletonDungeonMainPieceSecret
+  - SkeletonDungeonPiece-1
+  - SkeletonDungeonPiece-2
+  - SkeletonDungeonRightWing
+  - SkeletonDungeonRightWingSecret
+  - SkeletonDungeonThroneRoom
+  icon: {fileID: 731368377, guid: cc17a8c31cd85e2448246a4df1edfc27, type: 3}
+  coords:
+    x: 7
+    y: 1

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b3ea2927ca5794c841d5196101a70a, type: 3}
+  m_Name: VillageOfTears
+  m_EditorClassIdentifier: 
+  sceneAssets:
+  - {fileID: 102900000, guid: c11ae89310b66d44bba3d6d7d4473db5, type: 3}
+  - {fileID: 102900000, guid: c9e7943b3b20ff54f80b9de2412ff910, type: 3}
+  - {fileID: 102900000, guid: 5ba7bcd904cd00a41880455c816ac519, type: 3}
+  - {fileID: 102900000, guid: 1f941f7ef4f545448b63a4f2cc13f6c2, type: 3}
+  - {fileID: 102900000, guid: a8ac0def880ca164fa26f58044845b1b, type: 3}
+  - {fileID: 102900000, guid: 1882023fdc20ae74fa62339f8214fe0b, type: 3}
+  - {fileID: 102900000, guid: d2dcc040d0d981848852d6b3cf7e396c, type: 3}
+  - {fileID: 102900000, guid: eb88b91728bee464594e8428c2e24b0f, type: 3}
+  - {fileID: 102900000, guid: 9111ad5a196847840a7adb4df2a0ac7b, type: 3}
+  - {fileID: 102900000, guid: 87b55fe891f6e1c47a1ce2b63f5e753e, type: 3}
+  scenes:
+  - VillageOfTears
+  - Tavern
+  - Library
+  - Foundry
+  - House_1
+  - House_2
+  - House_3
+  - Shop
+  - Farm
+  - Casern
+  icon: {fileID: 781873995, guid: cc17a8c31cd85e2448246a4df1edfc27, type: 3}
+  coords:
+    x: 7
+    y: 4

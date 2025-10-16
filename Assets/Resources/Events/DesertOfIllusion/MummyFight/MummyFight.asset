@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: MummyFight
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer:
+  - monster: {fileID: 196427628513368111, guid: 946be6df00c2b0e4f80fef7013b08e6e, type: 3}
+    id: m1
+    isBattleObject: 0
+  - monster: {fileID: 196427628513368111, guid: 946be6df00c2b0e4f80fef7013b08e6e, type: 3}
+    id: m2
+    isBattleObject: 0
+  - monster: {fileID: 196427628513368111, guid: 946be6df00c2b0e4f80fef7013b08e6e, type: 3}
+    id: m3
+    isBattleObject: 0
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb1
+    isBattleObject: 1
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb2
+    isBattleObject: 1
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: MummyFight
+  eventsList:
+  - {fileID: 11400000, guid: 71cc17a7428ad4f4e981fed4b94f8cf6, type: 2}
+  - {fileID: 11400000, guid: 6f449a13e7095f849bcfe2e64bd07d37, type: 2}
+  requirements: []

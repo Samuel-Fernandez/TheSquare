@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: B0
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer:
+  - monster: {fileID: 2910370185860577670, guid: 1871a848b75ebb84eb30f2f9c7240c4d, type: 3}
+    id: s0
+  - monster: {fileID: 2910370185860577670, guid: 1871a848b75ebb84eb30f2f9c7240c4d, type: 3}
+    id: s1
+  - monster: {fileID: 7631361124653286939, guid: 07e649486392a9b409120a6d5a851d92, type: 3}
+    id: s2
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 850087
+  eventsList:
+  - {fileID: 11400000, guid: 9da30316cb3127d40a2b4dd5b5c5c444, type: 2}
+  - {fileID: 11400000, guid: 62b9dfbcdb6e40844b5cbe261fe22ee2, type: 2}
+  - {fileID: 11400000, guid: 5f1498adbb402194db8f30171245f160, type: 2}
+  - {fileID: 11400000, guid: ac994c1db97610147846b47a1d6fe7cc, type: 2}
+  requirement: {fileID: 0}

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: WithTheBarmaid
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 0}
+    id: YoungGirl
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 899633
+  eventsList:
+  - {fileID: 11400000, guid: 61c0fce2a62ac9948becc7b242e82bf0, type: 2}
+  - {fileID: 11400000, guid: 0dce231a7446b6c4796a2d1dac4aa798, type: 2}
+  - {fileID: 11400000, guid: 15577815edce17e4a8e6acc8b73fac69, type: 2}
+  - {fileID: 11400000, guid: 9ed50166c03aa3f43bbca8d01f15e5b1, type: 2}
+  - {fileID: 11400000, guid: d785c8f652e2f6140b2f18b63c30b022, type: 2}
+  - {fileID: 11400000, guid: d036b2c01284a88428121c9a6445f54b, type: 2}
+  - {fileID: 11400000, guid: 2bc60751e006f634ea80336d8db49026, type: 2}
+  - {fileID: 11400000, guid: 6f20a08e320b7cb44991c7fd81fd90f5, type: 2}
+  - {fileID: 11400000, guid: 80672951d9fb7ec4191746d6a813a9dd, type: 2}
+  - {fileID: 11400000, guid: 2ef607f73453a84429fe79b4c551f696, type: 2}
+  - {fileID: 11400000, guid: 8967f1fc3bd48b3498e02a14bc35ad08, type: 2}
+  - {fileID: 11400000, guid: 9fd5451ab7e84ca41807d1509938218f, type: 2}
+  requirements: []

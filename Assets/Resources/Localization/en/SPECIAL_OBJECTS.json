@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "key": "bow",
+      "value": "You obtained the bow. You can now hit targets from a distance, like monsters or mechanisms.|You need arrows to use the bow."
+    },
+    {
+      "key": "pickaxe",
+      "value": "You obtained the pickaxe. You can now break stones and mine metals to upgrade your weapons and armor."
+    },
+    {
+      "key": "dark_medal",
+      "value": "You obtained the dark medal.|You can now create a weak double of yourself that avoids traps and can walk through special areas."
+    },
+    {
+      "key": "shield",
+      "value": "You obtained the shield. You can now block certain attacks and projectiles."
+    },
+    {
+      "key": "light",
+      "value": "You obtained the lamp. You can now light up dark rooms or set certain objects and enemies on fire."
+    },
+    {
+      "key": "hammer",
+      "value": "You obtained the hammer. You can now deal area damage and activate certain mechanisms."
+    }
+  ]
+}

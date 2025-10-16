@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: SkeletonCamp-6
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: AraxieFairy
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 837051
+  eventsList:
+  - {fileID: 11400000, guid: d0766b8fa51b81b4e811bcccf64a46fa, type: 2}
+  - {fileID: 11400000, guid: 79a14f77fe5dc5c418cba5894e2d3010, type: 2}
+  - {fileID: 11400000, guid: 7f7fd7eb60078334d9a93ddad2e9c38b, type: 2}
+  - {fileID: 11400000, guid: 19f7260f3b367d841ac570d3f1cad0de, type: 2}
+  - {fileID: 11400000, guid: f14c414adc34fca40a5ea008ab0b2678, type: 2}
+  - {fileID: 11400000, guid: c9d869147871cb545bd0178ae367b9f8, type: 2}
+  - {fileID: 11400000, guid: fd0d1b6461ef0954aa4081cfc53fd6e6, type: 2}
+  - {fileID: 11400000, guid: 3bd6dacf4fe02d14ca5180045a9ad4f0, type: 2}
+  - {fileID: 11400000, guid: 47be215c5f302ce40913a4dff8cbe075, type: 2}
+  - {fileID: 11400000, guid: f5894e4df43849742bc3d8e6623e572a, type: 2}
+  - {fileID: 11400000, guid: a3f909f8d16c9de43a7856d47b80930f, type: 2}
+  - {fileID: 11400000, guid: adceed828db26b84787050e5ae4a9b05, type: 2}
+  - {fileID: 11400000, guid: 9d92617ee4333b94890dc2a7c0a69fd3, type: 2}
+  - {fileID: 11400000, guid: 33ca0833b597e9e478cbe84dce9f9e29, type: 2}
+  requirement: {fileID: 0}

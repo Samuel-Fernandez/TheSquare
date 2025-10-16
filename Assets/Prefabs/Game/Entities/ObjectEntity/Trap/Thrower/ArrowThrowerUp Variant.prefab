@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5873902073528674541
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 496684698077971474, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: particles.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469792646389077145, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469792646389077145, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: effectType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4469792646389077145, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: throwablePrefab
+      value: 
+      objectReference: {fileID: 8286388481894975473, guid: a4acadeaed804f046890e06c440f290e, type: 3}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.445557
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9218159
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.054391198
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874355015983756486, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305425044271719045, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: m_Name
+      value: ArrowThrowerUp Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9104651896658055664, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}
+      propertyPath: allSounds.Array.data[0].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b42fd88e457c0f4faea6222aa7d27fe, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbd01f5439cfd8245a5b6fd2c28cda06, type: 3}

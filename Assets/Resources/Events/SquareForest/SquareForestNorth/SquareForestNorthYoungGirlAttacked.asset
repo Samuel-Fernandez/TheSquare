@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: SquareForestNorthYoungGirlAttacked
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 0}
+    id: YoungGirl
+  - pnj: {fileID: 0}
+    id: Wolf-1
+  - pnj: {fileID: 0}
+    id: Wolf-2
+  monsterContainer:
+  - monster: {fileID: 332476439587847919, guid: 318c2065463bd934b8bb7bddb05ba625, type: 3}
+    id: Wolf-2
+    isBattleObject: 0
+  - monster: {fileID: 332476439587847919, guid: 318c2065463bd934b8bb7bddb05ba625, type: 3}
+    id: Wolf-3
+    isBattleObject: 0
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 591196
+  eventsList:
+  - {fileID: 11400000, guid: d97c1a402bc4ec74988493d81ffc249e, type: 2}
+  - {fileID: 11400000, guid: 71b4eaddf66929247beb0c451ef5cb3b, type: 2}
+  - {fileID: 11400000, guid: e22235ef3d9fbe646ba79234b212617b, type: 2}
+  - {fileID: 11400000, guid: 785337ffe2e013047851c1ed5c3cd246, type: 2}
+  - {fileID: 11400000, guid: 75bbc4ce539d53542b020514842dde96, type: 2}
+  - {fileID: 11400000, guid: 31e30775335933d4680c3987db43740e, type: 2}
+  - {fileID: 11400000, guid: ca11eef935ff99449bc8dbb38869e1bc, type: 2}
+  - {fileID: 11400000, guid: 35cd10e0bcef478499eea78d88e17434, type: 2}
+  - {fileID: 11400000, guid: 1a892fab93617fa4f960e10a54af99f3, type: 2}
+  - {fileID: 11400000, guid: d531c6911edd5824389c60023cd78750, type: 2}
+  - {fileID: 11400000, guid: 89ded3c8c683e5a4486a36cb36e72656, type: 2}
+  - {fileID: 11400000, guid: 91999e42e2474884b9dc59ee9ffb6935, type: 2}
+  - {fileID: 11400000, guid: 0188c5740a807f241ab6a97ddb51e72d, type: 2}
+  - {fileID: 11400000, guid: 77ab949a8cff053459412d0ccc8b1dcb, type: 2}
+  - {fileID: 11400000, guid: 4fb6d3c7ff24f71428fdcc67163f00a6, type: 2}
+  - {fileID: 11400000, guid: f32311fc6b8dd984dacfd5cad3ccf5d8, type: 2}
+  - {fileID: 11400000, guid: e30b134f9d32dde4c9c2e3a780b1a46d, type: 2}
+  - {fileID: 11400000, guid: 35295069db2d6004499be258170646d1, type: 2}
+  - {fileID: 11400000, guid: ab650eb2d4635f2489872d6380bffe32, type: 2}
+  - {fileID: 11400000, guid: 0663f6373269d4a45a0b7c78c7db8803, type: 2}
+  - {fileID: 11400000, guid: 50a0f82391ee96145a7b622b41a86852, type: 2}
+  - {fileID: 11400000, guid: 803e6adfc8969f044973000cab05b801, type: 2}
+  - {fileID: 11400000, guid: 4473ed00a4cf33148ada5da15d6e5375, type: 2}
+  - {fileID: 11400000, guid: 1ab9207fbafebe04080d61cd64ab37e2, type: 2}
+  - {fileID: 11400000, guid: 2dc72b689beb18744923921a1dae569a, type: 2}
+  - {fileID: 11400000, guid: 6c6210246ac7486459f21e75bd3573bb, type: 2}
+  - {fileID: 11400000, guid: 06fe8810c3412404785e6fa7ff5ca047, type: 2}
+  - {fileID: 11400000, guid: 52d58072cb309c74f904e940ca849a65, type: 2}
+  - {fileID: 11400000, guid: b6d8d7e09e3b2d543b7583b2093cc786, type: 2}
+  - {fileID: 11400000, guid: ed9b37df6a8e62c4a8df7f84af9a17f0, type: 2}
+  requirements: []

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d51c43ca1b784a46af64e080d357678, type: 3}
+  m_Name: L8
+  m_EditorClassIdentifier: 
+  id: L8
+  lvlLifeMin: 5
+  lvlStrengthMin: 7
+  lvlLuckMin: 8
+  cost: 5000
+  previousSkills:
+  - {fileID: 11400000, guid: 2653d279ca208f3438b9f1b2542c432e, type: 2}
+  img: {fileID: 21300000, guid: c2b3f4103837f574494e1f2b98898698, type: 3}
+  type: 7
+  statAdd: 7
+  intValue: 2
+  floatValue: 0.5

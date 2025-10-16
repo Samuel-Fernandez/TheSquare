@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: Araxie-SouthWest
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: Araxie
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 365269
+  eventsList:
+  - {fileID: 11400000, guid: 5412a6816d4aaf74f9b4dfbc16ff7f5d, type: 2}
+  - {fileID: 11400000, guid: 9f5b0f2ff4603224da8c94c7c13fecda, type: 2}
+  - {fileID: 11400000, guid: 657341abb84da45488b1533fcc463212, type: 2}
+  - {fileID: 11400000, guid: 380bf22aec5d66247bfb461d47f7cbf8, type: 2}
+  - {fileID: 11400000, guid: 312fd41819944a74b8d807aa95c3498c, type: 2}
+  - {fileID: 11400000, guid: 4cc493c14dbdc8d4e8148190529a9cd9, type: 2}
+  - {fileID: 11400000, guid: 1a0ce3ac4b1e7ce4a835a02b76d4f909, type: 2}
+  - {fileID: 11400000, guid: af5e794340e61224d82a5c55739d67ad, type: 2}
+  - {fileID: 11400000, guid: 527f5f0b4de4bfc4bb635ee21c4d5368, type: 2}
+  - {fileID: 11400000, guid: b39048b3d4b6f3140bb132087c6f32b7, type: 2}
+  - {fileID: 11400000, guid: fd0b4ec510541b0439a57bb85c527b47, type: 2}
+  - {fileID: 11400000, guid: 2007a4bbd52424d47873a16d50545a38, type: 2}
+  - {fileID: 11400000, guid: 139258d539036ef47a543f8e96e3e0c4, type: 2}
+  - {fileID: 11400000, guid: 7f9279cfbed6dd24caf4bbcb2b879d45, type: 2}
+  - {fileID: 11400000, guid: c842df77399755247a8dbccbae0d4428, type: 2}
+  requirement: {fileID: 0}

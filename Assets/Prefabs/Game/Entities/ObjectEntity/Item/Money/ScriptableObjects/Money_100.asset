@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ece06fb07967304f813447f9c2e311f, type: 3}
+  m_Name: Money_100
+  m_EditorClassIdentifier: 
+  itemId: 000001
+  itemName: Money_1
+  sprite: {fileID: 1472952939, guid: 24abeb19b12e34443832cb97c0932924, type: 3}
+  value: 100
+  color: {r: 1, g: 0.3754716, b: 0.8977944, a: 1}

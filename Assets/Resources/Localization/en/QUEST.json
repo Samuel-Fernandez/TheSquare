@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "key": "LITTLE_SKELETON_SLIME_NAME",
+      "value": "A Slimy Project"
+    },
+    {
+      "key": "LITTLE_SKELETON_SLIME_DESCRIPTION",
+      "value": "Bring 5 slime chunks to the little skeleton."
+    },
+    {
+      "key": "LITTLE_SKELETON_SLIME_PNJNAME",
+      "value": "Little Skeleton"
+    }
+  ]
+}

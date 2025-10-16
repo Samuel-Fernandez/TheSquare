@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9ef7df9c4e4174688694dc6d8546d3, type: 3}
+  m_Name: DesertOfIllusion
+  m_EditorClassIdentifier: 
+  type: 4
+  regionID: DESERT_OF_ILLUSION
+  scenes:
+  - {fileID: 11400000, guid: 0eb13d0f6e9d6454ba7e52e96b90b035, type: 2}
+  - {fileID: 11400000, guid: c984a096a3e934a45b1c7f565385fa14, type: 2}
+  - {fileID: 11400000, guid: b57aa8267ed23ac42b0c2306480cc2f3, type: 2}
+  - {fileID: 11400000, guid: fb4c3a4aaa286b7449f472599ae0fa57, type: 2}
+  - {fileID: 11400000, guid: 1467a610158fed946b06a141bf003b50, type: 2}
+  - {fileID: 11400000, guid: 97761644ac6d3e944ad07db940142f17, type: 2}
+  - {fileID: 11400000, guid: a7bc77f3d1ca6f845b38606e554f19e9, type: 2}
+  - {fileID: 11400000, guid: fb6d402b3fe08ef4396993833818095f, type: 2}
+  - {fileID: 11400000, guid: f35dda29dd89b8d4491a01eeef576e47, type: 2}
+  - {fileID: 11400000, guid: e1cae8cc8ed639142aab1902d508467e, type: 2}
+  - {fileID: 11400000, guid: 44d2588a046d0954998c8945978724af, type: 2}
+  - {fileID: 11400000, guid: 45c50c87f0ac98c46b7814ccccd8b966, type: 2}
+  - {fileID: 11400000, guid: 296a5b7cdcb60d9479e291fbc5bfb2fa, type: 2}
+  - {fileID: 11400000, guid: 45705b5f282130b45af44ef3e4f97f5b, type: 2}
+  - {fileID: 11400000, guid: a859c7aff79a4ff4693608a2bdb03ab9, type: 2}

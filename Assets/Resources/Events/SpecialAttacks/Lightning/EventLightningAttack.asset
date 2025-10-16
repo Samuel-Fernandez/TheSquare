@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: EventLightningAttack
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 166193
+  eventsList:
+  - {fileID: 11400000, guid: 245d528b9d9c2cc45bb0e97a38ddfb4b, type: 2}
+  - {fileID: 11400000, guid: 2c1c6a3956f91084eaa6365241056077, type: 2}
+  - {fileID: 11400000, guid: f07b8656dbb2d0e49917ffe218875754, type: 2}
+  - {fileID: 11400000, guid: 829d84d503825d642a206ac680137255, type: 2}
+  - {fileID: 11400000, guid: c62b334113133064e9c89b3facce0eba, type: 2}
+  - {fileID: 11400000, guid: 8b0efdd93c17a5246b105a05001ed538, type: 2}
+  - {fileID: 11400000, guid: 75963901b9695684cb22d54e965b406f, type: 2}
+  - {fileID: 11400000, guid: 32cb38a999c71cf409688e9e14abc310, type: 2}
+  requirement: {fileID: 0}

@@ -1,0 +1,216 @@
+{
+  "entries": [
+    {
+      "key": "ITEM_RESUME_MONEY",
+      "value": "You have obtained {0} square coins."
+    },
+    {
+      "key": "ITEM_RESUME",
+      "value": "You have obtained {0}."
+    },
+    {
+      "key": "ITEM_RESUME_NB",
+      "value": "You have obtained {0} {1}"
+    },
+    {
+      "key": "MARKET_SELL_ITEMS",
+      "value": "Sell items"
+    },
+    {
+      "key": "MARKET_BUY",
+      "value": "Buy"
+    },
+    {
+      "key": "MARKET_SELL",
+      "value": "Sell"
+    },
+    {
+      "key": "MARKET_HEALER",
+      "value": "Healer"
+    },
+    {
+      "key": "MARKET_ARMORER",
+      "value": "Armorer"
+    },
+    {
+      "key": "MARKET_EXPLORER",
+      "value": "Explorer"
+    },
+    {
+      "key": "MARKET",
+      "value": "Market"
+    },
+    {
+      "key": "NOTIFICATION_SAVE",
+      "value": "Game saved"
+    },
+    {
+      "key": "NOTIFICATION_GET_TEXT",
+      "value": "Get"
+    },
+    {
+      "key": "NOTIFICATION_GET_SQUARE_BLOCK",
+      "value": "square block"
+    },
+    {
+      "key": "NOTIFICATION_GET_ANTIMATTER",
+      "value": "antimatter"
+    },
+    {
+      "key": "NOTIFICATION_GET_DIAMOND",
+      "value": "diamond"
+    },
+    {
+      "key": "NOTIFICATION_GET_SILVER",
+      "value": "silver"
+    },
+    {
+      "key": "NOTIFICATION_GET_IRON",
+      "value": "iron"
+    },
+    {
+      "key": "NOTIFICATION_INVENTORY_FULL",
+      "value": "Inventory full"
+    },
+    {
+      "key": "INVENTORY_ITEMS_LEGENDARY",
+      "value": "LEGENDARY"
+    },
+    {
+      "key": "INVENTORY_ITEMS_EPIC",
+      "value": "EPIC"
+    },
+    {
+      "key": "INVENTORY_ITEMS_RARE",
+      "value": "RARE"
+    },
+    {
+      "key": "INVENTORY_ITEMS_UNCOMMON",
+      "value": "UNCOMMON"
+    },
+    {
+      "key": "INVENTORY_ITEMS_COMMON",
+      "value": "COMMON"
+    },
+    {
+      "key": "GAME_OVER_CONTINUE",
+      "value": "Continue"
+    },
+    {
+      "key": "MAIN_MENU_START",
+      "value": "Start"
+    },
+    {
+      "key": "MAIN_MENU_LEAVE",
+      "value": "Leave"
+    },
+    {
+      "key": "INVENTORY_STATS",
+      "value": "Stats"
+    },
+    {
+      "key": "INVENTORY_EQUIPEMENTS",
+      "value": "Equipement"
+    },
+    {
+      "key": "INVENTORY_ITEMS",
+      "value": "Objects"
+    },
+    {
+      "key": "INVENTORY_SPECIAL_ITEMS",
+      "value": "Items"
+    },
+    {
+      "key": "INVENTORY_OPTIONS",
+      "value": "Settings"
+    },
+    {
+      "key": "LEVEL_ABREVIATION_TEXT",
+      "value": "Lv"
+    },
+    {
+      "key": "LEVEL_COST_TEXT",
+      "value": "Cost"
+    },
+    {
+      "key": "LEVEL_BUTTON_INCREASE",
+      "value": "Increase"
+    },
+    {
+      "key": "ANVIL_BUTTON_UPGRADE",
+      "value": "Upgrade"
+    },
+    {
+      "key": "SETTING_LABEL_SOUND",
+      "value": "Sounds volume"
+    },
+    {
+      "key": "SETTING_LABEL_MUSIC",
+      "value": "Musics volume"
+    },
+    {
+      "key": "SETTING_LABEL_LEAVE",
+      "value": "All progress will be lost up to the last save point"
+    },
+    {
+      "key": "NO_MINERAL",
+      "value": "No minerals are available to upgrade the equipment."
+    },
+    {
+      "key": "NO_EQUIPEMENT",
+      "value": "No equipment is available for upgrading."
+    },
+    {
+      "key": "KILL_MONSTER_QUEST",
+      "value": "Kill "
+    },
+    {
+      "key": "GET_RESOURCES_QUEST",
+      "value": "Gather "
+    },
+    {
+      "key": "FIND_LOCATION_QUEST",
+      "value": "Find the place named "
+    },
+    {
+      "key": "SPEAK_TO_PNJ_QUEST",
+      "value": "Go talk to "
+    },
+    {
+      "key": "SQUARE_COINS",
+      "value": "Square Coins"
+    },
+    {
+      "key": "DONE",
+      "value": "Done"
+    },
+    {
+      "key": "COMPLETED_QUEST",
+      "value": "Quest completed"
+    },
+    {
+      "key": "key",
+      "value": "You have found a key ! It allows you to unlock doors blocked by a lock. This key can only be used in this dungeon."
+    },
+    {
+      "key": "PLAYER_LEVELS_ATTRIBUTES",
+      "value": "Attributes"
+    },
+    {
+      "key": "PLAYER_LEVELS_SKILLS",
+      "value": "Skills"
+    },
+    {
+      "key": "TELEPORTATION_MANAGER_TITLE",
+      "value": "Teleportation"
+    },
+    {
+      "key": "NO_TELEPORTATION",
+      "value": "No locations to teleport"
+    },
+    {
+      "key": "MAP_PANEL",
+      "value": "World Map"
+    }
+  ]
+}

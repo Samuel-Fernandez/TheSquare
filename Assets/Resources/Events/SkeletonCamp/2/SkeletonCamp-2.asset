@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: SkeletonCamp-2
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 823248579774385614, guid: 7df598a1ba723c04286639f6cbc209c3, type: 3}
+    id: Wizard
+  - pnj: {fileID: 4054051343854864580, guid: ff55738cf62ce4e4ba9e926278de9cb5, type: 3}
+    id: ImpactEffect
+  monsterContainer:
+  - monster: {fileID: 7631361124653286939, guid: 07e649486392a9b409120a6d5a851d92, type: 3}
+    id: Wizard
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 171193
+  eventsList:
+  - {fileID: 11400000, guid: 4e4437965b27c0f428d97f06988fa528, type: 2}
+  - {fileID: 11400000, guid: cc55a9c8b8f48004d9ad43a9ff527500, type: 2}
+  - {fileID: 11400000, guid: a9f5e5369d5ffca4cafe0e2ecb747077, type: 2}
+  - {fileID: 11400000, guid: 3549e8f4b13fb5944bd3d5b0af1e20ea, type: 2}
+  - {fileID: 11400000, guid: 74228714740bb0542a422c26fa2cddcd, type: 2}
+  - {fileID: 11400000, guid: bc9b369dad279f04082361ccf337b082, type: 2}
+  - {fileID: 11400000, guid: bc43e54f116a0bb4a981e838105fd771, type: 2}
+  - {fileID: 11400000, guid: 926b0b57f191dfc4a8d54a97208f5d93, type: 2}
+  - {fileID: 11400000, guid: f444e6fb5fe3d4743a51c469a0b36719, type: 2}
+  - {fileID: 11400000, guid: c5202268fc8b4e34193ff64bc12bb1fc, type: 2}
+  - {fileID: 11400000, guid: 6195b3611d91c0342a11d3476473a5bf, type: 2}
+  - {fileID: 11400000, guid: 67aeedfe3cc72ac4eada47b1d2294e94, type: 2}
+  - {fileID: 11400000, guid: 0a1acb5451ba2d444a0044ce5dd60655, type: 2}
+  - {fileID: 11400000, guid: 36048694c6287da46854fb3e69c4a1e2, type: 2}
+  - {fileID: 11400000, guid: b98da9057b57b2d40a35006d7cf5ffb5, type: 2}
+  - {fileID: 11400000, guid: ed7748fb6f122c744af881f34d50e994, type: 2}
+  - {fileID: 11400000, guid: 88144cc05f8ebfa449a59c8c06724133, type: 2}
+  - {fileID: 11400000, guid: 9a7d06e15b9bcb94a9df6861e9dc2546, type: 2}
+  - {fileID: 11400000, guid: 897bf4f30a8a9b443bb871b4088fc78a, type: 2}
+  requirement: {fileID: 0}

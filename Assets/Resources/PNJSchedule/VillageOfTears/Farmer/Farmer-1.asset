@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187e70050bce968488ec0a8ed56df286, type: 3}
+  m_Name: Farmer-1
+  m_EditorClassIdentifier: 
+  pnj: {fileID: 289996701222854551, guid: 8f0452107b5760b4bb8ff7fd0e856ccf, type: 3}
+  requirement: {fileID: 0}
+  schedule:
+  - scene: {fileID: 11400000, guid: 7568be42c38e06743964b1960895d712, type: 2}
+    position: {x: 16.5, y: 24}
+    beginTime: 0
+    endTime: 6
+    movement: {fileID: 11400000, guid: 8822b8836889f224db8496b5385c038f, type: 2}
+    pnjID: farmer-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}
+  - scene: {fileID: 11400000, guid: 6a4c7aa06d589aa4f9934ee3b6ee2728, type: 2}
+    position: {x: 25, y: 30}
+    beginTime: 6
+    endTime: 14
+    movement: {fileID: 11400000, guid: 41564655418685b42a6f716d7d3c6028, type: 2}
+    pnjID: farmer-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}
+  - scene: {fileID: 11400000, guid: 5deed1598299f564aac845e418c7426c, type: 2}
+    position: {x: 18, y: 28.5}
+    beginTime: 15
+    endTime: 0
+    movement: {fileID: 0}
+    pnjID: farmer-1
+    traderType: 0
+    pnjType: 1
+    quests: {fileID: 0}

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68f61584893a824e90e6835367dc391, type: 3}
+  m_Name: QuestTest
+  m_EditorClassIdentifier: 
+  id: TEST
+  location: {fileID: 0}
+  pnjID: 
+  requirement: 0
+  sceneData: {fileID: 11400000, guid: 24b2e6dcb4b738a40bfa5d3e6d8e0676, type: 2}
+  pnjIDSpoken: 
+  eventRequired: {fileID: 0}
+  specialObject: 0
+  monsterRequired: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+  nbMonsterRequired: 1
+  questsRequired: {fileID: 0}
+  completionCondition: 0
+  monsterObjectiveList:
+  - monster: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+    nb: 1
+    nbMonsterKilledSinceAccepted: 0
+  sceneDataObjective: {fileID: 11400000, guid: 24b2e6dcb4b738a40bfa5d3e6d8e0676, type: 2}
+  pnjIDObjective: 
+  eventObjective: {fileID: 0}
+  resourcesObjective:
+  - item: {fileID: 11400000, guid: 46976ae65d4a9d349b66891c5994f0d8, type: 2}
+    nb: 5
+  reward: 3
+  nbSquareCoins: 9999
+  rewardSpecialItem: []
+  rewardEquipement:
+  - {fileID: 11400000, guid: b384117d9bcdd4545ad9549f5470b591, type: 2}
+  - {fileID: 11400000, guid: 794e6b67bdaad5e4699876a310071441, type: 2}
+  - {fileID: 11400000, guid: b53244085c7785a4084f37f8cf5ec446, type: 2}
+  - {fileID: 11400000, guid: 2d079636a8d409040a1628e7c7572c88, type: 2}
+  - {fileID: 11400000, guid: 4cae38b02347e2b469fdd47b29259c26, type: 2}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: 0-Cinematic-Beggining
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 831116
+  eventsList:
+  - {fileID: 11400000, guid: 19b457ff349a8a141a82e6d48facf1d9, type: 2}
+  - {fileID: 11400000, guid: 5304461b7c98de14b8961c1149405441, type: 2}
+  - {fileID: 11400000, guid: 3e675918ee408124da34e74e6e57c332, type: 2}
+  - {fileID: 11400000, guid: 05a3d3bad3edcb341b92cfdda6c68e18, type: 2}
+  requirement: {fileID: 0}

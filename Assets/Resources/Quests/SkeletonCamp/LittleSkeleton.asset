@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68f61584893a824e90e6835367dc391, type: 3}
+  m_Name: LittleSkeleton
+  m_EditorClassIdentifier: 
+  id: LITTLE_SKELETON_SLIME
+  location: {fileID: 0}
+  pnjID: 
+  requirement: 0
+  sceneData: {fileID: 0}
+  pnjIDSpoken: 
+  eventRequired: {fileID: 0}
+  specialObject: 0
+  monsterRequired: {fileID: 0}
+  nbMonsterRequired: 0
+  questsRequired: {fileID: 0}
+  completionCondition: 1
+  monsterObjectiveList: []
+  sceneDataObjective: {fileID: 0}
+  pnjIDObjective: 
+  eventObjective: {fileID: 0}
+  resourcesObjective:
+  - item: {fileID: 11400000, guid: 1c232cb8925f897488e269b12d25f117, type: 2}
+    nb: 5
+  reward: 3
+  nbSquareCoins: 0
+  rewardSpecialItem: []
+  rewardEquipement:
+  - {fileID: 11400000, guid: e356de8cc4786e6499bf6a586a750af0, type: 2}
+  - {fileID: 11400000, guid: 4b54100825575994e9656ea1971edeeb, type: 2}
+  - {fileID: 11400000, guid: ad04da20f2a71444d9b27f1393204220, type: 2}

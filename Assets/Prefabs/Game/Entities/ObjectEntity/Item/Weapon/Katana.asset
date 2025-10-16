@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb21d4af4fa0a6488f8740ec1d4afa3, type: 3}
+  m_Name: Katana
+  m_EditorClassIdentifier: 
+  itemId: 020005
+  itemName: Katana
+  description: Katana
+  sprite: {fileID: 21300000, guid: 22a7bf310c0d5bd48a1d9c0dde98f010, type: 3}
+  colorEnchant1: {r: 0, g: 0, b: 0, a: 0}
+  colorEnchant2: {r: 0, g: 0, b: 0, a: 0}
+  rarity: 1
+  value: 0
+  level: 0
+  damage: 0
+  knockbackPower: 0
+  critChance: 0
+  critDamage: 0
+  enchant: 0
+  enchantLevel: 0
+  baseDamage: 2
+  baseCritChance: 0.25
+  baseCritDamage: 1
+  baseKnockbackPower: 0
+  vampire: 0
+  fireAttackChance: 0
+  iceAttackChance: 0
+  poisonAttackChance: 0
+  doubleSquareCoinsChances: 0
+  dropChance: 0

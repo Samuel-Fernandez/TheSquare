@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48eb0a10e57d13340aa6f609204e2013, type: 3}
+  m_Name: Movement-1
+  m_EditorClassIdentifier: 
+  movements:
+  - movement:
+    - {x: 0, y: -1.5}
+    duration: 3
+    isWaiting: 0
+  - movement:
+    - {x: -2, y: 0}
+    duration: 3
+    isWaiting: 0
+  - movement:
+    - {x: 0, y: -9.5}
+    duration: 10
+    isWaiting: 0
+  - movement:
+    - {x: -1, y: 0}
+    duration: 1
+    isWaiting: 0
+  - movement:
+    - {x: 0, y: -3}
+    duration: 4
+    isWaiting: 0
+  - movement:
+    - {x: 1, y: 0}
+    duration: 1
+    isWaiting: 0
+  - movement:
+    - {x: 0, y: -0.5}
+    duration: 0.5
+    isWaiting: 0
+  - movement:
+    - {x: 0, y: 0}
+    duration: 1
+    isWaiting: 1

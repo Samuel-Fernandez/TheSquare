@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: Araxie-BridgeOfTears_3
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: Araxie
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 212872
+  eventsList:
+  - {fileID: 11400000, guid: 2915e3c1107ebcf4985cadf7162a879d, type: 2}
+  - {fileID: 11400000, guid: 852147d1adc649041ae62e6bf3fe37d8, type: 2}
+  - {fileID: 11400000, guid: d6e2751f34ffc3e4883ea870e1605143, type: 2}
+  - {fileID: 11400000, guid: f41605a2ad2f277459a1e19f4c81c681, type: 2}
+  - {fileID: 11400000, guid: 8b7913db67f3d25498bf2a9c22517621, type: 2}
+  - {fileID: 11400000, guid: d4cb26b6a2475bc4ab8e50e91b00d003, type: 2}
+  - {fileID: 11400000, guid: 34c793cdabf57244fa1f864cad335301, type: 2}
+  - {fileID: 11400000, guid: 27d7f3f2b90bc354baca59cd744535e1, type: 2}
+  requirement: {fileID: 0}

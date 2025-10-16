@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9ef7df9c4e4174688694dc6d8546d3, type: 3}
+  m_Name: PlainOfTears
+  m_EditorClassIdentifier: 
+  type: 3
+  regionID: PLAIN_OF_TEARS
+  scenes:
+  - {fileID: 11400000, guid: 6a4c7aa06d589aa4f9934ee3b6ee2728, type: 2}
+  - {fileID: 11400000, guid: 5deed1598299f564aac845e418c7426c, type: 2}
+  - {fileID: 11400000, guid: 50f4d1e409654f04ab153c9207ed9025, type: 2}
+  - {fileID: 11400000, guid: cafa00d6b1ab19e4bbeadf9b0d9f2833, type: 2}
+  - {fileID: 11400000, guid: 41276ea02621ef441b21ead25481eade, type: 2}
+  - {fileID: 11400000, guid: d20c0b04adf5d1340bd2ac72ef4a9c31, type: 2}
+  - {fileID: 11400000, guid: 6d39afef4cf6afe44ae46eeb164fecce, type: 2}
+  - {fileID: 11400000, guid: 44c01fc2f8172294282ae2415920919a, type: 2}
+  - {fileID: 11400000, guid: 4315ed5c6c567284cb8a4b8d90bf1742, type: 2}
+  - {fileID: 11400000, guid: 7568be42c38e06743964b1960895d712, type: 2}

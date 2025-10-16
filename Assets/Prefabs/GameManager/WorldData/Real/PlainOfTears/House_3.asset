@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f58ca6bc198484697ad4653ec7f9c9, type: 3}
+  m_Name: House_3
+  m_EditorClassIdentifier: 
+  sceneType: 3
+  filter: 0
+  sceneID: HOUSE_OF_TEARS
+  dungeonName: 
+  music: {fileID: 8300000, guid: ba9c27bd53cde144aba5cac037084e9f, type: 3}
+  ambientSound: []
+  playerCantOpenInventory: 0
+  sceneAsset: {fileID: 102900000, guid: d2dcc040d0d981848852d6b3cf7e396c, type: 3}
+  sceneName: House_3

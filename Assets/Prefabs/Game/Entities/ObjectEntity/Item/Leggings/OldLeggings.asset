@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74438a5bc3726454d80b661fe85a66d6, type: 3}
+  m_Name: OldLeggings
+  m_EditorClassIdentifier: 
+  itemId: 050002
+  itemName: Slime leggings
+  description: Slime leggings
+  sprite: {fileID: 21300000, guid: 7f65291b050951d4eaff23b58c47f603, type: 3}
+  colorEnchant1: {r: 0, g: 0, b: 0, a: 0}
+  colorEnchant2: {r: 0, g: 0, b: 0, a: 0}
+  rarity: 0
+  value: 0
+  level: 0
+  defense: 0
+  life: 0
+  knockbackResistance: 0
+  knockbackPower: 0
+  speed: 0
+  armorEnchant: 0
+  enchantLevel: 0
+  baseDefense: 1
+  baseLife: 0
+  baseKnockbackResistance: 0
+  baseKnockbackPower: 0
+  baseSpeed: 0
+  dragonSkin: 0
+  regenRate: 0
+  negativeEffectReducer: 0
+  mineralChance: 0
+  dodgeChance: 0
+  doubleMineralDropChance: 0

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: AccessToDesert
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3528959578039426428, guid: 6b109ee843de95d44a92ee541fd947cf, type: 3}
+    id: Cloud
+  - pnj: {fileID: 0}
+    id: Soldier
+  - pnj: {fileID: 0}
+    id: Cannon
+  - pnj: {fileID: 0}
+    id: MassiveRock
+  - pnj: {fileID: 4314239214943377341, guid: 547fd451b3058b945bf03d5f5a3fdbaf, type: 3}
+    id: CannonBullet
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 243614
+  eventsList:
+  - {fileID: 11400000, guid: ebb5c8d1ef14a5641ab39a1f2f7bf9a5, type: 2}
+  - {fileID: 11400000, guid: 2fe6a011f19ef4c4c9b80bc397d77fff, type: 2}
+  - {fileID: 11400000, guid: 36daaa56a7fb56445b19d0f0d5fb345c, type: 2}
+  - {fileID: 11400000, guid: 6d00a6e438087cb4f99a6eae18d046c3, type: 2}
+  - {fileID: 11400000, guid: 9028a107c16a58744a0c8c6ca3861b36, type: 2}
+  - {fileID: 11400000, guid: 178caf509c59c644d8032449785c8cd9, type: 2}
+  - {fileID: 11400000, guid: 743cc67bbd1b7bf42a4c8d2917cbd4d1, type: 2}
+  - {fileID: 11400000, guid: 1071d69dcbe87014ea88c18912166abe, type: 2}
+  - {fileID: 11400000, guid: 54e8db856848ca449829eedf1bc4af5a, type: 2}
+  - {fileID: 11400000, guid: 7fee59a371e56234fb80fe60f4100443, type: 2}
+  - {fileID: 11400000, guid: cdaaa51f404421f40bda0c253dceeb2a, type: 2}
+  - {fileID: 11400000, guid: 869714e4f10e1e54d97326022b4eb40a, type: 2}
+  - {fileID: 11400000, guid: 7e15bbf8d6c6c83429308e68f7b10c53, type: 2}
+  - {fileID: 11400000, guid: f86437916ee3a574dbcd6662af27783d, type: 2}
+  - {fileID: 11400000, guid: 0564f85e051a15f43bc14d680ef4670e, type: 2}
+  - {fileID: 11400000, guid: 51fec8b90c8a17f42b124da91d7c5bd2, type: 2}
+  - {fileID: 11400000, guid: aaed0b6d57feeb140b3283568042215f, type: 2}
+  - {fileID: 11400000, guid: 9449db03aa78e434bbda458ff7c10a8b, type: 2}
+  - {fileID: 11400000, guid: 27d6056856767c241b711360f3fa8c31, type: 2}
+  - {fileID: 11400000, guid: 5079594b2db90044fa2353bec27fe47d, type: 2}
+  - {fileID: 11400000, guid: 2a67f0a278abf7646aa20a35b312a4f8, type: 2}
+  - {fileID: 11400000, guid: 2129a9a923b63fe47bc05f93d39ff491, type: 2}
+  - {fileID: 11400000, guid: 24c908ceb23f4184aab005738d61ba15, type: 2}
+  - {fileID: 11400000, guid: 375d66795b4a50644b67336e8df5e649, type: 2}
+  - {fileID: 11400000, guid: 494261546c498b6488d9d84567c414a9, type: 2}
+  - {fileID: 11400000, guid: d76f59f5d45fdc24fbf8c03483e3b541, type: 2}
+  - {fileID: 11400000, guid: 57290428578bb154791b8fb3391f1caf, type: 2}
+  - {fileID: 11400000, guid: f08b393fd1c6ba44eb0aea9bf2e021ba, type: 2}
+  - {fileID: 11400000, guid: c6bffbb91d0986045915f902eae74d9b, type: 2}
+  - {fileID: 11400000, guid: fbd032443f62a5c4e939993e725e19b1, type: 2}
+  - {fileID: 11400000, guid: d75106c6a96551947824e6db356f7904, type: 2}
+  requirements:
+  - requirementType: 3
+    sceneData: {fileID: 0}
+    pnjIDSpoken: 
+    eventRequired: {fileID: 11400000, guid: 9e83c1330783d434894e065f642b7c64, type: 2}
+    specialObject: 0
+    monsterRequired: {fileID: 0}
+    nbMonsterRequired: 0

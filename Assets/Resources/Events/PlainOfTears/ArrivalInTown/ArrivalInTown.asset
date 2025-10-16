@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: ArrivalInTown
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 0}
+    id: Soldier
+  - pnj: {fileID: 4263644767771761814, guid: 20d1d09f7aba6b2449c9ef90c602e34d, type: 3}
+    id: YoungGirl
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 222603
+  eventsList:
+  - {fileID: 11400000, guid: 721a75f5b292b41489bf9d058b7fe1e2, type: 2}
+  - {fileID: 11400000, guid: 9d40eca27fd74c5408326c7ea69d4a65, type: 2}
+  - {fileID: 11400000, guid: a0532e908f3d12d4bae163eef1cc89e9, type: 2}
+  - {fileID: 11400000, guid: 59c146d49c0bede4789bad968b4e7bc0, type: 2}
+  - {fileID: 11400000, guid: ab57da44a58726b4e9a6675c31b32489, type: 2}
+  - {fileID: 11400000, guid: 44598fee5073e00428fb47bb11796599, type: 2}
+  - {fileID: 11400000, guid: bf400120ba1814146950605035b226ac, type: 2}
+  - {fileID: 11400000, guid: 9abc05b631096734eae52239806bfb7e, type: 2}
+  - {fileID: 11400000, guid: ce2744b442ee8964fb6b336f94988fb4, type: 2}
+  - {fileID: 11400000, guid: 9e0c7ff1df5206c47b95e1658f213c6a, type: 2}
+  - {fileID: 11400000, guid: ae2c4c0c87a17244a8d0fd8db9950fc7, type: 2}
+  - {fileID: 11400000, guid: e715119d567d0334c97ebb1b82ba2380, type: 2}
+  - {fileID: 11400000, guid: 4f1436d554ab30a49920baabd5dd9621, type: 2}
+  - {fileID: 11400000, guid: 340e9623e99aba7479eef0258e12700d, type: 2}
+  - {fileID: 11400000, guid: 2e33d18d52a91f64392ec51ae5b2e991, type: 2}
+  - {fileID: 11400000, guid: afe3a4ca145f145429cfcdfc2dd30d4b, type: 2}
+  - {fileID: 11400000, guid: 685ce6fffd172bc4b891b6641b5ff507, type: 2}
+  - {fileID: 11400000, guid: 66fcd50c45f99444b91a55d6a11cfce6, type: 2}
+  - {fileID: 11400000, guid: 21d206f7e98b086468bd70af6c10fe7f, type: 2}
+  - {fileID: 11400000, guid: 0dfc106103a8356439d55413b58fa4da, type: 2}
+  - {fileID: 11400000, guid: a07dd6243ffda1646adb3063a39d819c, type: 2}
+  - {fileID: 11400000, guid: 3c9d39c2f9405d04cbb26d7562b2c2aa, type: 2}
+  - {fileID: 11400000, guid: e0dd3dc192e9b8d4ba3e6365a4bcc6ac, type: 2}
+  - {fileID: 11400000, guid: e209581d96379424e8561fac1e6dcecd, type: 2}
+  - {fileID: 11400000, guid: ff743cd655ba6f248aa3a28f7c43ff62, type: 2}
+  requirements: []

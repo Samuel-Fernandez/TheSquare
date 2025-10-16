@@ -1,0 +1,436 @@
+{
+  "entries": [
+    {
+      "key": "070000_NAME",
+      "value": "Antimatter"
+    },
+    {
+      "key": "070000_DESCRIPTION",
+      "value": "Normally, this material is not found in nature, but for some abnormal and unknown reason, it exists in the form of ore."
+    },
+    {
+      "key": "070001_NAME",
+      "value": "Arrow"
+    },
+    {
+      "key": "070001_DESCRIPTION",
+      "value": "A classic arrow, usable with a bow."
+    },
+    {
+      "key": "070002_NAME",
+      "value": "Diamond"
+    },
+    {
+      "key": "070002_DESCRIPTION",
+      "value": "Once known as the hardest material in the world, diamond has lost its reputation for rarity and extreme effectiveness."
+    },
+    {
+      "key": "070003_NAME",
+      "value": "Iron"
+    },
+    {
+      "key": "070003_DESCRIPTION",
+      "value": "A very low-quality ore."
+    },
+    {
+      "key": "070004_NAME",
+      "value": "Silver"
+    },
+    {
+      "key": "070004_DESCRIPTION",
+      "value": "Silver is a precious metal, but its quality leaves much to be desired for equipment improvement."
+    },
+    {
+      "key": "070005_NAME",
+      "value": "SquareBlock"
+    },
+    {
+      "key": "070005_DESCRIPTION",
+      "value": "SquareBlock has a never-before-seen structure, with extreme rarity, making it the most resistant, lightweight, and hard material simultaneously."
+    },
+    {
+      "key": "070006_NAME",
+      "value": "Stone"
+    },
+    {
+      "key": "070006_DESCRIPTION",
+      "value": "Just rocks. Not edible."
+    },
+    {
+      "key": "070007_NAME",
+      "value": "Wood"
+    },
+    {
+      "key": "070007_DESCRIPTION",
+      "value": "Some ordinary wood."
+    },
+    {
+      "key": "070008_NAME",
+      "value": "Slime Portion"
+    },
+    {
+      "key": "070008_DESCRIPTION",
+      "value": "This small piece of slime is very sticky and... Disgusting."
+    },
+    {
+      "key": "070009_NAME",
+      "value": "Amethyst"
+    },
+    {
+      "key": "070009_DESCRIPTION",
+      "value": "This very stable material is both beautiful and useful for crafting certain ancient technologies."
+    },
+    {
+      "key": "070010_NAME",
+      "value": "Hay"
+    },
+    {
+      "key": "070010_DESCRIPTION",
+      "value": "Dried grass for animals. (Or for you, if you're feeling a bit peckish.)"
+    },
+    {
+      "key": "070011_NAME",
+      "value": "Slime Heart"
+    },
+    {
+      "key": "070011_DESCRIPTION",
+      "value": "This slime heart appears to be the generator that produces the sticky layer on these small creatures."
+    },
+    {
+      "key": "070012_NAME",
+      "value": "Coal"
+    },
+    {
+      "key": "070012_DESCRIPTION",
+      "value": "Coal is widely used for cooking food or warming up during freezing periods."
+    },
+    {
+      "key": "070013_NAME",
+      "value": "SquareAnt"
+    },
+    {
+      "key": "070013_DESCRIPTION",
+      "value": "This little cubic ant seems to be devoid of consciousness and camaraderie. It wanders alone."
+    },
+    {
+      "key": "070014_NAME",
+      "value": "Bat wing"
+    },
+    {
+      "key": "070014_DESCRIPTION",
+      "value": "This wing is very flexible, it’s an interesting material for… It’s an interesting material."
+    },
+    {
+      "key": "070015_NAME",
+      "value": "Snake fang"
+    },
+    {
+      "key": "070015_DESCRIPTION",
+      "value": "A snake’s fang. Careful, it’s poisonous !!! … Just kidding. A single fang isn’t dangerous, of course."
+    },
+    {
+      "key": "070016_NAME",
+      "value": "Cactus flower"
+    },
+    {
+      "key": "070016_DESCRIPTION",
+      "value": "Very tasty and rich in vitamins."
+    },
+    {
+      "key": "070017_NAME",
+      "value": "Apple"
+    },
+    {
+      "key": "070017_DESCRIPTION",
+      "value": "An apple."
+    },
+    {
+      "key": "010000_NAME",
+      "value": "Little potion of heal"
+    },
+    {
+      "key": "010000_DESCRIPTION",
+      "value": "Small healing potion. Nothing extraordinary. Restores 3 hearts."
+    },
+    {
+      "key": "020000_NAME",
+      "value": "Weapon of test"
+    },
+    {
+      "key": "020000_DESCRIPTION",
+      "value": "This weapon is for tests. If u have this, wtf"
+    },
+    {
+      "key": "020002_NAME",
+      "value": "Old Sword"
+    },
+    {
+      "key": "020002_DESCRIPTION",
+      "value": "A sword passed through many hands, used until its last breath. As dangerous as a toothpick."
+    },
+    {
+      "key": "020001_NAME",
+      "value": "Slimy Sword"
+    },
+    {
+      "key": "020001_DESCRIPTION",
+      "value": "A strike to send any threat flying. Just for pushing—they won’t feel much pain."
+    },
+    {
+      "key": "030000_NAME",
+      "value": "Helmet of test"
+    },
+    {
+      "key": "030000_DESCRIPTION",
+      "value": "This helmet is for tests. If u have this, wtf"
+    },
+    {
+      "key": "030001_NAME",
+      "value": "Slimy Helmet"
+    },
+    {
+      "key": "030001_DESCRIPTION",
+      "value": "More goo than solid, but it works."
+    },
+    {
+      "key": "040000_NAME",
+      "value": "Chestplate of test"
+    },
+    {
+      "key": "040000_DESCRIPTION",
+      "value": "This chestplate is for tests. If u have this, wtf"
+    },
+    {
+      "key": "040001_NAME",
+      "value": "Slimy Chestplate"
+    },
+    {
+      "key": "040001_DESCRIPTION",
+      "value": "Just think — a poor slime was killed, and now its corpse is your outfit. Bounces a lot. Way too much."
+    },
+    {
+      "key": "050000_NAME",
+      "value": "Leggings of test"
+    },
+    {
+      "key": "050000_DESCRIPTION",
+      "value": "Those leggings are for tests. If u have this, wtf"
+    },
+    {
+      "key": "050001_NAME",
+      "value": "Slimy Leggings"
+    },
+    {
+      "key": "050001_DESCRIPTION",
+      "value": "Slime leggings, perfect for high jumps. Not that you could jump much before..."
+    },
+    {
+      "key": "060000_NAME",
+      "value": "Boots of test"
+    },
+    {
+      "key": "060000_DESCRIPTION",
+      "value": "Those boots are for tests. If u have those, wtf"
+    },
+    {
+      "key": "060001_NAME",
+      "value": "Slimy Boots"
+    },
+    {
+      "key": "060001_DESCRIPTION",
+      "value": "Makes a ‘splorch’ with every step. Stealth guaranteed."
+    },
+    {
+      "key": "030002_NAME",
+      "value": "Old Helmet"
+    },
+    {
+      "key": "030002_DESCRIPTION",
+      "value": "Clearly fought a war... against time. Mostly protects you from compliments."
+    },
+    {
+      "key": "040002_NAME",
+      "value": "Old Chestplate"
+    },
+    {
+      "key": "040002_DESCRIPTION",
+      "value": "There are stains—maybe blood, maybe sauce. Either way, it sticks."
+    },
+    {
+      "key": "050002_NAME",
+      "value": "Old Leggings"
+    },
+    {
+      "key": "050002_DESCRIPTION",
+      "value": "Partial protection: covers one knee out of two. Style bonus: none."
+    },
+    {
+      "key": "060002_NAME",
+      "value": "Old Boots"
+    },
+    {
+      "key": "060002_DESCRIPTION",
+      "value": "When your toes see the world before you do, it's time for an upgrade."
+    },
+    {
+      "key": "020003_NAME",
+      "value": "Bone Sword"
+    },
+    {
+      "key": "020003_DESCRIPTION",
+      "value": "A sword made of bone. Not very sharp, but it sure hurts when it hits the nose."
+    },
+    {
+      "key": "030003_NAME",
+      "value": "Bone Helmet"
+    },
+    {
+      "key": "030003_DESCRIPTION",
+      "value": "Wearing a skeleton’s skull on your own. How charming !"
+    },
+    {
+      "key": "040003_NAME",
+      "value": "Bone Chestplate"
+    },
+    {
+      "key": "040003_DESCRIPTION",
+      "value": "This chestplate offers surgical-level protection. Ribs protect your ribs, the sternum shields your sternum… you get the idea..."
+    },
+    {
+      "key": "050003_NAME",
+      "value": "Bone Leggings"
+    },
+    {
+      "key": "050003_DESCRIPTION",
+      "value": "If someone hits the armor's shin, it won’t hurt like hell this time... ...Unlike your fragile body."
+    },
+    {
+      "key": "060003_NAME",
+      "value": "Bone Boots"
+    },
+    {
+      "key": "060003_DESCRIPTION",
+      "value": "Perfect for protecting your pinky toe from table legs or worse."
+    },
+    {
+      "key": "020004_NAME",
+      "value": "Guardian Skeleton's spear"
+    },
+    {
+      "key": "020004_DESCRIPTION",
+      "value": "This spear has slain many slimes. It doesn't deal much damage, but allows for interesting critical hits."
+    },
+    {
+      "key": "020005_NAME",
+      "value": "Katana"
+    },
+    {
+      "key": "020005_DESCRIPTION",
+      "value": "This weapon allows you to strike vital points with effortless ease. Huge critical damage to save you from a situation by a miracle."
+    },
+    {
+      "key": "030004_NAME",
+      "value": "Aberration Helmet"
+    },
+    {
+      "key": "030004_DESCRIPTION",
+      "value": "This aberration was tough... But now, if you have a full life, you have a high chance to shoot lasers when attacking. Handy !"
+    },
+    {
+      "key": "030005_NAME",
+      "value": "Leather Helmet"
+    },
+    {
+      "key": "030005_DESCRIPTION",
+      "value": "Keeps your head safe and your hairstyle almost intact."
+    },
+    {
+      "key": "040005_NAME",
+      "value": "Leather Chestplate"
+    },
+    {
+      "key": "040005_DESCRIPTION",
+      "value": "Light protection, but hey, at least it matches your shoes."
+    },
+    {
+      "key": "050005_NAME",
+      "value": "Leather Leggings"
+    },
+    {
+      "key": "050005_DESCRIPTION",
+      "value": "Strong enough for a fight, flexible enough for a dance."
+    },
+    {
+      "key": "060005_NAME",
+      "value": "Leather Boots"
+    },
+    {
+      "key": "060005_DESCRIPTION",
+      "value": "Run fast, look stylish—what more do you want ?"
+    },
+    {
+      "key": "030006_NAME",
+      "value": "Iron Helmet"
+    },
+    {
+      "key": "030006_DESCRIPTION",
+      "value": "Heavy protection. Don’t expect to hear much with this on."
+    },
+    {
+      "key": "040006_NAME",
+      "value": "Iron Chestplate"
+    },
+    {
+      "key": "040006_DESCRIPTION",
+      "value": "Like a steel hug, if hugs crushed your ribs a little."
+    },
+    {
+      "key": "050006_NAME",
+      "value": "Iron Leggings"
+    },
+    {
+      "key": "050006_DESCRIPTION",
+      "value": "Warning: may squeak when you walk dramatically."
+    },
+    {
+      "key": "060006_NAME",
+      "value": "Iron Boots"
+    },
+    {
+      "key": "060006_DESCRIPTION",
+      "value": "Clank clank clank, stealth is overrated anyway."
+    },
+    {
+      "key": "030007_NAME",
+      "value": "Vegetal Helmet"
+    },
+    {
+      "key": "030007_DESCRIPTION",
+      "value": "Looks like a salad, feels like a garden party on your head."
+    },
+    {
+      "key": "040007_NAME",
+      "value": "Vegetal Chestplate"
+    },
+    {
+      "key": "040007_DESCRIPTION",
+      "value": "Defense ? Negative. Style? Absolutely organic."
+    },
+    {
+      "key": "050007_NAME",
+      "value": "Vegetal Leggings"
+    },
+    {
+      "key": "050007_DESCRIPTION",
+      "value": "Made of leaves, eco-friendly, but don’t sit near a campfire."
+    },
+    {
+      "key": "060007_NAME",
+      "value": "Vegetal Boots"
+    },
+    {
+      "key": "060007_DESCRIPTION",
+      "value": "Soft, green, and surprisingly good for your daily step count."
+    }
+  ]
+}

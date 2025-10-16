@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: TEST
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer:
+  - monster: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+    id: blob1
+  - monster: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+    id: blob2
+  - monster: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+    id: blob3
+  - monster: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+    id: blob4
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  eventsList:
+  - {fileID: 11400000, guid: 003ceabc093b6ca4b828e3a478c9e0f0, type: 2}

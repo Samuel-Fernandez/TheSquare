@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3638ded9b7cf29849a688eabc524b2ab, type: 3}
+  m_Name: 6-BarmaidSpeak
+  m_EditorClassIdentifier: 
+  eventType: 0
+  music: {fileID: 0}
+  sound: {fileID: 0}
+  stopTime: 0
+  playerCanMove: 0
+  stopMusic: 0
+  position: {x: 4, y: 0}
+  duration: 2
+  cinematicContainer: []
+  alreadyOnScene: 0
+  pnjType: 2
+  idPnj:
+  - YoungGirl
+  absolutePosition: 1
+  idText: 
+  emotions: 4
+  lastSpriteStay: 0
+  cameraType: 0
+  cameraEffect: 0
+  amplitudeShake: 0
+  frequencyShake: 0
+  zoomPower: 0
+  colorChange: {r: 0, g: 0, b: 0, a: 0}
+  canLeave: 0
+  battleType: 0
+  colliderRadius: 0
+  idMonster: []
+  spawnMonsterPosition: []
+  targetObjectName: 
+  componentType: 
+  methodName: 
+  parameters: []
+  bookPage: {fileID: 0}

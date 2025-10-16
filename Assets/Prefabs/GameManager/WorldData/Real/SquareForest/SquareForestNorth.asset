@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f58ca6bc198484697ad4653ec7f9c9, type: 3}
+  m_Name: SquareForestNorth
+  m_EditorClassIdentifier: 
+  sceneType: 1
+  filter: 0
+  sceneID: SQUARE_FOREST_NORTH
+  dungeonName: 
+  music: {fileID: 8300000, guid: 93e384e5a85602a46affbb7d29f0c5ce, type: 3}
+  ambientSound:
+  - {fileID: 8300000, guid: ccdf73f0d0669034ab67f2f86f345327, type: 3}
+  - {fileID: 8300000, guid: 55cd1039d406ca04fab5628cabad7a3b, type: 3}
+  - {fileID: 8300000, guid: 3d55353ebaaef7847afa811a4b7e62c1, type: 3}
+  - {fileID: 8300000, guid: ab298074d82e9cd42879852dbd802b96, type: 3}
+  - {fileID: 8300000, guid: 3d6bf8f3f3b676c4789ce2d12c0f0894, type: 3}
+  playerCantOpenInventory: 0
+  sceneAsset: {fileID: 102900000, guid: ed77dd7d5966a1445a34f6bad4281a0e, type: 3}
+  sceneName: SquareForestNorth

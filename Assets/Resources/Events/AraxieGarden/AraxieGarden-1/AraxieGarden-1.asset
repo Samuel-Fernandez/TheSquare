@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: AraxieGarden-1
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 0a436e0197304c94e94b8067c1f46e5f, type: 3}
+    id: Araxie
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 780215
+  eventsList:
+  - {fileID: 11400000, guid: ae6e18978c528bd4390158abc5f471bf, type: 2}
+  - {fileID: 11400000, guid: 89f156902d1e56d42938026a773eab98, type: 2}
+  - {fileID: 11400000, guid: da513b94cabb8924b811b3bbc7bc4199, type: 2}
+  - {fileID: 11400000, guid: de33cda03504a8a4bb9347fe5492c44f, type: 2}
+  - {fileID: 11400000, guid: d3a864c7adc53394f9543be1412fe041, type: 2}
+  - {fileID: 11400000, guid: 17f43adfdeb4ad34e81a496597fe6013, type: 2}
+  - {fileID: 11400000, guid: 2072755afb5e7f4409ce3dc1438c2f77, type: 2}
+  - {fileID: 11400000, guid: 112ed9e5162d1e1448182027f44b2996, type: 2}
+  - {fileID: 11400000, guid: 8d6435fb75e2f304cbbf169456f82869, type: 2}
+  - {fileID: 11400000, guid: 6eb394735e7f90a4c8847be9a7c840fa, type: 2}
+  - {fileID: 11400000, guid: 0f6c016e469b4bd4ca89c2c301bd49b3, type: 2}
+  - {fileID: 11400000, guid: 663e65ceef97b294e98c2c96f4fde8cb, type: 2}
+  - {fileID: 11400000, guid: eaf6b77b1a015ff4992e442de9745f89, type: 2}
+  - {fileID: 11400000, guid: 024dbdb328cde494bbb2e5dccbef3964, type: 2}
+  - {fileID: 11400000, guid: 8903d3fd21dcff442b11a805155bf980, type: 2}
+  - {fileID: 11400000, guid: 6632d3342dba24844ae169a1462d3329, type: 2}
+  - {fileID: 11400000, guid: 479937b3b386016419c88b9a4fc53585, type: 2}
+  - {fileID: 11400000, guid: 6d5b5dc4c2eece1489560616c2957c0d, type: 2}
+  - {fileID: 11400000, guid: e25de4e4e7041154ab285ca07378aae5, type: 2}
+  - {fileID: 11400000, guid: d5d994b553f70a14d8631b92bc535055, type: 2}
+  - {fileID: 11400000, guid: 4417f9a272f33f94fb34ebe6dad12011, type: 2}
+  - {fileID: 11400000, guid: db9e2cc8bd9955b4c9a3755cef5f3e44, type: 2}
+  - {fileID: 11400000, guid: c93da4697a3d6c2488b110c8a85b1fe9, type: 2}
+  - {fileID: 11400000, guid: 2945c9c768d3dd045a367a38d3f16fd6, type: 2}
+  - {fileID: 11400000, guid: b2ccc1dc870c87744a6b0ce6f1857a80, type: 2}
+  - {fileID: 11400000, guid: afae8df4b142a4c4e90ed863f9ff0d92, type: 2}
+  - {fileID: 11400000, guid: 134fa266970ac61499fd47a804ea5765, type: 2}
+  - {fileID: 11400000, guid: 433439fd06a9d3c4eaedb0a77f751928, type: 2}
+  requirement: {fileID: 0}

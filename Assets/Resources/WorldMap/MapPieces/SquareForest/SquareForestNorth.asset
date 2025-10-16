@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b3ea2927ca5794c841d5196101a70a, type: 3}
+  m_Name: SquareForestNorth
+  m_EditorClassIdentifier: 
+  sceneAssets:
+  - {fileID: 102900000, guid: ed77dd7d5966a1445a34f6bad4281a0e, type: 3}
+  - {fileID: 102900000, guid: 75a7231ea8b694f42b020e8eaf2048e6, type: 3}
+  scenes:
+  - SquareForestNorth
+  - SquareForestHouseRuins
+  icon: {fileID: -179152423, guid: cc17a8c31cd85e2448246a4df1edfc27, type: 3}
+  coords:
+    x: 7
+    y: 3

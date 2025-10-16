@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: DroxenMeeting
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 1947657004976609483, guid: be042fd33aee0f24e966db4ede08d57c, type: 3}
+    id: droxen
+  - pnj: {fileID: 3528959578039426428, guid: 6b109ee843de95d44a92ee541fd947cf, type: 3}
+    id: cloud
+  - pnj: {fileID: 3528959578039426428, guid: 6b109ee843de95d44a92ee541fd947cf, type: 3}
+    id: cloud2
+  monsterContainer:
+  - monster: {fileID: 196427628513368111, guid: 946be6df00c2b0e4f80fef7013b08e6e, type: 3}
+    id: mummy1
+    isBattleObject: 0
+  - monster: {fileID: 196427628513368111, guid: 946be6df00c2b0e4f80fef7013b08e6e, type: 3}
+    id: mummy2
+    isBattleObject: 0
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb1
+    isBattleObject: 1
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb2
+    isBattleObject: 1
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: droxenMeeting
+  eventsList:
+  - {fileID: 11400000, guid: ef6cb70968bd29248a74621079a52928, type: 2}
+  - {fileID: 11400000, guid: 060a3a96236536e4a9396dd657c8cd51, type: 2}
+  - {fileID: 11400000, guid: 4a25a9c2e9856774baaad63bb665be22, type: 2}
+  - {fileID: 11400000, guid: 2af64c3c700c1d84ba7351fd39ca9601, type: 2}
+  - {fileID: 11400000, guid: d06f6f95566cd4043b67ebc62ae1b15f, type: 2}
+  - {fileID: 11400000, guid: 50e04c40364c31648ac3f168f40cb286, type: 2}
+  - {fileID: 11400000, guid: e8959700d30022e4ca25cf19fc05aa25, type: 2}
+  - {fileID: 11400000, guid: 084bc5eafffa8444097e469b0e551ea3, type: 2}
+  - {fileID: 11400000, guid: afd49153053e16d43a8c17fb5246145a, type: 2}
+  - {fileID: 11400000, guid: 05fd0ad623d0795419207db49900659b, type: 2}
+  - {fileID: 11400000, guid: 7c37c2d7223c3724c93d31ba2004e3bc, type: 2}
+  - {fileID: 11400000, guid: 708dc6daaeb2e5c48abc531858d062b3, type: 2}
+  - {fileID: 11400000, guid: ee1b98afa3c9ed44f9864d368159746d, type: 2}
+  - {fileID: 11400000, guid: 835ccca4e23641c498cad78a181896fd, type: 2}
+  - {fileID: 11400000, guid: 87ef735efb2d9a044937ed7190d3ec87, type: 2}
+  - {fileID: 11400000, guid: 60af847128de02948b2da7712b33c43d, type: 2}
+  - {fileID: 11400000, guid: 3d6d09a0f8529d94d83c8edfaf6a7895, type: 2}
+  - {fileID: 11400000, guid: 8255b940abf0e834fb7855f4de0ae846, type: 2}
+  - {fileID: 11400000, guid: 062f673407deb65418454c7f6704a21c, type: 2}
+  requirements: []

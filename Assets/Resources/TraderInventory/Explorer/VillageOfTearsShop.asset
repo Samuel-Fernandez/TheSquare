@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be61ba25f4480e478380efc7a6ea541, type: 3}
+  m_Name: VillageOfTearsShop
+  m_EditorClassIdentifier: 
+  traderType: 2
+  traderName: 
+  description: 
+  minItemsInMarket: 3
+  maxItemsInMarket: 6
+  availableItems:
+  - item: {fileID: 11400000, guid: 46976ae65d4a9d349b66891c5994f0d8, type: 2}
+    spawnChance: 20
+    minQuantity: 5
+    maxQuantity: 20
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: eebfe89a5e429ae47841e1c17ac0c74e, type: 2}
+    spawnChance: 15
+    minQuantity: 1
+    maxQuantity: 10
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: a6312b062e002484a9f3af9da89c93b6, type: 2}
+    spawnChance: 60
+    minQuantity: 1
+    maxQuantity: 20
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: f8cc940ae6352d641b3a01082b3d69fe, type: 2}
+    spawnChance: 10
+    minQuantity: 1
+    maxQuantity: 3
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: 774248c0a1a30714799f8cb1890aaee7, type: 2}
+    spawnChance: 20
+    minQuantity: 1
+    maxQuantity: 5
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: 1c232cb8925f897488e269b12d25f117, type: 2}
+    spawnChance: 40
+    minQuantity: 1
+    maxQuantity: 5
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: 7ae61ff4d296fe947b61152d2ded18d6, type: 2}
+    spawnChance: 15
+    minQuantity: 1
+    maxQuantity: 3
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: 569a18e0283a2e646b3d57687edbe40e, type: 2}
+    spawnChance: 5
+    minQuantity: 1
+    maxQuantity: 2
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: 46294baa56ccbc247bb4001eedb782fa, type: 2}
+    spawnChance: 70
+    minQuantity: 1
+    maxQuantity: 10
+    alwaysAvailable: 0
+    weight: 1
+  - item: {fileID: 11400000, guid: e05487d550d9bc7488439ab1b24dc0c7, type: 2}
+    spawnChance: 35
+    minQuantity: 1
+    maxQuantity: 50
+    alwaysAvailable: 0
+    weight: 1

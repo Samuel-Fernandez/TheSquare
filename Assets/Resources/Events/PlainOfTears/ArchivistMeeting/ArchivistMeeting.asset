@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: ArchivistMeeting
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 0}
+    id: Archivist
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 626406
+  eventsList:
+  - {fileID: 11400000, guid: 2e8d95e2a33812b42b72b03b13421ed2, type: 2}
+  - {fileID: 11400000, guid: c4fdc1bde340a95438ee24472944e8bf, type: 2}
+  - {fileID: 11400000, guid: d2fdac814dc3679499af43b6868d4385, type: 2}
+  - {fileID: 11400000, guid: ce7c08abbe4b4db478d1f773904ffbda, type: 2}
+  - {fileID: 11400000, guid: dbbf0448a25ea6d40b411b16b2d44e4f, type: 2}
+  - {fileID: 11400000, guid: 1ee90df73e6e6904fb6838a48a388e80, type: 2}
+  - {fileID: 11400000, guid: af4c959752ee8c2469db4865ce4d16cb, type: 2}
+  - {fileID: 11400000, guid: dff1825e58a783648aaa018d38b195fa, type: 2}
+  - {fileID: 11400000, guid: e04417e6c6837e9419b18cad00873815, type: 2}
+  - {fileID: 11400000, guid: cc47570efe8819547a24c80fe89eebe2, type: 2}
+  - {fileID: 11400000, guid: 7b0f87f4dcb53e64b94fe015a57a64b0, type: 2}
+  - {fileID: 11400000, guid: a9fc9381848ed2849a44badeb5dff1d1, type: 2}
+  - {fileID: 11400000, guid: 6688973dc0dc8994285d8f6ad7bc2f81, type: 2}
+  - {fileID: 11400000, guid: d48cd390c18d1074c9eddf66fb907cb6, type: 2}
+  - {fileID: 11400000, guid: 06feb24d063dc55439c2e9f6f73f0607, type: 2}
+  - {fileID: 11400000, guid: ad2de6634538b1247b079ad44cf784fc, type: 2}
+  - {fileID: 11400000, guid: 70f5e8e10feb81a47ba7212b1869d5c6, type: 2}
+  - {fileID: 11400000, guid: 355c89087ed80a74295564648c07c34e, type: 2}
+  - {fileID: 11400000, guid: 8545cc1dce5a3334e83f5a2700ac7bcb, type: 2}
+  - {fileID: 11400000, guid: b858b801da29eb142a9c5cfc02fdc84b, type: 2}
+  - {fileID: 11400000, guid: ba8e880ca5c50c143848048f0d1e2b7c, type: 2}
+  - {fileID: 11400000, guid: 57b4d789c9f055c49a9c9f00ed35381e, type: 2}
+  - {fileID: 11400000, guid: 98aa1ee2b11220b46ac8703143364478, type: 2}
+  - {fileID: 11400000, guid: 9f43a2bec82035f43a4e2fda180b6864, type: 2}
+  - {fileID: 11400000, guid: e47fc6d62146cad40bb71b0a8bac9efd, type: 2}
+  - {fileID: 11400000, guid: 81f550a66b7671548afc6065e8581e16, type: 2}
+  - {fileID: 11400000, guid: 53ce078168fb4ea4e8f90309a7e6a5e2, type: 2}
+  - {fileID: 11400000, guid: 24f37ed864870cd429375fd568732122, type: 2}
+  - {fileID: 11400000, guid: ff42fcadf2b664e43baeb1098f5f8a50, type: 2}
+  - {fileID: 11400000, guid: 5ba67a993d19eee4f9f5502d3ca39299, type: 2}
+  - {fileID: 11400000, guid: 898af30d1901d9646b5b5762aaffa40e, type: 2}
+  - {fileID: 11400000, guid: a43f8bfa26e34d545a27c61df76054c3, type: 2}
+  - {fileID: 11400000, guid: 7c7dc2d7e81c3fd4fa1389a956c5ab13, type: 2}
+  - {fileID: 11400000, guid: 16b74aad81289c847aa89883b08f8267, type: 2}
+  - {fileID: 11400000, guid: c04fe47b006e32a459f47b72f9f7ed2d, type: 2}
+  - {fileID: 11400000, guid: a7607de5b1cdd06418acbc62466fe127, type: 2}
+  - {fileID: 11400000, guid: b6d035e2b4c45454db2088ab574c88ef, type: 2}
+  - {fileID: 11400000, guid: 884bacbf810e41d41a7aa8ac0c0dc43f, type: 2}
+  - {fileID: 11400000, guid: e9b1ebe91fefcad43b65cc93ca3b7b2c, type: 2}
+  - {fileID: 11400000, guid: 6b1465e3b6968144f98cd885d654a35f, type: 2}
+  - {fileID: 11400000, guid: f4f0ddea4b90c1a4387710fcee6f0739, type: 2}
+  - {fileID: 11400000, guid: cfccb6ffc06fcc14686ec362810f5dec, type: 2}
+  - {fileID: 11400000, guid: 47a8bf263d26dc645ad870bdb36965b1, type: 2}
+  - {fileID: 11400000, guid: 55c3f1b2e8609014b8e0ef56e7d56917, type: 2}
+  requirements:
+  - requirementType: 3
+    sceneData: {fileID: 0}
+    pnjIDSpoken: 
+    eventRequired: {fileID: 11400000, guid: 29634d9b622cf3e438bed47af4e7ee33, type: 2}
+    specialObject: 0
+    monsterRequired: {fileID: 0}
+    nbMonsterRequired: 0

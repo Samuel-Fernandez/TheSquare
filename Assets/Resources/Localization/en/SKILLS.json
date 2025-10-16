@@ -1,0 +1,156 @@
+{
+  "entries": [
+    {
+      "key": "BONUS_CRITC_NAME",
+      "value": "More Critical Chance"
+    },
+    {
+      "key": "BONUS_CRITC_DESC",
+      "value": "+{0}% chance of critical damage"
+    },
+    {
+      "key": "BONUS_CRITD_NAME",
+      "value": "More Critical Damage"
+    },
+    {
+      "key": "BONUS_CRITD_DESC",
+      "value": "+{0}% critical damage"
+    },
+    {
+      "key": "BONUS_LUCK_NAME",
+      "value": "More Luck"
+    },
+    {
+      "key": "BONUS_LUCK_DESC",
+      "value": "+{0} chance"
+    },
+    {
+      "key": "BONUS_KBR_NAME",
+      "value": "More Knockback Resistance"
+    },
+    {
+      "key": "BONUS_KBR_DESC",
+      "value": "+{0} knockback resistance"
+    },
+    {
+      "key": "BONUS_KBP_NAME",
+      "value": "More Knockback Power"
+    },
+    {
+      "key": "BONUS_KBP_DESC",
+      "value": "+{0} knockback power"
+    },
+    {
+      "key": "BONUS_SPE_NAME",
+      "value": "More Speed"
+    },
+    {
+      "key": "BONUS_SPE_DESC",
+      "value": "+{0} speed"
+    },
+    {
+      "key": "BONUS_STR_NAME",
+      "value": "More Strength"
+    },
+    {
+      "key": "BONUS_STR_DESC",
+      "value": "+{0} strength"
+    },
+    {
+      "key": "BONUS_HP_NAME",
+      "value": "More Life"
+    },
+    {
+      "key": "BONUS_HP_DESC",
+      "value": "+{0} health"
+    },
+    {
+      "key": "SHIELD_KNOCKBACK_NAME",
+      "value": "Shield Knockback"
+    },
+    {
+      "key": "SHIELD_KNOCKBACK_DESC",
+      "value": "The shield increases enemy knockback by +{0}%"
+    },
+    {
+      "key": "BOW_SPEED_NAME",
+      "value": "Bow Speed"
+    },
+    {
+      "key": "BOW_SPEED_DESC",
+      "value": "Bow shooting speed increases by +{0}%"
+    },
+    {
+      "key": "PICKAXE_SPEED_NAME",
+      "value": "Pickaxe Speed"
+    },
+    {
+      "key": "PICKAXE_SPEED_DESC",
+      "value": "Pickaxe usage speed increases by +{0}%"
+    },
+    {
+      "key": "DROP_CHANCE_NAME",
+      "value": "Drop Chance"
+    },
+    {
+      "key": "DROP_CHANCE_DESC",
+      "value": "Better items will appear by +{0}%"
+    },
+    {
+      "key": "DOUBLE_MINERAL_NAME",
+      "value": "Double Mineral"
+    },
+    {
+      "key": "DOUBLE_MINERAL_DESC",
+      "value": "+{0}% chance to double mined minerals"
+    },
+    {
+      "key": "DODGE_CHANCE_NAME",
+      "value": "Dodge Chance"
+    },
+    {
+      "key": "DODGE_CHANCE_DESC",
+      "value": "+{0}% chance to dodge an enemy attack"
+    },
+    {
+      "key": "MINERAL_CHANCE_NAME",
+      "value": "Better Mines"
+    },
+    {
+      "key": "MINERAL_CHANCE_DESC",
+      "value": "+{0}% improvement in mines"
+    },
+    {
+      "key": "REGEN_NAME",
+      "value": "Regeneration"
+    },
+    {
+      "key": "REGEN_DESC",
+      "value": "+{0} health every 60 seconds"
+    },
+    {
+      "key": "DOUBLE_SQUARE_NAME",
+      "value": "Double Square Coins"
+    },
+    {
+      "key": "DOUBLE_SQUARE_DESC",
+      "value": "+{0}% chance to double your square coins when an enemy is killed"
+    },
+    {
+      "key": "EFFECT_REDUCER_NAME",
+      "value": "Reduce Negative Effects"
+    },
+    {
+      "key": "EFFECT_REDUCER_DESC",
+      "value": "-{0}% damage received/duration for negative effects"
+    },
+    {
+      "key": "ITEM_CHANCE_NAME",
+      "value": "Better Items Stats"
+    },
+    {
+      "key": "ITEM_CHANCE_DESC",
+      "value": "Equipment stats will increase by +{0}%"
+    }
+  ]
+}
