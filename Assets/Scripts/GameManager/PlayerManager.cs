@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject player;
     public static PlayerManager instance;
     public ItemDatabase database;
-    public List<SpecialItems> runtimeSpecialItems;
+    public List<SpecialItems> runtimeSpecialItems = new List<SpecialItems>();
     public bool cantDie;
     public SpecialAttackDataBase attackDatabase;
     public List<SpecialAttack> runtimeSpecialAttacks;
@@ -42,29 +42,37 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator DodgeTimeRoutine()
     {
-        isDogingTime = true;
-        Time.timeScale = 0.25f;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale; // Pour éviter les bugs physiques
+        if(!player.GetComponent<Stats>().isDying)
+        {
+            isDogingTime = true;
+            Time.timeScale = 0.25f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale; // Pour éviter les bugs physiques
 
-        GetComponent<SoundContainer>().PlaySound("SlowMotion", 1);
+            GetComponent<SoundContainer>().PlaySound("SlowMotion", 1);
 
-        float zoomDuration = 0.25f;
-        CameraManager.instance.ZoomCamera(2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
-        CameraManager.instance.SetChromaticAberrationEffect(2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
-        CameraManager.instance.SetVignetteEffect(2f, 2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
+            float zoomDuration = 0.25f;
+            CameraManager.instance.ZoomCamera(2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
+            CameraManager.instance.SetChromaticAberrationEffect(2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
+            CameraManager.instance.SetVignetteEffect(2f, 2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
 
-        yield return new WaitForSecondsRealtime(1f); // Pas ralenti
+            yield return new WaitForSecondsRealtime(1f); // Pas ralenti
 
-        CameraManager.instance.DezoomCamera(4f, zoomDuration);
-        CameraManager.instance.SetChromaticAberrationEffect(0f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
-        CameraManager.instance.SetVignetteEffect(0f, 2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
+            CameraManager.instance.DezoomCamera(4f, zoomDuration);
+            CameraManager.instance.SetChromaticAberrationEffect(0f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
+            CameraManager.instance.SetVignetteEffect(0f, 2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
 
 
-        yield return new WaitForSecondsRealtime(zoomDuration); // attendre la fin du dézoom si nécessaire
+            yield return new WaitForSecondsRealtime(zoomDuration); // attendre la fin du dézoom si nécessaire
 
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f; // Rétablir le fixedDeltaTime par défaut
-        isDogingTime = false;
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 0.02f; // Rétablir le fixedDeltaTime par défaut
+            isDogingTime = false;
+        }
+        else
+        {
+            CameraManager.instance.ResetCameraZoom();
+        }
+        
     }
 
 
@@ -221,6 +229,24 @@ public class PlayerManager : MonoBehaviour
     {
         UpdateBonuses();
     }
+
+    public void ReassignItemsSprites()
+    {
+        foreach (var item in runtimeSpecialItems)
+        {
+            Item originalItem = database.GetItemByID(item.itemId);
+            if (originalItem != null)
+            {
+                item.sprite = originalItem.sprite;
+            }
+            else
+            {
+                Debug.LogWarning("Item ID not found in database: " + item.itemId);
+            }
+        }
+    }
+
+
 
 
     // TROUVER UN MOYEN D'UPDATE LES BONUS AVEC LES EQUIPEMENTS ET LES SKILLS ACHETES

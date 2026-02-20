@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f9eda80c2b3604b8d180ea99770b21, type: 3}
   m_Name: DBBatWing
   m_EditorClassIdentifier: 
-  itemId: 0700014
+  itemId: 070014
   itemName: Bat Wing
   description: 
   sprite: {fileID: 21300000, guid: b49a1275192fd4b4483835264eee577b, type: 3}
@@ -23,3 +23,12 @@ MonoBehaviour:
   level: 0
   type: 8
   nb: 0
+  numberRequiredForSealing: 3
+  essenceComposition:
+  - essence: {fileID: 11400000, guid: c07b3ac71ca725e4e9d976a08a885879, type: 2}
+    percentage: 50
+  - essence: {fileID: 11400000, guid: 99eb2083d6b9c8a48a84fb5503e877f6, type: 2}
+    percentage: 30
+  - essence: {fileID: 11400000, guid: 2b5b4cc868230744e87f6d976cd23632, type: 2}
+    percentage: 20
+  totalPercentage: 100

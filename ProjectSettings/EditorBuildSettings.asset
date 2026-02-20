@@ -200,4 +200,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionTemple/DesertOfIllusionBossRoom.unity
     guid: e8f6d932f1a0c1446b11bea4cd778abf
+  - enabled: 1
+    path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionGuardianCave.unity
+    guid: 295b13f5e8eb3164298da816ac7231d2
   m_configObjects: {}

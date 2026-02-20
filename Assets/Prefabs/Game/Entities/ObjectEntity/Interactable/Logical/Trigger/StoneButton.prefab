@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.data[0].id
+      value: Pushed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.data[0].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.data[0].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f671c991e618e34bbfd6841b20da998, type: 3}
     - target: {fileID: 3575798504290078807, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -22,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       propertyPath: m_Name
-      value: StoneButton Variant
+      value: StoneButton
       objectReference: {fileID: 0}
     - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -156,6 +172,8 @@ MonoBehaviour:
   isOneShot: 0
   offSprite: {fileID: 1175794882, guid: 092393ff29583774fb62a29a22aaaec5, type: 3}
   onSprite: {fileID: 1966284882, guid: 092393ff29583774fb62a29a22aaaec5, type: 3}
+  playerInteraction: 0
+  isOn: 0
 --- !u!114 &6917108299697729427
 MonoBehaviour:
   m_ObjectHideFlags: 0

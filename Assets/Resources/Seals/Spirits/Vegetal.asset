@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3878ec51c3013a42a847534b65df17c, type: 3}
+  m_Name: Vegetal
+  m_EditorClassIdentifier: 
+  essenceID: vegetal
+  essenceColor: {r: 0.08275537, g: 0.7433963, b: 0.10792264, a: 0}
+  icon: {fileID: 0}
+  votesResonance: 0
+  votesBuff: 1
+  votesAura: 3
+  votesMomentum: 2
+  hpPerPercent: 0.01
+  forcePerPercent: 0
+  defensePerPercent: 0
+  speedPercent: 0
+  critDmg: 0
+  critChance: 0
+  bowSpeedPercent: 0
+  pickaxeSpeedPercent: 0
+  dodgeChancePercent: 0
+  resonanceEffect: 1
+  radiusPerPercent: 0.03
+  activationChancePerPercent: 0.01
+  effectMagnitudePerPercent: 0
+  auraRadiusPerPercent: 0.05
+  auraDurationPerPercent: 0.1
+  auraTickRatePerPercent: -0.01
+  playerHpRegenPerPercent: 0.1
+  playerDefensePerPercent: 0
+  playerStrengthPerPercent: 0
+  enemySlowPerPercent: 0
+  enemyDamagePerPercent: 0
+  momentumTrigger: 3
+  maxStacksPerPercent: 0.25
+  stackDecayPerPercent: 0.1
+  forceStackPerPercent: 0
+  defenseStackPerPercent: 0
+  speedStackPerPercent: 0
+  squareCoinStackPerPercent: 0
+  bowSpeedPercentStackPerPercent: 0
+  pickaxeSpeedPercentStackPerPercent: 0
+  dodgeChancePercentStackPerPercent: 0

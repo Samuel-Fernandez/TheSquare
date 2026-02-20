@@ -11,6 +11,66 @@
     {
       "key": "LITTLE_SKELETON_SLIME_PNJNAME",
       "value": "Little Skeleton"
+    },
+    {
+      "key": "PHANTOM_BLONDE_PLANT_NAME",
+      "value": "Treatment of weeds"
+    },
+    {
+      "key": "PHANTOM_BLONDE_PLANT_DESCRIPTION",
+      "value": "Kill 5 Poison plant."
+    },
+    {
+      "key": "PHANTOM_BLONDE_PLANT_PNJNAME",
+      "value": "Strange phantom"
+    },
+    {
+      "key": "SMITH-1_NAME",
+      "value": "More iron"
+    },
+    {
+      "key": "SMITH-1_DESCRIPTION",
+      "value": "Bring 5 irons"
+    },
+    {
+      "key": "SMITH-1_PNJNAME",
+      "value": "Smith"
+    },
+    {
+      "key": "SMITH-2_NAME",
+      "value": "More silver"
+    },
+    {
+      "key": "SMITH-2_DESCRIPTION",
+      "value": "Bring 5 silvers"
+    },
+    {
+      "key": "SMITH-2_PNJNAME",
+      "value": "Smith"
+    },
+    {
+      "key": "SMITH-3_NAME",
+      "value": "More diamond"
+    },
+    {
+      "key": "SMITH-3_DESCRIPTION",
+      "value": "Bring 5 diamonds"
+    },
+    {
+      "key": "SMITH-3_PNJNAME",
+      "value": "Smith"
+    },
+    {
+      "key": "SMITH-4_NAME",
+      "value": "More antimatter"
+    },
+    {
+      "key": "SMITH-4_DESCRIPTION",
+      "value": "Bring 5 antimatter"
+    },
+    {
+      "key": "SMITH-4_PNJNAME",
+      "value": "Smith"
     }
   ]
 }

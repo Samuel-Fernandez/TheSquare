@@ -26,6 +26,8 @@ public class DoorBehiavor : MonoBehaviour
     public GameObject uiInteract;
     GameObject instanceUiInteract;
 
+    bool canRemoveKey = false;
+
     
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -43,6 +45,7 @@ public class DoorBehiavor : MonoBehaviour
             // Lancer l'interaction si le joueur appuie sur le bouton et que l'interaction est possible
             if (PlayerManager.instance.playerInputActions.Gameplay.Interaction.triggered && DungeonManager.instance.actualDungeon.nbKeys > 0)
             {
+                canRemoveKey = true;
                 OpenDoor();
             }
         }
@@ -57,6 +60,7 @@ public class DoorBehiavor : MonoBehaviour
             {
                 Destroy(instanceUiInteract);
                 instanceUiInteract = null;
+                canRemoveKey = false;
             }
         }
         
@@ -96,7 +100,12 @@ public class DoorBehiavor : MonoBehaviour
         else if (type == DoorType.LOCKED)
         {
             StartCoroutine(RoutineOpenDoorLocked());
-            DungeonManager.instance.RemoveKey();
+
+            if(canRemoveKey)
+            {
+                DungeonManager.instance.RemoveKey();
+                canRemoveKey = false;
+            }
 
             if (instanceUiInteract != null)
             {

@@ -34,12 +34,18 @@ public class EntityEffects : MonoBehaviour
     private bool isPoisonRoutineRunning;
     private bool isSlimedRoutineRunning;
 
+    // Stockage des références aux coroutines pour pouvoir les arrêter proprement
+    private Coroutine fireCoroutine;
+    private Coroutine freezeCoroutine;
+    private Coroutine poisonCoroutine;
+    private Coroutine slimeCoroutine;
+
     private void Update()
     {
 
         DetermineState();
 
-        if(GetComponent<Stats>() && GetComponent<Stats>().isDying)
+        if (GetComponent<Stats>() && GetComponent<Stats>().isDying)
         {
             ResetEffect();
         }
@@ -48,6 +54,10 @@ public class EntityEffects : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+        isFireRoutineRunning = false;
+        isFreezeRoutineRunning = false;
+        isPoisonRoutineRunning = false;
+        isSlimedRoutineRunning = false;
     }
 
     // Permet d'inverser la possibilité d'être sensible à un effet
@@ -70,13 +80,13 @@ public class EntityEffects : MonoBehaviour
                 if (isFire)
                     fireForce = Mathf.Max(force, 1);
             }
-            
+
             if (canBeFreeze)
             {
 
                 this.isFreeze = isFreeze ? isFreeze : this.isFreeze;
             }
-            
+
             if (canBePoison && GetComponent<LifeManager>())
             {
                 this.isPoison = isPoison ? isPoison : this.isPoison;
@@ -85,7 +95,7 @@ public class EntityEffects : MonoBehaviour
                     poisonForce = force;
             }
 
-            if(canBeSlimed)
+            if (canBeSlimed)
             {
                 this.isSlimed = isSlimed ? isSlimed : this.isSlimed;
             }
@@ -102,14 +112,14 @@ public class EntityEffects : MonoBehaviour
         poisonEffect.SetActive(isPoison);
         slimeEffect.SetActive(isSlimed);
 
-        if(isSlimed)
+        if (isSlimed)
         {
             if (!isSlimedRoutineRunning)
             {
                 slimeEffect.GetComponent<ObjectAnimation>().PlayAnimation("Slime");
-                slimeTimer = Random.Range(Mathf.RoundToInt(5 - (5 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(8 - (8 * PlayerManager.instance.negativeEffectReducer))); // Adjusted timer range for example
-                StartCoroutine(OnSlimeRoutine());
-                isSlimedRoutineRunning = true; // Ajout : marquer que la routine est en cours
+                slimeTimer = Random.Range(Mathf.RoundToInt(5 - (5 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(8 - (8 * PlayerManager.instance.negativeEffectReducer)));
+                slimeCoroutine = StartCoroutine(OnSlimeRoutine());
+                isSlimedRoutineRunning = true;
             }
         }
         else
@@ -122,14 +132,13 @@ public class EntityEffects : MonoBehaviour
             if (!isFireRoutineRunning)
             {
                 fireEffect.GetComponent<ObjectAnimation>().PlayAnimation("Fire");
-                fireTimer = Random.Range(Mathf.RoundToInt(5 - (5 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(10 - (10 * PlayerManager.instance.negativeEffectReducer))); // Adjusted timer range for example
-                StartCoroutine(OnFireRoutine());
-                isFireRoutineRunning = true; // Ajout : marquer que la routine est en cours
+                fireTimer = Random.Range(Mathf.RoundToInt(5 - (5 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(10 - (10 * PlayerManager.instance.negativeEffectReducer)));
+                fireCoroutine = StartCoroutine(OnFireRoutine());
+                isFireRoutineRunning = true;
             }
         }
         else
         {
-            // Ajout : Réinitialisation si l'effet n'est plus actif
             isFireRoutineRunning = false;
         }
 
@@ -139,14 +148,13 @@ public class EntityEffects : MonoBehaviour
             {
                 freezeEffect.GetComponent<ObjectAnimation>().PlayAnimation("Freeze");
                 freezeEffect.GetComponent<SoundContainer>().PlaySound("Freeze", 2);
-                freezeTimer = Random.Range(Mathf.RoundToInt(3 - (3 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(6 - (6 * PlayerManager.instance.negativeEffectReducer))); // Adjusted timer range for example
-                StartCoroutine(OnFreezeRoutine());
-                isFreezeRoutineRunning = true; // Ajout : marquer que la routine est en cours
+                freezeTimer = Random.Range(Mathf.RoundToInt(3 - (3 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(6 - (6 * PlayerManager.instance.negativeEffectReducer)));
+                freezeCoroutine = StartCoroutine(OnFreezeRoutine());
+                isFreezeRoutineRunning = true;
             }
         }
         else
         {
-            // Ajout : Réinitialisation si l'effet n'est plus actif
             isFreezeRoutineRunning = false;
         }
 
@@ -155,14 +163,13 @@ public class EntityEffects : MonoBehaviour
             if (!isPoisonRoutineRunning)
             {
                 poisonEffect.GetComponent<ObjectAnimation>().PlayAnimation("Poison");
-                poisonTimer = Random.Range(Mathf.RoundToInt(3 - (3 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(8 - (8 * PlayerManager.instance.negativeEffectReducer))); // Adjusted timer range for example
-                StartCoroutine(OnPoisonRoutine());
-                isPoisonRoutineRunning = true; // Ajout : marquer que la routine est en cours
+                poisonTimer = Random.Range(Mathf.RoundToInt(3 - (3 * PlayerManager.instance.negativeEffectReducer)), Mathf.RoundToInt(8 - (8 * PlayerManager.instance.negativeEffectReducer)));
+                poisonCoroutine = StartCoroutine(OnPoisonRoutine());
+                isPoisonRoutineRunning = true;
             }
         }
         else
         {
-            // Ajout : Réinitialisation si l'effet n'est plus actif
             isPoisonRoutineRunning = false;
         }
     }
@@ -177,7 +184,7 @@ public class EntityEffects : MonoBehaviour
         }
         else if (GetComponent<LifeManager>() != null)
         {
-            if(GetComponent<Stats>().entityType == EntityType.Monster)
+            if (GetComponent<Stats>().entityType == EntityType.Monster)
                 GetComponent<LifeManager>().TakeDamage(fireForce, Color.red);
             else if (GetComponent<Stats>().entityType == EntityType.Player)
                 GetComponent<LifeManager>().TakeDamage(Mathf.RoundToInt(fireForce - (fireForce * PlayerManager.instance.negativeEffectReducer)), Color.red, true, true);
@@ -206,33 +213,57 @@ public class EntityEffects : MonoBehaviour
 
     public void ResetEffect()
     {
-        StopCoroutine(OnFireRoutine());
+        // Arrêter Fire
+        if (fireCoroutine != null)
+            StopCoroutine(fireCoroutine);
         isFireRoutineRunning = false;
         fireTimer = 0;
         isFire = false;
-        fireEffect.SetActive(false);
-        fireEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        if (fireEffect)
+        {
+            fireEffect.SetActive(false);
+            fireEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        }
 
-        StopCoroutine(OnFreezeRoutine());
+        // Arrêter Freeze
+        if (freezeCoroutine != null)
+            StopCoroutine(freezeCoroutine);
         isFreezeRoutineRunning = false;
         freezeTimer = 0;
         isFreeze = false;
-        freezeEffect.SetActive(false);
-        freezeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        if (freezeEffect)
+        {
+            freezeEffect.SetActive(false);
+            freezeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        }
 
-        StopCoroutine(OnPoisonRoutine());
+        // Arrêter Poison
+        if (poisonCoroutine != null)
+            StopCoroutine(poisonCoroutine);
         isPoisonRoutineRunning = false;
         poisonTimer = 0;
         isPoison = false;
-        poisonEffect.SetActive(false);
-        poisonEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        if (poisonEffect)
+        {
+            poisonEffect.SetActive(false);
+            poisonEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        }
 
-        StopCoroutine(OnSlimeRoutine());
+        // Arrêter Slime
+        if (slimeCoroutine != null)
+            StopCoroutine(slimeCoroutine);
         isSlimedRoutineRunning = false;
         slimeTimer = 0;
         isSlimed = false;
-        slimeEffect.SetActive(false);
-        slimeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        if (slimeEffect)
+        {
+            slimeEffect.SetActive(false);
+            slimeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+        }
+
+        // Réactiver le mouvement si gelé
+        if (GetComponent<Stats>())
+            GetComponent<Stats>().canMove = true;
     }
 
 
@@ -356,10 +387,73 @@ public class EntityEffects : MonoBehaviour
         }
     }
 
-    
+
 
     public void OnPoison()
     {
         GetComponent<LifeManager>().TakeDamage(GetComponent<Stats>().health / 40 + 1, Color.magenta, true, true);
     }
+
+    public void StopFire()
+    {
+        if (fireCoroutine != null)
+            StopCoroutine(fireCoroutine);
+        isFireRoutineRunning = false;
+        fireTimer = 0;
+        isFire = false;
+        if (fireEffect)
+        {
+            fireEffect.SetActive(false);
+            fireEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+            fireEffect.GetComponent<ObjectAnimation>().StopAnimation();
+        }
+    }
+
+    public void StopSlime()
+    {
+        if (slimeCoroutine != null)
+            StopCoroutine(slimeCoroutine);
+        isSlimedRoutineRunning = false;
+        slimeTimer = 0;
+        isSlimed = false;
+        if (slimeEffect)
+        {
+            slimeEffect.SetActive(false);
+            slimeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+            slimeEffect.GetComponent<ObjectAnimation>().StopAnimation();
+        }
+    }
+
+    public void StopFreeze()
+    {
+        if (freezeCoroutine != null)
+            StopCoroutine(freezeCoroutine);
+        isFreezeRoutineRunning = false;
+        freezeTimer = 0;
+        isFreeze = false;
+        if (freezeEffect)
+        {
+            freezeEffect.SetActive(false);
+            freezeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+            freezeEffect.GetComponent<ObjectAnimation>().StopAnimation();
+        }
+        if (GetComponent<Stats>())
+            GetComponent<Stats>().canMove = true;
+    }
+
+    public void StopPoison()
+    {
+        if (poisonCoroutine != null)
+            StopCoroutine(poisonCoroutine);
+        isPoisonRoutineRunning = false;
+        poisonTimer = 0;
+        isPoison = false;
+        if (poisonEffect)
+        {
+            poisonEffect.SetActive(false);
+            poisonEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
+            poisonEffect.GetComponent<ObjectAnimation>().StopAnimation();
+        }
+    }
+
 }

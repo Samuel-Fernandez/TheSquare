@@ -677,26 +677,21 @@ public class QuestManager : MonoBehaviour
                     if (specialObject.toolType == quest.specialObject)
                         return true;
                 }
-
                 return false;
-
             case QuestRequirement.MONSTER_KILLED:
                 foreach (var monsterKilled in StatsManager.instance.monsterKilled)
                 {
                     if (monsterKilled.idMonster == quest.monsterRequired.name && monsterKilled.nb == quest.nbMonsterRequired)
                         return true;
                 }
-
                 return false;
-
             case QuestRequirement.QUEST:
                 foreach (var completedQuest in completedQuests)
                 {
-                    if (completedQuest.id == quest.id)
+                    if (completedQuest.id == quest.questsRequired.id)  // CORRECTION ICI
                         return true;
                 }
                 return false;
-
             default:
                 return false;
         }
@@ -732,10 +727,11 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < questCopy.monsterObjectiveList.Count; i++)
-        {
-            questCopy.monsterObjectiveList[i].nbMonsterKilledSinceAccepted = waitingQuest.nbMonsterKilledSinceAccepted[i];
-        }
+        if(questCopy.monsterObjectiveList.Count > 0 && waitingQuest.nbMonsterKilledSinceAccepted.Count > 0)
+            for (int i = 0; i < questCopy.monsterObjectiveList.Count; i++)
+            {
+                questCopy.monsterObjectiveList[i].nbMonsterKilledSinceAccepted = waitingQuest.nbMonsterKilledSinceAccepted[i];
+            }
 
 
         // Comparaison des objectifs

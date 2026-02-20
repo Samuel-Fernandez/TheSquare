@@ -20,6 +20,8 @@ MonoBehaviour:
   - item: {fileID: 405510180018779390, guid: 3fcf901d66417ea41adef3e5a7bf41d9, type: 3}
     lootChance: 100
   - item: {fileID: 5922617573860344289, guid: d880d3e69a0ac4f4d945d607eac46d4c, type: 3}
+    lootChance: 50
+  - item: {fileID: 180581686963489590, guid: 35bebfb728bbeb943a0835bb31ea2b67, type: 3}
     lootChance: 20
   - item: {fileID: 0}
     lootChance: 1000

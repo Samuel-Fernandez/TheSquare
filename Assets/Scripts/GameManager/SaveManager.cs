@@ -55,6 +55,38 @@ public class SaveManager : MonoBehaviour
             File.Delete(eventIDSaveFilePath);
     }
 
+    public void SaveSpecialObjectsOnly()
+    {
+        if (SpecialObjectsManager.instance == null)
+        {
+            Debug.LogWarning("SpecialObjectManager not found, cannot save SpecialObjects.");
+            return;
+        }
+
+        // Afficher le chemin du fichier de sauvegarde
+        Debug.Log($"Save file path: {saveFilePath}");
+
+        if (!File.Exists(saveFilePath))
+        {
+            Debug.LogWarning("No main save file found! Cannot update SpecialObjects data.");
+            return;
+        }
+
+        // Lire la sauvegarde actuelle
+        string json = File.ReadAllText(saveFilePath);
+        SaveData existingData = JsonUtility.FromJson<SaveData>(json);
+
+        // Mettre à jour uniquement les SpecialObjects
+        existingData.specialObjectsData.availableObjects = SpecialObjectsManager.instance.availableObjects;
+        existingData.specialObjectsData.actualObject = SpecialObjectsManager.instance.actualObject;
+
+        // Réécrire la sauvegarde complète avec les SpecialObjects mis à jour
+        string updatedJson = JsonUtility.ToJson(existingData, true);
+        File.WriteAllText(saveFilePath, updatedJson);
+
+        Debug.Log("SpecialObjects data successfully updated in main save file!");
+    }
+
     public void SaveDungeonsOnly()
     {
         if (DungeonManager.instance == null)
@@ -183,23 +215,26 @@ public class SaveManager : MonoBehaviour
             PlayerLevels.instance.healerReputation = saveData.healerReputation;
             PlayerManager.instance.player.GetComponent<LifeManager>().life = saveData.playerLife;
 
-            PlayerManager.instance.player.transform.position = saveData.position;
+            // NE PAS CHANGER LA POSITION ICI - sera fait après le changement de scène
+            // PlayerManager.instance.player.transform.position = saveData.position;
+
             PlayerManager.instance.player.GetComponent<Stats>().money = saveData.money;
             PlayerManager.instance.runtimeSpecialItems = GetSpecialItemsFromSave(saveData.specialItems);
+            PlayerManager.instance.ReassignItemsSprites();
 
             PlayerManager.instance.player.GetComponent<ObjectPerspective>().level = saveData.playerLevelPerspective;
 
-            if(targetCoords)
+            if (targetCoords)
             {
                 MapManager.instance.targetCoords = saveData.targetCoords;
             }
 
-            if(teleportationAvailable)
+            if (teleportationAvailable)
             {
                 TeleportationManager.instance.teleportationsAvailable = saveData.teleportationsAvailable;
             }
 
-            if(spawnerState)
+            if (spawnerState)
             {
                 MonsterSpawnManager.instance.LoadSpawnerStates(saveData.spawnerStates);
             }
@@ -210,7 +245,6 @@ public class SaveManager : MonoBehaviour
                 {
                     attack.isAvailable = saveData.unlockedSpecialAttacks.Contains(attack.attackName);
                 }
-
             }
 
             if (market)
@@ -258,14 +292,14 @@ public class SaveManager : MonoBehaviour
                 MeteoManager.instance.LoadWeather();
             }
 
-            if(stats)
+            if (stats)
             {
                 StatsManager.instance.monsterKilled = saveData.statsData.monsterKilled;
                 StatsManager.instance.pnjSpoken = saveData.statsData.pnjSpoken;
                 StatsManager.instance.locationFound = saveData.statsData.locationFound;
             }
 
-            if(quests)
+            if (quests)
             {
                 foreach (var item in saveData.waitingQuests.questContainer)
                 {
@@ -300,8 +334,8 @@ public class SaveManager : MonoBehaviour
                 DungeonManager.instance.UpdateUI();
             }
 
-
-            ScenesManager.instance.ChangeScene(saveData.sceneName, 1);
+            // Changer la scène ET la position en même temps
+            ScenesManager.instance.ChangeSceneObject(saveData.sceneName, saveData.position, 1);
             Debug.Log("Load successful!");
         }
         else

@@ -211,6 +211,190 @@
     {
       "key": "MAP_PANEL",
       "value": "World Map"
+    },
+    {
+      "key": "SEAL_UI_TITLE",
+      "value": "Seal crafting"
+    },
+    {
+      "key": "ADD",
+      "value": "Add"
+    },
+    {
+      "key": "SEAL_BUFF_HP",
+      "value": "HP {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_STR",
+      "value": "STR {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_DEF",
+      "value": "DEF {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_SPE",
+      "value": "SPE {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_CRITC",
+      "value": "CRITC {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_CRITD",
+      "value": "CRITD {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_BOWSPE",
+      "value": "BOWSPE {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_PICKAXESPE",
+      "value": "PICKAXESPE {0}%"
+    },
+    {
+      "key": "SEAL_BUFF_DODGEC",
+      "value": "DODGEC {0}%"
+    },
+    {
+      "key": "SEAL_RESONANCE_EFFECT",
+      "value": "Effect {0}"
+    },
+    {
+      "key": "SEAL_RESONANCE_EFFECT_EXPLOSION",
+      "value": "Explosion"
+    },
+    {
+      "key": "SEAL_RESONANCE_EFFECT_STOP_ENTITY",
+      "value": "Stop Monster"
+    },
+    {
+      "key": "SEAL_RESONANCE_EFFECT_ELECTRICITY",
+      "value": "Electricity"
+    },
+    {
+      "key": "SEAL_RESONANCE_RADIUS",
+      "value": "Radius {0}"
+    },
+    {
+      "key": "SEAL_RESONANCE_ACTIVATION",
+      "value": "ActivationC {0}"
+    },
+    {
+      "key": "SEAL_RESONANCE_MAGNITUDE",
+      "value": "MAGNITUDE {0}%"
+    },
+    {
+      "key": "SEAL_AURA_RADIUS",
+      "value": "Radius {0}m"
+    },
+    {
+      "key": "SEAL_AURA_DURATION",
+      "value": "Duration {0}s"
+    },
+    {
+      "key": "SEAL_AURA_INTENSITY",
+      "value": "Intensity {0}/s"
+    },
+    {
+      "key": "SEAL_AURA_REGENERATION",
+      "value": "Regen {0}"
+    },
+    {
+      "key": "SEAL_AURA_DEF",
+      "value": "DEF {0}%"
+    },
+    {
+      "key": "SEAL_AURA_STR",
+      "value": "STR {0}%"
+    },
+    {
+      "key": "SEAL_AURA_ENEMY_SLOW",
+      "value": "Enemy slow {0}%"
+    },
+    {
+      "key": "SEAL_AURA_ENEMY_DAMAGE",
+      "value": "Enemy damage {0}"
+    },
+    {
+      "key": "SEAL_MOMENTUM_TRIGGER",
+      "value": "Trigger {0}"
+    },
+    {
+      "key": "SEAL_MOMENTUM_TRIGGER_ONKILL",
+      "value": "Kill"
+    },
+    {
+      "key": "SEAL_MOMENTUM_TRIGGER_ONDAMAGETAKEN",
+      "value": "Take damage"
+    },
+    {
+      "key": "SEAL_MOMENTUM_TRIGGER_ONCRIT",
+      "value": "Crit"
+    },
+    {
+      "key": "SEAL_MOMENTUM_TRIGGER_ONPERFECTDODGE",
+      "value": "Dodge"
+    },
+    {
+      "key": "SEAL_MOMENTUM_TRIGGER_ONMINERALMINED",
+      "value": "Pickaxe"
+    },
+    {
+      "key": "SEAL_MOMENTUM_TRIGGER_ONBOWUSING",
+      "value": "Bow"
+    },
+    {
+      "key": "SEAL_MOMENTUM_MAXSTACKS",
+      "value": "Max x {0}"
+    },
+    {
+      "key": "SEAL_MOMENTUM_DECAY",
+      "value": "Decay {0}s"
+    },
+    {
+      "key": "SEAL_MOMENTUM_STR",
+      "value": "STR {0}%/x"
+    },
+    {
+      "key": "SEAL_MOMENTUM_DEF",
+      "value": "DEF {0}%/x"
+    },
+    {
+      "key": "SEAL_MOMENTUM_SPE",
+      "value": "SPE {0}%/x"
+    },
+    {
+      "key": "SEAL_MOMENTUM_SC",
+      "value": "SCC {0}%/x"
+    },
+    {
+      "key": "SEAL_MOMENTUM_BOWS",
+      "value": "BOWS {0}%/x"
+    },
+    {
+      "key": "SEAL_MOMENTUM_PICKAXES",
+      "value": "PICKAXES {0}%/x"
+    },
+    {
+      "key": "SEAL_MOMENTUM_DODGEC",
+      "value": "DODGEC {0}%/x"
+    },
+    {
+      "key": "SEAL_BUFF",
+      "value": "Buff"
+    },
+    {
+      "key": "SEAL_RESONANCE",
+      "value": "Resonance"
+    },
+    {
+      "key": "SEAL_AURA",
+      "value": "Aura"
+    },
+    {
+      "key": "SEAL_MOMENTUM",
+      "value": "Momentum"
     }
   ]
 }

@@ -329,6 +329,30 @@
       "value": "I guess this button made something move in this dungeon... But I couldn’t tell you what."
     },
     {
+      "key": "droxenFight-1",
+      "value": "It seemed to me I had already introduced you to my mommies... It appears they did not quite fulfill their duty.|So be it. As I have already explained, I cannot grant you the stele.|I am well aware that Mylia, the guardian of the weak interaction, would make short work of you."
+    },
+    {
+      "key": "droxenFight-2",
+      "value": "Nevertheless, I cannot allow an impure being to approach her, do you understand ?|The Square and Mylia have bestowed upon me strength and courage, things I once lacked in the old world.|I was struck, tortured by that world. It stands to reason that I now turn against it. And it is not you who shall prevent me from doing so."
+    },
+    {
+      "key": "droxenFight-3",
+      "value": "I see...|You... Know how to fight...|Then I will also...|...Show you what I'm made of!"
+    },
+    {
+      "key": "droxenFight-4",
+      "value": "...|I... don't believe it...|...Mylia... I'm sorry..."
+    },
+    {
+      "key": "droxenFight-5",
+      "value": "You obtain Mylia's stele, the guardian of the weak interaction. |Return to the Village of Tears to inform the archivist."
+    },
+    {
+      "key": "afterTheTornado-1",
+      "value": "Wow... This is the first time I've seen a book like this... | Who wrote it? I guess you have no idea... | Anyway, let's keep going..."
+    },
+    {
       "key": "???_5",
       "value": "Very well... You have made your choice... We both know I won't be able to stop you... | Next time, finish it for good... Promise me that... | Farewell..."
     },
@@ -387,6 +411,14 @@
     {
       "key": "soldier-3_BUBBLE",
       "value": "Hi. No, you can’t go through. Yes, have a nice day too."
+    },
+    {
+      "key": "soldier-4_LITTLE_BUBBLE",
+      "value": "I could use a new weapon.|I’m sure I can beat the Shyron.|I wonder if the blacksmith hates me..."
+    },
+    {
+      "key": "soldier-4_BUBBLE",
+      "value": "The blacksmith is the best in the village.|(Well, he’s the only one)|Unfortunately, the shortage of resources and miners means he can’t make weapons for us anymore..."
     },
     {
       "key": "bartender-1_LITTLE_BUBBLE",
@@ -465,12 +497,45 @@
       "value": "I don't need you now."
     },
     {
+      "key": "PNJPhantomBlondeGirl_BUBBLE_START_QUEST",
+      "value": "Hi ! Yes, I am indeed a ghost. No, I am not dead, because that's no longer possible.|I've been killed so many times that my body has become a sort of... Gas...|Anyway, that's not the point.|I'm fed up with the plants spitting in this desert, can you kill some for me, just to teach them a lesson ?"
+    },
+    {
+      "key": "PNJPhantomBlondeGirl_BUBBLE_WAITING_QUEST",
+      "value": "I can still hear them, these weeds. Can you take care of them ?"
+    },
+    {
+      "key": "PNJPhantomBlondeGirl_BUBBLE_FINISH_QUEST",
+      "value": "Incredible ! I hope that will calm them down a bit !|Here, these pieces of armor are super comfy. I hope you enjoy them."
+    },
+    {
+      "key": "PNJPhantomBlondeGirl_BUBBLE_FINISHED_QUEST",
+      "value": "...Actually, it was useless... I had forgotten that killing here... Is pointless.|Poor me."
+    },
+    {
+      "key": "smith_BUBBLE_START_QUEST",
+      "value": "Hi ! I need your help to find some resources !"
+    },
+    {
+      "key": "smith_BUBBLE_WAITING_QUEST",
+      "value": "Were you able to find those resources ?"
+    },
+    {
+      "key": "smith_BUBBLE_FINISH_QUEST",
+      "value": "Thank you so much ! Here are some SquareCoins for you."
+    },
+    {
+      "key": "smith_BUBBLE_FINISHED_QUEST",
+      "value": "Thanks again for everything you’ve done."
+    },
+    
+    {
       "key": "INVENTORY_FULL",
       "value": "Thanks a lot for those slime portions, dude !"
     },
     {
       "key": "book-tornado-attack",
-      "value": "In this book lies the Tornado Attack, a powerful move that lets you defeat multiple enemies at once by spinning on yourself. | If you move quickly up, right, down, and left, then attack, it will trigger. | Note that the motion must be circular. | You can start from any direction, as long as the input goes clockwise. | This attack is useful when fighting groups of enemies."
+      "value": "In this book lies the Tornado Attack, a powerful move that lets you defeat multiple enemies at once by spinning on yourself. | If you move quickly up, right, down, and left, then attack, it will trigger. | Note that the motion must be circular. | You can start from any direction, as long as the input goes clockwise. | This attack is useful when fighting groups of enemies.|I hope this time you'll have the strength to defeat it.|I've left you several other books, safe from The Square."
     },
     {
       "key": "book-bigslash-attack",

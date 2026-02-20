@@ -94,6 +94,7 @@ public class ItemResume : MonoBehaviour
         else if (resumeType == ItemResumeType.SPECIAL_OBJECT)
         {
             selectedSpecialObject.available = true;
+            SaveManager.instance.SaveSpecialObjectsOnly();
         }
 
         UIAnimator.instance.DeactivateObjectWithTransition(this.gameObject, .5f);

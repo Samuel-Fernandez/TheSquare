@@ -22,11 +22,9 @@ public class PnjScheduleManager : MonoBehaviour
         foreach (PNJSchedule pnjSchedule in PNJschedules)
         {
             bool state = false;
-
-            if(!pnjSchedule.requirement || SaveManager.instance.twoStateContainer.TryGetState(pnjSchedule.requirement.ID, out state))
+            if (!pnjSchedule.requirement || SaveManager.instance.twoStateContainer.TryGetState(pnjSchedule.requirement.ID, out state))
             {
                 GameObject pnj = pnjSchedule.pnj;
-
                 foreach (ScheduleEntry schedule in pnjSchedule.schedule)
                 {
                     if (schedule.scene == MeteoManager.instance.actualScene && currentHour >= schedule.beginTime && currentHour < schedule.endTime)
@@ -35,7 +33,6 @@ public class PnjScheduleManager : MonoBehaviour
                     }
                 }
             }
-            
         }
     }
 
@@ -50,8 +47,20 @@ public class PnjScheduleManager : MonoBehaviour
         behiavor.type = schedule.pnjType;
         behiavor.traderType = schedule.traderType;
 
+        // MODIFIÉ: Support des quêtes multiples
         if (behiavor.type == PNJType.QUESTER)
-            behiavor.quest = schedule.quests;
+        {
+            // Si schedule.quests est une liste, on l'assigne directement
+            if (schedule.questsList != null && schedule.questsList.Count > 0)
+            {
+                behiavor.questsList = schedule.questsList;
+            }
+            // Sinon, si c'est une ancienne configuration avec une seule quête (rétrocompatibilité)
+            else if (schedule.quests != null)
+            {
+                behiavor.questsList = new List<Quests> { schedule.quests };
+            }
+        }
 
         if (movement != null)
             createdPNJ.GetComponent<PNJBehiavor>().movement = movement;
@@ -62,7 +71,6 @@ public class PnjScheduleManager : MonoBehaviour
         float dayCycleDuration = lengthOneDay * 60f;
         float timeInCurrentDay = timeWorld % dayCycleDuration;
         float initialTimeInSeconds = 8 * 60 * 60;
-
         float totalSecondsInDay = initialTimeInSeconds + timeInCurrentDay * (24 * 60 * 60) / dayCycleDuration;
         int hours = Mathf.FloorToInt(totalSecondsInDay / 3600) % 24;
 

@@ -53,4 +53,5 @@ MonoBehaviour:
   methodName: ToggleLever
   parameters:
   - true
+  - false
   bookPage: {fileID: 0}

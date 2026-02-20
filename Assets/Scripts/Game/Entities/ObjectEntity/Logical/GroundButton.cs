@@ -253,6 +253,8 @@ public class GroundButton : MonoBehaviour
     {
         isOn = !isOn;
 
+        GetComponent<SoundContainer>().PlaySound("Pushed", 3);
+
         if (isOneShot)
             SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(id, isOn);
 

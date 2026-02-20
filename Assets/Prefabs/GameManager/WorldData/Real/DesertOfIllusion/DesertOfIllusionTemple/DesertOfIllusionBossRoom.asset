@@ -16,7 +16,7 @@ MonoBehaviour:
   filter: 0
   sceneID: TEMPLE_OF_ILLUSION_BOSS_ROOM
   dungeonName: DesertOfIllusionTemple
-  music: {fileID: 8300000, guid: 23b3d3f5090090148b0e8d6cd1f326d7, type: 3}
+  music: {fileID: 8300000, guid: 6ff2445467d1bce43ac075ca1c50533b, type: 3}
   ambientSound: []
   sunIntensity: 0
   playerCantOpenInventory: 0

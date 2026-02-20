@@ -46,4 +46,12 @@ public class BossesBehiavor : MonoBehaviour
             comp.GetComponent<ObjectAnimation>().PlayAnimation("Start");
         }
     }
+
+    private void OnDestroy()
+    {
+        NotificationManager.instance.ShowSpecialPopUpSquareCoins(
+                PlayerManager.instance.player.GetComponent<Stats>().money.ToString(),
+                (PlayerManager.instance.player.GetComponent<Stats>().money + GetComponent<Stats>().money).ToString());
+        PlayerManager.instance.player.GetComponent<Stats>().money += GetComponent<Stats>().money;
+    }
 }

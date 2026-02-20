@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -41,10 +42,10 @@ public class PNJBehiavor : MonoBehaviour
     List<string> speakingTexts;
     bool wait;
 
-    //Quests
-    public GameObject questExclamationPrefab; // Point d'exclamation si quête disponible
-    GameObject exclamation = null; // GameObject qui se fait instancier
-    public Quests quest;
+    // Quests - MODIFIÉ: Liste de quêtes au lieu d'une seule
+    public GameObject questExclamationPrefab;
+    GameObject exclamation = null;
+    public List<Quests> questsList = new List<Quests>(); // NOUVEAU: Liste de quêtes
 
     void Start()
     {
@@ -75,11 +76,11 @@ public class PNJBehiavor : MonoBehaviour
                 NotificationManager.instance.ShowBubble(LocalizationManager.instance.GetTexts("pnj_text", id + bubble));
                 StatsManager.instance.PNJSpoken(this.id);
             }
-            else if(type == PNJType.TRADER)
+            else if (type == PNJType.TRADER)
             {
                 MarketManager.instance.ToggleMarket(traderInventory);
             }
-            else if(type == PNJType.EVENTER)
+            else if (type == PNJType.EVENTER)
             {
 
             }
@@ -87,70 +88,133 @@ public class PNJBehiavor : MonoBehaviour
             {
                 StatsManager.instance.PNJSpoken(this.id);
 
-                if (!QuestManager.instance.IsInFinished(quest))
+                // MODIFIÉ: Récupérer la quête active du PNJ
+                Quests currentQuest = GetCurrentAvailableQuest();
+
+                if (currentQuest != null)
                 {
-                    // GET QUEST
-                    if (!QuestManager.instance.IsInWaiting(quest))
+                    if (!QuestManager.instance.IsInFinished(currentQuest))
                     {
-                        NotificationManager.instance.ShowBubble(
-                            LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_START_QUEST"),
-                            () => {
-                                Quests questInstance = ScriptableObjectUtility.Clone(quest);
-                                questInstance.pnjID = this.id;
-                                QuestManager.instance.OpenAcceptUI(questInstance);
-                            }
-                        );
-                    }
-                    // FINISH QUEST
-                    else if (QuestManager.instance.IsInWaiting(quest) && QuestManager.instance.ObjectivesDone(quest))
-                    {
-                        if (quest.reward != QuestReward.EQUIPEMENT || (quest.reward == QuestReward.EQUIPEMENT && Equipement.instance.CheckInventory(quest.rewardEquipement.Count)))
+                        // GET QUEST
+                        if (!QuestManager.instance.IsInWaiting(currentQuest))
                         {
                             NotificationManager.instance.ShowBubble(
-                            LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_FINISH_QUEST"),
-                            () => {
-                                QuestManager.instance.FinishQuest(quest);
-                            }
-                        );
+                                LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_START_QUEST"),
+                                () => {
+                                    Quests questInstance = ScriptableObjectUtility.Clone(currentQuest);
+                                    questInstance.pnjID = this.id;
+                                    QuestManager.instance.OpenAcceptUI(questInstance);
+                                }
+                            );
                         }
-                        else if((quest.reward == QuestReward.EQUIPEMENT && !Equipement.instance.CheckInventory(quest.rewardEquipement.Count)))
+                        // FINISH QUEST
+                        else if (QuestManager.instance.IsInWaiting(currentQuest) && QuestManager.instance.ObjectivesDone(currentQuest))
                         {
-                            NotificationManager.instance.ShowBubble(LocalizationManager.instance.GetTexts("pnj_text", "INVENTORY_FULL"));
+                            if (currentQuest.reward != QuestReward.EQUIPEMENT || (currentQuest.reward == QuestReward.EQUIPEMENT && Equipement.instance.CheckInventory(currentQuest.rewardEquipement.Count)))
+                            {
+                                NotificationManager.instance.ShowBubble(
+                                LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_FINISH_QUEST"),
+                                () => {
+                                    QuestManager.instance.FinishQuest(currentQuest);
+                                }
+                            );
+                            }
+                            else if ((currentQuest.reward == QuestReward.EQUIPEMENT && !Equipement.instance.CheckInventory(currentQuest.rewardEquipement.Count)))
+                            {
+                                NotificationManager.instance.ShowBubble(LocalizationManager.instance.GetTexts("pnj_text", "INVENTORY_FULL"));
+                            }
+
                         }
-                        
+                        else if (QuestManager.instance.IsInWaiting(currentQuest) && !QuestManager.instance.ObjectivesDone(currentQuest))
+                        {
+                            NotificationManager.instance.ShowBubble(
+                                LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_WAITING_QUEST")
+                            );
+                        }
                     }
-                    else if (QuestManager.instance.IsInWaiting(quest) && !QuestManager.instance.ObjectivesDone(quest))
+                    else
                     {
+                        // Si la quête actuelle est terminée, afficher son message de fin
                         NotificationManager.instance.ShowBubble(
-                            LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_WAITING_QUEST")
+                            LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_FINISHED_QUEST")
                         );
                     }
                 }
                 else
                 {
-                    NotificationManager.instance.ShowBubble(
-                        LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_FINISHED_QUEST")
-                    );
+                    // Aucune quête disponible, afficher le message de la dernière quête terminée
+                    Quests lastCompletedQuest = GetLastCompletedQuest();
+                    if (lastCompletedQuest != null)
+                    {
+                        NotificationManager.instance.ShowBubble(
+                            LocalizationManager.instance.GetTexts("pnj_text", id + bubble + "_FINISHED_QUEST")
+                        );
+                    }
                 }
             }
 
-
-
-
-
             StartCoroutine(WaitRoutine());
         }
+    }
 
+    // NOUVEAU: Récupère la quête active disponible pour ce PNJ
+    private Quests GetCurrentAvailableQuest()
+    {
+        if (questsList == null || questsList.Count == 0)
+            return null;
+
+        // Parcourir les quêtes dans l'ordre
+        foreach (var quest in questsList)
+        {
+            // Si la quête n'est pas terminée et que les prérequis sont remplis
+            if (!QuestManager.instance.IsInFinished(quest) && QuestManager.instance.RequirementDone(quest))
+            {
+                return quest;
+            }
+        }
+
+        return null;
+    }
+
+    // NOUVEAU: Récupère la dernière quête terminée de ce PNJ
+    private Quests GetLastCompletedQuest()
+    {
+        if (questsList == null || questsList.Count == 0)
+            return null;
+
+        // Parcourir les quêtes en ordre inverse pour trouver la dernière terminée
+        for (int i = questsList.Count - 1; i >= 0; i--)
+        {
+            if (QuestManager.instance.IsInFinished(questsList[i]))
+            {
+                return questsList[i];
+            }
+        }
+
+        return null;
     }
 
     public void QuestGestion()
     {
         if (type != PNJType.QUESTER) return;
 
-        bool requirementDone = QuestManager.instance.RequirementDone(quest);
-        bool isInWaiting = QuestManager.instance.IsInWaiting(quest);
-        bool objectivesDone = QuestManager.instance.ObjectivesDone(quest);
-        bool isInFinished = QuestManager.instance.IsInFinished(quest);
+        // MODIFIÉ: Utiliser la quête active
+        Quests currentQuest = GetCurrentAvailableQuest();
+
+        if (currentQuest == null)
+        {
+            if (exclamation)
+            {
+                Destroy(exclamation);
+                exclamation = null;
+            }
+            return;
+        }
+
+        bool requirementDone = QuestManager.instance.RequirementDone(currentQuest);
+        bool isInWaiting = QuestManager.instance.IsInWaiting(currentQuest);
+        bool objectivesDone = QuestManager.instance.ObjectivesDone(currentQuest);
+        bool isInFinished = QuestManager.instance.IsInFinished(currentQuest);
 
         // Si la quête est terminée ou l'exclamation doit être retirée
         if (!requirementDone || isInFinished)
@@ -160,7 +224,7 @@ public class PNJBehiavor : MonoBehaviour
                 Destroy(exclamation);
                 exclamation = null;
             }
-            return; // Sortir après avoir détruit l'exclamation si la condition n'est pas remplie
+            return;
         }
 
         // Si les conditions de la quête sont remplies
@@ -181,7 +245,6 @@ public class PNJBehiavor : MonoBehaviour
         }
     }
 
-
     IEnumerator WaitRoutine()
     {
         wait = true;
@@ -193,7 +256,7 @@ public class PNJBehiavor : MonoBehaviour
     {
         while (true && speakingTexts != null && speakingTexts.Count > 0)
         {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 20f));  // Préciser UnityEngine.Random
+            yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 20f));
             NotificationManager.instance.ShowLittleBubble(gameObject, speakingTexts[UnityEngine.Random.Range(0, speakingTexts.Count)], 5, littleBubbleUpPosition);
         }
 
@@ -221,15 +284,13 @@ public class PNJBehiavor : MonoBehaviour
             }
         }
 
-        // Quand tous les mouvements sont finis -> PNJ idle
         PlayIdleAnimation();
     }
-
 
     private IEnumerator MoveOverTimeWithAnimation(Vector2 targetPos, float duration)
     {
         float elapsedTime = 0f;
-        Vector2 previousPos = transform.position; // position de la frame précédente
+        Vector2 previousPos = transform.position;
         Vector2 startPos = previousPos;
 
         while (elapsedTime < duration)
@@ -237,73 +298,58 @@ public class PNJBehiavor : MonoBehaviour
             float t = elapsedTime / duration;
             Vector2 newPosition = Vector2.Lerp(startPos, targetPos, t);
 
-            // Déplacer le PNJ à la nouvelle position
             transform.position = newPosition;
 
-            // Calculer le déplacement réel entre cette frame et la précédente
             Vector2 delta = newPosition - previousPos;
 
-            if (delta.magnitude > 0.001f) // seuil pour éviter un idle trop tôt
+            if (delta.magnitude > 0.001f)
                 PlayMovementAnimation(delta.normalized);
             else
                 PlayIdleAnimation();
 
-            previousPos = newPosition; // maj pour la prochaine frame
+            previousPos = newPosition;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // Assurer que le PNJ est exactement à la position cible
         transform.position = targetPos;
         PlayIdleAnimation();
     }
 
-
     private void PlayMovementAnimation(Vector2 direction)
     {
-        // Déterminer l'animation en fonction de la direction
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            // Mouvement horizontal
             objectAnimation.PlayAnimation("Side");
-
-            // Appliquer le flip du sprite
             FlipSprite(direction.x > 0);
         }
         else
         {
-            // Mouvement vertical
             if (direction.y > 0)
                 objectAnimation.PlayAnimation("Up");
             else
                 objectAnimation.PlayAnimation("Down");
 
-            // Ne pas flipper le sprite pour les mouvements verticaux
             FlipSprite(false);
         }
 
-        // Mettre à jour la dernière direction
         lastDirection = direction;
     }
 
     private void PlayIdleAnimation()
     {
-        // Jouer l'animation d'attente en fonction de la dernière direction
         if (Mathf.Abs(lastDirection.x) > Mathf.Abs(lastDirection.y))
         {
-            // Dernière direction horizontale
             objectAnimation.PlayAnimation("AfkSide");
             FlipSprite(lastDirection.x > 0);
         }
         else
         {
-            // Dernière direction verticale
             if (lastDirection.y > 0)
                 objectAnimation.PlayAnimation("AfkUp");
             else
                 objectAnimation.PlayAnimation("AfkDown");
 
-            // Ne pas flipper le sprite pour les animations verticales
             FlipSprite(false);
         }
     }
@@ -311,7 +357,7 @@ public class PNJBehiavor : MonoBehaviour
     private void FlipSprite(bool flip)
     {
         Vector3 scale = transform.localScale;
-        scale.x = (flip ^ reversedSprite) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x); // Inverser seulement la valeur de l'échelle x
+        scale.x = (flip ^ reversedSprite) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
 }

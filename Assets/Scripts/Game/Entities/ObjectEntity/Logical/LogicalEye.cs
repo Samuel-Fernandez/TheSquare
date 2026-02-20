@@ -35,6 +35,7 @@ public class LogicalEye : MonoBehaviour
         {
             isOn = true;
             spriteRenderer.sprite = activeSprite;
+            GetComponent<Collider2D>().enabled = false;
         }
         else
         {
@@ -142,6 +143,8 @@ public class LogicalEye : MonoBehaviour
 
                 // Sauvegarde l’état permanent
                 SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(eye.ID, true);
+                GetComponent<Collider2D>().enabled = false;
+
             }
         }
     }

@@ -24,6 +24,8 @@ public class CameraManager : MonoBehaviour
 
     public CameraFilter filter;
 
+    public float defaultZoom;
+
     private void Awake()
     {
         if (instance == null)
@@ -37,6 +39,11 @@ public class CameraManager : MonoBehaviour
         }
 
         InitializeCameraNoise();
+    }
+
+    private void Start()
+    {
+        defaultZoom = defaultVirtualCamera.m_Lens.OrthographicSize;
     }
 
     public CameraFilter GetFilter()
@@ -297,22 +304,26 @@ public class CameraManager : MonoBehaviour
         StartCoroutine(ZoomRoutine(targetOrthoSize, zoomSpeed, camera));
     }
 
+    public void ResetCameraZoom()
+    {
+        StartCoroutine(ZoomRoutine(defaultZoom, 1));
+    }
+
+    // Remplacez la méthode ZoomRoutine existante par celle-ci :
+
     private IEnumerator ZoomRoutine(float targetOrthoSize, float duration, CinemachineVirtualCamera camera = null)
     {
         if (camera == null) camera = defaultVirtualCamera;
         if (camera == null) yield break;
 
-        float velocity = 0f;
-        while (Mathf.Abs(camera.m_Lens.OrthographicSize - targetOrthoSize) > 0.01f)
+        float startOrthoSize = camera.m_Lens.OrthographicSize;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
         {
-            camera.m_Lens.OrthographicSize = Mathf.SmoothDamp(
-                camera.m_Lens.OrthographicSize,
-                targetOrthoSize,
-                ref velocity,
-                duration,
-                Mathf.Infinity,
-                Time.unscaledDeltaTime
-            );
+            float t = elapsedTime / duration;
+            camera.m_Lens.OrthographicSize = Mathf.Lerp(startOrthoSize, targetOrthoSize, t);
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 

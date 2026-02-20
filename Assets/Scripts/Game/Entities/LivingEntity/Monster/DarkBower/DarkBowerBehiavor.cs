@@ -262,6 +262,13 @@ public class DarkBowerBehiavor : MonoBehaviour
         // Stopper toutes les attaques en cours
         StopAllAttacks();
 
+        // Annuler également le timer de réapparition automatique
+        if (postAttackCoroutine != null)
+        {
+            StopCoroutine(postAttackCoroutine);
+            postAttackCoroutine = null;
+        }
+
         Disappear();
         yield return new WaitForSeconds(2);
         Appear();
@@ -270,7 +277,8 @@ public class DarkBowerBehiavor : MonoBehaviour
 
     IEnumerator PostAttackDisappear()
     {
-        yield return new WaitForSeconds(3);
+        // Attendre 5 secondes après la fin de l'attaque
+        yield return new WaitForSeconds(5f);
 
         // Vérifier si on n'est pas déjà en train de traiter un hit
         if (!isProcessingHit)
@@ -448,7 +456,7 @@ public class DarkBowerBehiavor : MonoBehaviour
         // Créer les clones avant de lancer les attaques (seulement pour le bower principal)
         if (!bowerClone && bowerClonePrefab != null)
         {
-            int cloneCount = Random.Range(2, 8);
+            int cloneCount = Random.Range(2, 5);
 
             // Filtrer les points valides pour les clones aussi
             List<Vector2> safeClonePoints = GetSafePointsAwayFromPlayer(validPoints, 2f);
@@ -505,7 +513,7 @@ public class DarkBowerBehiavor : MonoBehaviour
                 }
             }
 
-            // Démarrer le timer de 3 secondes après l'attaque
+            // Démarrer le timer de 5 secondes après l'attaque
             postAttackCoroutine = StartCoroutine(PostAttackDisappear());
         }
     }

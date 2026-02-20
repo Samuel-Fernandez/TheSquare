@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 392956716541053196, guid: 61de951d5b076d44caf8ddb5b9c2e878, type: 3}
     - target: {fileID: 3496745892840926237, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: money
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3496745892840926237, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: speed
@@ -214,15 +214,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3496745892840926237, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: health
-      value: 125
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 3496745892840926237, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: defense
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3496745892840926237, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: strength
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3496745892840926237, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: knockbackPower
@@ -450,3 +450,4 @@ MonoBehaviour:
   useFixedUpdate: 1
   smoothRotation: 0
   rotationSmoothness: 5
+  lockFlip: 0

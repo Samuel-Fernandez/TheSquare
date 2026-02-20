@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3878ec51c3013a42a847534b65df17c, type: 3}
+  m_Name: Shadow
+  m_EditorClassIdentifier: 
+  essenceID: shadow
+  essenceColor: {r: 0.3433962, g: 0, b: 0.3230004, a: 0}
+  icon: {fileID: 0}
+  votesResonance: 2
+  votesBuff: 2
+  votesAura: 2
+  votesMomentum: 2
+  hpPerPercent: -0.01
+  forcePerPercent: 0.05
+  defensePerPercent: -0.01
+  speedPercent: -0.01
+  critDmg: -0.01
+  critChance: -0.01
+  bowSpeedPercent: -0.01
+  pickaxeSpeedPercent: -0.01
+  dodgeChancePercent: -0.01
+  resonanceEffect: 2
+  radiusPerPercent: -0.01
+  activationChancePerPercent: -0.01
+  effectMagnitudePerPercent: 0.02
+  auraRadiusPerPercent: -0.01
+  auraDurationPerPercent: -0.01
+  auraTickRatePerPercent: 0.1
+  playerHpRegenPerPercent: -0.01
+  playerDefensePerPercent: -0.01
+  playerStrengthPerPercent: 0.1
+  enemySlowPerPercent: 0.02
+  enemyDamagePerPercent: 0.02
+  momentumTrigger: 1
+  maxStacksPerPercent: -0.1
+  stackDecayPerPercent: -0.1
+  forceStackPerPercent: 0.1
+  defenseStackPerPercent: -0.01
+  speedStackPerPercent: -0.01
+  squareCoinStackPerPercent: -0.01
+  bowSpeedPercentStackPerPercent: -0.01
+  pickaxeSpeedPercentStackPerPercent: -0.01
+  dodgeChancePercentStackPerPercent: -0.01

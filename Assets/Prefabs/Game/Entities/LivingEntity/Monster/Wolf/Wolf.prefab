@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: f3611036577c8134389d379e8c427b4f, type: 3}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: money
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: speed
@@ -99,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: strength
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: knockbackResistance
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7400563872942088617, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: animations.Array.size
@@ -311,3 +315,4 @@ MonoBehaviour:
   useFixedUpdate: 1
   smoothRotation: 0
   rotationSmoothness: 5
+  lockFlip: 0

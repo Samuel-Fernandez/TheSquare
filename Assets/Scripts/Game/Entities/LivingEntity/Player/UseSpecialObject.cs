@@ -338,22 +338,53 @@ public class UseSpecialObject : MonoBehaviour
         stats.isBowShooting = true;
         GetComponent<SoundContainer>().PlaySound("BowCharge", 1);
 
-        // --- On capture la direction d'animation au moment où le joueur commence à charger ---
+        // --- Capture de la direction au moment du début de la charge ---
         PlayerAnimation pa = GetComponent<PlayerAnimation>();
-        PlayerController pc = GetComponent<PlayerController>();
-
         if (pa != null)
         {
             int lm = pa.GetLastMove();
-            if (lm == 1) bowChargeDirection = 0;       // Up
-            else if (lm == 2) bowChargeDirection = 3;  // Down
-            else if (lm == 3)
-                bowChargeDirection = (pc != null && pc.horizontalInput > 0f) ? 2 : 1; // Side -> droite/gauche
+            Debug.Log($"LastMove: {lm}, LocalScale.x: {transform.localScale.x}");
+
+            if (lm == 1) // Up
+            {
+                bowChargeDirection = 0;
+            }
+            else if (lm == 2) // Down
+            {
+                bowChargeDirection = 3;
+            }
+            else if (lm == 3) // Side (mouvement latéral)
+            {
+                // Utiliser SpriteRenderer.flipX au lieu de localScale.x
+                SpriteRenderer sr = GetComponent<SpriteRenderer>();
+                if (sr != null)
+                {
+                    if (sr.flipX)
+                    {
+                        bowChargeDirection = 1; // Gauche (sprite flippé)
+                        Debug.Log("Direction: GAUCHE (flipX = true)");
+                    }
+                    else
+                    {
+                        bowChargeDirection = 2; // Droite (sprite normal)
+                        Debug.Log("Direction: DROITE (flipX = false)");
+                    }
+                }
+                else
+                {
+                    // Fallback si pas de SpriteRenderer
+                    Debug.LogWarning("Pas de SpriteRenderer trouvé!");
+                    bowChargeDirection = direction;
+                }
+            }
             else
+            {
+                // Fallback : utiliser la direction passée en paramètre
                 bowChargeDirection = direction;
+            }
+
+            Debug.Log($"Final bowChargeDirection: {bowChargeDirection}");
         }
-        else
-            bowChargeDirection = direction;
 
         checkBowCoroutine = StartCoroutine(CheckBowRelease());
     }
@@ -362,7 +393,7 @@ public class UseSpecialObject : MonoBehaviour
     {
         float startTime = Time.time;
         bool buttonReleased = false;
-        float chargeTime = .75f - (.75f * PlayerManager.instance.bowSpeed);
+        float chargeTime = .65f - (.65f * PlayerManager.instance.bowSpeed);
 
         while (stats.isBowShooting)
         {
@@ -373,7 +404,7 @@ public class UseSpecialObject : MonoBehaviour
             {
                 stats.isBowShooting = false;
 
-                // --- Utiliser la direction enregistrée au moment du début du tir ---
+                // --- Utiliser la direction capturée au début ---
                 int finalDirection = bowChargeDirection;
 
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);

@@ -7,6 +7,14 @@
     {
       "key": "SLIME_ABERRATION",
       "value": "Bloth - Slime Aberration"
+    },
+    {
+      "key": "DROXEN_PHASE1",
+      "value": "Droxen - Fire wizard"
+    },
+    {
+      "key": "DROXEN_PHASE2",
+      "value": "Droxea - The protector of guardians"
     }
   ]
 }

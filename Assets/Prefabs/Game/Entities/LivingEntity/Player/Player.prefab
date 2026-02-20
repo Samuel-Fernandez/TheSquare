@@ -60,6 +60,18 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4823724500366549965, guid: e77e40c3abbef404f84054fbc6953880, type: 3}
+      propertyPath: particles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823724500366549965, guid: e77e40c3abbef404f84054fbc6953880, type: 3}
+      propertyPath: particles.Array.data[1].id
+      value: FireMetal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823724500366549965, guid: e77e40c3abbef404f84054fbc6953880, type: 3}
+      propertyPath: particles.Array.data[1].particleSystem
+      value: 
+      objectReference: {fileID: 8043350695109731168, guid: 05a317568cfc5804c844561aba9cd1bb, type: 3}
     - target: {fileID: 6380640838428239863, guid: e77e40c3abbef404f84054fbc6953880, type: 3}
       propertyPath: canBeFire
       value: 1

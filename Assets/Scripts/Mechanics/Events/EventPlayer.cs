@@ -33,7 +33,7 @@ public class EventPlayer : MonoBehaviour
         if (eventContainer && eventContainer.ID != null)
             id = eventContainer.ID;
 
-        if(id != null && (SaveManager.instance.twoStateContainer.TryGetState(id, out state) || !eventContainer.RequirementsGood()))
+        if(id != null && SaveManager.instance.twoStateContainer.TryGetState(id, out state))
         {
             gameObject.SetActive(false);
         }
@@ -41,7 +41,7 @@ public class EventPlayer : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isTriggerCollisionEvent && collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player && !eventStarted)
+        if (isTriggerCollisionEvent && collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player && !eventStarted && eventContainer.RequirementsGood())
         {
             PlayAnimation();
         }

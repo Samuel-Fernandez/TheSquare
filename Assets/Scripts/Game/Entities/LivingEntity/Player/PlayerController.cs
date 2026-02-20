@@ -76,6 +76,9 @@ public class PlayerController : MonoBehaviour
         if (canDodge && playerInputActions.Gameplay.Dodge.triggered && !stats.isBowShooting && !isAttacking && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isShielding && !isPushing && !GetComponent<EntityEffects>().isSlimed)
         {
             isDodging = true;
+            if (GetComponent<EntityEffects>().isFire)
+                GetComponent<EntityEffects>().StopFire();
+
             soundContainer.PlaySound("Dodge", 1);
             StartCoroutine(PerformDodge());
         }
@@ -726,6 +729,10 @@ public class PlayerController : MonoBehaviour
     // Nouveau système pour éviter les téléportations simultanées
     private bool isTeleporting = false;
 
+    // NOUVEAU : Backup de sécurité mis à jour régulièrement
+    private Vector3 safeBackupPosition = Vector3.zero;
+    private float lastSafeBackupTime = 0f;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         // Éviter de traiter si on est en train de téléporter
@@ -752,6 +759,48 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    // NOUVEAU : Méthode pour mettre à jour la position de backup
+    private void UpdateSafeBackupPosition()
+    {
+        // Mettre à jour toutes les 0.3 secondes quand le joueur n'est pas en train de tomber
+        if (!fallIntoHole && !isTeleporting && Time.time - lastSafeBackupTime > 0.3f)
+        {
+            // Si on a un safeTeleportation valide, l'utiliser comme backup
+            if (safeTeleportation != null)
+            {
+                safeBackupPosition = safeTeleportation.position;
+            }
+            // Sinon, utiliser la position actuelle si elle est sûre (pas dans un trou)
+            else if (!IsPositionInHole(transform.position))
+            {
+                safeBackupPosition = transform.position;
+            }
+
+            lastSafeBackupTime = Time.time;
+        }
+    }
+
+    // NOUVEAU : Vérifier si une position est dans un trou
+    private bool IsPositionInHole(Vector3 position)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.1f);
+        foreach (var col in colliders)
+        {
+            if (col.gameObject.tag.StartsWith("Hole"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // MODIFIÉ : Appeler UpdateSafeBackupPosition dans Update ou LateUpdate
+    private void LateUpdate()
+    {
+        UpdateSafeBackupPosition();
+        // ... reste de votre code LateUpdate ...
     }
 
     private bool ShouldFallInHole(Tilemap tilemap, out Vector3 holeWorldPosition)
@@ -842,11 +891,114 @@ public class PlayerController : MonoBehaviour
         {
             fallIntoHole = true;
             isTeleporting = true;
-            StartCoroutine(FallIntoHoleRoutine(holeCenter));
+
+            // CRITIQUE : Capturer IMMÉDIATEMENT toutes les destinations possibles
+            // avec ordre de priorité clair
+            Vector3 destinationPosition = Vector3.zero;
+            bool hasValidDestination = false;
+
+            // 1. Priorité : safeTeleportation (si valide et loin du trou)
+            if (safeTeleportation != null)
+            {
+                float distanceFromHole = Vector3.Distance(
+                    new Vector3(safeTeleportation.position.x, safeTeleportation.position.y, 0),
+                    new Vector3(holeCenter.x, holeCenter.y, 0)
+                );
+
+                if (distanceFromHole > 1f && !IsPositionInHole(safeTeleportation.position))
+                {
+                    destinationPosition = safeTeleportation.position;
+                    hasValidDestination = true;
+                    Debug.Log($"FallIntoHole: Destination = safeTeleportation ({destinationPosition})");
+                }
+                else
+                {
+                    Debug.LogWarning($"FallIntoHole: safeTeleportation trop proche du trou ou dans un trou ({distanceFromHole}m)");
+                }
+            }
+
+            // 2. Backup : safeBackupPosition
+            if (!hasValidDestination && safeBackupPosition != Vector3.zero)
+            {
+                float distanceFromHole = Vector3.Distance(
+                    new Vector3(safeBackupPosition.x, safeBackupPosition.y, 0),
+                    new Vector3(holeCenter.x, holeCenter.y, 0)
+                );
+
+                if (distanceFromHole > 1f && !IsPositionInHole(safeBackupPosition))
+                {
+                    destinationPosition = safeBackupPosition;
+                    hasValidDestination = true;
+                    Debug.Log($"FallIntoHole: Destination = safeBackupPosition ({destinationPosition})");
+                }
+            }
+
+            // 3. Fallback : lastPosition (ancien système)
+            if (!hasValidDestination && lastPosition != Vector3.zero)
+            {
+                float distanceFromHole = Vector3.Distance(
+                    new Vector3(lastPosition.x, lastPosition.y, 0),
+                    new Vector3(holeCenter.x, holeCenter.y, 0)
+                );
+
+                if (distanceFromHole > 1f && !IsPositionInHole(lastPosition))
+                {
+                    destinationPosition = lastPosition;
+                    hasValidDestination = true;
+                    Debug.Log($"FallIntoHole: Destination = lastPosition ({destinationPosition})");
+                }
+            }
+
+            // 4. Dernier recours : chercher une position sûre autour du trou
+            if (!hasValidDestination)
+            {
+                Debug.LogError("FallIntoHole: Aucune destination valide! Recherche d'une position sûre...");
+                destinationPosition = FindSafePositionAroundHole(holeCenter);
+                hasValidDestination = destinationPosition != Vector3.zero;
+            }
+
+            if (!hasValidDestination)
+            {
+                Debug.LogError("FallIntoHole: IMPOSSIBLE de trouver une destination sûre! Annulation de la chute.");
+                fallIntoHole = false;
+                isTeleporting = false;
+                return;
+            }
+
+            StartCoroutine(FallIntoHoleRoutine(holeCenter, destinationPosition));
         }
     }
 
-    IEnumerator FallIntoHoleRoutine(Vector3 holeCenter)
+    // NOUVEAU : Trouver une position sûre autour du trou
+    private Vector3 FindSafePositionAroundHole(Vector3 holeCenter)
+    {
+        // Tester 8 directions autour du trou
+        Vector3[] directions = {
+        new Vector3(2, 0, 0),
+        new Vector3(-2, 0, 0),
+        new Vector3(0, 2, 0),
+        new Vector3(0, -2, 0),
+        new Vector3(1.5f, 1.5f, 0),
+        new Vector3(-1.5f, 1.5f, 0),
+        new Vector3(1.5f, -1.5f, 0),
+        new Vector3(-1.5f, -1.5f, 0)
+    };
+
+        foreach (var dir in directions)
+        {
+            Vector3 testPos = new Vector3(holeCenter.x + dir.x, holeCenter.y + dir.y, transform.position.z);
+            if (!IsPositionInHole(testPos))
+            {
+                Debug.Log($"Position sûre trouvée: {testPos}");
+                return testPos;
+            }
+        }
+
+        Debug.LogError("Impossible de trouver une position sûre!");
+        return Vector3.zero;
+    }
+
+    IEnumerator FallIntoHoleRoutine(Vector3 holeCenter, Vector3 destinationPosition)
     {
         GetComponent<SoundContainer>().PlaySound("Fall", 1);
         GetComponent<LifeManager>().TakeDamage(1, Color.red, false, true);
@@ -860,6 +1012,7 @@ public class PlayerController : MonoBehaviour
         Vector3 startPosition = playerTransform.position;
         Vector3 finalHolePosition = new Vector3(holeCenter.x, holeCenter.y, startPosition.z);
 
+        // Animation de chute
         while (elapsedTime < duration)
         {
             float t = elapsedTime / duration;
@@ -877,18 +1030,11 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.5f);
 
-        // Téléportation à safeTeleportation si définie, sinon à lastPosition
-        if (safeTeleportation != null)
-        {
-            playerTransform.position = safeTeleportation.position;
-            // Note: on ne remet pas safeTeleportation à null ici
-            // car la plateforme gère cela automatiquement
-        }
-        else
-        {
-            playerTransform.position = lastPosition;
-        }
+        // Téléportation vers la destination pré-calculée
+        Debug.Log($"Téléportation vers: {destinationPosition}");
+        playerTransform.position = destinationPosition;
 
+        // Animation de réapparition
         elapsedTime = 0f;
         duration = 0.25f;
 
@@ -905,7 +1051,16 @@ public class PlayerController : MonoBehaviour
         playerTransform.localScale = originalScale;
         stats.canMove = true;
         fallIntoHole = false;
-        isTeleporting = false; // Réinitialiser le flag de téléportation
+
+        // Mettre à jour le backup avec la nouvelle position sûre
+        safeBackupPosition = destinationPosition;
+        lastSafeBackupTime = Time.time;
+
+        // CRITIQUE : Petit délai avant de permettre une nouvelle chute
+        // Cela évite que le joueur retombe immédiatement s'il réapparaît près d'un trou
+        yield return new WaitForSeconds(0.3f);
+
+        isTeleporting = false;
     }
 
     bool HasWeapon()
@@ -913,14 +1068,12 @@ public class PlayerController : MonoBehaviour
         return Equipement.instance.equippedSlots[4].GetComponent<EquipementSlot>().actualItem != null || MeteoManager.instance.actualScene.name.StartsWith("beggining");
     }
 
-
-
     IEnumerator getLastPosition()
     {
         while (true)
         {
             yield return new WaitForSecondsRealtime(0.5f);
-            if (!fallIntoHole)
+            if (!fallIntoHole && !isTeleporting)
                 lastPosition = transform.position;
         }
     }

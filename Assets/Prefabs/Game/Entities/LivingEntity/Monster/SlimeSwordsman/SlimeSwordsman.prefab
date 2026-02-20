@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: money
-      value: 31
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: speed
@@ -433,6 +433,7 @@ MonoBehaviour:
   useFixedUpdate: 1
   smoothRotation: 0
   rotationSmoothness: 5
+  lockFlip: 0
 --- !u!114 &6196549182269374448
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,8 @@ public class SceneChanger : MonoBehaviour
     {
         if(collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player)
         {
-            ScenesManager.instance.ChangeSceneObject(scene, newPosition);
+            if(ScenesManager.instance.canTeleportPlayer)
+                ScenesManager.instance.ChangeSceneObject(scene, newPosition);
         }
     }
 }

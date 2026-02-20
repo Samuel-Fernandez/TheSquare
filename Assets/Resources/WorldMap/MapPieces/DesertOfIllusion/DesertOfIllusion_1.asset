@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b3ea2927ca5794c841d5196101a70a, type: 3}
+  m_Name: DesertOfIllusion_1
+  m_EditorClassIdentifier: 
+  sceneAssets:
+  - {fileID: 102900000, guid: a8c13f55720bbd147bc36390ccb1b64a, type: 3}
+  - {fileID: 102900000, guid: aa1bc354500a1974785101a2a1ea7f49, type: 3}
+  - {fileID: 102900000, guid: a6c729b8212a7ad49b4bfdee7e89dde6, type: 3}
+  - {fileID: 102900000, guid: 5e1d7ae49b500f84e9268cbb847f9526, type: 3}
+  - {fileID: 102900000, guid: e5442540464b492468216c4f30019ad9, type: 3}
+  - {fileID: 102900000, guid: 5def2e1d82f74f0428db587dddb639a3, type: 3}
+  - {fileID: 102900000, guid: 9acbc07f6e720a04ea704e0dc53b41b7, type: 3}
+  - {fileID: 102900000, guid: 8ecb382c4b3a05f4d96d64c80a748ccc, type: 3}
+  - {fileID: 102900000, guid: 7dd313c195b91674a876c56908e79542, type: 3}
+  - {fileID: 102900000, guid: afd6a2c2f530f6e4d867163f4b0fa014, type: 3}
+  - {fileID: 102900000, guid: 8259d9ea2be650949a16890ffa4035f8, type: 3}
+  - {fileID: 102900000, guid: dddeb620ad601b14a92c0b93fc0799a4, type: 3}
+  - {fileID: 102900000, guid: 87e3f8697db075341953132cc5def023, type: 3}
+  - {fileID: 102900000, guid: e8f6d932f1a0c1446b11bea4cd778abf, type: 3}
+  - {fileID: 102900000, guid: 295b13f5e8eb3164298da816ac7231d2, type: 3}
+  scenes:
+  - DesertOfIllusion
+  - DesertOfIllusionAbandonnedHouse
+  - DesertOfIllusionMainCave
+  - DesertOfIllusionTempleEntry
+  - DesertOfIllusionTempleEntry2
+  - DesertOfIllusionTempleTombalPiece
+  - DesertOfIllusionTempleMainPiece
+  - DesertOfIllusionTempleWagonPiece
+  - DesertOfIllusionTempleMainPiece2
+  - DesertOfIllusionMinibossRoom
+  - DesertOfIllusionHiddenPiece
+  - DesertOfIllusionMummyPiece
+  - DesertOfIllusionEyePiece
+  - DesertOfIllusionBossRoom
+  - DesertOfIllusionGuardianCave
+  icon: {fileID: 1878179122, guid: cc17a8c31cd85e2448246a4df1edfc27, type: 3}
+  coords:
+    x: 9
+    y: 3

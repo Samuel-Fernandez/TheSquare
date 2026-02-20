@@ -28,30 +28,37 @@ public class Equipement : MonoBehaviour
     {
         if (PlayerManager.instance.playerInputActions.Menu.QuickEquip.triggered && InventoryManager.instance.equipementPanel.activeSelf)
         {
-            EquipementSlot slot = actualSlot.GetComponent<EquipementSlot>();
+            EquipementSlot slot;
 
-            if (!slot.equippingSlot)
+            if (actualSlot && actualSlot.GetComponent<EquipementSlot>())
             {
-                // Cas inventaire -> équiper
-                EquipButton();
-            }
-            else if (slot.equippingSlot && slot.actualItem != null)
-            {
-                // Cas déjà équipé -> déséquiper
-                if (!InventoryFull())
+                slot = actualSlot.GetComponent<EquipementSlot>();
+
+                if (!slot.equippingSlot)
                 {
-                    AddItem(slot.actualItem);
-                    slot.RemoveItem();
-                    slot.ClickEquipementSlot();
-                    GetComponent<SoundContainer>().PlayUISound("equip", 1);
-                    EventSystem.current.SetSelectedGameObject(actualSlot.gameObject);
+                    // Cas inventaire -> équiper
+                    EquipButton();
                 }
-                else
+                else if (slot.equippingSlot && slot.actualItem != null)
                 {
-                    // Inventaire plein -> son "denied"
-                    GetComponent<SoundContainer>().PlayUISound("denied", 1);
+                    // Cas déjà équipé -> déséquiper
+                    if (!InventoryFull())
+                    {
+                        AddItem(slot.actualItem);
+                        slot.RemoveItem();
+                        slot.ClickEquipementSlot();
+                        GetComponent<SoundContainer>().PlayUISound("equip", 1);
+                        EventSystem.current.SetSelectedGameObject(actualSlot.gameObject);
+                    }
+                    else
+                    {
+                        // Inventaire plein -> son "denied"
+                        GetComponent<SoundContainer>().PlayUISound("denied", 1);
+                    }
                 }
             }
+            
+            
         }
     }
 

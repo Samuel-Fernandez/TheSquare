@@ -97,14 +97,25 @@ public class GameoverManager : MonoBehaviour
 
     IEnumerator CloseGameOverRoutine()
     {
-        SaveManager.instance.Load(true, true, false);
-        yield return new WaitForSecondsRealtime(1);
+        // 1. Fermer l'UI de Game Over AVANT de charger
         UIAnimator.instance.DeactivateObjectWithTransition(gameOverUI, 1);
+        yield return new WaitForSecondsRealtime(1);
+
+        // 3. Charger (qui va changer de scène avec transition)
+        SaveManager.instance.Load(true, true, false);
+
+        // 2. Restaurer la vie et l'argent avant le load
         PlayerManager.instance.player.GetComponent<LifeManager>().FullHealth();
         PlayerManager.instance.player.GetComponent<Stats>().money = 0;
-        yield return new WaitForSecondsRealtime(1);
-        PlayerManager.instance.TogglePlayer(0);
 
+        // 4. Attendre que la scène soit complètement chargée
+        while (!ScenesManager.instance.isSceneLoaded)
+        {
+            yield return null;
+        }
+
+        // 5. Réactiver le joueur et sauvegarder
+        PlayerManager.instance.TogglePlayer(0);
         SaveManager.instance.Save();
         Time.timeScale = 1f;
     }

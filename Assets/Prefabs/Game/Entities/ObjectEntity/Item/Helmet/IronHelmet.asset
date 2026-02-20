@@ -33,7 +33,7 @@ MonoBehaviour:
   dragonSkin: 0
   fireAttackChance: 0
   iceAttackChance: 0
-  poisonAttackChance: 0.05
+  poisonAttackChance: 0
   regenRate: 0
   doubleSquareCoinsChances: 0
   negativeEffectReducer: 0

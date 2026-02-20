@@ -54,10 +54,22 @@ public class DroxenPhase1Behiavor : MonoBehaviour
             StartCoroutine(DeathSoundRoutine());
         }
 
-        if(monsterMovement.GetDistanceToTarget() <= 3)
+        if(monsterMovement.GetDistanceToTarget() <= 3 && actualAttack != DroxenPhase1Attack.FIRE_FIST)
             monsterMovement.SetReversed(true);
         else
             monsterMovement.SetReversed(false);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (actualAttack == DroxenPhase1Attack.FIRE_FIST)
+        {
+            if(collision.gameObject.GetComponent<Stats>() && collision.gameObject.GetComponent<Stats>().entityType == EntityType.Player)
+            {
+                collision.gameObject.GetComponent<LifeManager>().TakeDamage(stats.strength, gameObject, false, 1);
+                collision.gameObject.GetComponent<EntityEffects>().SetState(Mathf.Min(stats.strength / 6, 1), true);
+            }
+        }
     }
 
     void InitBoss()
@@ -140,8 +152,34 @@ public class DroxenPhase1Behiavor : MonoBehaviour
 
     IEnumerator FireFistRoutine()
     {
-        // TODO: logique spécifique à Droxen
-        yield return new WaitForSeconds(1f);
+        monsterMovement.EnableAnimations = false;
+        monsterMovement.SetSpeedMultiplier(0);
+        GetComponent<EntityLight>().TransitionLightIntensity(5, 5, 1);
+        GetComponent<EntityLight>().TransitionLightColor(Color.red, 1);
+        GetComponent<SoundContainer>().PlaySound("Fireball", 0);
+        yield return GetComponent<ObjectAnimation>().PlayAnimationCoroutine("FirefistActivation", true);
+
+        monsterMovement.SetSpeedMultiplier(1.5f);
+        stats.doingAttack = true;
+
+        GetComponent<ObjectAnimation>().PlayAnimation("FirefistAttack");
+        float iterations = Random.Range(10, 30);
+        
+        for (int i = 0; i < iterations; i++)
+        {
+            GetComponent<SoundContainer>().PlaySound("FirePunch", 3);
+            GetComponent<SoundContainer>().PlaySound("Attack", 3);
+            yield return new WaitForSeconds(.125f);
+        }
+
+        // Fin
+        GetComponent<EntityLight>().TransitionLightIntensity(.25f, 1, .5f);
+        GetComponent<EntityLight>().TransitionLightColor(Color.white, .5f);
+        monsterMovement.EnableAnimations = true;
+
+        yield return new WaitForSeconds(.5f);
+        monsterMovement.SetSpeedMultiplier(1f);
+        stats.doingAttack = false;
     }
 
     IEnumerator FireballRoutine()
@@ -149,18 +187,20 @@ public class DroxenPhase1Behiavor : MonoBehaviour
         monsterMovement.EnableAnimations = false;
         monsterMovement.SetSpeedMultiplier(0);
         GetComponent<ObjectAnimation>().PlayAnimation("Fireball", true);
+        GetComponent<LifeManager>().KnockBack(PlayerManager.instance.player, 15, gameObject);
 
         GetComponent<EntityLight>().TransitionLightIntensity(5, 5, 1);
         GetComponent<EntityLight>().TransitionLightColor(Color.red, 1);
+        GetComponent<SoundContainer>().PlaySound("Fireball", 0);
         yield return new WaitForSeconds(1f);
 
-        int nbFireball = Random.Range(3, 15);
+        int nbFireball = Random.Range(5, 20);
         
         for (int i = 0; i < nbFireball; i++)
         {
             GameObject fireballInstance = Instantiate(fireball, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
-            fireballInstance.GetComponent<FireballBehiavor>().Init(gameObject, PlayerManager.instance.player, 7, GetComponent<Stats>().strength / 2);
-            yield return new WaitForSeconds(.15f);
+            fireballInstance.GetComponent<FireballBehiavor>().Init(gameObject, PlayerManager.instance.player, 5.5f, GetComponent<Stats>().strength / 2);
+            yield return new WaitForSeconds(.25f);
         }
 
         GetComponent<EntityLight>().TransitionLightIntensity(.25f, 1, 1);

@@ -159,6 +159,8 @@ public class MeteoManager : MonoBehaviour
 
     public void UpdateActualScene(Scene regionScene)
     {
+        WeatherType previousWeatherType = actualWeatherType;
+
         foreach (RegionData region in regions)
         {
             foreach (SceneData scene in region.scenes)
@@ -169,7 +171,8 @@ public class MeteoManager : MonoBehaviour
                     actualRegion = region;
                     SoundManager.instance.PlayMusic(actualScene.music);
                     SetSceneFilter();
-                    if(actualScene.playerCantOpenInventory)
+
+                    if (actualScene.playerCantOpenInventory)
                     {
                         InventoryManager.instance.canOpenInventory = false;
                         QuestManager.instance.canOpenQuests = false;
@@ -186,13 +189,13 @@ public class MeteoManager : MonoBehaviour
             }
         }
 
-        if(actualRegion.type == RegionType.CINEMATIC)
+        if (actualRegion.type == RegionType.CINEMATIC)
         {
             GameObject.Find("Cinematic").GetComponent<EventPlayer>().PlayAnimation();
-
         }
 
         if (actualScene)
+        {
             switch (actualScene.sceneType)
             {
                 case SceneType.OUTSIDE:
@@ -218,12 +221,12 @@ public class MeteoManager : MonoBehaviour
                 default:
                     break;
             }
-
-
+        }
 
         switch (actualRegion.type)
         {
             case RegionType.NONE:
+                actualWeatherType = WeatherType.RAINING; // Par défaut
                 break;
             case RegionType.FOREST:
                 actualWeatherType = WeatherType.RAINING;
@@ -232,11 +235,15 @@ public class MeteoManager : MonoBehaviour
                 actualWeatherType = WeatherType.DUST_STORM;
                 break;
             default:
+                actualWeatherType = WeatherType.RAINING;
                 break;
         }
 
+        if (isWeather && previousWeatherType != actualWeatherType)
+        {
+            CleanWeatherEffects();
 
-
+        }
     }
 
     public string ConvertTimeWorldToDayTime()
@@ -283,107 +290,95 @@ public class MeteoManager : MonoBehaviour
                 clouds.Add(newCloud);
             }
 
-
             // Activation evenement
             if (!isWeather && UnityEngine.Random.value < chanceWeatherPerSecond)
             {
                 isWeather = true;
-
-                // Durée aléatoire de la pluie entre 1 et 5 minutes
                 weatherDuration = UnityEngine.Random.Range(60f, 300f);
                 StartCoroutine(StopWeather(weatherDuration));
             }
 
-            // Vérifier si les effets de pluie doivent être actifs ou non
+            // Vérifier si les effets de météo doivent être actifs
             if (isWeather)
             {
-                // Gère type de weather suivant région
-                switch (actualWeatherType)
+                // CORRECTION 1 : Appliquer le filtre UNIQUEMENT si on est OUTSIDE
+                if (actualScene.sceneType == SceneType.OUTSIDE)
                 {
-                    case WeatherType.RAINING:
-                        if(CameraManager.instance.GetFilter() == CameraFilter.NONE)
-                            CameraManager.instance.SetFilter(CameraFilter.RAIN);
+                    switch (actualWeatherType)
+                    {
+                        case WeatherType.RAINING:
+                            if (CameraManager.instance.GetFilter() == CameraFilter.NONE)
+                                CameraManager.instance.SetFilter(CameraFilter.RAIN);
 
-                        if (actualScene.sceneType == SceneType.OUTSIDE && rainInstance == null)
-                        {
-                            rainInstance = Instantiate(rain, PlayerManager.instance.player.transform.position, Quaternion.identity);
-
-                            foreach (var cloud in clouds)
+                            if (rainInstance == null)
                             {
-                                if(cloud)
-                                    cloud.GetComponent<CloudBehiavour>().DestroyCloud();
-                            }
-                        }
-                        else if (actualScene.sceneType != SceneType.OUTSIDE && rainInstance != null)
-                        {
-                            Destroy(rainInstance);
-                            rainInstance = null;
-                        }
-                        break;
-                    case WeatherType.BLIZZARD:
-                        break;
-                    case WeatherType.DUST_STORM:
-                        if (CameraManager.instance.GetFilter() == CameraFilter.NONE)
-                            CameraManager.instance.SetFilter(CameraFilter.DUST_STORM);
-                        
-                        if (actualScene.sceneType == SceneType.OUTSIDE && dustStormInstance == null)
-                        {
-                            dustStormInstance = Instantiate(dustStorm, PlayerManager.instance.player.transform.position, Quaternion.identity);
+                                rainInstance = Instantiate(rain, PlayerManager.instance.player.transform.position, Quaternion.identity);
 
-                            foreach (var cloud in clouds)
-                            {
-                                if (cloud)
-                                    cloud.GetComponent<CloudBehiavour>().DestroyCloud();
+                                foreach (var cloud in clouds)
+                                {
+                                    if (cloud)
+                                        cloud.GetComponent<CloudBehiavour>().DestroyCloud();
+                                }
                             }
-                        }
-                        else if (actualScene.sceneType != SceneType.OUTSIDE && rainInstance != null)
-                        {
-                            Destroy(dustStormInstance);
-                            dustStormInstance = null;
-                        }
-                        break;
-                    default:
-                        break;
+                            break;
+
+                        case WeatherType.DUST_STORM:
+                            if (CameraManager.instance.GetFilter() == CameraFilter.NONE)
+                                CameraManager.instance.SetFilter(CameraFilter.DUST_STORM);
+
+                            if (dustStormInstance == null)
+                            {
+                                dustStormInstance = Instantiate(dustStorm, PlayerManager.instance.player.transform.position, Quaternion.identity);
+
+                                foreach (var cloud in clouds)
+                                {
+                                    if (cloud)
+                                        cloud.GetComponent<CloudBehiavour>().DestroyCloud();
+                                }
+                            }
+                            break;
+
+                        case WeatherType.BLIZZARD:
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
-
+                else // CORRECTION 2 : Si on est en intérieur, nettoyer les effets
+                {
+                    CleanWeatherEffects();
+                }
             }
 
-            // Attendre une seconde avant de vérifier à nouveau
             yield return new WaitForSeconds(1);
         }
     }
 
-    IEnumerator StopWeather(float weatherDuration)
+    private void CleanWeatherEffects()
     {
-        // Attendre la durée de la pluie
-        yield return new WaitForSeconds(weatherDuration);
-
-        // Arrêter la pluie et détruire l'objet de pluie
-        isWeather = false;
-
-        switch (actualWeatherType)
+        if (rainInstance != null)
         {
-            case WeatherType.RAINING:
-                SetSceneFilter();
-                if (rainInstance != null)
-                {
-                    Destroy(rainInstance);
-                    rainInstance = null;
-                }
-                break;
-            case WeatherType.BLIZZARD:
-                break;
-            case WeatherType.DUST_STORM:
-                if (dustStormInstance != null)
-                {
-                    Destroy(dustStormInstance);
-                    dustStormInstance = null;
-                }
-                break;
-            default:
-                break;
+            Destroy(rainInstance);
+            rainInstance = null;
         }
 
+        if (dustStormInstance != null)
+        {
+            Destroy(dustStormInstance);
+            dustStormInstance = null;
+        }
+
+        // Restaurer le filtre de la scène actuelle
+        SetSceneFilter();
+    }
+
+    IEnumerator StopWeather(float weatherDuration)
+    {
+        yield return new WaitForSeconds(weatherDuration);
+
+        isWeather = false;
+        CleanWeatherEffects(); // Utiliser la méthode de nettoyage
     }
 
     private int previousHour = -1;

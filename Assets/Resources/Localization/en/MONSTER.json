@@ -19,6 +19,10 @@
     {
       "key": "WizardSkeleton",
       "value": "Wizard Skeleton"
+    },
+    {
+      "key": "PoisonPlant",
+      "value": "Poison Plant"
     }
   ]
 }

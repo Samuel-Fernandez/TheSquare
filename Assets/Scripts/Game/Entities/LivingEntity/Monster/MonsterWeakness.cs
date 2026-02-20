@@ -13,6 +13,9 @@ public class MonsterWeakness : MonoBehaviour
 
     public void TakeDamage(int damage, GameObject attackingEntity, bool isCritical, float knockbackMultiplier = 1)
     {
-        parentLifeManager.TakeDamage(damage, attackingEntity, isCritical, knockbackMultiplier = 1);
+        if (parentLifeManager)
+        {
+            parentLifeManager.TakeDamage(damage, attackingEntity, isCritical, knockbackMultiplier = 1);
+        }
     }
 }

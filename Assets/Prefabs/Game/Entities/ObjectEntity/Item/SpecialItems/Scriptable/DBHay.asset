@@ -23,3 +23,12 @@ MonoBehaviour:
   level: 0
   type: 10
   nb: 0
+  numberRequiredForSealing: 20
+  essenceComposition:
+  - essence: {fileID: 11400000, guid: 99eb2083d6b9c8a48a84fb5503e877f6, type: 2}
+    percentage: 80
+  - essence: {fileID: 11400000, guid: a6bba8e3bf2e8eb4cb9eb8cf9435558d, type: 2}
+    percentage: 15
+  - essence: {fileID: 11400000, guid: b2c3fb304f8759242989cdca7b23aae5, type: 2}
+    percentage: 5
+  totalPercentage: 100

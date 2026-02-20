@@ -47,11 +47,9 @@ MonoBehaviour:
   ID: 260122
   eventsList:
   - {fileID: 11400000, guid: 9d94553cdfd8ade458c366804cbef24f, type: 2}
-  - {fileID: 11400000, guid: 1e41b8cd64688f241a9db0385e2d46f2, type: 2}
   - {fileID: 11400000, guid: 3c43d517e98bc284ab9d458e0727ef6e, type: 2}
   - {fileID: 11400000, guid: 400c2dad34d3fbd499cdac829cfa0b44, type: 2}
   - {fileID: 11400000, guid: 3887ea57025c9cc40971e062e7a5b0f8, type: 2}
-  - {fileID: 11400000, guid: 0379c6b424077ba45a359cb49c66c114, type: 2}
   - {fileID: 11400000, guid: c4107c675065f3e45beb0e24f30f1c12, type: 2}
   - {fileID: 11400000, guid: 54262802808585f41a4c2fdaaa823562, type: 2}
   - {fileID: 11400000, guid: 3a91ff642ad059449b57c65827f9091a, type: 2}

@@ -431,6 +431,46 @@
     {
       "key": "060007_DESCRIPTION",
       "value": "Soft, green, and surprisingly good for your daily step count."
+    },
+    {
+      "key": "020006_NAME",
+      "value": "Serpent Dagger"
+    },
+    {
+      "key": "020006_DESCRIPTION",
+      "value": "A dagger whose blade is the fang of a poor serpent. It doesn’t deal much damage, but it can poison your enemies."
+    },
+    {
+      "key": "020007_NAME",
+      "value": "Mummy’s Scythe"
+    },
+    {
+      "key": "020007_DESCRIPTION",
+      "value": "She didn’t know how to use it, so she hid it in her bandages. Not very practical—and quite itchy."
+    },
+    {
+      "key": "020008_NAME",
+      "value": "Ice Sword"
+    },
+    {
+      "key": "020008_DESCRIPTION",
+      "value": "A vile sword that can freeze your enemies. Be careful not to break the cold chain !"
+    },
+    {
+      "key": "020009_NAME",
+      "value": "The Butcher"
+    },
+    {
+      "key": "020009_DESCRIPTION",
+      "value": "Originally, it wasn’t meant to be a weapon. However, the person who used it smashed their enemies so hard that fragments of SquareCoins got embedded in it."
+    },
+    {
+      "key": "020010_NAME",
+      "value": "Shyron Sword"
+    },
+    {
+      "key": "020010_DESCRIPTION",
+      "value": "A sword crafted from the skin and magic of the Shyrons. Grants immeasurable attack power."
     }
   ]
 }

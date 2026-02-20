@@ -652,5 +652,18 @@ public class SkeletonKingBehiavor : MonoBehaviour
         }
     }
 
-    #endregion
+    private void OnDestroy()
+    {
+        // Stop toutes les coroutines du boss
+        StopAllCoroutines();
+
+        // Détruit tous les squelettes actifs
+        DestroyAllSkeletons();
+
+        // Supprime la barre de vie
+        if (bossBar != null)
+            Destroy(bossBar);
+    }
+
+        #endregion
 }

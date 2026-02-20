@@ -5,7 +5,6 @@ public class WagonBehavior : MonoBehaviour
 {
     private bool playerNear = false;
     private bool timerRunning = false;
-    private bool checkTrack = false;
     private bool isMoving = false;
     private bool playerOnWagon = false;
     private bool hasStarted = false;
@@ -175,6 +174,17 @@ public class WagonBehavior : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (playerOnWagon)
+        {
+            if(collision.gameObject.GetComponent<Stats>() && collision.gameObject.GetComponent<Stats>().entityType == EntityType.Monster)
+            {
+                collision.gameObject.GetComponent<LifeManager>().KnockBack(collision.gameObject, 20, gameObject);
+            }
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (playerOnWagon) return;
@@ -268,7 +278,6 @@ public class WagonBehavior : MonoBehaviour
         }
 
         yield return null;
-        checkTrack = true;
     }
 
     private IEnumerator DismountPlayer()

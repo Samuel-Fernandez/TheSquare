@@ -47,7 +47,6 @@ public class DestroyableBehiavor : MonoBehaviour
 
             if (state)
             {
-                // FAIRE SYSTEME DE SAUVEGARDE ICI, PAS TERMINE
                 GetComponent<SoundContainer>().PlaySound("Destroy", 1);
                 GetComponentInChildren<SpriteRenderer>().sprite = openedDoor;
                 colliderToRemove.enabled = false;
@@ -130,7 +129,7 @@ public class DestroyableBehiavor : MonoBehaviour
                     life--;
                     GetComponent<SoundContainer>().PlaySound("Hit", 1);
 
-                    PlayerManager.instance.player.GetComponent<LifeManager>().KnockBack(PlayerManager.instance.player, 30, gameObject);
+                    PlayerManager.instance.player.GetComponent<LifeManager>().KnockBack(PlayerManager.instance.player, 10, gameObject);
                     CameraManager.instance.ShakeCamera(5, 5, 1);
                     GetComponentInChildren<EntityLight>().SetLightIntensity(10, 10);
                     GetComponentInChildren<EntityLight>().TransitionLightIntensity(1, 3, 1);

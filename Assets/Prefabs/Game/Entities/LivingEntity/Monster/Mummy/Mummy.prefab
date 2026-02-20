@@ -474,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 17b36f18adb69ee4ba57442ea36e0aa1, type: 3}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: money
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: speed

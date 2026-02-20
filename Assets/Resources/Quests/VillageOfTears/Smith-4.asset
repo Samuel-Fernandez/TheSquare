@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68f61584893a824e90e6835367dc391, type: 3}
+  m_Name: Smith-4
+  m_EditorClassIdentifier: 
+  id: SMITH-4
+  location: {fileID: 0}
+  pnjID: 
+  requirement: 6
+  sceneData: {fileID: 0}
+  pnjIDSpoken: 
+  eventRequired: {fileID: 0}
+  specialObject: 0
+  monsterRequired: {fileID: 0}
+  nbMonsterRequired: 0
+  questsRequired: {fileID: 11400000, guid: cab3ae99f5d14f241812dc15c9064e16, type: 2}
+  completionCondition: 1
+  monsterObjectiveList:
+  - monster: {fileID: 3724152831815018000, guid: f9d27d34b2f984741b0489404a17f4bc, type: 3}
+    nb: 10
+    nbMonsterKilledSinceAccepted: 0
+  sceneDataObjective: {fileID: 0}
+  pnjIDObjective: 
+  eventObjective: {fileID: 0}
+  resourcesObjective:
+  - item: {fileID: 11400000, guid: 2ac8c62b883777643bb25bfc36a46151, type: 2}
+    nb: 5
+  reward: 1
+  nbSquareCoins: 20000
+  rewardSpecialItem:
+  - rewardItem: {fileID: 0}
+    nb: 0
+  rewardEquipement:
+  - {fileID: 11400000, guid: b78bb45bda409274e9eac892e16d9ae9, type: 2}
+  - {fileID: 11400000, guid: 8688ef79d0a9f8d499d489e1fd391d03, type: 2}

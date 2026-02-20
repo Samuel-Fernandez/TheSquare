@@ -10,6 +10,22 @@ public class FireballBehiavor : MonoBehaviour
     private float speed;
     private int strength;
 
+    private void Start()
+    {
+        GetComponent<SoundContainer>().PlaySound("Start", 3);
+        GetComponent<EntityLight>().SetLightColor(Color.yellow);
+        StartCoroutine(FireballLightRoutine());
+    }
+
+    IEnumerator FireballLightRoutine()
+    {
+        float time = Random.Range(0, 1);
+        float intensity = Random.Range(0, 5);
+        float radius = Random.Range(0, 10);
+
+        GetComponent<EntityLight>().TransitionLightIntensity(intensity, radius, time);
+        yield return new WaitForSeconds(time);
+    }
     private void Update()
     {
         // Déplacement constant dans la direction fixée
@@ -27,11 +43,15 @@ public class FireballBehiavor : MonoBehaviour
         Vector2 targetPosition = target.transform.position;
         direction = (targetPosition - startPosition).normalized;
 
+        // --- Ajout : décalage aléatoire de ±15° ---
+        float randomOffset = Random.Range(-20f, 20f);
+        direction = Quaternion.Euler(0, 0, randomOffset) * direction;
+
         // Rotation de la fireball
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-        // On soustrait 90° si le sprite regarde vers le haut par défaut
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

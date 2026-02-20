@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using static UnityEngine.GraphicsBuffer;
 
 public class LifeManager : MonoBehaviour
@@ -35,13 +36,19 @@ public class LifeManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (this.life > stats.health)
+            life = stats.health;
+    }
+
     IEnumerator MonsterWaitAfterAttackRoutine()
     {
         stats.canMove = false;
         yield return new WaitForSeconds(.25f);
         stats.canMove = true;
     }
-
+    
     public void Regeneration()
     {
         StartCoroutine(RoutineRegeneration());
@@ -318,6 +325,13 @@ public class LifeManager : MonoBehaviour
             }
 
             GetComponent<MonsterDeath>().OnMonsterDeath();
+
+            // Comportements spécifiques
+            if(GetComponent<DroxenHandBehiavor>())
+            {
+                Instantiate(GetComponent<DroxenHandBehiavor>().explosionEffect, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+                GetComponent<SoundContainer>().PlaySound("Explosion", 2);
+            }
             Destroy(gameObject);
         }
         else if (stats.entityType == EntityType.Player && !PlayerManager.instance.cantDie)
@@ -353,7 +367,7 @@ public class LifeManager : MonoBehaviour
         stats.isDying = true;
 
         yield return new WaitForSecondsRealtime(1f);
-        CameraManager.instance.DezoomCamera(4, 1);
+        CameraManager.instance.ResetCameraZoom();
         GameoverManager.instance.ActiveGameOver();
         UIAnimator.instance.DeactivateObjectWithTransition(GameoverManager.instance.vignetteUI, 1f);
         SoundManager.instance.PlayMusic("Death");

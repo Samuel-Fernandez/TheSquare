@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3878ec51c3013a42a847534b65df17c, type: 3}
+  m_Name: Water
+  m_EditorClassIdentifier: 
+  essenceID: water
+  essenceColor: {r: 0.39811313, g: 0.69444185, b: 1, a: 0}
+  icon: {fileID: 0}
+  votesResonance: 0
+  votesBuff: 3
+  votesAura: 2
+  votesMomentum: 1
+  hpPerPercent: 0.005
+  forcePerPercent: 0
+  defensePerPercent: 0.005
+  speedPercent: 0
+  critDmg: 0
+  critChance: 0
+  bowSpeedPercent: 0
+  pickaxeSpeedPercent: 0
+  dodgeChancePercent: 0.005
+  resonanceEffect: 2
+  radiusPerPercent: 0.005
+  activationChancePerPercent: 0.05
+  effectMagnitudePerPercent: 0
+  auraRadiusPerPercent: 0.005
+  auraDurationPerPercent: 0.05
+  auraTickRatePerPercent: 0
+  playerHpRegenPerPercent: 0.02
+  playerDefensePerPercent: 0.02
+  playerStrengthPerPercent: 0
+  enemySlowPerPercent: 0.002
+  enemyDamagePerPercent: 0
+  momentumTrigger: 3
+  maxStacksPerPercent: 0.02
+  stackDecayPerPercent: 0.02
+  forceStackPerPercent: 0
+  defenseStackPerPercent: 0.001
+  speedStackPerPercent: 0
+  squareCoinStackPerPercent: 0.001
+  bowSpeedPercentStackPerPercent: 0
+  pickaxeSpeedPercentStackPerPercent: 0
+  dodgeChancePercentStackPerPercent: 0.001

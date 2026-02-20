@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3977957033336045998, guid: eff9df4abd9878a4aa3e6ec0dfb7da7f, type: 3}
       propertyPath: m_Name
-      value: Oldman Variant
+      value: Oldman
       objectReference: {fileID: 0}
     - target: {fileID: 4323579801757559692, guid: eff9df4abd9878a4aa3e6ec0dfb7da7f, type: 3}
       propertyPath: m_Sprite
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6902257897176866534, guid: eff9df4abd9878a4aa3e6ec0dfb7da7f, type: 3}
       propertyPath: animations.Array.data[5].sprites.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6902257897176866534, guid: eff9df4abd9878a4aa3e6ec0dfb7da7f, type: 3}
       propertyPath: animations.Array.data[0].sprites.Array.data[0]
@@ -185,9 +185,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1619741266, guid: ae15b30bd28c12a4dacb414d551f948f, type: 3}
     - target: {fileID: 6902257897176866534, guid: eff9df4abd9878a4aa3e6ec0dfb7da7f, type: 3}
-      propertyPath: animations.Array.data[5].sprites.Array.data[2]
+      propertyPath: animations.Array.data[5].sprites.Array.data[0]
       value: 
       objectReference: {fileID: -670054421, guid: 25ac6fd71cc82a446b7c69dda338818c, type: 3}
+    - target: {fileID: 6902257897176866534, guid: eff9df4abd9878a4aa3e6ec0dfb7da7f, type: 3}
+      propertyPath: animations.Array.data[5].sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -670054421, guid: 25ac6fd71cc82a446b7c69dda338818c, type: 3}
+    - target: {fileID: 6902257897176866534, guid: eff9df4abd9878a4aa3e6ec0dfb7da7f, type: 3}
+      propertyPath: animations.Array.data[5].sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: -1561318514, guid: d3249cda58e73d0478761ec22cd03c29, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

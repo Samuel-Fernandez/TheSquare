@@ -25,38 +25,61 @@ public class ScenesManager : MonoBehaviour
     public void ChangeSceneObject(string sceneName, Vector2 newPosition, float transitionDuration=.5f)
     {
         PlayerManager.instance.player.GetComponent<Stats>().canMove = false;
-        ChangeScene(sceneName, transitionDuration);
-        StartCoroutine(RoutineChangeSceneObject(transitionDuration, newPosition));
+        StartCoroutine(RoutineChangeSceneObject(transitionDuration, newPosition, sceneName));
     }
 
-    IEnumerator RoutineChangeSceneObject(float transitionDuration, Vector2 newPosition)
+    IEnumerator RoutineChangeSceneObject(float transitionDuration, Vector2 newPosition, string sceneName)
     {
-        yield return new WaitForSeconds(transitionDuration);
+        canTeleportPlayer = false;
+        // Lancer le changement de scène
+        StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration));
+
+        // Attendre que la scène soit complètement chargée
+        while (!isSceneLoaded)
+        {
+            yield return null;
+        }
+
+        // Maintenant la scène est chargée, on peut téléporter le joueur
         PlayerManager.instance.player.transform.position = newPosition;
         PlayerManager.instance.player.GetComponent<Stats>().canMove = true;
+
+        canTeleportPlayer = true;
+
     }
+
 
     public void ChangeScene(string sceneName, float transitionDuration=.5f)
     {
         StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration));
     }
 
+    public bool isSceneLoaded = false;
+    public bool canTeleportPlayer = true;
     private IEnumerator ChangeSceneWithDelay(string sceneName, float transitionDuration)
     {
+        isSceneLoaded = false;
         UIAnimator.instance.ActivateObjectWithTransition(transitionPanel, transitionDuration);
+        yield return new WaitForSecondsRealtime(transitionDuration);
 
-        // Attendre le temps de la transition
-        yield return new WaitForSeconds(transitionDuration);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
 
-        SceneManager.LoadScene(sceneName);
-
-        yield return new WaitForSeconds(transitionDuration);
-
+        yield return new WaitForSecondsRealtime(transitionDuration);
 
         SoundManager.instance.PlayMusic(sceneName);
         MeteoManager.instance.UpdateActualScene(SceneManager.GetActiveScene());
         ShowSceneTitle();
         FoundLocation();
+
+        // Signaler que c'est chargé AVANT de fermer la transition
+        isSceneLoaded = true;
+
+        // Petit délai supplémentaire pour être sûr que tout est en place
+        yield return new WaitForSecondsRealtime(0.5f);
 
         UIAnimator.instance.DeactivateObjectWithTransition(transitionPanel, transitionDuration);
     }

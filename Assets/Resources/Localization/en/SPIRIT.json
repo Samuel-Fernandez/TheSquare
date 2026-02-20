@@ -1,0 +1,36 @@
+{
+  "entries": [
+    {
+      "key": "neutral_NAME",
+      "value": "Neutral"
+    },
+    {
+      "key": "fire_NAME",
+      "value": "Fire"
+    },
+    {
+      "key": "ground_NAME",
+      "value": "Ground"
+    }, 
+    {
+      "key": "light_NAME",
+      "value": "Light"
+    }, 
+    {
+      "key": "shadow_NAME",
+      "value": "Shadow"
+    }, 
+    {
+      "key": "vegetal_NAME",
+      "value": "Vegetal"
+    }, 
+    {
+      "key": "water_NAME",
+      "value": "Water"
+    }, 
+    {
+      "key": "wind_NAME",
+      "value": "Wind"
+    } 
+  ]
+}

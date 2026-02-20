@@ -191,7 +191,10 @@
     {
       "key": "TEMPLE_OF_ILLUSION_ENTRY_SCENE",
       "value": "Temple of illusion - Entry"
+    },
+    {
+      "key": "DESERT_OF_ILLUSION_GUARDIAN_CAVE_SCENE",
+      "value": "Guardian Cave - Desert"
     }
   ]
 }
-

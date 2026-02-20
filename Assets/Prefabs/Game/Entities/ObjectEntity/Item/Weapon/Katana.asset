@@ -27,7 +27,7 @@ MonoBehaviour:
   critDamage: 0
   enchant: 0
   enchantLevel: 0
-  baseDamage: 2
+  baseDamage: 4
   baseCritChance: 0.25
   baseCritDamage: 1
   baseKnockbackPower: 0

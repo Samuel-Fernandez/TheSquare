@@ -26,10 +26,6 @@ MonoBehaviour:
     duration: 4
     isWaiting: 0
   - movement:
-    - {x: 7.5, y: 0}
-    duration: 8
-    isWaiting: 0
-  - movement:
-    - {x: 0, y: 2.25}
-    duration: 3
+    - {x: 5, y: 0}
+    duration: 5
     isWaiting: 0

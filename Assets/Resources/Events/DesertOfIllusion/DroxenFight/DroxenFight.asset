@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: DroxenFight
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3528959578039426428, guid: 6b109ee843de95d44a92ee541fd947cf, type: 3}
+    id: smoke
+  - pnj: {fileID: 1947657004976609483, guid: be042fd33aee0f24e966db4ede08d57c, type: 3}
+    id: droxen
+  - pnj: {fileID: 708483793099278298, guid: 441a279ec477e6f4181eaec90c0c7415, type: 3}
+    id: leftHand
+  - pnj: {fileID: 206943420013579003, guid: 38c64088a66cff144a440fc93054b9e2, type: 3}
+    id: rightHand
+  - pnj: {fileID: 8640173465688460159, guid: 2d83915188f778f43b571909011c0d5b, type: 3}
+    id: shield
+  - pnj: {fileID: 1947657004976609483, guid: be042fd33aee0f24e966db4ede08d57c, type: 3}
+    id: droxen2
+  - pnj: {fileID: 1947657004976609483, guid: be042fd33aee0f24e966db4ede08d57c, type: 3}
+    id: droxen3
+  - pnj: {fileID: 2878042609553758165, guid: a667aa5ed30326845807dcc5cec1ea51, type: 3}
+    id: stele
+  monsterContainer:
+  - monster: {fileID: 7789681557178358497, guid: 683d4aef52943764b89a0ecfb9ba0447, type: 3}
+    id: droxen1
+    isBattleObject: 0
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb1
+    isBattleObject: 1
+  - monster: {fileID: 3896390192750033164, guid: 7d18302723140734cbbf13a211d4b721, type: 3}
+    id: droxen2
+    isBattleObject: 0
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb2
+    isBattleObject: 1
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb3
+    isBattleObject: 1
+  - monster: {fileID: 3667050449999141610, guid: 73b40cf8453581a498d760bcea8ee469, type: 3}
+    id: sb4
+    isBattleObject: 1
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: DroxenFight
+  eventsList:
+  - {fileID: 11400000, guid: 3b13acfb9c060b44db13c51d74f57a96, type: 2}
+  - {fileID: 11400000, guid: 838e4d6cb1362014b8a02d766b7f29dc, type: 2}
+  - {fileID: 11400000, guid: 2b270ec911aca374aa1769338604d3fc, type: 2}
+  - {fileID: 11400000, guid: 30995bd4302410140a77728539141d52, type: 2}
+  - {fileID: 11400000, guid: 7bff3928739b2cd4da9e177746644c7a, type: 2}
+  - {fileID: 11400000, guid: d6aba3fa9465425498ffdbd2650ce1ac, type: 2}
+  - {fileID: 11400000, guid: 6587d4d5bb2ce7344aa8ba259ef6a69f, type: 2}
+  - {fileID: 11400000, guid: 3f948ab3a55352d4aa61bd3ad5ad80bb, type: 2}
+  - {fileID: 11400000, guid: dedee7f03f556f04490255bfd471a540, type: 2}
+  - {fileID: 11400000, guid: a217159b21077fb4f8663d24cb9bac42, type: 2}
+  - {fileID: 11400000, guid: 11013936e5074f2449b3721ff66307fa, type: 2}
+  - {fileID: 11400000, guid: 41e0d61d90e5e6944ace7e38d9ec23e7, type: 2}
+  - {fileID: 11400000, guid: de1eae49a3f525340aca4c8a4c8e30d6, type: 2}
+  - {fileID: 11400000, guid: 30ba770a84ced6549ba1025553da7b71, type: 2}
+  - {fileID: 11400000, guid: 00738bd1311c286419b82b82b092ced0, type: 2}
+  - {fileID: 11400000, guid: f8bf09be41ad0d649bef6f498cf2eabe, type: 2}
+  - {fileID: 11400000, guid: f9036afeb59bd3a4a8712ba8118e0fb4, type: 2}
+  - {fileID: 11400000, guid: 5c6ab35a2834aa2469c80e67aed80034, type: 2}
+  - {fileID: 11400000, guid: 07064f2d610740b49bf0d0d31383c20e, type: 2}
+  - {fileID: 11400000, guid: f7d34c43a978e264c8076123814eea53, type: 2}
+  - {fileID: 11400000, guid: cd2dcc4dba001eb4ebe4e857c4731086, type: 2}
+  - {fileID: 11400000, guid: d8cab45f70617364492dfa83ba25e46b, type: 2}
+  - {fileID: 11400000, guid: 7c9a8b9baaf5a594b87a23fefe404569, type: 2}
+  - {fileID: 11400000, guid: c3e6c566fc189644ab9acb63fba8b0cf, type: 2}
+  - {fileID: 11400000, guid: fe2c5165bd0df844c94a1cea52a64a98, type: 2}
+  - {fileID: 11400000, guid: 949eb757c53a7ed49b2191af93adf5e3, type: 2}
+  - {fileID: 11400000, guid: 7384364c38c72a045ba5b0522fc5a1b8, type: 2}
+  - {fileID: 11400000, guid: 38298bf9cbd2c6d408708bf4c466c0b7, type: 2}
+  - {fileID: 11400000, guid: ba460b94cb207bd4caec4cc815c6ffbc, type: 2}
+  - {fileID: 11400000, guid: 904bcae6fd280a540b9b40597661ba3e, type: 2}
+  - {fileID: 11400000, guid: 1d00dfe4110edb84591e7160a3fbd779, type: 2}
+  - {fileID: 11400000, guid: 79e6b8fa4fd0be74fb51601e9a024803, type: 2}
+  - {fileID: 11400000, guid: 24d5575584739d841abb4c04d02184be, type: 2}
+  - {fileID: 11400000, guid: 88a3afa3af4cc0541ab5cb7859cce15e, type: 2}
+  - {fileID: 11400000, guid: 5fdce822bbe78324eb40a7d92888219a, type: 2}
+  - {fileID: 11400000, guid: f69b7d291340d0241976f70671f92f18, type: 2}
+  - {fileID: 11400000, guid: 196e5a67bf0103f408ff4527cae605e4, type: 2}
+  - {fileID: 11400000, guid: 468511aca745d4a479775d26a5c67921, type: 2}
+  - {fileID: 11400000, guid: 39b2084906464294fab8086f973e873f, type: 2}
+  - {fileID: 11400000, guid: e99e5870443dd87409595b0cec78001c, type: 2}
+  - {fileID: 11400000, guid: b00602877d0d9d540a4b94ac63229a3d, type: 2}
+  - {fileID: 11400000, guid: 20578b9bb16c1cd4b8c7710d89c8ab3b, type: 2}
+  - {fileID: 11400000, guid: adadf6fc0fede6a4ba1cd888ba5b2672, type: 2}
+  - {fileID: 11400000, guid: 3efcedc02faeded48b2a9e07a7d37ed2, type: 2}
+  - {fileID: 11400000, guid: 4150dc99c1509c04a9cac5595c125d4b, type: 2}
+  - {fileID: 11400000, guid: 026da5c031cce3f4180d46ecd63680dc, type: 2}
+  - {fileID: 11400000, guid: 4192e6567fefeee43b03e7f7a41987bb, type: 2}
+  - {fileID: 11400000, guid: 6a9d710458580ba4dac6d1c77bdaa034, type: 2}
+  - {fileID: 11400000, guid: 8587041d1d7697f41b89be365f44b1d7, type: 2}
+  - {fileID: 11400000, guid: e440b7ef999fb2246bb2424ff7c1dc92, type: 2}
+  - {fileID: 11400000, guid: ef27cea84383d7943a316ac605d8a318, type: 2}
+  - {fileID: 11400000, guid: 1b4ad528b9b7ffb4fad4ac75a97e8f18, type: 2}
+  - {fileID: 11400000, guid: 485bb71689dc9474e87bd0d510f35686, type: 2}
+  - {fileID: 11400000, guid: 12f60790b23417749b0abd5dcc9bc7fa, type: 2}
+  - {fileID: 11400000, guid: 9521966bd9f6a01449bd46fecee92e6c, type: 2}
+  - {fileID: 11400000, guid: 571393bded2c9484896b4a016cacf786, type: 2}
+  - {fileID: 11400000, guid: 8758f57b2a0a7254798d936ad3383b97, type: 2}
+  requirements: []

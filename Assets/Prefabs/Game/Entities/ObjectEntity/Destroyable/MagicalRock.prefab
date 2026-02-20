@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8591243212559518293, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: life
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8591243212559518293, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: powerRequired
@@ -242,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 8591243212559518293, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: affectedObject.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127567251395021331, guid: b57e1109b121c9840afd529b53d03898, type: 3}
+      propertyPath: loots
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

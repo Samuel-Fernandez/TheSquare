@@ -21,5 +21,15 @@ MonoBehaviour:
     lootChance: 200
   - item: {fileID: 8384227507590998166, guid: 5b2d7144ff413d44aaa51c5332c713a2, type: 3}
     lootChance: 100
+  - item: {fileID: 5997975764803872848, guid: 94ef0ce6cfb65a440bdf70581c874d91, type: 3}
+    lootChance: 100
   - item: {fileID: 405510180018779390, guid: 3fcf901d66417ea41adef3e5a7bf41d9, type: 3}
     lootChance: 1000
+  - item: {fileID: 593364828765112906, guid: 220c9ec3eef6f28489c83884a9f827fa, type: 3}
+    lootChance: 50
+  - item: {fileID: 2909439040217051885, guid: e48f137d645ed2646aa7ad0eaed3936b, type: 3}
+    lootChance: 20
+  - item: {fileID: 1495284156032176130, guid: 51d2465648be93046b16b8855a2b819a, type: 3}
+    lootChance: 40
+  - item: {fileID: 6471539980830606221, guid: 473c98907e7da074db2215e5a1454dd9, type: 3}
+    lootChance: 30

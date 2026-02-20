@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ButtonSpecialItem : MonoBehaviour, ISelectHandler
 {
-    SpecialItems item;
+    public SpecialItems item;
     public Image image;
     public TextMeshProUGUI nbText;
 

@@ -441,6 +441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1683095606509047759, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: canFallInHoles
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 395713895748195523, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Sprite
       value: 

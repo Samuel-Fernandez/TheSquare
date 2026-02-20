@@ -95,10 +95,13 @@ public class LeverBehiavor : MonoBehaviour
         {
             if (entity.GetComponent<DoorBehiavor>())
             {
-                if (entity.GetComponent<DoorBehiavor>().isOpen)
-                    entity.GetComponent<DoorBehiavor>().CloseDoor();
-                else
-                    entity.GetComponent<DoorBehiavor>().OpenDoor();
+                if(playerInteraction)
+                {
+                    if (entity.GetComponent<DoorBehiavor>().isOpen)
+                        entity.GetComponent<DoorBehiavor>().CloseDoor();
+                    else
+                        entity.GetComponent<DoorBehiavor>().OpenDoor();
+                }
             }
             else if (entity.GetComponent<Spades>())
             {
@@ -106,7 +109,10 @@ public class LeverBehiavor : MonoBehaviour
             }
             else if (entity.GetComponent<SkeletonBridgeBehiavor>())
             {
-                entity.GetComponent<SkeletonBridgeBehiavor>().Activate();
+                if(playerInteraction)
+                {
+                    entity.GetComponent<SkeletonBridgeBehiavor>().Activate();
+                }
             }
             else if(entity.GetComponent<LeverBehiavor>())
             {
