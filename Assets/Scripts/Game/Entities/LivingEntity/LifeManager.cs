@@ -48,7 +48,7 @@ public class LifeManager : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         stats.canMove = true;
     }
-    
+
     public void Regeneration()
     {
         StartCoroutine(RoutineRegeneration());
@@ -56,22 +56,22 @@ public class LifeManager : MonoBehaviour
 
     IEnumerator RoutineRegeneration()
     {
-        // Variable temporaire pour accumuler la régénération
+        // Variable temporaire pour accumuler la rï¿½gï¿½nï¿½ration
         float tempRegen = 0f;
 
         while (true)
         {
-            // Ajouter la régénération par seconde à la variable temporaire
+            // Ajouter la rï¿½gï¿½nï¿½ration par seconde ï¿½ la variable temporaire
             tempRegen += PlayerManager.instance.regenRate / 60f;
 
-            // Si la variable temporaire atteint ou dépasse 1, régénérer la vie
+            // Si la variable temporaire atteint ou dï¿½passe 1, rï¿½gï¿½nï¿½rer la vie
             if (tempRegen >= 1f)
             {
-                // Incrémenter la vie actuelle
-                if(life < stats.health)
+                // Incrï¿½menter la vie actuelle
+                if (life < stats.health)
                     life += 1;
 
-                // Décrémenter la variable temporaire de 1
+                // Dï¿½crï¿½menter la variable temporaire de 1
                 tempRegen -= 1f;
             }
 
@@ -116,7 +116,7 @@ public class LifeManager : MonoBehaviour
             float variation = Random.Range(0.8f, 1.2f);
             int baseDamage = Mathf.RoundToInt(stats.strength * variation * multiplier);
 
-            // Appliquer réduction dragon skin
+            // Appliquer rï¿½duction dragon skin
             if (PlayerManager.instance.dragonSkin > 0)
                 baseDamage = Mathf.RoundToInt(baseDamage * (1f - PlayerManager.instance.dragonSkin));
 
@@ -125,23 +125,31 @@ public class LifeManager : MonoBehaviour
             {
                 baseDamage = Mathf.RoundToInt(baseDamage * (1 + stats.critDamage));
                 isCritical = true;
+
+                if (stats.entityType == EntityType.Player && GetComponent<SealMomentumManager>() != null)
+                {
+                    GetComponent<SealMomentumManager>().OnTrigger(MomentumTriggerType.OnCrit);
+                }
             }
 
-            // Envoyer les dégâts finaux
+            // Envoyer les dgts finaux
             target.GetComponent<LifeManager>().TakeDamage(baseDamage, gameObject, isCritical, knockbackMultiplier);
         }
     }
 
-    // Dégâts simples, pour cinématique ?
+    // Dgts simples, pour cinmatique ?
     public void TakeDamage(int damage)
     {
+        if (stats.entityType == EntityType.Player && PlayerManager.instance != null && PlayerManager.instance.isEventPlaying) return;
         life -= damage;
         GetComponent<DamageEffect>().DamageEffects(false);
     }
 
-    // Dégâts sans entité précise mais en considérant les bonus du joueur et la vulnérabilité
+    // Dgts sans entit prcise mais en considrant les bonus du joueur et la vulnrabilit
     public void TakeDamage(int damage, bool isCritical)
     {
+        if (stats.entityType == EntityType.Player && PlayerManager.instance != null && PlayerManager.instance.isEventPlaying) return;
+
         if (stats.isVulnerable && !stats.isDying)
         {
             if ((stats.entityType == EntityType.Player && !GetComponent<UseSpecialObject>().isShadowing) ||
@@ -153,10 +161,20 @@ public class LifeManager : MonoBehaviour
                     (stats.entityType == EntityType.Player && Random.Range(0, 100) >= PlayerManager.instance.dodgeChance))
                 {
                     if (stats.entityType == EntityType.Player)
+                    {
                         CameraManager.instance.ShakeCamera(1, 1, 0.5f);
+                        SealAuraManager auraManager = GetComponent<SealAuraManager>();
+                        if (auraManager != null) auraManager.TryActivateAura();
+                    }
 
                     int damageTaken = Mathf.Max(damage - stats.defense, 1);
                     life -= damageTaken;
+
+                    if (stats.entityType == EntityType.Player)
+                    {
+                        SealMomentumManager momentum = GetComponent<SealMomentumManager>();
+                        if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnDamageTaken);
+                    }
 
                     GetComponent<DamageEffect>().DamageEffects();
 
@@ -188,6 +206,8 @@ public class LifeManager : MonoBehaviour
 
     public void TakeDamage(int damage, GameObject attackingEntity, bool isCritical, float knockbackMultiplier = 1)
     {
+        if (stats.entityType == EntityType.Player && PlayerManager.instance != null && PlayerManager.instance.isEventPlaying) return;
+
         if (stats.isVulnerable && !stats.isDying)
         {
             if ((stats.entityType == EntityType.Player && !GetComponent<UseSpecialObject>().isShadowing) ||
@@ -199,13 +219,20 @@ public class LifeManager : MonoBehaviour
                     (stats.entityType == EntityType.Player && Random.Range(0, 100) >= PlayerManager.instance.dodgeChance))
                 {
                     if (stats.entityType == EntityType.Player)
+                    {
                         CameraManager.instance.ShakeCamera(1, 1, 0.5f);
+                        SealAuraManager auraManager = GetComponent<SealAuraManager>();
+                        if (auraManager != null) auraManager.TryActivateAura();
+                    }
 
                     // EFFECTS ATTACK
                     if (stats.entityType == EntityType.Monster &&
                         attackingEntity.GetComponent<Stats>() &&
                         attackingEntity.GetComponent<Stats>().entityType == EntityType.Player)
                     {
+                        SealAuraManager auraManager = attackingEntity.GetComponent<SealAuraManager>();
+                        if (auraManager != null) auraManager.TryActivateAura();
+
                         if (Random.Range(0, 100) < PlayerManager.instance.fireAttackChance)
                             GetComponent<EntityEffects>().SetState(damage, true, false, false);
                         if (Random.Range(0, 100) < PlayerManager.instance.iceAttackChance)
@@ -228,6 +255,12 @@ public class LifeManager : MonoBehaviour
                     }
 
                     life -= damageTaken;
+
+                    if (stats.entityType == EntityType.Player)
+                    {
+                        SealMomentumManager momentum = GetComponent<SealMomentumManager>();
+                        if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnDamageTaken);
+                    }
 
                     if (attackingEntity.GetComponent<Stats>())
                         KnockBack(gameObject, attackingEntity.GetComponent<Stats>().knockbackPower * knockbackMultiplier, attackingEntity);
@@ -263,9 +296,11 @@ public class LifeManager : MonoBehaviour
     }
 
 
-    // Pour les dégâts d'effets notamment
+    // Pour les dgts d'effets notamment
     public void TakeDamage(int damage, Color specificColor, bool sound = true, bool ignoreVulnerability = false)
     {
+        if (stats.entityType == EntityType.Player && PlayerManager.instance != null && PlayerManager.instance.isEventPlaying) return;
+
         if (stats.isVulnerable || ignoreVulnerability)
         {
             if (stats.entityType != EntityType.Player || (stats.entityType == EntityType.Player && !stats.isDying))
@@ -298,16 +333,23 @@ public class LifeManager : MonoBehaviour
     public void Die()
     {
         GameObject deathParticleInstance = Instantiate(deathParticle, transform.position, Quaternion.identity);
-        
-        if(stats.entityType == EntityType.Monster)
+
+        if (stats.entityType == EntityType.Monster)
         {
             StatsManager.instance.MonsterKilled(this.gameObject.name);
+
+            if (PlayerManager.instance.player != null)
+            {
+                SealMomentumManager momentum = PlayerManager.instance.player.GetComponent<SealMomentumManager>();
+                if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnKill);
+            }
+
             GetComponent<ObjectParticles>().StopAllCoroutines();
             stats.isDying = true;
             soundContainer.PlaySound("Death", 1);
             if (GetComponent<LootChance>())
                 GetComponent<LootChance>().Drop();
-            
+
 
             if (Random.Range(0, 100) <= PlayerManager.instance.doubleSquareCoinsChances * 100)
             {
@@ -326,8 +368,8 @@ public class LifeManager : MonoBehaviour
 
             GetComponent<MonsterDeath>().OnMonsterDeath();
 
-            // Comportements spécifiques
-            if(GetComponent<DroxenHandBehiavor>())
+            // Comportements spï¿½cifiques
+            if (GetComponent<DroxenHandBehiavor>())
             {
                 Instantiate(GetComponent<DroxenHandBehiavor>().explosionEffect, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
                 GetComponent<SoundContainer>().PlaySound("Explosion", 2);
@@ -336,12 +378,12 @@ public class LifeManager : MonoBehaviour
         }
         else if (stats.entityType == EntityType.Player && !PlayerManager.instance.cantDie)
         {
-            if(!stats.isDying)
+            if (!stats.isDying)
                 StartCoroutine(PlayerDie());
         }
         else if (stats.entityType == EntityType.Player && PlayerManager.instance.cantDie)
         {
-            
+
             this.Heal(Mathf.Abs(life) + 1);
         }
 
@@ -381,33 +423,33 @@ public class LifeManager : MonoBehaviour
     {
         isKnockbacking = true;
 
-        // Calculer la direction du recul en fonction de la position de la cible et de l'entité de ce script
+        // Calculer la direction du recul en fonction de la position de la cible et de l'entitï¿½ de ce script
         Vector2 direction = (target.transform.position - attackingEntity.transform.position).normalized;
 
         float knockbackApplied = Mathf.Max(knockbackPower - stats.knockbackResistance, 0);
-        // Appliquer le recul initial à la cible en fonction de la direction et de la puissance de recul
+        // Appliquer le recul initial ï¿½ la cible en fonction de la direction et de la puissance de recul
         target.GetComponent<Rigidbody2D>().velocity = direction * knockbackApplied * 2;
 
-        // Démarrer la coroutine pour décélérer le recul
+        // Dï¿½marrer la coroutine pour dï¿½cï¿½lï¿½rer le recul
         StartCoroutine(DecelerateKnockback(target.GetComponent<Rigidbody2D>(), direction));
     }
 
     private IEnumerator DecelerateKnockback(Rigidbody2D rbTarget, Vector2 direction)
     {
-        // Définir une force de frottement pour simuler la décélération
+        // Dï¿½finir une force de frottement pour simuler la dï¿½cï¿½lï¿½ration
         float friction = 0.9f;
 
-        // Tant que la vélocité de l'objet touché est significative
+        // Tant que la vï¿½locitï¿½ de l'objet touchï¿½ est significative
         while (rbTarget.velocity.magnitude > 0.1f)
         {
-            // Appliquer une force de frottement pour décélérer le recul
+            // Appliquer une force de frottement pour dï¿½cï¿½lï¿½rer le recul
             rbTarget.velocity *= friction;
 
-            // Attendre un court laps de temps avant la prochaine itération
+            // Attendre un court laps de temps avant la prochaine itï¿½ration
             yield return new WaitForFixedUpdate();
         }
 
-        // Assurer que la vélocité devienne exactement zéro une fois que le recul est terminé
+        // Assurer que la vï¿½locitï¿½ devienne exactement zï¿½ro une fois que le recul est terminï¿½
         rbTarget.velocity = Vector2.zero;
 
         isKnockbacking = false;

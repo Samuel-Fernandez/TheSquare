@@ -12,6 +12,7 @@ public enum InteractableType
     CHEST,
     SIGN,
     TELEPORTER_STATUE,
+    SEAL_CRAFTER,
 }
 
 public class InteractableBehiavor : MonoBehaviour
@@ -37,7 +38,7 @@ public class InteractableBehiavor : MonoBehaviour
         Stats stats = collision.GetComponent<Stats>();
         if (stats != null && stats.entityType == EntityType.Player)
         {
-            // Créer l'UI d'interaction si elle n'existe pas encore
+            // Crï¿½er l'UI d'interaction si elle n'existe pas encore
             if (instanceUiInteract == null && canInteract)
             {
                 Vector3 uiPosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
@@ -51,7 +52,7 @@ public class InteractableBehiavor : MonoBehaviour
                 canInteract = false;
             }
 
-            if(instanceUiInteract != null && !canInteract)
+            if (instanceUiInteract != null && !canInteract)
             {
                 Destroy(instanceUiInteract);
                 instanceUiInteract = null;
@@ -102,6 +103,9 @@ public class InteractableBehiavor : MonoBehaviour
                 break;
             case InteractableType.TELEPORTER_STATUE:
                 TeleporterStatue();
+                break;
+            case InteractableType.SEAL_CRAFTER:
+                SealCrafter();
                 break;
 
             default:
@@ -161,4 +165,11 @@ public class InteractableBehiavor : MonoBehaviour
         GetComponent<SignBehiavor>().ShowText();
     }
 
+    void SealCrafter()
+    {
+        if (SealUI.instance != null)
+        {
+            SealUI.instance.ToggleUI();
+        }
+    }
 }

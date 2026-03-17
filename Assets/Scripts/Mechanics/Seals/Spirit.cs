@@ -7,7 +7,7 @@ public class Spirit : ScriptableObject
     [Header("Identity")]
     public string essenceID;
     public Color essenceColor;
-    public Sprite icon;
+    public Sprite primaryBaseSprite;
 
     [Header("Archetype Votes")]
     public int votesResonance = 0;
@@ -51,7 +51,7 @@ public class Spirit : ScriptableObject
     public float maxStacksPerPercent = 0f;
     public float stackDecayPerPercent = 0f;
 
-    // % de la statistique concernée
+    // % de la statistique concernï¿½e
     public float forceStackPerPercent = 0f;
     public float defenseStackPerPercent = 0f;
     public float speedStackPerPercent = 0f;
@@ -65,7 +65,7 @@ public class Spirit : ScriptableObject
 public enum ResonanceEffectType
 {
     Explosion,
-    StopEntity,
+    FreezeEntity,
     Electricity,
 }
 

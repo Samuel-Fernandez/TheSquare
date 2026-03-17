@@ -54,7 +54,7 @@ public class DroxenPhase1Behiavor : MonoBehaviour
             StartCoroutine(DeathSoundRoutine());
         }
 
-        if(monsterMovement.GetDistanceToTarget() <= 3 && actualAttack != DroxenPhase1Attack.FIRE_FIST)
+        if (monsterMovement.GetDistanceToTarget() <= 3 && actualAttack != DroxenPhase1Attack.FIRE_FIST)
             monsterMovement.SetReversed(true);
         else
             monsterMovement.SetReversed(false);
@@ -64,7 +64,7 @@ public class DroxenPhase1Behiavor : MonoBehaviour
     {
         if (actualAttack == DroxenPhase1Attack.FIRE_FIST)
         {
-            if(collision.gameObject.GetComponent<Stats>() && collision.gameObject.GetComponent<Stats>().entityType == EntityType.Player)
+            if (collision.gameObject.GetComponent<Stats>() && collision.gameObject.GetComponent<Stats>().entityType == EntityType.Player)
             {
                 collision.gameObject.GetComponent<LifeManager>().TakeDamage(stats.strength, gameObject, false, 1);
                 collision.gameObject.GetComponent<EntityEffects>().SetState(Mathf.Min(stats.strength / 6, 1), true);
@@ -125,7 +125,7 @@ public class DroxenPhase1Behiavor : MonoBehaviour
 
     DroxenPhase1Attack ChooseRandomAttack()
     {
-        // Probabilités fixes à 50/50
+        // Probabilitï¿½s fixes ï¿½ 50/50
         List<(DroxenPhase1Attack, float)> attackChances = new List<(DroxenPhase1Attack, float)>
         {
             (DroxenPhase1Attack.FIREBALL, fireballChance),
@@ -164,7 +164,7 @@ public class DroxenPhase1Behiavor : MonoBehaviour
 
         GetComponent<ObjectAnimation>().PlayAnimation("FirefistAttack");
         float iterations = Random.Range(10, 30);
-        
+
         for (int i = 0; i < iterations; i++)
         {
             GetComponent<SoundContainer>().PlaySound("FirePunch", 3);
@@ -195,7 +195,7 @@ public class DroxenPhase1Behiavor : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         int nbFireball = Random.Range(5, 20);
-        
+
         for (int i = 0; i < nbFireball; i++)
         {
             GameObject fireballInstance = Instantiate(fireball, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);

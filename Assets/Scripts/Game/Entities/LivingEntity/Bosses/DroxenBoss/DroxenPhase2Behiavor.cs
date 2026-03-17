@@ -63,7 +63,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
             StopAllCoroutines();
             attackRoutine = null;
 
-            // Détruire les mains restantes
+            // Dï¿½truire les mains restantes
             foreach (var hand in handsInstance)
             {
                 if (hand != null)
@@ -71,7 +71,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
             }
             handsInstance.Clear();
 
-            // Désactiver le shield et le collider
+            // Dï¿½sactiver le shield et le collider
             if (magicFireShield != null)
                 magicFireShield.SetActive(false);
             GetComponent<CircleCollider2D>().enabled = false;
@@ -81,7 +81,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
             StartCoroutine(DeathSoundRoutine());
         }
 
-        // Vérification des mains détruites
+        // Vï¿½rification des mains dï¿½truites
         CheckHandsStatus();
     }
 
@@ -92,7 +92,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
         bool leftHandDestroyed = handsInstance[0] == null;
         bool rightHandDestroyed = handsInstance[1] == null;
 
-        // Si les deux mains sont détruites
+        // Si les deux mains sont dï¿½truites
         if (leftHandDestroyed && rightHandDestroyed)
         {
             // Annuler les coroutines individuelles de respawn
@@ -107,7 +107,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
                 rightHandRespawnCoroutine = null;
             }
 
-            // Lancer la phase de vulnérabilité si pas déjà en cours
+            // Lancer la phase de vulnï¿½rabilitï¿½ si pas dï¿½jï¿½ en cours
             if (vulnerabilityCoroutine == null)
             {
                 vulnerabilityCoroutine = StartCoroutine(VulnerabilityPhase());
@@ -115,7 +115,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
         }
         else
         {
-            // Gérer le respawn individuel des mains
+            // Gï¿½rer le respawn individuel des mains
             if (leftHandDestroyed && leftHandRespawnCoroutine == null && vulnerabilityCoroutine == null)
             {
                 leftHandRespawnCoroutine = StartCoroutine(RespawnHandRoutine(0, 20f));
@@ -132,10 +132,10 @@ public class DroxenPhase2Behiavor : MonoBehaviour
     {
         GetComponent<SoundContainer>().PlaySound("Hurt", 0);
         entityLight.TransitionLightIntensity(.5f, .5f, .5f);
-        // ACTIVATION DE LA VULNÉRABILITÉ
+        // ACTIVATION DE LA VULNï¿½RABILITï¿½
         isVulnerable = true;
 
-        // Désactiver le bouclier et activer le collider
+        // Dï¿½sactiver le bouclier et activer le collider
         magicFireShield.SetActive(false);
         GetComponent<CircleCollider2D>().enabled = true;
 
@@ -147,14 +147,14 @@ public class DroxenPhase2Behiavor : MonoBehaviour
 
         lifeManager.KnockBack(PlayerManager.instance.player, 15, gameObject);
 
-        // FIN DE LA VULNÉRABILITÉ
+        // FIN DE LA VULNï¿½RABILITï¿½
         isVulnerable = false;
 
-        // Réactiver le bouclier et désactiver le collider
+        // Rï¿½activer le bouclier et dï¿½sactiver le collider
         magicFireShield.SetActive(true);
         GetComponent<CircleCollider2D>().enabled = false;
 
-        // Faire réapparaître les deux mains
+        // Faire rï¿½apparaï¿½tre les deux mains
         RespawnHand(0);
         RespawnHand(1);
 
@@ -167,7 +167,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
 
         RespawnHand(handIndex);
 
-        // Réinitialiser la référence de la coroutine
+        // Rï¿½initialiser la rï¿½fï¿½rence de la coroutine
         if (handIndex == 0)
             leftHandRespawnCoroutine = null;
         else
@@ -217,7 +217,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
     {
         while (!death)
         {
-            // Ne pas lancer de boules de feu si le boss est vulnérable
+            // Ne pas lancer de boules de feu si le boss est vulnï¿½rable
             if (isVulnerable)
             {
                 yield return new WaitForSeconds(0.5f);
@@ -232,7 +232,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
 
             yield return new WaitForSeconds(delay);
 
-            // Vérifier à nouveau la vulnérabilité avant de tirer
+            // Vï¿½rifier ï¿½ nouveau la vulnï¿½rabilitï¿½ avant de tirer
             if (isVulnerable || death)
                 continue;
 
@@ -278,7 +278,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(timeMinNewAttack, timeMaxNewAttack));
 
-            // Ne pas attaquer si vulnérable ou mort
+            // Ne pas attaquer si vulnï¿½rable ou mort
             if (isVulnerable || death)
                 continue;
 
@@ -357,7 +357,7 @@ public class DroxenPhase2Behiavor : MonoBehaviour
 
         for (int i = 0; i < rockCount; i++)
         {
-            // Position aléatoire autour du joueur dans un rayon de 5 unités
+            // Position alï¿½atoire autour du joueur dans un rayon de 5 unitï¿½s
             Vector2 randomOffset = Random.insideUnitCircle * 4f;
             Vector2 spawnPos = (Vector2)PlayerManager.instance.player.transform.position + randomOffset;
 

@@ -21,7 +21,7 @@ public class EventGeneratorManager : MonoBehaviour
 
     public EventContainer MoveCamera(Vector2 spawnPosition, Vector2 endPosition, float moveDuration, float waitDuration)
     {
-        // Instancier une nouvelle copie au lieu de modifier la même instance
+        // Instancier une nouvelle copie au lieu de modifier la mï¿½me instance
         EventContainer newMoveCamera = ScriptableObject.Instantiate(moveCameraPrefab);
 
         newMoveCamera.eventsList[0].position = spawnPosition;

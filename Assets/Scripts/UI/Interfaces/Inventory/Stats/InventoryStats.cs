@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryStats : MonoBehaviour
 {
+    [Header("Key Items")]
+    public GameObject keyItemContainerPrefab;
+    public Transform keyItemPanel;
+
     public GameObject txtHP;
     public GameObject txtStrength;
     public GameObject txtDefense;
@@ -16,15 +21,70 @@ public class InventoryStats : MonoBehaviour
 
     public GameObject txtQuiver;
     public GameObject txtSquareCoins;
-    
+
     public GameObject txtIron;
     public GameObject txtSilver;
     public GameObject txtDiamond;
     public GameObject txtAntiMatter;
     public GameObject txtSquareBlock;
 
+    public GameObject sealButton;
+    public SealVisualUI sealVisualUI;
+
+    private void OnEnable()
+    {
+        UpdateKeyItems();
+    }
+
+    public void UpdateKeyItems()
+    {
+        if (keyItemPanel == null || keyItemContainerPrefab == null || KeyItemManager.instance == null)
+            return;
+
+        // Clean previous items
+        foreach (Transform child in keyItemPanel)
+        {
+            Destroy(child.gameObject);
+        }
+
+        List<string> acquiredIds = KeyItemManager.instance.GetAcquiredKeyItems();
+        foreach (string id in acquiredIds)
+        {
+            KeyItemObject keyItem = KeyItemManager.instance.GetKeyItemByID(id);
+            if (keyItem != null && keyItem.sprite != null)
+            {
+                GameObject obj = Instantiate(keyItemContainerPrefab, keyItemPanel);
+
+                // GetComponentInChildren trouve le premier composant incluant le parent. 
+                // Pour chercher *uniquement* dans les enfants, on parcourt ces derniers.
+                Image img = null;
+                foreach (Transform child in obj.transform)
+                {
+                    img = child.GetComponent<Image>();
+                    if (img != null)
+                        break;
+                }
+
+                if (img != null)
+                {
+                    img.sprite = keyItem.sprite;
+                }
+            }
+        }
+    }
+
     public void Update()
     {
+        if (SealManager.instance.equippedSeal != null)
+        {
+            sealButton.SetActive(true);
+            sealVisualUI.UpdateVisuals(SealManager.instance.equippedSeal);
+        }
+        else
+        {
+            sealButton.SetActive(false);
+        }
+
         txtHP.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.player.GetComponent<Stats>().health.ToString();
         txtStrength.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.player.GetComponent<Stats>().strength.ToString();
         txtDefense.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.player.GetComponent<Stats>().defense.ToString();
@@ -34,7 +94,7 @@ public class InventoryStats : MonoBehaviour
         txtCritD.GetComponentInChildren<TextMeshProUGUI>().text = (PlayerManager.instance.player.GetComponent<Stats>().critDamage * 100).ToString("F2") + " %";
         txtCritC.GetComponentInChildren<TextMeshProUGUI>().text = (PlayerManager.instance.player.GetComponent<Stats>().critChance * 100).ToString("F2") + " %";
 
-        if(PlayerManager.instance.GetSpecialItem(SpecialItemType.ARROW) != null)
+        if (PlayerManager.instance.GetSpecialItem(SpecialItemType.ARROW) != null)
             txtQuiver.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.GetSpecialItem(SpecialItemType.ARROW).nb.ToString();
         txtSquareCoins.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.player.GetComponent<Stats>().money.ToString();
 

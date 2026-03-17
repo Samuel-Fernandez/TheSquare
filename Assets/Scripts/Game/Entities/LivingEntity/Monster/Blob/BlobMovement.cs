@@ -10,11 +10,11 @@ public class BlobMovement : MonoBehaviour
     public float jumpLength;
     public float animationWait;
 
-    private Transform player; // Référence au joueur
+    private Transform player; // Rï¿½fï¿½rence au joueur
     private Stats stats;
     private ObjectAnimation anim;
     private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rb; // Référence au Rigidbody2D
+    private Rigidbody2D rb; // Rï¿½fï¿½rence au Rigidbody2D
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class BlobMovement : MonoBehaviour
 
         anim.PlayAnimation("Afk");
 
-        // Démarrer le premier saut
+        // Dï¿½marrer le premier saut
         StartCoroutine(JumpCoroutine());
     }
 
@@ -38,9 +38,9 @@ public class BlobMovement : MonoBehaviour
     {
         while (true)
         {
-            // Attendre un intervalle aléatoire avant de sauter
+            // Attendre un intervalle alatoire avant de sauter
             float waitTime = Random.Range(minInterval, maxInterval);
-            yield return new WaitForSeconds(waitTime);
+            yield return StartCoroutine(WaitWhileCantMove(waitTime));
 
             // Effectuer le saut
             yield return StartCoroutine(PerformJump());
@@ -57,14 +57,14 @@ public class BlobMovement : MonoBehaviour
         Vector3 direction;
         float distanceToPlayer = Vector3.Distance(initialPosition, player.position);
 
-        // Choisir la direction : vers le joueur ou aléatoire
+        // Choisir la direction : vers le joueur ou alï¿½atoire
         if (distanceToPlayer <= 5f)
         {
             direction = (player.position - initialPosition).normalized;
         }
         else
         {
-            // Direction aléatoire dans un cercle unité
+            // Direction alï¿½atoire dans un cercle unitï¿½
             direction = Random.insideUnitCircle.normalized;
         }
 
@@ -74,16 +74,18 @@ public class BlobMovement : MonoBehaviour
         if (anim != null)
         {
             anim.PlayAnimation("Movement");
-            yield return new WaitForSeconds(animationWait);
+            yield return StartCoroutine(WaitWhileCantMove(animationWait));
         }
 
         GetComponent<SoundContainer>().PlaySound("Move", 1);
 
         while (elapsedTime < jumpDuration)
         {
+            while (!stats.canMove) yield return null;
+
             Vector3 newPosition = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / jumpDuration);
 
-            if (!DetectObstacleCollision(newPosition) && !GetComponent<LifeManager>().isKnockbacking && stats.canMove)
+            if (!DetectObstacleCollision(newPosition) && !GetComponent<LifeManager>().isKnockbacking)
             {
                 rb.MovePosition(newPosition);
             }
@@ -119,12 +121,26 @@ public class BlobMovement : MonoBehaviour
 
     private bool DetectObstacleCollision(Vector3 newPosition)
     {
-        // Utiliser Raycast pour vérifier les collisions avec des obstacles
+        // Utiliser Raycast pour vï¿½rifier les collisions avec des obstacles
         RaycastHit2D hit = Physics2D.Raycast(transform.position, newPosition - transform.position, Vector3.Distance(transform.position, newPosition));
         if (hit.collider != null && hit.collider.gameObject != gameObject && hit.collider.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            return true; // Retourne vrai si une collision avec un obstacle est détectée
+            return true; // Retourne vrai si une collision avec un obstacle est dï¿½tectï¿½e
         }
         return false;
+    }
+
+    private IEnumerator WaitWhileCantMove(float time)
+    {
+        float timer = 0f;
+        while (timer < time)
+        {
+            if (stats.canMove)
+            {
+                timer += Time.deltaTime;
+            }
+            yield return null;
+        }
+        while (!stats.canMove) yield return null;
     }
 }

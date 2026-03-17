@@ -22,7 +22,7 @@ public class BossesBehiavor : MonoBehaviour
     {
         if (!fightMod)
         {
-            if(GetComponent<ObjectAnimation>() != null)
+            if (GetComponent<ObjectAnimation>() != null)
                 GetComponent<ObjectAnimation>().PlayAnimation("Idle");
 
             CompositionAnimation();

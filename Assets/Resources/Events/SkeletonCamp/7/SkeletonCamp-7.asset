@@ -22,10 +22,10 @@ MonoBehaviour:
     id: BigBlob
     isBattleObject: 0
   - monster: {fileID: 6806412474591186465, guid: d026d231c670a9d41a79b1a51f7fd9e5, type: 3}
-    id: StoneBlock
+    id: Rock
     isBattleObject: 1
   - monster: {fileID: 6806412474591186465, guid: d026d231c670a9d41a79b1a51f7fd9e5, type: 3}
-    id: StoneBlock2
+    id: Rock2
     isBattleObject: 1
   camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
   ID: 686067
@@ -51,4 +51,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 996b942677b73b349b04965072b9297b, type: 2}
   - {fileID: 11400000, guid: 9135f3034c89dbd42adc4fd51d95505f, type: 2}
   - {fileID: 11400000, guid: 685ba5bd8d708fb42a4ec49aa9b89fdf, type: 2}
-  requirement: {fileID: 0}
+  requirements: []

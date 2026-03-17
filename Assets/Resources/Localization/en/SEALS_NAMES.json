@@ -1,0 +1,104 @@
+{
+  "entries": [
+    {
+      "key": "SEAL_BASE_NAME",
+      "value": "Seal"
+    },
+    {
+      "key": "ARCHETYPE_RESONANCE",
+      "value": "Resonating"
+    },
+    {
+      "key": "ARCHETYPE_BUFF",
+      "value": "Enhancing"
+    },
+    {
+      "key": "ARCHETYPE_AURA",
+      "value": "Radiant"
+    },
+    {
+      "key": "ARCHETYPE_MOMENTUM",
+      "value": "Dynamic"
+    },
+    {
+      "key": "ARCHETYPE_MULTIPLE",
+      "value": "Prismatic"
+    },
+    {
+      "key": "ARCHETYPE_NONE",
+      "value": "Formless"
+    },
+    {
+      "key": "ELEMENT_ADJ_Fire",
+      "value": "Explosive"
+    },
+    {
+      "key": "ELEMENT_ADJ_Ground",
+      "value": "Earthen"
+    },
+    {
+      "key": "ELEMENT_ADJ_Light",
+      "value": "Luminous"
+    },
+    {
+      "key": "ELEMENT_ADJ_Neutral",
+      "value": "Balanced"
+    },
+    {
+      "key": "ELEMENT_ADJ_Shadow",
+      "value": "Dark"
+    },
+    {
+      "key": "ELEMENT_ADJ_Vegetal",
+      "value": "Overgrown"
+    },
+    {
+      "key": "ELEMENT_ADJ_Water",
+      "value": "Aqueous"
+    },
+    {
+      "key": "ELEMENT_ADJ_Wind",
+      "value": "Breezy"
+    },
+    {
+      "key": "ELEMENT_NOUN_Fire",
+      "value": "of Fire"
+    },
+    {
+      "key": "ELEMENT_NOUN_Ground",
+      "value": "of Ground"
+    },
+    {
+      "key": "ELEMENT_NOUN_Light",
+      "value": "of Light"
+    },
+    {
+      "key": "ELEMENT_NOUN_Neutral",
+      "value": "of Neutrality"
+    },
+    {
+      "key": "ELEMENT_NOUN_Shadow",
+      "value": "of Shadow"
+    },
+    {
+      "key": "ELEMENT_NOUN_Vegetal",
+      "value": "of Nature"
+    },
+    {
+      "key": "ELEMENT_NOUN_Water",
+      "value": "of Water"
+    },
+    {
+      "key": "ELEMENT_NOUN_Wind",
+      "value": "of Wind"
+    },
+    {
+      "key": "FORMAT_FULL_NAME",
+      "value": "{0} {1} {2} {3}"
+    },
+    {
+      "key": "FORMAT_NO_SEC_ELEMENT",
+      "value": "{0} {1} {2}"
+    }
+  ]
+}

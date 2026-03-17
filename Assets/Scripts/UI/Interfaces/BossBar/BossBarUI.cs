@@ -40,7 +40,7 @@ public class BossBarUI : MonoBehaviour
         originalPosition = bossNameTxt.rectTransform.localPosition;
         originalScale = bossNameTxt.rectTransform.localScale;
 
-        // Étape 1 : Préparation
+        // ï¿½tape 1 : Prï¿½paration
         RectTransform nameRect = bossNameTxt.rectTransform;
 
         nameRect.localPosition = new Vector3(0f, 0f, 0f);
@@ -50,7 +50,7 @@ public class BossBarUI : MonoBehaviour
         UIAnimator.instance.ActivateObjectWithTransition(bossNameTxt.gameObject, 2f);
         yield return new WaitForSeconds(2f);
 
-        // Étape 2 : Retour position/échelle d'origine (0.5s)
+        // ï¿½tape 2 : Retour position/ï¿½chelle d'origine (0.5s)
         float t = 0f;
         Vector3 startPos = nameRect.localPosition;
         Vector3 startScale = nameRect.localScale;
@@ -68,7 +68,7 @@ public class BossBarUI : MonoBehaviour
         nameRect.localPosition = originalPosition;
         nameRect.localScale = originalScale;
 
-        // Étape 3 : Apparition barre de vie (0.5s)
+        // ï¿½tape 3 : Apparition barre de vie (0.5s)
         UIAnimator.instance.ActivateObjectWithTransition(bossBar.gameObject, 0.5f);
     }
 

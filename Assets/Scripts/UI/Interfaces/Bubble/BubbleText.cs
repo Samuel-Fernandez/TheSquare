@@ -25,7 +25,7 @@ public class BubbleText : MonoBehaviour
         Time.timeScale = 0;
         InventoryManager.instance.canOpenInventory = false;
         QuestManager.instance.canOpenQuests = false;
-        
+
         if (!isCinematicBubble)
         {
             StartCoroutine(TypeText());
@@ -40,7 +40,7 @@ public class BubbleText : MonoBehaviour
 
     public void SkipText()
     {
-        if (isCinematicBubble) return; // Ne rien faire si c'est une bulle cinématique
+        if (isCinematicBubble) return; // Ne rien faire si c'est une bulle cinï¿½matique
 
         if (isTyping)
         {
@@ -70,7 +70,7 @@ public class BubbleText : MonoBehaviour
 
         Coroutine displayTimer = null;
 
-        // Commencer le timer en parallèle si c’est une bulle cinématique
+        // Commencer le timer en parallï¿½le si cï¿½est une bulle cinï¿½matique
         if (isCinematicBubble)
         {
             displayTimer = StartCoroutine(CinematicTimer());
@@ -84,10 +84,10 @@ public class BubbleText : MonoBehaviour
 
         isTyping = false;
 
-        // Si ce n’est pas une bulle cinématique, on attend la fin du texte manuellement
+        // Si ce nï¿½est pas une bulle cinï¿½matique, on attend la fin du texte manuellement
         if (!isCinematicBubble)
         {
-            // Attend qu’on clique pour passer
+            // Attend quï¿½on clique pour passer
         }
     }
 

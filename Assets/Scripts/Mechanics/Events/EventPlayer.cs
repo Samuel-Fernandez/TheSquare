@@ -33,7 +33,7 @@ public class EventPlayer : MonoBehaviour
         if (eventContainer && eventContainer.ID != null)
             id = eventContainer.ID;
 
-        if(id != null && SaveManager.instance.twoStateContainer.TryGetState(id, out state))
+        if (id != null && SaveManager.instance.twoStateContainer.TryGetState(id, out state))
         {
             gameObject.SetActive(false);
         }
@@ -50,13 +50,13 @@ public class EventPlayer : MonoBehaviour
     public void PlayAnimation()
     {
 
-        // Vérifie si l'ID existe avec n'importe quel état
+        // Vï¿½rifie si l'ID existe avec n'importe quel ï¿½tat
         if (id != null && !SaveManager.instance.twoStateContainer.TryGetState(id, out state) && eventContainer.RequirementsGood())
         {
             eventStarted = true;
             StartCoroutine(RoutinePlayAnimation());
         }
-        // Ne pas mettre d'ID pour les events générés
+        // Ne pas mettre d'ID pour les events gï¿½nï¿½rï¿½s
         else if (id == null)
         {
             eventStarted = true;
@@ -67,21 +67,22 @@ public class EventPlayer : MonoBehaviour
 
     void ResetActions()
     {
-        // Considérer l'événement comme effectué
-        if(id != null)
+        // Considrer l'vnement comme effectu
+        if (id != null)
             SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(id, true);
 
+        PlayerManager.instance.isEventPlaying = false;
         PlayerManager.instance.player.GetComponent<PlayerAnimation>().off = false;
         PlayerManager.instance.player.GetComponent<Stats>().canMove = true;
         Time.timeScale = 1f;
         MeteoManager.instance.SetTime(true);
         SoundManager.instance.PlayMusic(MeteoManager.instance.actualScene.music);
         MeteoManager.instance.SetSceneFilter();
-        
-        if(removeObjectWhenEventEnd)
+
+        if (removeObjectWhenEventEnd)
             gameObject.SetActive(false);
 
-        if(MeteoManager.instance.actualScene.playerCantOpenInventory)
+        if (MeteoManager.instance.actualScene.playerCantOpenInventory)
         {
             InventoryManager.instance.canOpenInventory = false;
             QuestManager.instance.canOpenQuests = false;
@@ -97,6 +98,7 @@ public class EventPlayer : MonoBehaviour
 
     IEnumerator RoutinePlayAnimation()
     {
+        PlayerManager.instance.isEventPlaying = true;
         // Clone eventContainer
         EventContainer clonedEventContainer = ScriptableObjectUtility.Clone(eventContainer);
 
@@ -107,7 +109,7 @@ public class EventPlayer : MonoBehaviour
             InventoryManager.instance.canOpenInventory = false;
             QuestManager.instance.canOpenQuests = false;
 
-            // Vérifiez et jouez le son si non null
+            // Vï¿½rifiez et jouez le son si non null
             if (actualEvent.sound != null)
             {
                 SoundManager.instance.PlayUISound(actualEvent.sound, 1.0f);
@@ -153,7 +155,7 @@ public class EventPlayer : MonoBehaviour
                         }
                     }
 
-                    yield return new WaitForSecondsRealtime(1); // durée d'une émotion
+                    yield return new WaitForSecondsRealtime(1); // durï¿½e d'une ï¿½motion
                 }
                 else if (actualEvent.pnjType == PnjEventType.SPEAK)
                 {
@@ -166,7 +168,7 @@ public class EventPlayer : MonoBehaviour
                 }
                 else if (actualEvent.pnjType == PnjEventType.ANIM)
                 {
-                    // idText est recyclé pour correspondre à l'animation
+                    // idText est recyclï¿½ pour correspondre ï¿½ l'animation
                     AnimPNJ(clonedEventContainer, actualEvent.idPnj, actualEvent.idText, actualEvent.lastSpriteStay);
                 }
                 else if (actualEvent.pnjType == PnjEventType.REMOVE)
@@ -198,7 +200,7 @@ public class EventPlayer : MonoBehaviour
                         }
                     }
 
-                    // Tous les monstres restants sont détruits ici
+                    // Tous les monstres restants sont dï¿½truits ici
                     foreach (var monsterContainer in clonedEventContainer.monsterContainer)
                     {
                         if (monsterContainer.monster != null)
@@ -219,7 +221,7 @@ public class EventPlayer : MonoBehaviour
 
                     playerAnim.off = true;
 
-                    
+
 
                 }
             }
@@ -289,21 +291,21 @@ public class EventPlayer : MonoBehaviour
                 GameObject targetObject = GameObject.Find(actualEvent.targetObjectName);
                 if (targetObject == null)
                 {
-                    Debug.LogWarning($"Objet '{actualEvent.targetObjectName}' non trouvé.");
+                    Debug.LogWarning($"Objet '{actualEvent.targetObjectName}' non trouvï¿½.");
                     yield break;
                 }
 
                 Component targetComponent = targetObject.GetComponent(actualEvent.componentType);
                 if (targetComponent == null)
                 {
-                    Debug.LogWarning($"Composant '{actualEvent.componentType}' non trouvé sur '{actualEvent.targetObjectName}'.");
+                    Debug.LogWarning($"Composant '{actualEvent.componentType}' non trouvï¿½ sur '{actualEvent.targetObjectName}'.");
                     yield break;
                 }
 
-                // Récupérer toutes les méthodes avec le nom donné
+                // Rï¿½cupï¿½rer toutes les mï¿½thodes avec le nom donnï¿½
                 MethodInfo[] methods = targetComponent.GetType().GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
-                // Vérifier si des paramètres sont fournis
+                // Vï¿½rifier si des paramï¿½tres sont fournis
                 object[] parsedParams = actualEvent.parameters
                     .Select(param =>
                     {
@@ -311,7 +313,7 @@ public class EventPlayer : MonoBehaviour
                         if (float.TryParse(param, out float floatValue)) return (object)floatValue;
                         if (bool.TryParse(param, out bool boolValue)) return (object)boolValue;
 
-                        // Cas spéciaux pour Color
+                        // Cas spï¿½ciaux pour Color
                         if (param.StartsWith("Color."))
                         {
                             var colorProp = typeof(Color).GetProperty(param.Substring(6), BindingFlags.Static | BindingFlags.Public);
@@ -323,7 +325,7 @@ public class EventPlayer : MonoBehaviour
                     .ToArray();
 
 
-                // Trouver la méthode qui correspond exactement aux types des paramètres
+                // Trouver la mï¿½thode qui correspond exactement aux types des paramï¿½tres
                 MethodInfo method = methods.FirstOrDefault(m =>
                     m.Name == actualEvent.methodName &&
                     m.GetParameters().Length == parsedParams.Length &&
@@ -335,11 +337,11 @@ public class EventPlayer : MonoBehaviour
 
                 if (method == null)
                 {
-                    Debug.LogWarning($"Méthode '{actualEvent.methodName}' avec les paramètres spécifiés non trouvée sur {targetComponent.name}");
+                    Debug.LogWarning($"Mï¿½thode '{actualEvent.methodName}' avec les paramï¿½tres spï¿½cifiï¿½s non trouvï¿½e sur {targetComponent.name}");
                     yield break;
                 }
 
-                // Exécution de la méthode
+                // Exï¿½cution de la mï¿½thode
                 method.Invoke(targetComponent, parsedParams);
             }
             else if (actualEvent.eventType == EventType.BOOK)
@@ -354,7 +356,7 @@ public class EventPlayer : MonoBehaviour
                     yield return null;
                 }
 
-                // Vérifie si l'événement suivant est aussi un BOOK
+                // Vï¿½rifie si l'ï¿½vï¿½nement suivant est aussi un BOOK
                 int currentIndex = clonedEventContainer.eventsList.IndexOf(actualEvent);
                 bool isNextEventBook = currentIndex + 1 < clonedEventContainer.eventsList.Count &&
                                        clonedEventContainer.eventsList[currentIndex + 1].eventType == EventType.BOOK;
@@ -366,9 +368,9 @@ public class EventPlayer : MonoBehaviour
             }
             else if (actualEvent.eventType == EventType.CINEMATIC)
             {
-                    yield return CinematicRoutine(actualEvent);
+                yield return CinematicRoutine(actualEvent);
             }
-                yield return null;
+            yield return null;
         }
 
         ResetActions();
@@ -402,7 +404,7 @@ public class EventPlayer : MonoBehaviour
 
             foreach (var textID in frame.texts)
             {
-                if(textID.textID != "")
+                if (textID.textID != "")
                 {
                     SoundManager.instance.PlayUISound(textID.sound, 1);
                     bool bubbleFinished = false;
@@ -421,7 +423,7 @@ public class EventPlayer : MonoBehaviour
                     SoundManager.instance.PlayUISound(textID.sound, 1);
                     yield return new WaitForSecondsRealtime(textID.duration);
                 }
-                
+
             }
         }
 
@@ -458,18 +460,18 @@ public class EventPlayer : MonoBehaviour
         {
             string monsterID = id[i];
 
-            // Chercher d'abord un GameObject existant dans la scène
+            // Chercher d'abord un GameObject existant dans la scï¿½ne
             GameObject existingMonster = GameObject.Find(monsterID);
 
             if (existingMonster != null)
             {
-                // Utiliser l'entité existante
-                if(position.Count > 0)
+                // Utiliser l'entitï¿½ existante
+                if (position.Count > 0)
                     existingMonster.transform.position = (Vector2)transform.position + position[i];
 
                 existingMonster.SetActive(true);
 
-                // Créer un nouveau MonsterContainer pour cette entité existante
+                // Crï¿½er un nouveau MonsterContainer pour cette entitï¿½ existante
                 MonsterContainer newMonsterContainer = new MonsterContainer
                 {
                     id = monsterID,
@@ -481,16 +483,16 @@ public class EventPlayer : MonoBehaviour
                 eventContainer.monsterContainer.Add(newMonsterContainer);
 
                 // Effet visuel du spawn
-                if(position.Count > 0)
+                if (position.Count > 0)
                     Instantiate(cloudPrefab, (Vector2)transform.position + position[i], Quaternion.identity);
 
-                // Réinitialiser la vie si c'est un boss
+                // Rï¿½initialiser la vie si c'est un boss
                 if (existingMonster.GetComponent<Stats>() && existingMonster.GetComponent<Stats>().entityType == EntityType.Boss)
                 {
                     existingMonster.GetComponent<LifeManager>().life = existingMonster.GetComponent<Stats>().health;
                 }
 
-                Debug.Log($"Entité existante trouvée et utilisée: {monsterID}");
+                Debug.Log($"Entitï¿½ existante trouvï¿½e et utilisï¿½e: {monsterID}");
             }
             else
             {
@@ -515,7 +517,7 @@ public class EventPlayer : MonoBehaviour
 
                 if (!found)
                 {
-                    Debug.LogWarning($"Aucune entité trouvée avec l'ID: {monsterID}");
+                    Debug.LogWarning($"Aucune entitï¿½ trouvï¿½e avec l'ID: {monsterID}");
                 }
             }
         }
@@ -548,12 +550,12 @@ public class EventPlayer : MonoBehaviour
 
     public void MoveCamera(GameObject cam, Vector2 relativePosition, float duration)
     {
-        // Utiliser la caméra par défaut si aucune n'est fournie
+        // Utiliser la camï¿½ra par dï¿½faut si aucune n'est fournie
         if (cam == null)
         {
             if (CameraManager.instance == null || CameraManager.instance.defaultVirtualCamera == null)
             {
-                Debug.LogError("Aucune caméra fournie et aucune caméra par défaut trouvée.");
+                Debug.LogError("Aucune camï¿½ra fournie et aucune camï¿½ra par dï¿½faut trouvï¿½e.");
                 return;
             }
 
@@ -621,7 +623,7 @@ public class EventPlayer : MonoBehaviour
 
     void AnimPNJ(EventContainer eventContainer, List<string> id, string animationName, bool lastSpriteStay)
     {
-        // Vérification que les containers nécessaires existent
+        // Vï¿½rification que les containers nï¿½cessaires existent
         if (eventContainer == null || eventContainer.pnjContainer == null || id == null)
             return;
 
@@ -638,7 +640,7 @@ public class EventPlayer : MonoBehaviour
                     if (playerAnim != null) playerAnim.off = true;
                     if (objAnim != null) objAnim.PlayAnimation(animationName, lastSpriteStay);
                 }
-                continue; // Passer à l'ID suivant si c'était le player
+                continue; // Passer ï¿½ l'ID suivant si c'ï¿½tait le player
             }
 
             // Traitement des autres PNJs
@@ -646,7 +648,7 @@ public class EventPlayer : MonoBehaviour
             {
                 if (eventContainer.pnjContainer[i].id == idPnj)
                 {
-                    // Vérifier que le PNJ et son gameObject existent
+                    // Vï¿½rifier que le PNJ et son gameObject existent
                     if (eventContainer.pnjContainer[i].pnj != null &&
                         eventContainer.pnjContainer[i].pnj.gameObject != null)
                     {
@@ -664,7 +666,7 @@ public class EventPlayer : MonoBehaviour
     void SpawnCamera(EventContainer eventContainer, Vector2 position)
     {
         Vector3 relativePosition = (Vector3)transform.position + (Vector3)position;
-        relativePosition.z = -10f; // Assurez-vous que la caméra est bien en arrière des objets
+        relativePosition.z = -10f; // Assurez-vous que la camï¿½ra est bien en arriï¿½re des objets
 
         eventContainer.camera = Instantiate(eventContainer.camera, relativePosition, Quaternion.identity);
     }
@@ -749,7 +751,7 @@ public class EventPlayer : MonoBehaviour
             }
         }
 
-        // Attendre que toutes les coroutines soient terminées
+        // Attendre que toutes les coroutines soient terminï¿½es
         foreach (Coroutine coroutine in activeCoroutines)
         {
             yield return coroutine;
@@ -767,7 +769,7 @@ public class EventPlayer : MonoBehaviour
         }
 
         bool wasKinematic = rb2d.isKinematic;
-        rb2d.isKinematic = true; // Désactiver la physique temporairement
+        rb2d.isKinematic = true; // Dï¿½sactiver la physique temporairement
 
         while (elapsedTime < duration)
         {
@@ -788,7 +790,7 @@ public class EventPlayer : MonoBehaviour
         if (pnj != null && rb2d != null)
         {
             rb2d.MovePosition(targetPos);
-            rb2d.isKinematic = wasKinematic; // Restaurer l'état initial
+            rb2d.isKinematic = wasKinematic; // Restaurer l'ï¿½tat initial
         }
     }
 

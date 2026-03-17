@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         playerInputActions = PlayerManager.instance.playerInputActions;
 
-        // Obtenir la référence au SpecialAttackController
+        // Obtenir la rï¿½fï¿½rence au SpecialAttackController
         specialAttackController = GetComponent<SpecialAttackController>();
     }
 
@@ -96,9 +96,9 @@ public class PlayerController : MonoBehaviour
         Collider2D[] playerColliders = GetComponents<Collider2D>();
         List<Collider2D> ignoredColliders = new List<Collider2D>();
         List<Stats> entitiesBeingDodged = new List<Stats>();
-        List<GameObject> projectilesBeingDodged = new List<GameObject>(); // Tracker les projectiles séparément
+        List<GameObject> projectilesBeingDodged = new List<GameObject>(); // Tracker les projectiles sï¿½parï¿½ment
 
-        // Trouver tous les objets à désactiver temporairement
+        // Trouver tous les objets ï¿½ dï¿½sactiver temporairement
         foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>())
         {
             Collider2D otherCol = obj.GetComponent<Collider2D>();
@@ -118,9 +118,9 @@ public class PlayerController : MonoBehaviour
                 foreach (var playerCol in playerColliders)
                     Physics2D.IgnoreCollision(playerCol, otherCol, true);
                 ignoredColliders.Add(otherCol);
-                projectilesBeingDodged.Add(obj); // Ajouter à la liste des projectiles
+                projectilesBeingDodged.Add(obj); // Ajouter ï¿½ la liste des projectiles
 
-                // Vérification immédiate pour les projectiles déjà proches
+                // Vï¿½rification immï¿½diate pour les projectiles dï¿½jï¿½ proches
                 if (IsPlayerOverlappingEntityByDistance(obj))
                 {
                     PlayerManager.instance.DodgeTime();
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
         while (elapsedTime < dodgeDuration)
         {
-            // Vérifier les entités
+            // Vï¿½rifier les entitï¿½s
             foreach (Stats entityStats in entitiesBeingDodged)
             {
                 if (entityStats != null && entityStats.doingAttack && !alreadyDodgedEntities.Contains(entityStats))
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // Vérifier les projectiles (utiliser la distance car les collisions sont désactivées)
+            // Vï¿½rifier les projectiles (utiliser la distance car les collisions sont dï¿½sactivï¿½es)
             foreach (GameObject projectile in projectilesBeingDodged)
             {
                 if (projectile != null && !alreadyDodgedProjectiles.Contains(projectile))
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
         stats.isVulnerable = true;
         isDodging = false;
 
-        // Réactiver les collisions
+        // Rï¿½activer les collisions
         foreach (Collider2D playerCol in playerColliders)
         {
             foreach (Collider2D ignoredCol in ignoredColliders)
@@ -186,18 +186,18 @@ public class PlayerController : MonoBehaviour
         Destroy(dodgeInterfaceInstance);
     }
 
-    // Version améliorée de la détection par distance
+    // Version amï¿½liorï¿½e de la dï¿½tection par distance
     private bool IsPlayerOverlappingEntityByDistance(GameObject entity)
     {
         if (entity == null) return false;
 
         float overlapDistance = 0.5f;
 
-        // Essayer d'obtenir la taille réelle du collider pour une détection plus précise
+        // Essayer d'obtenir la taille rï¿½elle du collider pour une dï¿½tection plus prï¿½cise
         Collider2D entityCollider = entity.GetComponent<Collider2D>();
         if (entityCollider != null)
         {
-            // Utiliser les bounds du collider pour une détection plus précise
+            // Utiliser les bounds du collider pour une dï¿½tection plus prï¿½cise
             float entityRadius = Mathf.Max(entityCollider.bounds.size.x, entityCollider.bounds.size.y) / 2f;
             overlapDistance = entityRadius + 0.3f; // Ajouter une petite marge
         }
@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
         return distance <= overlapDistance;
     }
 
-    // Alternative : Détection par bounds (plus précise que la distance)
+    // Alternative : Dï¿½tection par bounds (plus prï¿½cise que la distance)
     private bool IsPlayerOverlappingEntityByBounds(GameObject entity)
     {
         if (entity == null) return false;
@@ -217,7 +217,7 @@ public class PlayerController : MonoBehaviour
 
         if (entityCollider == null || playerCollider == null) return false;
 
-        // Vérifier si les bounds se chevauchent
+        // Vï¿½rifier si les bounds se chevauchent
         bool overlapping = playerCollider.bounds.Intersects(entityCollider.bounds);
 
 
@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    // Méthode avec raycast (pour détecter même à travers les collisions désactivées)
+    // Mï¿½thode avec raycast (pour dï¿½tecter mï¿½me ï¿½ travers les collisions dï¿½sactivï¿½es)
     private bool IsPlayerOverlappingEntityByRaycast(GameObject entity)
     {
         Vector2 directionToEntity = (entity.transform.position - transform.position).normalized;
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    // Coroutine pour mettre à jour la scrollbar
+    // Coroutine pour mettre ï¿½ jour la scrollbar
     IEnumerator UpdateScrollbar()
     {
         float elapsedTime = 0f;
@@ -294,7 +294,11 @@ public class PlayerController : MonoBehaviour
             {
                 case ToolType.BOW:
                     if (!stats.isBowShooting && PlayerManager.instance.GetSpecialItem(SpecialItemType.ARROW).nb > 0 && SpecialObjectsManager.instance.actualObject.equiped)
+                    {
                         specialObjects.ShootBow(currentDirection);
+                        SealMomentumManager momentum = GetComponent<SealMomentumManager>();
+                        if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnBowUsing);
+                    }
                     break;
                 case ToolType.PICKAXE:
                     if (!specialObjects.isPickaxing && SpecialObjectsManager.instance.actualObject.equiped)
@@ -331,8 +335,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 lastAttackPosition;
     bool lastAttackTouchEnemy = false;
     float holdAttackTime = 0f;
-    private bool holdAttackRegistered = false; // Nouvelle variable pour s'assurer que RegisterInput(HoldAttack) n'est exécuté qu'une fois
-    private bool releaseAttackRegistered = false; // Nouvelle variable pour s'assurer que RegisterInput(ReleaseAttack) n'est exécuté qu'une fois
+    private bool holdAttackRegistered = false; // Nouvelle variable pour s'assurer que RegisterInput(HoldAttack) n'est exï¿½cutï¿½ qu'une fois
+    private bool releaseAttackRegistered = false; // Nouvelle variable pour s'assurer que RegisterInput(ReleaseAttack) n'est exï¿½cutï¿½ qu'une fois
 
     public bool CanAttack
     {
@@ -356,7 +360,7 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        // Si le bouton d'attaque est enfoncé et que le joueur peut attaquer
+        // Si le bouton d'attaque est enfoncï¿½ et que le joueur peut attaquer
         if (playerInputActions.Gameplay.Attack.triggered && CanAttack)
         {
             SpecialAttack specialAttack = specialAttackController.RegisterInput(PlayerInputAction.Attack);
@@ -365,7 +369,7 @@ public class PlayerController : MonoBehaviour
                 ExecuteSpecialAttack(specialAttack.attackName);
                 return;
             }
-            // Sinon, exécuter l'attaque normale uniquement si le joueur n'est pas déjà en train d'attaquer
+            // Sinon, exï¿½cuter l'attaque normale uniquement si le joueur n'est pas dï¿½jï¿½ en train d'attaquer
             else if (!isAttacking)
             {
                 lastAttackPosition = transform.position;
@@ -374,8 +378,8 @@ public class PlayerController : MonoBehaviour
                 isHoldingAttack = true;
                 attackAnimationCompleted = false;
                 holdAttackTime = 0f;
-                holdAttackRegistered = false; // Réinitialiser le flag de HoldAttack
-                releaseAttackRegistered = false; // Réinitialiser le flag de ReleaseAttack
+                holdAttackRegistered = false; // Rï¿½initialiser le flag de HoldAttack
+                releaseAttackRegistered = false; // Rï¿½initialiser le flag de ReleaseAttack
                 actualSpeed = 0;
                 soundContainer.PlaySound("Attack", 1);
                 soundContainer.PlaySound("SwordSlash", 2);
@@ -387,13 +391,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Gérer l'attaque maintenue
+        // Gï¿½rer l'attaque maintenue
         if (PlayerManager.instance.GetSpecialAttack("BigSlash").isAvailable && playerInputActions.Gameplay.Attack.IsPressed() && !isAttacking)
         {
             if (isHoldingAttack && attackAnimationCompleted)
             {
                 holdAttackTime += Time.deltaTime;
-                actualSpeed = 0; // Maintenir la vitesse à 0 pendant l'attaque maintenue
+                actualSpeed = 0; // Maintenir la vitesse ï¿½ 0 pendant l'attaque maintenue
 
                 // Instancier le prefab uniquement si on a maintenu au moins 1 seconde et que ce n'est pas encore fait
                 if (holdAttackTime >= 1f && !holdAttackRegistered)
@@ -410,18 +414,18 @@ public class PlayerController : MonoBehaviour
                     holdAttackRegistered = true;
                 }
 
-                // Jouer l'animation appropriée en fonction de la direction
+                // Jouer l'animation appropriï¿½e en fonction de la direction
                 UpdateHoldAttackAnimation();
             }
 
         }
-        // Dans la méthode Attack(), partie 'else' lorsque le bouton est relâché
+        // Dans la mï¿½thode Attack(), partie 'else' lorsque le bouton est relï¿½chï¿½
         else
         {
-            // Si le bouton est relâché, arrêter l'attaque maintenue
+            // Si le bouton est relï¿½chï¿½, arrï¿½ter l'attaque maintenue
             if (isHoldingAttack)
             {
-                // Si l'attaque a été maintenue pendant au moins 1 seconde et que ReleaseAttack n'a pas encore été enregistré
+                // Si l'attaque a ï¿½tï¿½ maintenue pendant au moins 1 seconde et que ReleaseAttack n'a pas encore ï¿½tï¿½ enregistrï¿½
                 if (holdAttackTime >= 1.0f && !releaseAttackRegistered && attackAnimationCompleted)
                 {
                     SpecialAttack specialAttack = specialAttackController.RegisterInput(PlayerInputAction.ReleaseAttack);
@@ -432,17 +436,17 @@ public class PlayerController : MonoBehaviour
                     {
                         ExecuteSpecialAttack(specialAttack.attackName);
                         releaseAttackRegistered = true;
-                        // Ne pas restaurer la vitesse ici, car l'attaque spéciale va s'en charger
+                        // Ne pas restaurer la vitesse ici, car l'attaque spï¿½ciale va s'en charger
                     }
                     else
                     {
-                        // Si aucune attaque spéciale n'est déclenchée, restaurer la vitesse
+                        // Si aucune attaque spï¿½ciale n'est dï¿½clenchï¿½e, restaurer la vitesse
                         actualSpeed = stats.speed;
                     }
                 }
                 else
                 {
-                    // Si l'attaque a été maintenue moins d'une seconde ou que l'animation initiale n'est pas terminée
+                    // Si l'attaque a ï¿½tï¿½ maintenue moins d'une seconde ou que l'animation initiale n'est pas terminï¿½e
                     if (attackAnimationCompleted)
                     {
                         actualSpeed = stats.speed;
@@ -452,7 +456,7 @@ public class PlayerController : MonoBehaviour
 
                 isHoldingAttack = false;
                 holdAttackRegistered = false;
-                releaseAttackRegistered = false; // Réinitialiser ce drapeau ici
+                releaseAttackRegistered = false; // Rï¿½initialiser ce drapeau ici
             }
         }
 
@@ -462,12 +466,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Nouvelle méthode pour mettre à jour l'animation d'attaque maintenue
+    // Nouvelle mï¿½thode pour mettre ï¿½ jour l'animation d'attaque maintenue
     void UpdateHoldAttackAnimation()
     {
         ObjectAnimation animator = GetComponent<ObjectAnimation>();
 
-        // Déterminer quelle animation jouer en fonction de la direction
+        // Dï¿½terminer quelle animation jouer en fonction de la direction
         if (Mathf.Abs(lastAttackDirection.x) > Mathf.Abs(lastAttackDirection.y))
         {
             // Attaque horizontale
@@ -489,10 +493,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Méthode pour exécuter une attaque spéciale quand un combo est complété
+    // Mï¿½thode pour exï¿½cuter une attaque spï¿½ciale quand un combo est complï¿½tï¿½
     private void ExecuteSpecialAttack(string attackName)
     {
-        // Faire ici les différentes attaques spéciales 
+        // Faire ici les diffï¿½rentes attaques spï¿½ciales 
         switch (attackName)
         {
             case "Tornado":
@@ -522,7 +526,7 @@ public class PlayerController : MonoBehaviour
         if (SpecialEquipementManager.instance.CheckPower(SpecialPower.LASER))
             SpecialEquipementManager.instance.LaunchLaser();
 
-        bool attackBlocked = false; // drapeau pour stopper l’attaque
+        bool attackBlocked = false; // drapeau pour stopper lï¿½attaque
 
         while (elapsedTime < 0.15f)
         {
@@ -535,7 +539,7 @@ public class PlayerController : MonoBehaviour
                 {
                     Stats entityStats = hitEntity.GetComponent<Stats>();
 
-                    // Si une entité bloque les attaques du joueur
+                    // Si une entitï¿½ bloque les attaques du joueur
                     if (entityStats != null && entityStats.blockPlayerAttack)
                     {
                         attackBlocked = true;
@@ -579,7 +583,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // Si une entité a bloqué l’attaque on arrête tout immédiatement
+            // Si une entitï¿½ a bloquï¿½ lï¿½attaque on arrï¿½te tout immï¿½diatement
             if (attackBlocked)
             {
                 isAttacking = false;
@@ -599,7 +603,7 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        // Fin normale de l’attaque
+        // Fin normale de lï¿½attaque
         isAttacking = false;
         attackAnimationCompleted = true;
         actualSpeed = stats.speed;
@@ -609,30 +613,30 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 GetAttackDirection()
     {
-        // Si le joueur est en train de maintenir une attaque, retourner la direction fixée au début de l'attaque
+        // Si le joueur est en train de maintenir une attaque, retourner la direction fixï¿½e au dï¿½but de l'attaque
         if (isHoldingAttack)
         {
             return lastAttackDirection;
         }
 
-        // Obtenir les entrées de mouvement
+        // Obtenir les entrï¿½es de mouvement
         Vector2 moveInput = playerInputActions.Gameplay.Move.ReadValue<Vector2>();
         float horizontalInput = moveInput.x;
         float verticalInput = moveInput.y;
 
-        // Si le joueur ne bouge pas, retourner la dernière direction d'attaque
+        // Si le joueur ne bouge pas, retourner la derniï¿½re direction d'attaque
         if (horizontalInput == 0 && verticalInput == 0)
         {
             return lastAttackDirection;
         }
 
-        // Calculer la direction d'attaque en fonction des entrées
+        // Calculer la direction d'attaque en fonction des entrï¿½es
         Vector2 attackDirection = Vector2.right * horizontalInput + Vector2.up * verticalInput;
 
         // Normaliser la direction d'attaque
         attackDirection.Normalize();
 
-        // Mettre à jour la dernière direction d'attaque
+        // Mettre ï¿½ jour la derniï¿½re direction d'attaque
         lastAttackDirection = attackDirection;
 
         return attackDirection;
@@ -651,10 +655,10 @@ public class PlayerController : MonoBehaviour
 
         isMoving = (horizontalInput != 0 || verticalInput != 0);
 
-        // Calculer le vecteur de déplacement en fonction des entrées
+        // Calculer le vecteur de dï¿½placement en fonction des entrï¿½es
         Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized * actualSpeed;
 
-        // Déplacer le personnage en ajustant directement sa position
+        // Dï¿½placer le personnage en ajustant directement sa position
         transform.position += (Vector3)movement * Time.fixedDeltaTime * 2;
     }
 
@@ -672,14 +676,14 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 moveInput = playerInputActions.Gameplay.Move.ReadValue<Vector2>();
 
-            // Ajouter une zone morte pour éviter les micro-mouvements
+            // Ajouter une zone morte pour ï¿½viter les micro-mouvements
             float deadZone = 0.2f;
 
             // Si l'input est trop faible, on ignore
             if (moveInput.magnitude < deadZone)
                 return;
 
-            // Déterminer la direction principale en comparant les valeurs absolues
+            // Dï¿½terminer la direction principale en comparant les valeurs absolues
             float absX = Mathf.Abs(moveInput.x);
             float absY = Mathf.Abs(moveInput.y);
 
@@ -707,7 +711,7 @@ public class PlayerController : MonoBehaviour
                     currentDirection = 1; // Left
                 }
             }
-            // Si les deux sont égaux, on privilégie la direction avec la plus grande valeur absolue
+            // Si les deux sont ï¿½gaux, on privilï¿½gie la direction avec la plus grande valeur absolue
             else
             {
                 if (absX >= absY)
@@ -726,21 +730,21 @@ public class PlayerController : MonoBehaviour
     public bool cantFall = false;
     public Transform safeTeleportation;
 
-    // Nouveau système pour éviter les téléportations simultanées
+    // Nouveau systï¿½me pour ï¿½viter les tï¿½lï¿½portations simultanï¿½es
     private bool isTeleporting = false;
 
-    // NOUVEAU : Backup de sécurité mis à jour régulièrement
+    // NOUVEAU : Backup de sï¿½curitï¿½ mis ï¿½ jour rï¿½guliï¿½rement
     private Vector3 safeBackupPosition = Vector3.zero;
     private float lastSafeBackupTime = 0f;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        // Éviter de traiter si on est en train de téléporter
+        // ï¿½viter de traiter si on est en train de tï¿½lï¿½porter
         if (isTeleporting) return;
 
         ObjectPerspective perspective = GetComponent<ObjectPerspective>();
 
-        // Vérifie si le tag commence par "Hole"
+        // Vï¿½rifie si le tag commence par "Hole"
         if (collision.gameObject.tag.StartsWith("Hole") && !fallIntoHole && !cantFall)
         {
             string tag = collision.gameObject.tag;
@@ -761,10 +765,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // NOUVEAU : Méthode pour mettre à jour la position de backup
+    // NOUVEAU : Mï¿½thode pour mettre ï¿½ jour la position de backup
     private void UpdateSafeBackupPosition()
     {
-        // Mettre à jour toutes les 0.3 secondes quand le joueur n'est pas en train de tomber
+        // Mettre ï¿½ jour toutes les 0.3 secondes quand le joueur n'est pas en train de tomber
         if (!fallIntoHole && !isTeleporting && Time.time - lastSafeBackupTime > 0.3f)
         {
             // Si on a un safeTeleportation valide, l'utiliser comme backup
@@ -772,7 +776,7 @@ public class PlayerController : MonoBehaviour
             {
                 safeBackupPosition = safeTeleportation.position;
             }
-            // Sinon, utiliser la position actuelle si elle est sûre (pas dans un trou)
+            // Sinon, utiliser la position actuelle si elle est sï¿½re (pas dans un trou)
             else if (!IsPositionInHole(transform.position))
             {
                 safeBackupPosition = transform.position;
@@ -782,7 +786,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // NOUVEAU : Vérifier si une position est dans un trou
+    // NOUVEAU : Vï¿½rifier si une position est dans un trou
     private bool IsPositionInHole(Vector3 position)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.1f);
@@ -796,7 +800,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    // MODIFIÉ : Appeler UpdateSafeBackupPosition dans Update ou LateUpdate
+    // MODIFIï¿½ : Appeler UpdateSafeBackupPosition dans Update ou LateUpdate
     private void LateUpdate()
     {
         UpdateSafeBackupPosition();
@@ -809,15 +813,15 @@ public class PlayerController : MonoBehaviour
         Vector2 playerCenter = (Vector2)transform.position + playerCollider.offset;
         holeWorldPosition = Vector3.zero;
 
-        // Chercher le trou dans les tuiles adjacentes pour gérer tous les cas d'approche
+        // Chercher le trou dans les tuiles adjacentes pour gï¿½rer tous les cas d'approche
         Vector3Int playerTilePosition = tilemap.WorldToCell(playerCenter);
         Vector3Int holeTilePosition = Vector3Int.zero;
         bool holeFound = false;
 
-        // Vérifier la tuile actuelle et les tuiles adjacentes (priorité aux directions cardinales)
+        // Vï¿½rifier la tuile actuelle et les tuiles adjacentes (prioritï¿½ aux directions cardinales)
         Vector3Int[] tilesToCheck = {
         playerTilePosition,                    // Centre
-        playerTilePosition + Vector3Int.down,  // Bas (priorité pour approche par le haut)
+        playerTilePosition + Vector3Int.down,  // Bas (prioritï¿½ pour approche par le haut)
         playerTilePosition + Vector3Int.up,    // Haut
         playerTilePosition + Vector3Int.left,  // Gauche
         playerTilePosition + Vector3Int.right  // Droite
@@ -842,17 +846,17 @@ public class PlayerController : MonoBehaviour
         // Calculer la distance entre le centre du joueur et le centre de la tuile du trou
         float distanceToHoleCenter = Vector2.Distance(playerCenter, holeTileCenter);
 
-        // Obtenir la taille d'une tuile pour déterminer si le joueur est suffisamment centré
+        // Obtenir la taille d'une tuile pour dï¿½terminer si le joueur est suffisamment centrï¿½
         Vector3 cellSize = tilemap.cellSize;
         float maxDistanceFromCenter = Mathf.Min(cellSize.x, cellSize.y) * 0.4f; // 40% de la taille de tuile
 
-        // Le joueur doit être suffisamment proche du centre du trou pour tomber
+        // Le joueur doit ï¿½tre suffisamment proche du centre du trou pour tomber
         if (distanceToHoleCenter <= maxDistanceFromCenter)
         {
             return true;
         }
 
-        // Alternative : vérifier si suffisamment du collider du joueur est au-dessus du trou
+        // Alternative : vï¿½rifier si suffisamment du collider du joueur est au-dessus du trou
         return CheckColliderOverlapWithHole(tilemap, holeTilePosition, playerCenter, radius);
     }
 
@@ -866,12 +870,12 @@ public class PlayerController : MonoBehaviour
         if (tilemap.WorldToCell(playerCenter) == holeTilePosition)
             pointsOverHole++;
 
-        // Test des points sur le périmètre du collider
+        // Test des points sur le pï¿½rimï¿½tre du collider
         for (int i = 0; i < numPoints; i++)
         {
             float angle = (i * 2 * Mathf.PI) / numPoints;
             Vector2 testPoint = playerCenter + new Vector2(
-                Mathf.Cos(angle) * radius * 0.8f, // 80% du rayon pour éviter les bords
+                Mathf.Cos(angle) * radius * 0.8f, // 80% du rayon pour ï¿½viter les bords
                 Mathf.Sin(angle) * radius * 0.8f
             );
 
@@ -892,12 +896,12 @@ public class PlayerController : MonoBehaviour
             fallIntoHole = true;
             isTeleporting = true;
 
-            // CRITIQUE : Capturer IMMÉDIATEMENT toutes les destinations possibles
-            // avec ordre de priorité clair
+            // CRITIQUE : Capturer IMMï¿½DIATEMENT toutes les destinations possibles
+            // avec ordre de prioritï¿½ clair
             Vector3 destinationPosition = Vector3.zero;
             bool hasValidDestination = false;
 
-            // 1. Priorité : safeTeleportation (si valide et loin du trou)
+            // 1. Prioritï¿½ : safeTeleportation (si valide et loin du trou)
             if (safeTeleportation != null)
             {
                 float distanceFromHole = Vector3.Distance(
@@ -933,7 +937,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // 3. Fallback : lastPosition (ancien système)
+            // 3. Fallback : lastPosition (ancien systï¿½me)
             if (!hasValidDestination && lastPosition != Vector3.zero)
             {
                 float distanceFromHole = Vector3.Distance(
@@ -949,17 +953,17 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // 4. Dernier recours : chercher une position sûre autour du trou
+            // 4. Dernier recours : chercher une position sï¿½re autour du trou
             if (!hasValidDestination)
             {
-                Debug.LogError("FallIntoHole: Aucune destination valide! Recherche d'une position sûre...");
+                Debug.LogError("FallIntoHole: Aucune destination valide! Recherche d'une position sï¿½re...");
                 destinationPosition = FindSafePositionAroundHole(holeCenter);
                 hasValidDestination = destinationPosition != Vector3.zero;
             }
 
             if (!hasValidDestination)
             {
-                Debug.LogError("FallIntoHole: IMPOSSIBLE de trouver une destination sûre! Annulation de la chute.");
+                Debug.LogError("FallIntoHole: IMPOSSIBLE de trouver une destination sï¿½re! Annulation de la chute.");
                 fallIntoHole = false;
                 isTeleporting = false;
                 return;
@@ -969,7 +973,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // NOUVEAU : Trouver une position sûre autour du trou
+    // NOUVEAU : Trouver une position sï¿½re autour du trou
     private Vector3 FindSafePositionAroundHole(Vector3 holeCenter)
     {
         // Tester 8 directions autour du trou
@@ -989,12 +993,12 @@ public class PlayerController : MonoBehaviour
             Vector3 testPos = new Vector3(holeCenter.x + dir.x, holeCenter.y + dir.y, transform.position.z);
             if (!IsPositionInHole(testPos))
             {
-                Debug.Log($"Position sûre trouvée: {testPos}");
+                Debug.Log($"Position sï¿½re trouvï¿½e: {testPos}");
                 return testPos;
             }
         }
 
-        Debug.LogError("Impossible de trouver une position sûre!");
+        Debug.LogError("Impossible de trouver une position sï¿½re!");
         return Vector3.zero;
     }
 
@@ -1030,11 +1034,11 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.5f);
 
-        // Téléportation vers la destination pré-calculée
-        Debug.Log($"Téléportation vers: {destinationPosition}");
+        // Tï¿½lï¿½portation vers la destination prï¿½-calculï¿½e
+        Debug.Log($"Tï¿½lï¿½portation vers: {destinationPosition}");
         playerTransform.position = destinationPosition;
 
-        // Animation de réapparition
+        // Animation de rï¿½apparition
         elapsedTime = 0f;
         duration = 0.25f;
 
@@ -1052,12 +1056,12 @@ public class PlayerController : MonoBehaviour
         stats.canMove = true;
         fallIntoHole = false;
 
-        // Mettre à jour le backup avec la nouvelle position sûre
+        // Mettre ï¿½ jour le backup avec la nouvelle position sï¿½re
         safeBackupPosition = destinationPosition;
         lastSafeBackupTime = Time.time;
 
-        // CRITIQUE : Petit délai avant de permettre une nouvelle chute
-        // Cela évite que le joueur retombe immédiatement s'il réapparaît près d'un trou
+        // CRITIQUE : Petit dï¿½lai avant de permettre une nouvelle chute
+        // Cela ï¿½vite que le joueur retombe immï¿½diatement s'il rï¿½apparaï¿½t prï¿½s d'un trou
         yield return new WaitForSeconds(0.3f);
 
         isTeleporting = false;

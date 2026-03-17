@@ -133,10 +133,10 @@ public class Event : ScriptableObject
     public List<Vector2> spawnMonsterPosition;
 
     // SPECIAL METHODS
-    public string targetObjectName; // Nom de l'objet sur lequel exécuter la méthode
+    public string targetObjectName; // Nom de l'objet sur lequel exï¿½cuter la mï¿½thode
     public string componentType;    // Type du composant (ex: "LifeManager")
-    public string methodName;       // Nom de la méthode (ex: "TakeDamage")
-    public string[] parameters;     // Paramètres sous forme de chaînes (ex: ["4"])
+    public string methodName;       // Nom de la mï¿½thode (ex: "TakeDamage")
+    public string[] parameters;     // Paramï¿½tres sous forme de chaï¿½nes (ex: ["4"])
 
     //BOOK
     public Sprite bookPage;

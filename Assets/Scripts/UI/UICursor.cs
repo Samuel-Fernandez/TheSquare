@@ -9,30 +9,30 @@ public class UICursor : MonoBehaviour
     void Start()
     {
         cursorRectTransform = cursor.GetComponent<RectTransform>();
-        cursor.SetActive(false); // Désactiver le curseur au démarrage
+        cursor.SetActive(false); // Dï¿½sactiver le curseur au dï¿½marrage
     }
 
     void Update()
     {
-        // Obtenir le bouton actuellement sélectionné par l'EventSystem
+        // Obtenir le bouton actuellement sï¿½lectionnï¿½ par l'EventSystem
         GameObject selectedButton = EventSystem.current.currentSelectedGameObject;
 
         if (selectedButton != null)
         {
-            // Activer le curseur et le placer sur le bouton sélectionné
+            // Activer le curseur et le placer sur le bouton sï¿½lectionnï¿½
             cursor.SetActive(true);
             RectTransform selectedRectTransform = selectedButton.GetComponent<RectTransform>();
 
             if (selectedRectTransform != null)
             {
                 cursorRectTransform.position = selectedRectTransform.position;
-                // Optionnel : Ajuster la taille du curseur pour correspondre à la taille du bouton
+                // Optionnel : Ajuster la taille du curseur pour correspondre ï¿½ la taille du bouton
                 cursorRectTransform.sizeDelta = selectedRectTransform.sizeDelta;
             }
         }
         else
         {
-            // Désactiver le curseur si aucun bouton n'est sélectionné
+            // Dï¿½sactiver le curseur si aucun bouton n'est sï¿½lectionnï¿½
             cursor.SetActive(false);
         }
     }

@@ -6,7 +6,7 @@ public class EventRequirementBehiavor : MonoBehaviour
     public EventContainer eventRequirement;
     public GameObject cloudPrefab;
     public bool ifRequirementGoodActivate = false;
-    public float initializationDelay = 0.1f; // Délai avant la première vérification
+    public float initializationDelay = 0.1f; // Dï¿½lai avant la premiï¿½re vï¿½rification
 
     private bool childrenVisible = false;
     private bool hasInitialized = false;
@@ -27,7 +27,7 @@ public class EventRequirementBehiavor : MonoBehaviour
 
     private void Start()
     {
-        // Démarrer l'initialisation avec délai
+        // Dï¿½marrer l'initialisation avec dï¿½lai
         if (!isInitializing)
         {
             StartCoroutine(DelayedInitialization());
@@ -38,10 +38,10 @@ public class EventRequirementBehiavor : MonoBehaviour
     {
         isInitializing = true;
 
-        // Attendre un petit délai pour laisser les objets s'initialiser
+        // Attendre un petit dï¿½lai pour laisser les objets s'initialiser
         yield return new WaitForSeconds(initializationDelay);
 
-        // Forcer la première vérification
+        // Forcer la premiï¿½re vï¿½rification
         bool requirementOK = RequirementsGood();
         bool shouldBeActive = (requirementOK == ifRequirementGoodActivate);
 
@@ -64,7 +64,7 @@ public class EventRequirementBehiavor : MonoBehaviour
 
         Debug.Log($"[RequirementLogic] requirementOK={requirementOK}, ifRequirementGoodActivate={ifRequirementGoodActivate}, shouldBeActive={shouldBeActive}");
 
-        // Vérifier si l'état change
+        // Vï¿½rifier si l'ï¿½tat change
         if (childrenVisible != shouldBeActive)
         {
             ApplyStateToChildren(shouldBeActive);

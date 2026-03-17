@@ -18,7 +18,7 @@ MonoBehaviour:
   stopTime: 0
   playerCanMove: 0
   stopMusic: 0
-  position: {x: -0.5, y: -6}
+  position: {x: -0.5, y: -4}
   duration: 0.5
   cinematicContainer: []
   alreadyOnScene: 0

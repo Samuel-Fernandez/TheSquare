@@ -12,6 +12,9 @@ public class SealUI : MonoBehaviour
 
     [Header("TextMeshPro")]
     public TextMeshProUGUI uiTitle;
+
+    public TextMeshProUGUI uiWarning;
+
     public TextMeshProUGUI specialItemTitle;
     public TextMeshProUGUI addButonText;
     public TextMeshProUGUI neutralText;
@@ -48,7 +51,7 @@ public class SealUI : MonoBehaviour
     public GameObject buttonSpecialItems;
 
     List<GameObject> buttonList = new List<GameObject>();
-    
+
     GameObject selectedButton;
 
 
@@ -62,20 +65,24 @@ public class SealUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            ToggleUI();
-        }
-
         craftSealButton.SetActive(ConditionShowCraftButton());
         addButton.SetActive(!ConditionShowCraftButton());
     }
 
     public void ToggleSealDescription()
     {
-        // Afficher l'UI de description du sceau cr��
+        // Afficher l'UI de description du sceau créé
         sealResume.SetActive(!sealResume.activeSelf);
-        sealDescription.GetComponent<SealDescriptionUI>().SetUI();
+
+        if (sealResume.activeSelf)
+        {
+            Time.timeScale = 0f;
+            sealDescription.GetComponent<SealDescriptionUI>().SetUI();
+        }
+        else if (!sealUI.activeSelf)
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     public void CraftSeal()
@@ -141,7 +148,7 @@ public class SealUI : MonoBehaviour
     {
         foreach (var button in sealButtons)
         {
-            if(!button.GetComponent<SealButtonSpecialItems>().item)
+            if (!button.GetComponent<SealButtonSpecialItems>().item)
             {
                 button.GetComponent<SealButtonSpecialItems>().InitButton(selectedButton.GetComponent<SealButtonSpecialItems>().item);
                 button.GetComponent<SealButtonSpecialItems>().ChangeColor();
@@ -163,7 +170,12 @@ public class SealUI : MonoBehaviour
 
         if (sealUI.activeSelf)
         {
+            Time.timeScale = 0f;
             InitUI();
+        }
+        else if (!sealResume.activeSelf)
+        {
+            Time.timeScale = 1f;
         }
     }
 
@@ -176,6 +188,8 @@ public class SealUI : MonoBehaviour
 
     public void InitUI()
     {
+        uiWarning.gameObject.SetActive(SealManager.instance.equippedSeal != null);
+        uiWarning.text = LocalizationManager.instance.GetText("UI", "SEAL_UI_WARNING");
         addButonText.text = LocalizationManager.instance.GetText("UI", "ADD");
         uiTitle.text = LocalizationManager.instance.GetText("UI", "SEAL_UI_TITLE");
         selectedButton = null;
@@ -230,7 +244,7 @@ public class SealUI : MonoBehaviour
     public void ShowItemDescription()
     {
         ResetItemDescription();
-        
+
         if (selectedButton)
         {
             SpecialItems item = selectedButton.GetComponent<SealButtonSpecialItems>().item;
@@ -306,13 +320,13 @@ public class SealUI : MonoBehaviour
         foreach (var item in PlayerManager.instance.runtimeSpecialItems)
         {
             // Conditions pour afficher l'item
-            if(item.nb >= item.numberRequiredForSealing && item.numberRequiredForSealing != 0)
+            if (item.nb >= item.numberRequiredForSealing && item.numberRequiredForSealing != 0)
             {
                 GameObject buttonInstance = Instantiate(buttonSpecialItems, buttonContainers.transform);
                 buttonInstance.GetComponent<SealButtonSpecialItems>().InitButton(item);
                 buttonList.Add(buttonInstance);
             }
-            
+
         }
     }
 

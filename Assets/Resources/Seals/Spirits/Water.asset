@@ -14,39 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   essenceID: water
   essenceColor: {r: 0.39811313, g: 0.69444185, b: 1, a: 0}
-  icon: {fileID: 0}
-  votesResonance: 0
-  votesBuff: 3
+  primaryBaseSprite: {fileID: 21300000, guid: 4e6cf74228519734ca6855c214fcb75d, type: 3}
+  votesBuff: 0
   votesAura: 2
   votesMomentum: 1
-  hpPerPercent: 0.005
+  hpPerPercent: 0
   forcePerPercent: 0
-  defensePerPercent: 0.005
+  defensePerPercent: 0
   speedPercent: 0
   critDmg: 0
   critChance: 0
   bowSpeedPercent: 0
   pickaxeSpeedPercent: 0
-  dodgeChancePercent: 0.005
-  resonanceEffect: 2
-  radiusPerPercent: 0.005
-  activationChancePerPercent: 0.05
-  effectMagnitudePerPercent: 0
-  auraRadiusPerPercent: 0.005
-  auraDurationPerPercent: 0.05
-  auraTickRatePerPercent: 0
-  playerHpRegenPerPercent: 0.02
-  playerDefensePerPercent: 0.02
+  dodgeChancePercent: 0
+  auraRadiusPerPercent: 10
+  auraDurationPerPercent: 10
+  auraTickRatePerPercent: 1.5
+  playerHpRegenPerPercent: 0.25
+  playerDefensePerPercent: 0
   playerStrengthPerPercent: 0
-  enemySlowPerPercent: 0.002
+  enemySlowPerPercent: 0
   enemyDamagePerPercent: 0
   momentumTrigger: 3
-  maxStacksPerPercent: 0.02
-  stackDecayPerPercent: 0.02
+  maxStacksPerPercent: 5
+  stackDecayPerPercent: 8
   forceStackPerPercent: 0
-  defenseStackPerPercent: 0.001
-  speedStackPerPercent: 0
-  squareCoinStackPerPercent: 0.001
+  defenseStackPerPercent: 0.1
+  speedStackPerPercent: 0.1
+  squareCoinStackPerPercent: 0
   bowSpeedPercentStackPerPercent: 0
   pickaxeSpeedPercentStackPerPercent: 0
-  dodgeChancePercentStackPerPercent: 0.001
+  dodgeChancePercentStackPerPercent: 0

@@ -14,37 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   essenceID: neutral
   essenceColor: {r: 1, g: 1, b: 1, a: 0}
-  icon: {fileID: 21300000, guid: 5dc63fccfd37e514b9896689d04d27f0, type: 3}
-  votesResonance: 1
+  primaryBaseSprite: {fileID: 21300000, guid: 4e6cf74228519734ca6855c214fcb75d, type: 3}
   votesBuff: 1
   votesAura: 1
   votesMomentum: 1
-  hpPerPercent: 0
-  forcePerPercent: 0
-  defensePerPercent: 0
-  speedPercent: 0
+  hpPerPercent: 0.1
+  forcePerPercent: 0.1
+  defensePerPercent: 0.1
+  speedPercent: 0.1
   critDmg: 0
   critChance: 0
   bowSpeedPercent: 0
   pickaxeSpeedPercent: 0
   dodgeChancePercent: 0
-  resonanceEffect: 0
-  radiusPerPercent: 0
-  activationChancePerPercent: 0
-  effectMagnitudePerPercent: 0
-  auraRadiusPerPercent: 0
-  auraDurationPerPercent: 0
-  auraTickRatePerPercent: 0
-  playerHpRegenPerPercent: 0
+  auraRadiusPerPercent: 5
+  auraDurationPerPercent: 5
+  auraTickRatePerPercent: 1
+  playerHpRegenPerPercent: 0.1
   playerDefensePerPercent: 0
   playerStrengthPerPercent: 0
   enemySlowPerPercent: 0
   enemyDamagePerPercent: 0
   momentumTrigger: 1
-  maxStacksPerPercent: 0
-  stackDecayPerPercent: 0
+  maxStacksPerPercent: 5
+  stackDecayPerPercent: 5
   forceStackPerPercent: 0
-  defenseStackPerPercent: 0
+  defenseStackPerPercent: 0.1
   speedStackPerPercent: 0
   squareCoinStackPerPercent: 0
   bowSpeedPercentStackPerPercent: 0

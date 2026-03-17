@@ -8,9 +8,9 @@ public class SceneChanger : MonoBehaviour
     public Vector2 newPosition;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player)
+        if (collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player)
         {
-            if(ScenesManager.instance.canTeleportPlayer)
+            if (ScenesManager.instance.canTeleportPlayer)
                 ScenesManager.instance.ChangeSceneObject(scene, newPosition);
         }
     }

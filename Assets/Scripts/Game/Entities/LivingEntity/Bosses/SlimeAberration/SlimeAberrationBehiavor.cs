@@ -51,7 +51,7 @@ public class SlimeAberrationBehiavor : MonoBehaviour
     {
         foreach (var item in activeSlimes)
         {
-            if(item != null)
+            if (item != null)
             {
                 Destroy(item);
             }
@@ -62,10 +62,10 @@ public class SlimeAberrationBehiavor : MonoBehaviour
 
     private void Update()
     {
-        if(bossBar)
+        if (bossBar)
             bossBar.GetComponent<BossBarUI>().UpdateBossLife(GetComponent<LifeManager>().life);
 
-        if(GetComponent<LifeManager>().life <= 0 && !death)
+        if (GetComponent<LifeManager>().life <= 0 && !death)
         {
             RemoveAllSlimes();
             GetComponent<LifeManager>().life = 1;
@@ -83,7 +83,7 @@ public class SlimeAberrationBehiavor : MonoBehaviour
 
     IEnumerator DeathSoundRoutine()
     {
-        while(true)
+        while (true)
         {
             GetComponent<SoundContainer>().PlaySound("Hurt", 1);
             yield return new WaitForSeconds(.5f);
@@ -97,25 +97,25 @@ public class SlimeAberrationBehiavor : MonoBehaviour
         if (eyeInstance)
         {
             eyeInstance.GetComponent<SlimeAberrationEyeBehiavor>().StopAllCoroutines();
-            if(eyeInstance.GetComponent<SlimeAberrationEyeBehiavor>().laserInstance != null)
+            if (eyeInstance.GetComponent<SlimeAberrationEyeBehiavor>().laserInstance != null)
                 Destroy(eyeInstance.GetComponent<SlimeAberrationEyeBehiavor>().laserInstance);
             Destroy(eyeInstance);
         }
 
 
         Destroy(gameObject);
-        
+
     }
 
-    // Sélectionne une attaque aléatoire pour le Slime Aberration
-    // en fonction d'une liste de probabilités définies.
+    // Sï¿½lectionne une attaque alï¿½atoire pour le Slime Aberration
+    // en fonction d'une liste de probabilitï¿½s dï¿½finies.
     private SlimeAberrationAttack ChooseRandomAttack()
     {
         List<(SlimeAberrationAttack, float)> attackChances = new List<(SlimeAberrationAttack, float)>();
 
         attackChances.Add((SlimeAberrationAttack.NONE, 5f));
-        
-        if(eyeInstance == null)
+
+        if (eyeInstance == null)
         {
             attackChances.Add((SlimeAberrationAttack.EYE_APPEAR, 30f));
             attackChances.Add((SlimeAberrationAttack.BOUNCE, 10f));
@@ -146,8 +146,8 @@ public class SlimeAberrationBehiavor : MonoBehaviour
         return SlimeAberrationAttack.NONE;
     }
 
-    // Supprime le boss de la scène
-    // Détruit l'UI associée (barre de vie) et l'objet du boss lui-même.
+    // Supprime le boss de la scï¿½ne
+    // Dï¿½truit l'UI associï¿½e (barre de vie) et l'objet du boss lui-mï¿½me.
     public void RemoveBoss()
     {
         Destroy(bossBar);
@@ -156,8 +156,8 @@ public class SlimeAberrationBehiavor : MonoBehaviour
 
     #region Coroutines
 
-    // Coroutine qui attend un délai aléatoire, puis choisit et lance une attaque
-    // Répète indéfiniment tant que le boss est actif
+    // Coroutine qui attend un dï¿½lai alï¿½atoire, puis choisit et lance une attaque
+    // Rï¿½pï¿½te indï¿½finiment tant que le boss est actif
     IEnumerator GetSlimeAberrationAttackRoutine()
     {
         while (true)
@@ -247,16 +247,16 @@ public class SlimeAberrationBehiavor : MonoBehaviour
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("LowHeight"))
                 continue;
 
-            // Ignorer les entités non-joueur
+            // Ignorer les entitï¿½s non-joueur
             Stats stats = hit.collider.GetComponent<Stats>();
             if (stats != null && stats.entityType != EntityType.Player)
                 continue;
 
-            // Ligne de vue claire si le joueur est touché
+            // Ligne de vue claire si le joueur est touchï¿½
             if (hit.collider.gameObject == PlayerManager.instance.player)
                 return true;
 
-            // Obstruction détectée
+            // Obstruction dï¿½tectï¿½e
             return false;
         }
 
@@ -279,15 +279,15 @@ public class SlimeAberrationBehiavor : MonoBehaviour
     }
     IEnumerator EyeAppearRoutine(int x = 666, int y = 666)
     {
-        // Rayon max dans lequel l'œil peut apparaître
+        // Rayon max dans lequel l'ï¿½il peut apparaï¿½tre
         float radius = 1f;
 
-        // Position aléatoire dans un cercle autour du transform
+        // Position alï¿½atoire dans un cercle autour du transform
         Vector2 randomOffset = Random.insideUnitCircle * radius;
-        
+
         Vector3 spawnPosition = (x == 666 && y == 666) ? transform.position + new Vector3(randomOffset.x, randomOffset.y, 0) : transform.position + new Vector3(x, y, 0);
 
-        // Création de l'œil
+        // Crï¿½ation de l'ï¿½il
         this.eyeInstance = Instantiate(eyePrefab, spawnPosition, Quaternion.identity);
         eyeInstance.GetComponent<SlimeAberrationEyeBehiavor>().Init(gameObject);
 
@@ -317,12 +317,12 @@ public class SlimeAberrationBehiavor : MonoBehaviour
 
     IEnumerator EyeDisappearRoutine()
     {
-        // Supprimer le collider si présent
+        // Supprimer le collider si prï¿½sent
         CircleCollider2D col = GetComponent<CircleCollider2D>();
         if (col != null)
             Destroy(col);
 
-        // Supprimer l'œil
+        // Supprimer l'ï¿½il
         eyeInstance.GetComponent<SlimeAberrationEyeBehiavor>().Remove();
 
         yield return new WaitForSeconds(.5f);
@@ -338,7 +338,7 @@ public class SlimeAberrationBehiavor : MonoBehaviour
     IEnumerator BounceRoutine()
     {
         float jumpHeight = 0.5f;    // Hauteur du saut
-        float duration = 1f;        // Durée totale du saut
+        float duration = 1f;        // Durï¿½e totale du saut
         float elapsed = 0f;
 
         // On prend le transform du sprite uniquement
@@ -352,7 +352,7 @@ public class SlimeAberrationBehiavor : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
 
-            // Courbe sinusoïdale pour un mouvement fluide
+            // Courbe sinusoï¿½dale pour un mouvement fluide
             float yOffset = Mathf.Sin(t * Mathf.PI) * jumpHeight;
 
             spriteTransform.localPosition = new Vector3(startPos.x, startPos.y + yOffset, startPos.z);
@@ -360,7 +360,7 @@ public class SlimeAberrationBehiavor : MonoBehaviour
             yield return null;
         }
 
-        // S'assure qu'on termine bien à la position de départ
+        // S'assure qu'on termine bien ï¿½ la position de dï¿½part
         spriteTransform.localPosition = startPos;
 
         GetComponent<SoundContainer>().PlaySound("Land", 2);
@@ -374,7 +374,7 @@ public class SlimeAberrationBehiavor : MonoBehaviour
                 Quaternion.identity
             );
 
-            // Génération d'une target aléatoire : 
+            // Gï¿½nï¿½ration d'une target alï¿½atoire : 
             // y = position actuelle - 10
             // x = position actuelle + random(-6, 6)
             Vector2 randomTarget = new Vector2(
@@ -382,7 +382,7 @@ public class SlimeAberrationBehiavor : MonoBehaviour
                 transform.position.y - 10f
             );
 
-            // Vitesse aléatoire entre 5 et 8
+            // Vitesse alï¿½atoire entre 5 et 8
             float randomSpeed = Random.Range(5f, 8f);
 
             launchedSlimeballInstance

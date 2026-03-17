@@ -34,7 +34,7 @@ public class Stats : MonoBehaviour
 
     public bool doingAttack = false;
 
-    // Interromp l'attaque à l'épée du joueur
+    // Interromp l'attaque ï¿½ l'ï¿½pï¿½e du joueur
     public bool blockPlayerAttack;
 
     private void Start()
@@ -56,12 +56,12 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        if (entityType == EntityType.Player && (HasEquipmentChanged() || PlayerLevels.instance.lvlChanged || AnvilUpgradeManager.instance.itemUpgraded))
+        if (entityType == EntityType.Player && (HasEquipmentChanged() || PlayerLevels.instance.lvlChanged || AnvilUpgradeManager.instance.itemUpgraded || (SealManager.instance != null && SealManager.instance.sealChanged)))
         {
             UpdateStats();
         }
 
-        if(tempTime != MeteoManager.instance.time)
+        if (tempTime != MeteoManager.instance.time)
         {
             tempTime = MeteoManager.instance.time;
             canMove = MeteoManager.instance.time;
@@ -86,13 +86,16 @@ public class Stats : MonoBehaviour
         return changed;
     }
 
-    private void UpdateStats()
+    public void UpdateStats()
     {
         if (PlayerLevels.instance.lvlChanged)
             PlayerLevels.instance.lvlChanged = false;
 
-        if(AnvilUpgradeManager.instance.itemUpgraded)
+        if (AnvilUpgradeManager.instance.itemUpgraded)
             AnvilUpgradeManager.instance.itemUpgraded = false;
+
+        if (SealManager.instance != null && SealManager.instance.sealChanged)
+            SealManager.instance.sealChanged = false;
 
         // Get the current life manager
         LifeManager lifeManager = GetComponent<LifeManager>();
@@ -133,11 +136,41 @@ public class Stats : MonoBehaviour
             }
         }
 
+        // Apply Seal Buffs
+        if (SealManager.instance != null && SealManager.instance.HasSealEquipped())
+        {
+            Seal seal = SealManager.instance.equippedSeal;
+            if (seal.isBuffActive)
+            {
+                health += Mathf.RoundToInt(health * seal.hpPercent);
+                strength += Mathf.RoundToInt(strength * seal.forcePercent);
+                defense += Mathf.RoundToInt(defense * seal.defensePercent);
+                speed += speed * seal.speedPercent;
+                critDamage += seal.critDmg;
+                critChance += seal.critChance;
+            }
+
+            if (seal.isMomentumActive)
+            {
+                SealMomentumManager momentum = GetComponent<SealMomentumManager>();
+                if (momentum != null)
+                {
+                    int stacks = momentum.currentStacks;
+                    strength += Mathf.RoundToInt(strength * (seal.forceStack * stacks));
+                    defense += Mathf.RoundToInt(defense * (seal.defenseStack * stacks));
+                    speed += speed * (seal.speedStack * stacks);
+                }
+            }
+        }
+
+        // S'assurer que la vie est toujours un multiple de 4
+        health = (health / 4) * 4;
+
         // Update the life value based on the new health
         lifeManager.life = Mathf.RoundToInt(currentHealthPercentage * health);
 
         // Notify player controller of speed change
-        if(playerController)
+        if (playerController)
             playerController.UpdateSpeed(speed);
     }
 

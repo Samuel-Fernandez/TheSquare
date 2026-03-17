@@ -14,7 +14,7 @@ public class SealButtonSpecialItems : MonoBehaviour
 
     [Header("Button Metadatas")]
     public SpecialItems item;
-    public GameObject concernedButton; // Petit bouton qui avait le specialitem concerné
+    public GameObject concernedButton; // Petit bouton qui avait le specialitem concernï¿½
 
 
     public void InitButton(SpecialItems item)
@@ -55,7 +55,7 @@ public class SealButtonSpecialItems : MonoBehaviour
 
         // Applique la couleur en gardant l'alpha complet
         Color essenceColor = maxEssence.essence.essenceColor;
-        essenceColor.a = 1f; // Force l'opacité à 100%
+        essenceColor.a = 1f; // Force l'opacitï¿½ ï¿½ 100%
         GetComponent<Image>().color = essenceColor;
     }
 

@@ -74,14 +74,14 @@ public class NewMonsterMovement : MonoBehaviour
 
     private void InitializeComponents()
     {
-        // Récupération des composants requis
+        // Rï¿½cupï¿½ration des composants requis
         stats = GetComponent<Stats>();
         objectAnim = GetComponent<ObjectAnimation>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         soundContainer = GetComponent<SoundContainer>();
         animator = GetComponent<Animator>();
 
-        // Récupération du joueur
+        // Rï¿½cupï¿½ration du joueur
         if (PlayerManager.instance != null && PlayerManager.instance.player != null)
         {
             target = PlayerManager.instance.player.transform;
@@ -97,7 +97,7 @@ public class NewMonsterMovement : MonoBehaviour
 
     private void InitializeMovement()
     {
-        // Démarrage des coroutines
+        // Dï¿½marrage des coroutines
         if (enableRandomMovement)
         {
             StartRandomMovement();
@@ -196,12 +196,12 @@ public class NewMonsterMovement : MonoBehaviour
     {
         if (direction == Vector3.zero) return;
 
-        // Vérifie si on suit un target précis
+        // Vï¿½rifie si on suit un target prï¿½cis
         if (target != null)
         {
             float distance = Vector3.Distance(transform.position, target.position);
 
-            // Ne rien faire si on est très proche de la cible
+            // Ne rien faire si on est trï¿½s proche de la cible
             if (distance < 0.05f)
             {
                 direction = Vector3.zero;
@@ -211,14 +211,15 @@ public class NewMonsterMovement : MonoBehaviour
 
         // Calcul de la vitesse actuelle
         float speedToUse = isInDetectionZone ? baseSpeed : (baseSpeed * randomMovementSpeed);
-        currentSpeed = speedToUse * speedMultiplier * (GetComponent<EntityEffects>().isSlimed ? 0.5f : 1f);
+        float auraSlow = GetComponent<EntityEffects>().isAuraSlowed ? (1f - GetComponent<EntityEffects>().auraSlowPercentage) : 1f;
+        currentSpeed = speedToUse * speedMultiplier * (GetComponent<EntityEffects>().isSlimed ? 0.5f : 1f) * auraSlow;
 
         // Application du mouvement
         transform.position += direction * currentSpeed * deltaTime;
     }
 
 
-    // Nouvelle méthode publique
+    // Nouvelle mï¿½thode publique
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
@@ -315,7 +316,7 @@ public class NewMonsterMovement : MonoBehaviour
 
         while (!isInDetectionZone && enableRandomMovement)
         {
-            // Génération d'une direction aléatoire
+            // Gï¿½nï¿½ration d'une direction alï¿½atoire
             float randomX = Random.Range(-1f, 1f);
             float randomY = Random.Range(-1f, 1f);
             direction = new Vector3(randomX, randomY, 0).normalized;

@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   essenceID: vegetal
   essenceColor: {r: 0.08275537, g: 0.7433963, b: 0.10792264, a: 0}
-  icon: {fileID: 0}
-  votesResonance: 0
-  votesBuff: 1
-  votesAura: 3
-  votesMomentum: 2
-  hpPerPercent: 0.01
+  primaryBaseSprite: {fileID: 21300000, guid: 4e6cf74228519734ca6855c214fcb75d, type: 3}
+  votesBuff: 2
+  votesAura: 0
+  votesMomentum: 1
+  hpPerPercent: 0.25
   forcePerPercent: 0
   defensePerPercent: 0
   speedPercent: 0
@@ -28,25 +27,21 @@ MonoBehaviour:
   bowSpeedPercent: 0
   pickaxeSpeedPercent: 0
   dodgeChancePercent: 0
-  resonanceEffect: 1
-  radiusPerPercent: 0.03
-  activationChancePerPercent: 0.01
-  effectMagnitudePerPercent: 0
-  auraRadiusPerPercent: 0.05
-  auraDurationPerPercent: 0.1
-  auraTickRatePerPercent: -0.01
-  playerHpRegenPerPercent: 0.1
+  auraRadiusPerPercent: 0
+  auraDurationPerPercent: 0
+  auraTickRatePerPercent: 0
+  playerHpRegenPerPercent: 0
   playerDefensePerPercent: 0
   playerStrengthPerPercent: 0
   enemySlowPerPercent: 0
   enemyDamagePerPercent: 0
-  momentumTrigger: 3
-  maxStacksPerPercent: 0.25
-  stackDecayPerPercent: 0.1
+  momentumTrigger: 4
+  maxStacksPerPercent: 10
+  stackDecayPerPercent: 10
   forceStackPerPercent: 0
   defenseStackPerPercent: 0
   speedStackPerPercent: 0
-  squareCoinStackPerPercent: 0
+  squareCoinStackPerPercent: 0.1
   bowSpeedPercentStackPerPercent: 0
-  pickaxeSpeedPercentStackPerPercent: 0
+  pickaxeSpeedPercentStackPerPercent: 0.1
   dodgeChancePercentStackPerPercent: 0

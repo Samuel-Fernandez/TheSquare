@@ -76,11 +76,11 @@ public class SaveManager : MonoBehaviour
         string json = File.ReadAllText(saveFilePath);
         SaveData existingData = JsonUtility.FromJson<SaveData>(json);
 
-        // Mettre à jour uniquement les SpecialObjects
+        // Mettre ï¿½ jour uniquement les SpecialObjects
         existingData.specialObjectsData.availableObjects = SpecialObjectsManager.instance.availableObjects;
         existingData.specialObjectsData.actualObject = SpecialObjectsManager.instance.actualObject;
 
-        // Réécrire la sauvegarde complète avec les SpecialObjects mis à jour
+        // Rï¿½ï¿½crire la sauvegarde complï¿½te avec les SpecialObjects mis ï¿½ jour
         string updatedJson = JsonUtility.ToJson(existingData, true);
         File.WriteAllText(saveFilePath, updatedJson);
 
@@ -108,10 +108,10 @@ public class SaveManager : MonoBehaviour
         string json = File.ReadAllText(saveFilePath);
         SaveData existingData = JsonUtility.FromJson<SaveData>(json);
 
-        // Mettre à jour uniquement les donjons
+        // Mettre ï¿½ jour uniquement les donjons
         existingData.dungeons = DungeonManager.instance.dungeonDB;
 
-        // Réécrire la sauvegarde complète avec les donjons mis à jour
+        // Rï¿½ï¿½crire la sauvegarde complï¿½te avec les donjons mis ï¿½ jour
         string updatedJson = JsonUtility.ToJson(existingData, true);
         File.WriteAllText(saveFilePath, updatedJson);
 
@@ -165,8 +165,8 @@ public class SaveManager : MonoBehaviour
                 PlayerLevels.instance.armorerReputation,
                 PlayerLevels.instance.healerReputation,
                 new MarketData(MarketManager.instance.timerNewMarket),
-                new StatsData(StatsManager.instance.monsterKilled, 
-                    StatsManager.instance.locationFound, 
+                new StatsData(StatsManager.instance.monsterKilled,
+                    StatsManager.instance.locationFound,
                     StatsManager.instance.pnjSpoken),
                 new QuestContainerData(QuestManager.instance.waitingQuests),
                 new QuestContainerData(QuestManager.instance.completedQuests),
@@ -175,7 +175,9 @@ public class SaveManager : MonoBehaviour
                 PlayerManager.instance.player.GetComponent<ObjectPerspective>().level,
                 MonsterSpawnManager.instance.GetAllSpawnerStates(),
                 TeleportationManager.instance.teleportationsAvailable,
-                MapManager.instance.targetCoords));
+                MapManager.instance.targetCoords,
+                SealManager.instance != null ? SealManager.instance.GetSaveData() : new SealManagerData(),
+                KeyItemManager.instance != null ? KeyItemManager.instance.GetAcquiredKeyItems() : new List<string>()));
 
         File.WriteAllText(saveFilePath, json);
 
@@ -198,7 +200,7 @@ public class SaveManager : MonoBehaviour
         return File.Exists(saveFilePath);
     }
 
-    public void Load(bool equipement = true, bool eventID = true, bool soulData = true, bool specialObjects = true, bool mines = true, bool meteo = true, bool market = true, bool stats = true, bool quests = true, bool dungeon = true, bool specialAttacks = true, bool spawnerState = true, bool teleportationAvailable = true, bool targetCoords = true)
+    public void Load(bool equipement = true, bool eventID = true, bool soulData = true, bool specialObjects = true, bool mines = true, bool meteo = true, bool market = true, bool stats = true, bool quests = true, bool dungeon = true, bool specialAttacks = true, bool spawnerState = true, bool teleportationAvailable = true, bool targetCoords = true, bool keyItems = true)
     {
         if (File.Exists(saveFilePath))
         {
@@ -215,7 +217,7 @@ public class SaveManager : MonoBehaviour
             PlayerLevels.instance.healerReputation = saveData.healerReputation;
             PlayerManager.instance.player.GetComponent<LifeManager>().life = saveData.playerLife;
 
-            // NE PAS CHANGER LA POSITION ICI - sera fait après le changement de scène
+            // NE PAS CHANGER LA POSITION ICI - sera fait aprï¿½s le changement de scï¿½ne
             // PlayerManager.instance.player.transform.position = saveData.position;
 
             PlayerManager.instance.player.GetComponent<Stats>().money = saveData.money;
@@ -227,6 +229,16 @@ public class SaveManager : MonoBehaviour
             if (targetCoords)
             {
                 MapManager.instance.targetCoords = saveData.targetCoords;
+            }
+
+            if (SealManager.instance != null)
+            {
+                SealManager.instance.LoadSaveData(saveData.sealManagerData);
+            }
+
+            if (keyItems && KeyItemManager.instance != null)
+            {
+                KeyItemManager.instance.LoadAcquiredKeyItems(saveData.acquiredKeyItems);
             }
 
             if (teleportationAvailable)
@@ -330,11 +342,11 @@ public class SaveManager : MonoBehaviour
                     DungeonManager.instance.uiDungeon.SetActive(false);
                 }
 
-                // Mise à jour de l'interface utilisateur
+                // Mise ï¿½ jour de l'interface utilisateur
                 DungeonManager.instance.UpdateUI();
             }
 
-            // Changer la scène ET la position en même temps
+            // Changer la scï¿½ne ET la position en mï¿½me temps
             ScenesManager.instance.ChangeSceneObject(saveData.sceneName, saveData.position, 1);
             Debug.Log("Load successful!");
         }
@@ -350,14 +362,28 @@ public class SaveManager : MonoBehaviour
 
         foreach (var saveItem in saveSpecialItems)
         {
-            // Crée une nouvelle instance de SpecialItems pour chaque SaveSpecialItem
-            SpecialItems newItem = ScriptableObject.CreateInstance<SpecialItems>();
-            newItem.type = saveItem.type;
-            newItem.nb = saveItem.nb;
-            newItem.name = saveItem.name;
-            newItem.itemId = saveItem.id;
+            Item originalItem = PlayerManager.instance.database.GetItemByID(saveItem.id);
+            if (originalItem != null && originalItem is SpecialItems)
+            {
+                SpecialItems newItem = ScriptableObjectUtility.Clone((SpecialItems)originalItem);
+                newItem.itemId = saveItem.id;
+                newItem.type = saveItem.type;
+                newItem.nb = saveItem.nb;
+                newItem.name = saveItem.name;
 
-            specialItems.Add(newItem);
+                specialItems.Add(newItem);
+            }
+            else
+            {
+                // Fallback
+                SpecialItems newItem = ScriptableObject.CreateInstance<SpecialItems>();
+                newItem.type = saveItem.type;
+                newItem.nb = saveItem.nb;
+                newItem.name = saveItem.name;
+                newItem.itemId = saveItem.id;
+
+                specialItems.Add(newItem);
+            }
         }
 
         return specialItems;
@@ -369,7 +395,7 @@ public class SaveManager : MonoBehaviour
 
         foreach (var saveItem in saveSpecialItems)
         {
-            // Crée une nouvelle instance de SpecialItems pour chaque SaveSpecialItem
+            // Crï¿½e une nouvelle instance de SpecialItems pour chaque SaveSpecialItem
             SpecialItems newItem = ScriptableObjectUtility.Clone((SpecialItems)PlayerManager.instance.database.GetItemByID(saveItem.id));
             newItem.itemId = saveItem.id;
             newItem.type = saveItem.type;
@@ -476,11 +502,11 @@ public struct StatsData
     public List<string> locationFound;
     public List<string> pnjSpoken;
 
-    public StatsData(List<MonsterKilled> monsterKilled , List<string> locationFound, List<string> pnjSpoken)
+    public StatsData(List<MonsterKilled> monsterKilled, List<string> locationFound, List<string> pnjSpoken)
     {
         this.monsterKilled = monsterKilled;
         this.locationFound = locationFound;
-        this.pnjSpoken = pnjSpoken;     
+        this.pnjSpoken = pnjSpoken;
     }
 
 }
@@ -496,8 +522,8 @@ public struct SaveSpecialItem
     public SaveSpecialItem(SpecialItemType type, int nb, string name, string id)
     {
         this.name = name;
-        this.type = type; // Corrigé : assigne le paramètre 'type' à 'this.type'
-        this.nb = nb;     // Assigne le paramètre 'nb' à 'this.nb'
+        this.type = type; // Corrigï¿½ : assigne le paramï¿½tre 'type' ï¿½ 'this.type'
+        this.nb = nb;     // Assigne le paramï¿½tre 'nb' ï¿½ 'this.nb'
         this.id = id;
     }
 
@@ -569,11 +595,15 @@ public struct SaveData
 
     public int playerLevelPerspective;
 
-    public List<SpawnerState> spawnerStates ;
+    public List<SpawnerState> spawnerStates;
 
     public List<TeleportationAvailable> teleportationsAvailable;
 
     public IntPair? targetCoords;
+
+    public SealManagerData sealManagerData;
+
+    public List<string> acquiredKeyItems;
 
     public SaveData(
         List<EquipementSlotData> equipementSlotData,
@@ -602,8 +632,10 @@ public struct SaveData
         int playerLevelPerspective,
         List<SpawnerState> spawnerState,
         List<TeleportationAvailable> teleportationsAvailable,
-        IntPair? targetCoords)
-        
+        IntPair? targetCoords,
+        SealManagerData sealManagerData,
+        List<string> acquiredKeyItems)
+
     {
         this.equipementSlotData = equipementSlotData;
         this.equippedSlotData = equippedSlotData;
@@ -632,6 +664,8 @@ public struct SaveData
         this.spawnerStates = spawnerState;
         this.teleportationsAvailable = teleportationsAvailable;
         this.targetCoords = targetCoords;
+        this.sealManagerData = sealManagerData;
+        this.acquiredKeyItems = acquiredKeyItems;
     }
 }
 
@@ -748,6 +782,30 @@ public struct EquipementSlotData
     }
 }
 
+[System.Serializable]
+public struct SaveSealData
+{
+    public List<string> originalItemIDs;
+
+    public SaveSealData(List<string> originalItemIDs)
+    {
+        this.originalItemIDs = originalItemIDs;
+    }
+}
+
+[System.Serializable]
+public struct SealManagerData
+{
+    public List<SaveSealData> createdSeals;
+    public int equippedSealIndex;
+
+    public SealManagerData(List<SaveSealData> createdSeals, int equippedSealIndex)
+    {
+        this.createdSeals = createdSeals;
+        this.equippedSealIndex = equippedSealIndex;
+    }
+}
+
 public class TwoStateContainer
 {
     private Dictionary<string, bool> permanentStates = new Dictionary<string, bool>();
@@ -785,7 +843,7 @@ public class TwoStateContainer
 
     public bool TryGetState(string id, out bool state)
     {
-        if (temporaryStates.TryGetValue(id, out state) ||  permanentStates.TryGetValue(id, out state))
+        if (temporaryStates.TryGetValue(id, out state) || permanentStates.TryGetValue(id, out state))
         {
             return true;
         }
@@ -795,7 +853,7 @@ public class TwoStateContainer
 
     public void Save(string filePath)
     {
-        // Enregistrer les états permanents
+        // Enregistrer les ï¿½tats permanents
         List<StateData> stateList = new List<StateData>();
 
         foreach (var kvp in permanentStates)
@@ -806,7 +864,7 @@ public class TwoStateContainer
         string json = JsonUtility.ToJson(new StateSaveData(stateList));
         File.WriteAllText(filePath, json);
 
-        // Supprimer tous les états temporaires après la sauvegarde
+        // Supprimer tous les ï¿½tats temporaires aprï¿½s la sauvegarde
         temporaryStates.Clear();
     }
 

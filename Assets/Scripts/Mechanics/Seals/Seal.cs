@@ -5,8 +5,13 @@ using UnityEngine;
 public class Seal : ScriptableObject
 {
     [Header("Identity")]
+    public List<string> originalItemIDs = new List<string>();
     public List<EssenceComposition> essenceComposition = new List<EssenceComposition>();
-    public Sprite sprite;
+
+    [Header("Visuals")]
+    public Sprite baseSprite;
+    public Color secondaryColor = Color.clear;
+    public Sprite archetypeSprite;
 
     [Header("Active Archetypes")]
     public bool isResonanceActive = false;
@@ -53,7 +58,7 @@ public class Seal : ScriptableObject
     public MomentumTriggerType momentumTrigger;
     public float maxStacks = 3f;
     public float stackDecay = 5f;
-    // % de la statistique concernée
+    // % de la statistique concernï¿½e
     public float forceStack = 0f;
     public float defenseStack = 0f;
     public float speedStack = 0f;
@@ -62,7 +67,7 @@ public class Seal : ScriptableObject
     public float pickaxeSpeedPercentStack = 0f;
     public float dodgeChancePercentStack = 0f;
 
-    // Génère le sceau à partir de 4 items spéciaux
+    // Gï¿½nï¿½re le sceau ï¿½ partir de 4 items spï¿½ciaux
     public void GenerateSeal(SpecialItems[] specialItems)
     {
         if (specialItems == null || specialItems.Length != 4)
@@ -74,12 +79,12 @@ public class Seal : ScriptableObject
         // Dictionnaire temporaire pour accumuler les pourcentages par essence
         Dictionary<Spirit, float> essenceAccumulator = new Dictionary<Spirit, float>();
 
-        // Pour chaque item spécial
+        // Pour chaque item spï¿½cial
         foreach (var item in specialItems)
         {
             if (item == null || item.essenceComposition == null) continue;
 
-            // Récupérer les essences normalisées de l'item
+            // Rï¿½cupï¿½rer les essences normalisï¿½es de l'item
             Dictionary<Spirit, float> itemEssences = item.GetNormalizedEssences();
 
             // Additionner chaque essence (on divise par 4 car on fait la moyenne)
@@ -108,17 +113,17 @@ public class Seal : ScriptableObject
             });
         }
 
-        // Optionnel : Trier par pourcentage décroissant pour plus de clarté
+        // Optionnel : Trier par pourcentage dï¿½croissant pour plus de clartï¿½
         essenceComposition.Sort((a, b) => b.percentage.CompareTo(a.percentage));
 
-        // Générer les stats du sceau basées sur cette composition
+        // Gï¿½nï¿½rer les stats du sceau basï¿½es sur cette composition
         GenerateSealStats();
     }
 
-    // Génère les statistiques du sceau basées sur la composition d'essences
+    // Gï¿½nï¿½re les statistiques du sceau basï¿½es sur la composition d'essences
     private void GenerateSealStats()
     {
-        // Réinitialiser toutes les stats
+        // Rï¿½initialiser toutes les stats
         ResetStats();
 
         // Pour chaque essence dans la composition
@@ -167,7 +172,21 @@ public class Seal : ScriptableObject
             dodgeChancePercentStack += spirit.dodgeChancePercentStackPerPercent * percent;
         }
 
-        // Déterminer l'archétype dominant et les effets associés
+        if (essenceComposition.Count > 0 && essenceComposition[0].essence != null)
+        {
+            baseSprite = essenceComposition[0].essence.primaryBaseSprite;
+        }
+
+        if (essenceComposition.Count > 1 && essenceComposition[1].essence != null)
+        {
+            secondaryColor = essenceComposition[1].essence.essenceColor;
+        }
+        else
+        {
+            secondaryColor = Color.clear;
+        }
+
+        // Dterminer l'archtype dominant et les effets associs
         DetermineArchetype();
 
         Debug.Log($"Seal generated with {essenceComposition.Count} essences");
@@ -211,13 +230,13 @@ public class Seal : ScriptableObject
 
     private void DetermineArchetype()
     {
-        // Réinitialiser les scores
+        // Rï¿½initialiser les scores
         resonanceScore = 0f;
         buffScore = 0f;
         auraScore = 0f;
         momentumScore = 0f;
 
-        // Calculer les scores de chaque archétype (somme pondérée des votes)
+        // Calculer les scores de chaque archï¿½type (somme pondï¿½rï¿½e des votes)
         foreach (var essenceComp in essenceComposition)
         {
             if (essenceComp.essence == null) continue;
@@ -231,13 +250,13 @@ public class Seal : ScriptableObject
             momentumScore += spirit.votesMomentum * weight;
         }
 
-        // Déterminer quels archétypes sont actifs
+        // Dï¿½terminer quels archï¿½types sont actifs
         isResonanceActive = resonanceScore >= 1.5f;
         isBuffActive = buffScore >= 1.5f;
         isAuraActive = auraScore >= 1.5f;
         isMomentumActive = momentumScore >= 1.5f;
 
-        // Définir les effets pour les archétypes actifs
+        // Dï¿½finir les effets pour les archï¿½types actifs
         if (isResonanceActive)
         {
             Spirit dominantSpirit = GetDominantSpiritForArchetype("Resonance");
@@ -252,7 +271,7 @@ public class Seal : ScriptableObject
                 momentumTrigger = dominantSpirit.momentumTrigger;
         }
 
-        // Log des archétypes actifs
+        // Log des archï¿½types actifs
         List<string> activeArchetypes = new List<string>();
         if (isResonanceActive) activeArchetypes.Add($"Resonance({resonanceScore:F2})");
         if (isBuffActive) activeArchetypes.Add($"Buff({buffScore:F2})");
@@ -269,7 +288,7 @@ public class Seal : ScriptableObject
         }
     }
 
-    private Spirit GetDominantSpiritForArchetype(string archetype)
+    public Spirit GetDominantSpiritForArchetype(string archetype)
     {
         Spirit dominant = null;
         float maxPercentage = 0f;
@@ -278,7 +297,7 @@ public class Seal : ScriptableObject
         {
             if (comp.essence == null) continue;
 
-            // Vérifier si cette essence a des votes pour cet archétype
+            // Vï¿½rifier si cette essence a des votes pour cet archï¿½type
             int votes = 0;
             switch (archetype)
             {

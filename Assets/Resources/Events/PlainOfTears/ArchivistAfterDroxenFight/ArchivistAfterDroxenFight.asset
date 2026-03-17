@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: ArchivistAfterDroxenFight
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 0}
+    id: Archivist
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 393699
+  eventsList:
+  - {fileID: 11400000, guid: a136bdbac4415414c9685b4083ac8c79, type: 2}
+  - {fileID: 11400000, guid: fc934c895d81bb44c9ba07c22ebf8dc7, type: 2}
+  - {fileID: 11400000, guid: c48997dfa2fd9384581887b3e2471318, type: 2}
+  - {fileID: 11400000, guid: bd670e6b60c3b8b4ab13e44d0c25b1c6, type: 2}
+  - {fileID: 11400000, guid: 9864813d2ccadd144ae57e9e059d620a, type: 2}
+  - {fileID: 11400000, guid: a222afcf22d48004ba8ed20f1bf8b1be, type: 2}
+  - {fileID: 11400000, guid: eac7a10d3af180e40b1f453841d793e1, type: 2}
+  - {fileID: 11400000, guid: 5960fe52d5ad9b44299e4118de8815af, type: 2}
+  - {fileID: 11400000, guid: e5e8d203ef5265743ae87d892c0a997a, type: 2}
+  - {fileID: 11400000, guid: d736a31286e2fe0429cefae9cda75431, type: 2}
+  - {fileID: 11400000, guid: 813de4b63ef2ea4409f2dd5e0ae1e563, type: 2}
+  - {fileID: 11400000, guid: fbf4e1fd4958d5e4ca6bb75309d2deed, type: 2}
+  - {fileID: 11400000, guid: c435544043404374b96b001ed865885b, type: 2}
+  - {fileID: 11400000, guid: f67627a97dd5d6a47a923928d189a137, type: 2}
+  - {fileID: 11400000, guid: 27f13a70714521b42865745c200101a6, type: 2}
+  requirements:
+  - requirementType: 3
+    sceneData: {fileID: 0}
+    pnjIDSpoken: 
+    eventRequired: {fileID: 11400000, guid: 083dd2eed66a9054fa51e94ecc8466f8, type: 2}
+    specialObject: 0
+    monsterRequired: {fileID: 0}
+    nbMonsterRequired: 0

@@ -195,6 +195,14 @@
     {
       "key": "DESERT_OF_ILLUSION_GUARDIAN_CAVE_SCENE",
       "value": "Guardian Cave - Desert"
+    },
+    {
+      "key": "RIVER_OF_DECLINE_EAST_SCENE",
+      "value": "River of Decline East"
+    },
+    {
+      "key": "MIRROR_LAKE_OF_MYLIA_REGION",
+      "value": "Mirror Lake of Mylia"
     }
   ]
 }

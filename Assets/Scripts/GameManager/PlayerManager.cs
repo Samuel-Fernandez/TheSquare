@@ -20,14 +20,13 @@ public class PlayerManager : MonoBehaviour
     public GameObject lifeUI;
 
     public bool isDogingTime = false;
-
-    
+    public bool isEventPlaying = false;
 
     void Start()
     {
         database.InitializeDataBase();
         InitializeSpecialItems();
-        InitializeSpecialAttacks(); // Initialisation des attaques spéciales runtime
+        InitializeSpecialAttacks(); // Initialisation des attaques spï¿½ciales runtime
     }
 
     public void TeleportPlayer(float x, float y)
@@ -37,42 +36,48 @@ public class PlayerManager : MonoBehaviour
 
     public void DodgeTime()
     {
+        if (player != null)
+        {
+            SealMomentumManager momentum = player.GetComponent<SealMomentumManager>();
+            if (momentum != null)
+                momentum.OnTrigger(MomentumTriggerType.OnPerfectDodge);
+        }
         StartCoroutine(DodgeTimeRoutine());
     }
 
     IEnumerator DodgeTimeRoutine()
     {
-        if(!player.GetComponent<Stats>().isDying)
+        if (!player.GetComponent<Stats>().isDying)
         {
             isDogingTime = true;
             Time.timeScale = 0.25f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale; // Pour éviter les bugs physiques
+            Time.fixedDeltaTime = 0.02f * Time.timeScale; // Pour ï¿½viter les bugs physiques
 
             GetComponent<SoundContainer>().PlaySound("SlowMotion", 1);
 
             float zoomDuration = 0.25f;
-            CameraManager.instance.ZoomCamera(2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
-            CameraManager.instance.SetChromaticAberrationEffect(2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
-            CameraManager.instance.SetVignetteEffect(2f, 2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
+            CameraManager.instance.ZoomCamera(2f, zoomDuration); // Assure-toi que cette mï¿½thode utilise Time.unscaledDeltaTime
+            CameraManager.instance.SetChromaticAberrationEffect(2f, zoomDuration); // Assure-toi que cette mï¿½thode utilise Time.unscaledDeltaTime
+            CameraManager.instance.SetVignetteEffect(2f, 2f, zoomDuration); // Assure-toi que cette mï¿½thode utilise Time.unscaledDeltaTime
 
             yield return new WaitForSecondsRealtime(1f); // Pas ralenti
 
             CameraManager.instance.DezoomCamera(4f, zoomDuration);
-            CameraManager.instance.SetChromaticAberrationEffect(0f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
-            CameraManager.instance.SetVignetteEffect(0f, 2f, zoomDuration); // Assure-toi que cette méthode utilise Time.unscaledDeltaTime
+            CameraManager.instance.SetChromaticAberrationEffect(0f, zoomDuration); // Assure-toi que cette mï¿½thode utilise Time.unscaledDeltaTime
+            CameraManager.instance.SetVignetteEffect(0f, 2f, zoomDuration); // Assure-toi que cette mï¿½thode utilise Time.unscaledDeltaTime
 
 
-            yield return new WaitForSecondsRealtime(zoomDuration); // attendre la fin du dézoom si nécessaire
+            yield return new WaitForSecondsRealtime(zoomDuration); // attendre la fin du dï¿½zoom si nï¿½cessaire
 
             Time.timeScale = 1f;
-            Time.fixedDeltaTime = 0.02f; // Rétablir le fixedDeltaTime par défaut
+            Time.fixedDeltaTime = 0.02f; // Rï¿½tablir le fixedDeltaTime par dï¿½faut
             isDogingTime = false;
         }
         else
         {
             CameraManager.instance.ResetCameraZoom();
         }
-        
+
     }
 
 
@@ -80,27 +85,27 @@ public class PlayerManager : MonoBehaviour
     {
         foreach (SpecialAttack attack in runtimeSpecialAttacks)
         {
-            if(attack.attackName == name)
+            if (attack.attackName == name)
             {
                 attack.isAvailable = true;
             }
         }
     }
 
-    // Initialisation des attaques spéciales
-    // Créer des copies des ScriptableObjects pour l'exécution
+    // Initialisation des attaques spï¿½ciales
+    // Crï¿½er des copies des ScriptableObjects pour l'exï¿½cution
     void InitializeSpecialAttacks()
     {
         runtimeSpecialAttacks = new List<SpecialAttack>();
 
-        foreach (SpecialAttack attack in attackDatabase.GetAllSpecialAttacks()) // Récupère toutes les attaques spéciales depuis la base
+        foreach (SpecialAttack attack in attackDatabase.GetAllSpecialAttacks()) // Rï¿½cupï¿½re toutes les attaques spï¿½ciales depuis la base
         {
-            SpecialAttack clonedAttack = ScriptableObjectUtility.Clone(attack); // Crée une copie de l'attaque spéciale
+            SpecialAttack clonedAttack = ScriptableObjectUtility.Clone(attack); // Crï¿½e une copie de l'attaque spï¿½ciale
             runtimeSpecialAttacks.Add(clonedAttack);
         }
     }
 
-    // Récupère l'attaque spéciale en fonction du nom
+    // Rï¿½cupï¿½re l'attaque spï¿½ciale en fonction du nom
     public SpecialAttack GetSpecialAttack(string attackName)
     {
         foreach (var attack in runtimeSpecialAttacks)
@@ -121,7 +126,7 @@ public class PlayerManager : MonoBehaviour
         this.cantDie = cantDie;
     }
 
-    // Créer des copies des ScriptableObjects pour l'exécution
+    // Crï¿½er des copies des ScriptableObjects pour l'exï¿½cution
     void InitializeSpecialItems()
     {
         runtimeSpecialItems = new List<SpecialItems>();
@@ -174,17 +179,17 @@ public class PlayerManager : MonoBehaviour
     public int nbStone;*/
 
     // BONUSES
-    public float regenRate = 0;                        // nb de coeur regénéré toutes les 60 secondes FAIT
+    public float regenRate = 0;                        // nb de coeur regï¿½nï¿½rï¿½ toutes les 60 secondes FAIT
     public float doubleSquareCoinsChances = 0;         // % de chance de doubler en tuant FAIT
-    public float negativeEffectReducer = 0;            // % de dégât / de temps en moins FAIT 
-    public float itemsAddChance = 0;                   // Amélioration statistique des items FAIT
-    public float mineralChance = 0;                    // Chance que de meilleurs minéraux apparaissent FAIT
-    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dégât FAIT
-    public float doubleMineralDropChance = 0;          // Chance de doubler un minéral FAIT
+    public float negativeEffectReducer = 0;            // % de dï¿½gï¿½t / de temps en moins FAIT 
+    public float itemsAddChance = 0;                   // Amï¿½lioration statistique des items FAIT
+    public float mineralChance = 0;                    // Chance que de meilleurs minï¿½raux apparaissent FAIT
+    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dï¿½gï¿½t FAIT
+    public float doubleMineralDropChance = 0;          // Chance de doubler un minï¿½ral FAIT
     public float dropChance = 0;                       // Chance de tomber sur un meilleur item lors d'un drop FAIT
-    public float pickaxeSpeed = 0;                     // Réduction du temps de la pioche FAIT
-    public float bowSpeed = 0;                         // Réduction du temps de l'arc FAIT
-    public float shieldKnockback = 0;                  // Knockback ajouté au bouclier FAIT
+    public float pickaxeSpeed = 0;                     // Rï¿½duction du temps de la pioche FAIT
+    public float bowSpeed = 0;                         // Rï¿½duction du temps de l'arc FAIT
+    public float shieldKnockback = 0;                  // Knockback ajoutï¿½ au bouclier FAIT
     public int bonusHP = 0;                             // FAIT
     public int bonusSTR = 0;                             // FAIT
     public float bonusSPE = 0;                             // FAIT
@@ -253,17 +258,17 @@ public class PlayerManager : MonoBehaviour
     public void UpdateBonuses()
     {
         // BONUSES
-        float regenRate = 0;                        // nb de coeur regénéré toutes les 60 secondes FAIT
+        float regenRate = 0;                        // nb de coeur regï¿½nï¿½rï¿½ toutes les 60 secondes FAIT
         float doubleSquareCoinsChances = 0;         // % de chance de doubler en tuant FAIT
-        float negativeEffectReducer = 0;            // % de dégât / de temps en moins FAIT 
-        float itemsAddChance = 0;                   // Amélioration statistique des items FAIT
-        float mineralChance = 0;                    // Chance que de meilleurs minéraux apparaissent FAIT
-        float dodgeChance = 0;                      // Chance d'esquiver totalement un dégât FAIT
-        float doubleMineralDropChance = 0;          // Chance de doubler un minéral FAIT
+        float negativeEffectReducer = 0;            // % de dï¿½gï¿½t / de temps en moins FAIT 
+        float itemsAddChance = 0;                   // Amï¿½lioration statistique des items FAIT
+        float mineralChance = 0;                    // Chance que de meilleurs minï¿½raux apparaissent FAIT
+        float dodgeChance = 0;                      // Chance d'esquiver totalement un dï¿½gï¿½t FAIT
+        float doubleMineralDropChance = 0;          // Chance de doubler un minï¿½ral FAIT
         float dropChance = 0;                       // Chance de tomber sur un meilleur item lors d'un drop FAIT
-        float pickaxeSpeed = 0;                     // Réduction du temps de la pioche FAIT
-        float bowSpeed = 0;                         // Réduction du temps de l'arc FAIT
-        float shieldKnockback = 0;                  // Knockback ajouté au bouclier FAIT
+        float pickaxeSpeed = 0;                     // Rï¿½duction du temps de la pioche FAIT
+        float bowSpeed = 0;                         // Rï¿½duction du temps de l'arc FAIT
+        float shieldKnockback = 0;                  // Knockback ajoutï¿½ au bouclier FAIT
         float bonusHP = 0;
         float bonusSTR = 0;
         float bonusSPE = 0;
@@ -486,6 +491,30 @@ public class PlayerManager : MonoBehaviour
                             vampire += weapon.enchantLevel * 5;
                             break;
                     }
+                }
+            }
+        }
+
+        if (SealManager.instance != null && SealManager.instance.HasSealEquipped())
+        {
+            Seal seal = SealManager.instance.equippedSeal;
+            if (seal.isBuffActive)
+            {
+                bowSpeed += seal.bowSpeedPercent;
+                pickaxeSpeed += seal.pickaxeSpeedPercent;
+                dodgeChance += seal.dodgeChancePercent * 100f;
+            }
+
+            if (seal.isMomentumActive && player != null)
+            {
+                SealMomentumManager momentum = player.GetComponent<SealMomentumManager>();
+                if (momentum != null)
+                {
+                    int stacks = momentum.currentStacks;
+                    bowSpeed += seal.bowSpeedPercentStack * stacks;
+                    pickaxeSpeed += seal.pickaxeSpeedPercentStack * stacks;
+                    dodgeChance += (seal.dodgeChancePercentStack * stacks) * 100f;
+                    doubleSquareCoinsChances += seal.squareCoinStack * stacks;
                 }
             }
         }

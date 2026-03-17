@@ -13,7 +13,7 @@ public class MonsterMovement : MonoBehaviour
     public float detectionZoneRadius = 0f;
     private bool movingRandomly = false;
     private float originalSpeed;
-    public bool stopMonsterMovement = false; // Si le monstre a un comportement spécifique de mouvement dans un autre script
+    public bool stopMonsterMovement = false; // Si le monstre a un comportement spï¿½cifique de mouvement dans un autre script
 
     private void Start()
     {
@@ -23,10 +23,10 @@ public class MonsterMovement : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         originalSpeed = stats.speed;  // Garde une trace de la vitesse normale
-        actualSpeed = originalSpeed;  // Initialise la vitesse à la vitesse normale
+        actualSpeed = originalSpeed;  // Initialise la vitesse ï¿½ la vitesse normale
 
         StartCoroutine(RoutineSound());
-        StartCoroutine(RandomMovement()); // Démarre le mouvement aléatoire
+        StartCoroutine(RandomMovement()); // Dï¿½marre le mouvement alï¿½atoire
     }
 
     void FixedUpdate()
@@ -39,13 +39,13 @@ public class MonsterMovement : MonoBehaviour
 
             if (distanceToPlayer <= detectionZoneRadius)
             {
-                if(!stopMonsterMovement)
+                if (!stopMonsterMovement)
                     direction = (player.position - transform.position).normalized; // Calcule la direction vers le joueur
-                movingRandomly = false; // Arrête le mouvement aléatoire
+                movingRandomly = false; // Arrï¿½te le mouvement alï¿½atoire
             }
             else
             {
-                // Si le joueur est hors de la zone de détection, le monstre peut se déplacer aléatoirement
+                // Si le joueur est hors de la zone de dï¿½tection, le monstre peut se dï¿½placer alï¿½atoirement
                 if (!movingRandomly)
                 {
                     StartCoroutine(RandomMovement());
@@ -53,12 +53,13 @@ public class MonsterMovement : MonoBehaviour
             }
         }
 
-        // FAIRE LA MÊME POUR LE NEW MONSTERMOVEMENT
-        float speed = actualSpeed * (GetComponent<EntityEffects>().isSlimed ? 0.5f : 1f);
+        // FAIRE LA Mï¿½ME POUR LE NEW MONSTERMOVEMENT
+        float auraSlow = GetComponent<EntityEffects>().isAuraSlowed ? (1f - GetComponent<EntityEffects>().auraSlowPercentage) : 1f;
+        float speed = actualSpeed * (GetComponent<EntityEffects>().isSlimed ? 0.5f : 1f) * auraSlow;
         transform.position += direction * speed * Time.fixedDeltaTime;
 
 
-        // Met à jour la direction du sprite
+        // Met ï¿½ jour la direction du sprite
         UpdateSpriteDirection();
     }
 
@@ -71,7 +72,7 @@ public class MonsterMovement : MonoBehaviour
         if (reverse)
         {
             // Inverser la direction pour reculer
-            direction = (transform.position - player.position).normalized; // Reculer en s'éloignant du joueur
+            direction = (transform.position - player.position).normalized; // Reculer en s'ï¿½loignant du joueur
         }
         else
         {
@@ -98,7 +99,7 @@ public class MonsterMovement : MonoBehaviour
         {
             return Vector3.Distance(transform.position, player.position);
         }
-        return Mathf.Infinity; // Retourne une valeur très élevée si le joueur n'existe pas ou est null
+        return Mathf.Infinity; // Retourne une valeur trï¿½s ï¿½levï¿½e si le joueur n'existe pas ou est null
     }
 
     IEnumerator RandomMovement()
@@ -107,16 +108,16 @@ public class MonsterMovement : MonoBehaviour
 
         while (!player || Vector3.Distance(transform.position, player.position) > detectionZoneRadius)
         {
-            // Choisir une direction aléatoire
+            // Choisir une direction alï¿½atoire
             float randomX = Random.Range(-1f, 1f);
             float randomY = Random.Range(-1f, 1f);
-            direction = new Vector3(randomX, randomY, 0).normalized; // Direction aléatoire
+            direction = new Vector3(randomX, randomY, 0).normalized; // Direction alï¿½atoire
 
             // Attendre un certain temps avant de changer de direction
             yield return new WaitForSeconds(2f); // Change de direction toutes les 2 secondes
         }
 
-        movingRandomly = false; // Arrête le mouvement aléatoire si le joueur entre dans la zone de détection
+        movingRandomly = false; // Arrï¿½te le mouvement alï¿½atoire si le joueur entre dans la zone de dï¿½tection
     }
 
     IEnumerator RoutineSound()

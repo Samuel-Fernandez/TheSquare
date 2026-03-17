@@ -34,11 +34,18 @@ public class MineralBehiavor : MonoBehaviour
         GetComponent<ObjectParticles>().SpawnParticle("Destroy1", transform.position);
 
 
-        if (resistance <= 0 )
+        if (resistance <= 0)
         {
             GetComponent<SoundContainer>().PlaySound("Destroy", 1);
             SpawnMinerals();
             GetComponent<ObjectParticles>().SpawnParticle("Destroy2", transform.position);
+
+            if (PlayerManager.instance.player != null)
+            {
+                SealMomentumManager momentum = PlayerManager.instance.player.GetComponent<SealMomentumManager>();
+                if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnMineralMined);
+            }
+
             Destroy(gameObject);
         }
     }
@@ -62,7 +69,7 @@ public class MineralBehiavor : MonoBehaviour
         if (type == MineralType.SQUAREBLOCK)
         {
             elapsedTime += Time.deltaTime;
-            float t = (elapsedTime % cycleDuration) / cycleDuration; // Valeur normalisée entre 0 et 1
+            float t = (elapsedTime % cycleDuration) / cycleDuration; // Valeur normalisï¿½e entre 0 et 1
 
             sprite.color = GetRainbowColor(t);
         }
@@ -75,8 +82,8 @@ public class MineralBehiavor : MonoBehaviour
 
     Color GetRainbowColor(float t)
     {
-        // Interpolation linéaire entre les couleurs de l'arc-en-ciel
-        t *= 6f; // Échelle pour passer par 6 couleurs
+        // Interpolation linï¿½aire entre les couleurs de l'arc-en-ciel
+        t *= 6f; // ï¿½chelle pour passer par 6 couleurs
         int i = Mathf.FloorToInt(t);
         float f = t - i;
 

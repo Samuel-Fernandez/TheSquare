@@ -265,8 +265,8 @@
       "value": "Explosion"
     },
     {
-      "key": "SEAL_RESONANCE_EFFECT_STOP_ENTITY",
-      "value": "Stop Monster"
+      "key": "SEAL_RESONANCE_EFFECT_FREEZE_ENTITY",
+      "value": "Blizzard"
     },
     {
       "key": "SEAL_RESONANCE_EFFECT_ELECTRICITY",
@@ -395,6 +395,10 @@
     {
       "key": "SEAL_MOMENTUM",
       "value": "Momentum"
+    },
+    {
+      "key": "SEAL_UI_WARNING",
+      "value": "You already have a seal. Crafting a new one will destroy it."
     }
   ]
 }

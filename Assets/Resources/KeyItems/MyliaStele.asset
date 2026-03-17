@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf50eddc9401b664896f87b3af8dfd0e, type: 3}
+  m_Name: MyliaStele
+  m_EditorClassIdentifier: 
+  id: mylia_stele
+  sprite: {fileID: 21300000, guid: 56229131f27646648b3de1a598e48978, type: 3}
+  isAcquired: 1

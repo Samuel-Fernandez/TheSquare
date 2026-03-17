@@ -22,7 +22,7 @@ public class ScenesManager : MonoBehaviour
         ShowSceneTitle();
     }
 
-    public void ChangeSceneObject(string sceneName, Vector2 newPosition, float transitionDuration=.5f)
+    public void ChangeSceneObject(string sceneName, Vector2 newPosition, float transitionDuration = .5f)
     {
         PlayerManager.instance.player.GetComponent<Stats>().canMove = false;
         StartCoroutine(RoutineChangeSceneObject(transitionDuration, newPosition, sceneName));
@@ -31,16 +31,16 @@ public class ScenesManager : MonoBehaviour
     IEnumerator RoutineChangeSceneObject(float transitionDuration, Vector2 newPosition, string sceneName)
     {
         canTeleportPlayer = false;
-        // Lancer le changement de scène
+        // Lancer le changement de scï¿½ne
         StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration));
 
-        // Attendre que la scène soit complètement chargée
+        // Attendre que la scï¿½ne soit complï¿½tement chargï¿½e
         while (!isSceneLoaded)
         {
             yield return null;
         }
 
-        // Maintenant la scène est chargée, on peut téléporter le joueur
+        // Maintenant la scï¿½ne est chargï¿½e, on peut tï¿½lï¿½porter le joueur
         PlayerManager.instance.player.transform.position = newPosition;
         PlayerManager.instance.player.GetComponent<Stats>().canMove = true;
 
@@ -49,7 +49,7 @@ public class ScenesManager : MonoBehaviour
     }
 
 
-    public void ChangeScene(string sceneName, float transitionDuration=.5f)
+    public void ChangeScene(string sceneName, float transitionDuration = .5f)
     {
         StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration));
     }
@@ -75,10 +75,10 @@ public class ScenesManager : MonoBehaviour
         ShowSceneTitle();
         FoundLocation();
 
-        // Signaler que c'est chargé AVANT de fermer la transition
+        // Signaler que c'est chargï¿½ AVANT de fermer la transition
         isSceneLoaded = true;
 
-        // Petit délai supplémentaire pour être sûr que tout est en place
+        // Petit dï¿½lai supplï¿½mentaire pour ï¿½tre sï¿½r que tout est en place
         yield return new WaitForSecondsRealtime(0.5f);
 
         UIAnimator.instance.DeactivateObjectWithTransition(transitionPanel, transitionDuration);
@@ -90,7 +90,7 @@ public class ScenesManager : MonoBehaviour
         {
             foreach (var scene in region.scenes)
             {
-                if(scene.SceneName == SceneManager.GetActiveScene().name)
+                if (scene.SceneName == SceneManager.GetActiveScene().name)
                 {
                     NotificationManager.instance.ShowTitle(LocalizationManager.instance.GetText("LOCATION", region.regionID + "_REGION"), LocalizationManager.instance.GetText("LOCATION", scene.sceneID + "_SCENE"));
                 }

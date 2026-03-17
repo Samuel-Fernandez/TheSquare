@@ -47,7 +47,7 @@ public class SpecialItems : Item
         return value * nb;
     }
 
-    // Retourne un dictionnaire normalisé (Essence -> pourcentage entre 0 et 1)
+    // Retourne un dictionnaire normalisï¿½ (Essence -> pourcentage entre 0 et 1)
     public Dictionary<Spirit, float> GetNormalizedEssences()
     {
         Dictionary<Spirit, float> normalized = new Dictionary<Spirit, float>();
@@ -64,7 +64,7 @@ public class SpecialItems : Item
         {
             if (comp.essence != null && comp.percentage > 0f)
             {
-                // Normalise à 1.0 au cas où le total ne fait pas exactement 100%
+                // Normalise ï¿½ 1.0 au cas oï¿½ le total ne fait pas exactement 100%
                 normalized[comp.essence] = comp.percentage / total;
             }
         }

@@ -53,7 +53,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         OpenStats();
-        defaultFixedDeltaTime = Time.fixedDeltaTime; // Sauvegarde la valeur par défaut
+        defaultFixedDeltaTime = Time.fixedDeltaTime; // Sauvegarde la valeur par dï¿½faut
 
     }
 
@@ -88,7 +88,7 @@ public class InventoryManager : MonoBehaviour
     private void NavigateInventory(bool toRight)
     {
         int index = panelOrder.IndexOf(lastPanel);
-        if (index == -1) index = 0; // sécurité
+        if (index == -1) index = 0; // sï¿½curitï¿½
 
         index = (index + (toRight ? 1 : -1) + panelOrder.Count) % panelOrder.Count;
         OpenPanel(panelOrder[index]);
@@ -141,11 +141,13 @@ public class InventoryManager : MonoBehaviour
 
     public void ToggleInventory(bool var = false)
     {
+        
         if (canOpenInventory)
         {
             if (PlayerManager.instance.playerInputActions.Menu.Pause.triggered || var)
             {
-                if(!PlayerLevels.instance.UIPlayerLevels.activeSelf)
+                bool isSealUIAffixed = SealUI.instance != null && SealUI.instance.sealUI != null && SealUI.instance.sealUI.activeSelf;
+                if(!PlayerLevels.instance.UIPlayerLevels.activeSelf && (!isSealUIAffixed || inventory.activeSelf))
                 {
                     if (!inventory.activeSelf)
                     {
@@ -169,7 +171,7 @@ public class InventoryManager : MonoBehaviour
                     else
                     {
                         Time.timeScale = 1f;
-                        Time.fixedDeltaTime = defaultFixedDeltaTime; // Réinitialise fixedDeltaTime
+                        Time.fixedDeltaTime = defaultFixedDeltaTime; // Rï¿½initialise fixedDeltaTime
                         UIAnimator.instance.DeactivateObjectWithTransition(inventory, .2f);
                         QuestManager.instance.canOpenQuests = true;
                     }

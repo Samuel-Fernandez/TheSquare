@@ -14,6 +14,11 @@ public class EntityEffects : MonoBehaviour
     public bool stopEffects;
 
 
+    // ----------- AURA ----------- 
+    public bool isAuraSlowed;
+    public float auraSlowPercentage;
+    public float auraSlowTimer;
+    // ----------------------------
     public bool canBeFire;
     public bool canBeFreeze;
     public bool canBePoison;
@@ -34,7 +39,7 @@ public class EntityEffects : MonoBehaviour
     private bool isPoisonRoutineRunning;
     private bool isSlimedRoutineRunning;
 
-    // Stockage des références aux coroutines pour pouvoir les arrêter proprement
+    // Stockage des rï¿½fï¿½rences aux coroutines pour pouvoir les arrï¿½ter proprement
     private Coroutine fireCoroutine;
     private Coroutine freezeCoroutine;
     private Coroutine poisonCoroutine;
@@ -49,6 +54,17 @@ public class EntityEffects : MonoBehaviour
         {
             ResetEffect();
         }
+
+        // Gestion du ralentissement de l'Aura
+        if (isAuraSlowed)
+        {
+            auraSlowTimer -= Time.deltaTime;
+            if (auraSlowTimer <= 0)
+            {
+                isAuraSlowed = false;
+                auraSlowPercentage = 0f;
+            }
+        }
     }
 
     private void OnDisable()
@@ -60,7 +76,7 @@ public class EntityEffects : MonoBehaviour
         isSlimedRoutineRunning = false;
     }
 
-    // Permet d'inverser la possibilité d'être sensible à un effet
+    // Permet d'inverser la possibilitï¿½ d'ï¿½tre sensible ï¿½ un effet
     public void ToggleAffectations()
     {
         canBeFire = !canBeFire;
@@ -213,7 +229,7 @@ public class EntityEffects : MonoBehaviour
 
     public void ResetEffect()
     {
-        // Arrêter Fire
+        // Arrï¿½ter Fire
         if (fireCoroutine != null)
             StopCoroutine(fireCoroutine);
         isFireRoutineRunning = false;
@@ -225,7 +241,7 @@ public class EntityEffects : MonoBehaviour
             fireEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
         }
 
-        // Arrêter Freeze
+        // Arrï¿½ter Freeze
         if (freezeCoroutine != null)
             StopCoroutine(freezeCoroutine);
         isFreezeRoutineRunning = false;
@@ -237,7 +253,7 @@ public class EntityEffects : MonoBehaviour
             freezeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
         }
 
-        // Arrêter Poison
+        // Arrï¿½ter Poison
         if (poisonCoroutine != null)
             StopCoroutine(poisonCoroutine);
         isPoisonRoutineRunning = false;
@@ -249,7 +265,7 @@ public class EntityEffects : MonoBehaviour
             poisonEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
         }
 
-        // Arrêter Slime
+        // Arrï¿½ter Slime
         if (slimeCoroutine != null)
             StopCoroutine(slimeCoroutine);
         isSlimedRoutineRunning = false;
@@ -261,7 +277,7 @@ public class EntityEffects : MonoBehaviour
             slimeEffect.GetComponent<ObjectParticles>().StopSpawningParticles();
         }
 
-        // Réactiver le mouvement si gelé
+        // Rï¿½activer le mouvement si gelï¿½
         if (GetComponent<Stats>())
             GetComponent<Stats>().canMove = true;
     }
@@ -456,4 +472,14 @@ public class EntityEffects : MonoBehaviour
         }
     }
 
+    public void ApplyAuraSlow(float percentage, float duration)
+    {
+        isAuraSlowed = true;
+        // On garde le pire ralentissement si dÃ©jÃ  ralenti
+        if (percentage > auraSlowPercentage)
+            auraSlowPercentage = percentage;
+
+        // On rÃ©initialise ou prolonge le timer
+        auraSlowTimer = Mathf.Max(auraSlowTimer, duration);
+    }
 }

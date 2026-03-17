@@ -6,7 +6,7 @@ using UnityEngine;
 public class SealDescriptionUI : MonoBehaviour
 {
     [Header("Seal Description Properties")]
-    // Ajouter le Seal ici
+    public SealVisualUI sealVisual;
 
     [Header("TextMeshPro")]
     public TextMeshProUGUI sealTitleTxt;
@@ -84,7 +84,7 @@ public class SealDescriptionUI : MonoBehaviour
 
     public void ResetUI()
     {
-        // Containers d'archétypes
+        // Containers d'archï¿½types
         momentumContainer?.SetActive(false);
         buffContainer?.SetActive(false);
         resonnanceContainer?.SetActive(false);
@@ -148,15 +148,17 @@ public class SealDescriptionUI : MonoBehaviour
         vegetalTxt?.gameObject.SetActive(false);
         waterTxt?.gameObject.SetActive(false);
         windTxt?.gameObject.SetActive(false);
+
+        if (sealVisual != null) sealVisual.UpdateVisuals(null);
     }
 
 
     public void SetUI()
     {
-        // Réinitialiser l'UI (tout désactiver)
+        // Rï¿½initialiser l'UI (tout dï¿½sactiver)
         ResetUI();
 
-        // Vérifier qu'un sceau est équipé
+        // Vï¿½rifier qu'un sceau est ï¿½quipï¿½
         if (SealManager.instance == null || !SealManager.instance.HasSealEquipped())
         {
             Debug.LogWarning("No seal equipped to display!");
@@ -164,6 +166,9 @@ public class SealDescriptionUI : MonoBehaviour
         }
 
         Seal seal = SealManager.instance.equippedSeal;
+
+        // === METTRE Ã€ JOUR LE VISUEL DU SCEAU ===
+        if (sealVisual != null) sealVisual.UpdateVisuals(seal);
 
         // === TITRE DU SCEAU ===
         if (sealTitleTxt != null)
@@ -244,7 +249,7 @@ public class SealDescriptionUI : MonoBehaviour
             string effectKey = seal.resonanceEffect switch
             {
                 ResonanceEffectType.Explosion => "SEAL_RESONANCE_EFFECT_EXPLOSION",
-                ResonanceEffectType.StopEntity => "SEAL_RESONANCE_EFFECT_STOP_ENTITY",
+                ResonanceEffectType.FreezeEntity => "SEAL_RESONANCE_EFFECT_FREEZE_ENTITY",
                 ResonanceEffectType.Electricity => "SEAL_RESONANCE_EFFECT_ELECTRICITY",
                 _ => "SEAL_RESONANCE_EFFECT"
             };
@@ -422,7 +427,7 @@ public class SealDescriptionUI : MonoBehaviour
             string essenceID = essenceComp.essence.essenceID.ToLower();
             float percentage = essenceComp.percentage;
 
-            // Ne pas afficher les essences à 0%
+            // Ne pas afficher les essences ï¿½ 0%
             if (percentage <= 0) continue;
 
             switch (essenceID)

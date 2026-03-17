@@ -528,7 +528,6 @@
       "key": "smith_BUBBLE_FINISHED_QUEST",
       "value": "Thanks again for everything you’ve done."
     },
-    
     {
       "key": "INVENTORY_FULL",
       "value": "Thanks a lot for those slime portions, dude !"
@@ -544,6 +543,18 @@
     {
       "key": "book-lightning-attack",
       "value": "In this book lies the Lightning Strike, a powerful move that lets you dash through an enemy and deal a critical hit. | If you start by slashing with your sword, then dodge through the enemy and strike again, you’ll retrace your steps while passing through them, dealing heavy damage. | This attack is especially useful against lone, powerful monsters."
+    },
+    {
+      "key": "archivistAfterDroxenFight-1",
+      "value": "Well... I'm fed up with these people who only want to read botany books.|I'm going to burn them and replace them with books about the guardians.|Maybe I could create an army of people to debate with...|hehehe...|Hahaha...|MWAHAHAHAHAHAH|..."
+    },
+    {
+      "key": "archivistAfterDroxenFight-2",
+      "value": "Ahem. May I ask how long you've been standing there ?"
+    },
+    {
+      "key": "archivistAfterDroxenFight-3",
+      "value": "I see... And warning before entering, would that be too much to ask maybe ?|...|WAIT ?! IF YOU'RE BACK... YOU HAVE THE STELE ???|You would have the abilities... To defeat the corrupted guardians and find the guardian of gravity ?|Meet me west of here. I'll mark it on your map. That's where the stele can open the way for us."
     }
   ]
 }

@@ -19,7 +19,7 @@ public class NotificationManager : MonoBehaviour
 
     public GameObject titleNotification;
 
-    // Utilisé pour savoir si une instance existe actuellement
+    // Utilisï¿½ pour savoir si une instance existe actuellement
     public GameObject bubbleInstance;
 
     public GameObject littleBubblePrefab;
@@ -102,7 +102,7 @@ public class NotificationManager : MonoBehaviour
 
     public void ShowTitle(string title, string subTitle)
     {
-        if(title == null || subTitle == null)
+        if (title == null || subTitle == null)
         {
             Debug.Log("No Title or subtitle");
             return;
@@ -117,7 +117,7 @@ public class NotificationManager : MonoBehaviour
 
     public void ShowSpecialPopUpArrow(string baseValue, string finalValue)
     {
-        if(popupInstanceSpecial != null)
+        if (popupInstanceSpecial != null)
             Destroy(popupInstanceSpecial);
 
         popupInstanceSpecial = Instantiate(specialArrow, canvas.transform);
@@ -158,7 +158,7 @@ public class NotificationManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        textComponent.text = endValue.ToString(); // Assure que la valeur finale est bien affichée
+        textComponent.text = endValue.ToString(); // Assure que la valeur finale est bien affichï¿½e
     }
 
 
@@ -167,7 +167,7 @@ public class NotificationManager : MonoBehaviour
         // Instancier le popup dans le canvas
         GameObject popupInstance = Instantiate(popup, canvas.transform);
 
-        // Trouver le TextMeshPro enfant et mettre à jour le texte
+        // Trouver le TextMeshPro enfant et mettre ï¿½ jour le texte
         TextMeshProUGUI textComponent = popupInstance.GetComponentInChildren<TextMeshProUGUI>();
         if (textComponent != null)
         {
@@ -178,7 +178,7 @@ public class NotificationManager : MonoBehaviour
             Debug.LogWarning("TextMeshProUGUI component not found in popup prefab.");
         }
 
-        // Détruire le popup après 2 secondes
+        // Dï¿½truire le popup aprï¿½s 2 secondes
         Destroy(popupInstance, 2f);
     }
 
@@ -186,10 +186,10 @@ public class NotificationManager : MonoBehaviour
 
     public BubbleText ShowCinematicBubble(string text, float duration = 2.5f, System.Action callback = null)
     {
-        // Empêche une nouvelle bulle si une est déjà active
+        // Empï¿½che une nouvelle bulle si une est dï¿½jï¿½ active
         if (activeBubble != null)
         {
-            Debug.LogWarning("Une bulle est déjà active !");
+            Debug.LogWarning("Une bulle est dï¿½jï¿½ active !");
             return null;
         }
 
@@ -248,7 +248,7 @@ public class NotificationManager : MonoBehaviour
         littleBubble.GetComponent<LittleBubbleText>().duration = duration;
     }
 
-   
+
 
 
 
