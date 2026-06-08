@@ -555,6 +555,14 @@
     {
       "key": "archivistAfterDroxenFight-3",
       "value": "I see... And warning before entering, would that be too much to ask maybe ?|...|WAIT ?! IF YOU'RE BACK... YOU HAVE THE STELE ???|You would have the abilities... To defeat the corrupted guardians and find the guardian of gravity ?|Meet me west of here. I'll mark it on your map. That's where the stele can open the way for us."
+    },
+    {
+      "key": "archivistOpenSeal-1",
+      "value": "Not super fast, huh ?|Anyway, here is the seal that prevented us from accessing Mylia's lake all this time.|No one knows why she restricted access to it.|Thanks to you, my... Ahem... Our knowledge will finally evolve.|Use Mylia's stele to open the way."
+    },
+    {
+      "key": "archivistOpenSeal-2",
+      "value": "It's open... Incredible... I'm going first !|I want to be the first to see what no one has seen for centuries !"
     }
   ]
 }

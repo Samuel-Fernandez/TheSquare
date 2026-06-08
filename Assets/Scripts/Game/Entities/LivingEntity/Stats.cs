@@ -169,6 +169,11 @@ public class Stats : MonoBehaviour
         // Update the life value based on the new health
         lifeManager.life = Mathf.RoundToInt(currentHealthPercentage * health);
 
+        if (MeteoManager.instance != null && MeteoManager.instance.IsBlizzardActive())
+        {
+            speed *= 0.75f; // Ralentissement de 25%
+        }
+
         // Notify player controller of speed change
         if (playerController)
             playerController.UpdateSpeed(speed);

@@ -22,6 +22,14 @@ public class PlayerController : MonoBehaviour
 
     public bool isPushing;
 
+    // ----- Inertie de la glace -----
+    [HideInInspector]
+    public bool isOnIce = false;
+    private int iceContacts = 0;
+    private Vector2 currentVelocity;
+    [Header("Parametres de la Glace")]
+    public float iceFriction = 2f;
+    // -------------------------------
 
     private void Start()
     {
@@ -655,11 +663,20 @@ public class PlayerController : MonoBehaviour
 
         isMoving = (horizontalInput != 0 || verticalInput != 0);
 
-        // Calculer le vecteur de d�placement en fonction des entr�es
-        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized * actualSpeed;
+        // Calculer le vecteur de dplacement en fonction des entres
+        Vector2 targetMovement = new Vector2(horizontalInput, verticalInput).normalized * actualSpeed;
 
-        // D�placer le personnage en ajustant directement sa position
-        transform.position += (Vector3)movement * Time.fixedDeltaTime * 2;
+        if (isOnIce)
+        {
+            currentVelocity = Vector2.Lerp(currentVelocity, targetMovement, Time.fixedDeltaTime * iceFriction);
+        }
+        else
+        {
+            currentVelocity = targetMovement;
+        }
+
+        // Dplacer le personnage en ajustant directement sa position
+        transform.position += (Vector3)currentVelocity * Time.fixedDeltaTime * 2;
     }
 
     public void UpdateSpeed(float newSpeed)
@@ -676,14 +693,14 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 moveInput = playerInputActions.Gameplay.Move.ReadValue<Vector2>();
 
-            // Ajouter une zone morte pour �viter les micro-mouvements
+            // Ajouter une zone morte pour viter les micro-mouvements
             float deadZone = 0.2f;
 
             // Si l'input est trop faible, on ignore
             if (moveInput.magnitude < deadZone)
                 return;
 
-            // D�terminer la direction principale en comparant les valeurs absolues
+            // Dterminer la direction principale en comparant les valeurs absolues
             float absX = Mathf.Abs(moveInput.x);
             float absY = Mathf.Abs(moveInput.y);
 
@@ -711,7 +728,7 @@ public class PlayerController : MonoBehaviour
                     currentDirection = 1; // Left
                 }
             }
-            // Si les deux sont �gaux, on privil�gie la direction avec la plus grande valeur absolue
+            // Si les deux sont gaux, on privilgie la direction avec la plus grande valeur absolue
             else
             {
                 if (absX >= absY)
@@ -730,21 +747,47 @@ public class PlayerController : MonoBehaviour
     public bool cantFall = false;
     public Transform safeTeleportation;
 
-    // Nouveau syst�me pour �viter les t�l�portations simultan�es
+    // Nouveau systme pour viter les tlportations simultanes
     private bool isTeleporting = false;
 
-    // NOUVEAU : Backup de s�curit� mis � jour r�guli�rement
+    // NOUVEAU : Backup de scurit mis  jour rgulirement
     private Vector3 safeBackupPosition = Vector3.zero;
     private float lastSafeBackupTime = 0f;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("IceGround0"))
+        {
+            iceContacts++;
+            isOnIce = iceContacts > 0;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("IceGround0"))
+        {
+            iceContacts--;
+            if (iceContacts < 0) iceContacts = 0;
+            isOnIce = iceContacts > 0;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        // �viter de traiter si on est en train de t�l�porter
+        // Securite au cas ou
+        if (collision.gameObject.CompareTag("IceGround0") && !isOnIce)
+        {
+            iceContacts++;
+            isOnIce = true;
+        }
+
+        // viter de traiter si on est en train de tlporter
         if (isTeleporting) return;
 
         ObjectPerspective perspective = GetComponent<ObjectPerspective>();
 
-        // V�rifie si le tag commence par "Hole"
+        // Vrifie si le tag commence par "Hole"
         if (collision.gameObject.tag.StartsWith("Hole") && !fallIntoHole && !cantFall)
         {
             string tag = collision.gameObject.tag;

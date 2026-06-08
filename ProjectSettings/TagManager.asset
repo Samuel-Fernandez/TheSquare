@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Hole1
   - Hole0
+  - IceGround0
   layers:
   - Default
   - TransparentFX

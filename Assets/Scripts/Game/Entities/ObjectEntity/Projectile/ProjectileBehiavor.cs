@@ -12,8 +12,8 @@ public class ProjectileBehavior : MonoBehaviour
     public bool ally;
     public bool ignoreAll;
     public float knockbackPower;
-    bool targeted; // Si true, empêche de nouvelles interactions
-    public bool destroyOnCollision = false; // Si se détruit directement après collision
+    bool targeted; // Si true, empï¿½che de nouvelles interactions
+    public bool destroyOnCollision = false; // Si se dï¿½truit directement aprï¿½s collision
     GameObject launcher;
 
     ObjectAnimation anim;
@@ -21,7 +21,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     private Vector2 movementDirection;
 
-    private Vector3 localPositionOffset; // Pour stocker la position locale par rapport à l'objet parent
+    private Vector3 localPositionOffset; // Pour stocker la position locale par rapport ï¿½ l'objet parent
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,7 @@ public class ProjectileBehavior : MonoBehaviour
         movementDirection = new Vector2(Mathf.Cos(accurateDirection), Mathf.Sin(accurateDirection));
 
         // Appliquer la rotation correcte en fonction de l'angle
-        if(shouldRotate)
+        if (shouldRotate)
             GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, accurateDirection * Mathf.Rad2Deg);
     }
 
@@ -89,8 +89,8 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Déplacer le projectile en fonction de sa direction et de sa vitesse
-        if(MeteoManager.instance.time)
+        // Dï¿½placer le projectile en fonction de sa direction et de sa vitesse
+        if (MeteoManager.instance.time)
             transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
     }
 
@@ -98,7 +98,7 @@ public class ProjectileBehavior : MonoBehaviour
     {
         if (transform.parent != null)
         {
-            // Mettre à jour la position de la flèche pour qu'elle suive le parent
+            // Mettre ï¿½ jour la position de la flï¿½che pour qu'elle suive le parent
             transform.position = transform.parent.TransformPoint(localPositionOffset);
         }
     }
@@ -131,7 +131,7 @@ public class ProjectileBehavior : MonoBehaviour
             var destroyableObjects = collision.GetComponent<DestroyableBehiavor>();
             var weakness = collision.GetComponent<MonsterWeakness>();
 
-            if(weakness != null)
+            if (weakness != null)
             {
                 weakness.TakeDamage(strength, gameObject, true);
             }
@@ -189,7 +189,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     public void AttachAndDestroy(Transform parent)
     {
-        if(anim != null)
+        if (anim != null)
             anim.PlayAnimation("Shake");
 
         localPositionOffset = parent.InverseTransformPoint(transform.position);

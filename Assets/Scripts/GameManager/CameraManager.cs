@@ -11,7 +11,8 @@ public enum CameraFilter
     DUST_STORM,
     OLD,
     SHYRON,
-    SHADOW_MEDAL
+    SHADOW_MEDAL,
+    BLIZZARD
 }
 
 public class CameraManager : MonoBehaviour
@@ -77,33 +78,42 @@ public class CameraManager : MonoBehaviour
                 SetChromaticAberrationEffect(0.05f, 0.5f, defaultCamera); // quasi rien
                 ChangeCameraColor(new Color(220f / 255f, 180f / 255f, 100f / 255f), 0.5f, defaultCamera); // teinte sable/orange
                 SetVignetteEffect(0.25f, 0.7f, 0.5f, defaultCamera); // vignette douce
-                SetFilmGrainEffect(3f, 0.5f); // bruit moyen pour simuler poussière
-                SetBloomEffect(0.4f, 0.5f); // légère diffusion lumineuse
-                SetLensDistortionEffect(-0.1f, 0.5f); // très subtile
+                SetFilmGrainEffect(3f, 0.5f); // bruit moyen pour simuler poussiï¿½re
+                SetBloomEffect(0.4f, 0.5f); // lï¿½gï¿½re diffusion lumineuse
+                SetLensDistortionEffect(-0.1f, 0.5f); // trï¿½s subtile
                 SetDepthOfFieldEffect(0.7f, 8f, 0.5f); // vision moins nette
                 break;
             case CameraFilter.OLD:
-                SetChromaticAberrationEffect(0.3f, 1f, defaultCamera); // Aberration légère
+                SetChromaticAberrationEffect(0.3f, 1f, defaultCamera); // Aberration lï¿½gï¿½re
                 ChangeCameraColor(new Color(190f / 255f, 180f / 255f, 150f / 255f), 0.5f, defaultCamera); // Teinte terne
-                SetVignetteEffect(0.6f, 0.9f, .2f, defaultCamera); // Vignettage prononcé
+                SetVignetteEffect(0.6f, 0.9f, .2f, defaultCamera); // Vignettage prononcï¿½
                 SetFilmGrainEffect(10f, .2f); // Bruit fort pour effet granuleux
-                SetBloomEffect(0.5f, .2f); // Lueur très douce
-                SetLensDistortionEffect(-1f, .2f); // Légère distorsion de lentille
-                SetDepthOfFieldEffect(1f, 7f, .2f); // Flou d’arrière-plan marqué
+                SetBloomEffect(0.5f, .2f); // Lueur trï¿½s douce
+                SetLensDistortionEffect(-1f, .2f); // Lï¿½gï¿½re distorsion de lentille
+                SetDepthOfFieldEffect(1f, 7f, .2f); // Flou dï¿½arriï¿½re-plan marquï¿½
                 break;
             case CameraFilter.SHYRON:
-                SetChromaticAberrationEffect(0.5f, 0.5f, defaultCamera); // Aberration marquée
+                SetChromaticAberrationEffect(0.5f, 0.5f, defaultCamera); // Aberration marquï¿½e
                 ChangeCameraColor(new Color(100f / 255f, 80f / 255f, 110f / 255f), 0.5f, defaultCamera); // Teinte violette sombre
                 SetVignetteEffect(0.3f, 0.9f, 0.5f, defaultCamera); // Vignettage fort
                 SetFilmGrainEffect(5f, 0.5f); // Bruit moyen
-                SetBloomEffect(0.3f, 0.5f); // Lueur discrète
+                SetBloomEffect(0.3f, 0.5f); // Lueur discrï¿½te
                 SetLensDistortionEffect(-0.5f, 0.5f); // Distorsion subtile
-                SetDepthOfFieldEffect(0.5f, 5f, 0.5f); // Léger flou d’arrière-plan
+                SetDepthOfFieldEffect(0.5f, 5f, 0.5f); // Lï¿½ger flou dï¿½arriï¿½re-plan
                 break;
             case CameraFilter.SHADOW_MEDAL:
                 ChangeCameraColor(new Color(206f / 255f, 0f / 255f, 204f / 255f), 1, defaultCamera);
                 ShakeCamera(3, 3, 1f);
                 SetVignetteEffect(.5f, .8f, 1f, defaultCamera);
+                break;
+            case CameraFilter.BLIZZARD:
+                SetChromaticAberrationEffect(0f, 0.5f, defaultCamera); // Pas d'aberration chromatique selon la demande
+                ChangeCameraColor(new Color(150f / 255f, 180f / 255f, 255f / 255f), 0.5f, defaultCamera); // Bleu glacÃ© / givrÃ©
+                SetVignetteEffect(0.35f, 0.8f, 0.5f, defaultCamera); // Vignette blanche/froide simulÃ©e ou forte assombrissement aux bords
+                SetFilmGrainEffect(2f, 0.5f); // Bruit lÃ©ger pour accompagner les flocons
+                SetBloomEffect(0.6f, 0.5f); // Grosse diffusion lumineuse liÃ©e Ã  la neige
+                SetLensDistortionEffect(-0.2f, 0.5f); // LÃ©gÃ¨re distorsion pour l'effet de vent violent
+                SetDepthOfFieldEffect(1f, 8f, 0.5f); // Vision lÃ©gÃ¨rement floutÃ©e
                 break;
             default:
                 break;
@@ -275,7 +285,7 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    // ShakeCamera Avec caméra par défaut
+    // ShakeCamera Avec camï¿½ra par dï¿½faut
     public void ShakeCamera(float amplitude, float frequency, float duration)
     {
         CinemachineBasicMultiChannelPerlin noise = this.defaultCameraNoise;
@@ -309,7 +319,7 @@ public class CameraManager : MonoBehaviour
         StartCoroutine(ZoomRoutine(defaultZoom, 1));
     }
 
-    // Remplacez la méthode ZoomRoutine existante par celle-ci :
+    // Remplacez la mï¿½thode ZoomRoutine existante par celle-ci :
 
     private IEnumerator ZoomRoutine(float targetOrthoSize, float duration, CinemachineVirtualCamera camera = null)
     {
@@ -337,12 +347,12 @@ public class CameraManager : MonoBehaviour
         ZoomCamera(defaultOrthoSize, zoomSpeed, camera);
     }
 
-    // Référence publique pour le Volume
+    // Rï¿½fï¿½rence publique pour le Volume
     public Volume postProcessVolume;
 
     public void ChangeCameraColor(Color targetColor, float transitionSpeed, Camera camera = null)
     {
-        // Utiliser la caméra fournie ou chercher la caméra de la CinemachineVirtualCamera
+        // Utiliser la camï¿½ra fournie ou chercher la camï¿½ra de la CinemachineVirtualCamera
         if (camera == null)
         {
             CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
@@ -352,10 +362,10 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        // Assurer que la caméra est définie
+        // Assurer que la camï¿½ra est dï¿½finie
         if (camera != null)
         {
-            // Utiliser la référence publique de Volume
+            // Utiliser la rï¿½fï¿½rence publique de Volume
             if (postProcessVolume != null)
             {
                 VolumeProfile profile = postProcessVolume.profile;
@@ -385,7 +395,7 @@ public class CameraManager : MonoBehaviour
         Color startColor = colorAdjustments.colorFilter.value;
         float elapsedTime = 0f;
 
-        // Calcul de la durée de transition (1 / transitionSpeed)
+        // Calcul de la durï¿½e de transition (1 / transitionSpeed)
         float transitionDuration = 1f / transitionSpeed;
 
         while (elapsedTime < transitionDuration)

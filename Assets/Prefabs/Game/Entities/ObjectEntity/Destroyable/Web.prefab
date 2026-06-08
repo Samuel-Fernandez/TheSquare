@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3847271959540090326, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: m_Name
-      value: Web Variant
+      value: Web
       objectReference: {fileID: 0}
     - target: {fileID: 4490294724802277364, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: m_Sprite
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 050d374f1ba80d7418d78d9d969bbb4f, type: 3}
     - target: {fileID: 6114670189759687675, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8591243212559518293, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: needFire

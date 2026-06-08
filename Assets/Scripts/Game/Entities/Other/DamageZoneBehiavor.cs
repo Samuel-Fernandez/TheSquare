@@ -10,7 +10,7 @@ public class DamageZoneBehiavor : MonoBehaviour
     public bool swordHitOnce = false;
     public bool playerTouched;
 
-    // Nouveau booléen pour activer/désactiver la détection d’impact d’épée
+    // Nouveau boolï¿½en pour activer/dï¿½sactiver la dï¿½tection dï¿½impact dï¿½ï¿½pï¿½e
     public bool isDetectingSwordImpact = true;
 
     public void Init(GameObject owner, float radius)

@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class BlobMovement : MonoBehaviour
 {
+    public enum BlobType
+    {
+        Normal,
+        Glace,
+        Poison,
+        Feu
+    }
+
+    [Header("Blob Settings")]
+    public BlobType blobType = BlobType.Normal;
+    [Range(0, 100)] public int effectChance = 25;
+
     public float minInterval = 1f; // Intervalle minimum en secondes
     public float maxInterval = 5f; // Intervalle maximum en secondes
 
@@ -142,5 +154,25 @@ public class BlobMovement : MonoBehaviour
             yield return null;
         }
         while (!stats.canMove) yield return null;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Stats targetStats = collision.gameObject.GetComponent<Stats>();
+        if (targetStats != null && targetStats.isVulnerable && stats.entityType == EntityType.Monster && targetStats.entityType == EntityType.Player)
+        {
+            if (blobType != BlobType.Normal && Random.Range(0, 101) <= effectChance)
+            {
+                EntityEffects targetEffects = collision.gameObject.GetComponent<EntityEffects>();
+                if (targetEffects != null)
+                {
+                    bool isFire = blobType == BlobType.Feu;
+                    bool isIce = blobType == BlobType.Glace;
+                    bool isPoison = blobType == BlobType.Poison;
+                    
+                    targetEffects.SetState(1, isFire, isIce, isPoison, false);
+                }
+            }
+        }
     }
 }

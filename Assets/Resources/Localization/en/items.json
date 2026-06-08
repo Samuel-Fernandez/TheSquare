@@ -471,6 +471,70 @@
     {
       "key": "020010_DESCRIPTION",
       "value": "A sword crafted from the skin and magic of the Shyrons. Grants immeasurable attack power."
+    },
+    {
+      "key": "070018_NAME",
+      "value": "Fur"
+    },
+    {
+      "key": "070018_DESCRIPTION",
+      "value": "A soft and warm piece of fur. Great for making a coat, or just petting in stressful situations."
+    },
+    {
+      "key": "070019_NAME",
+      "value": "Ice Beetle"
+    },
+    {
+      "key": "070019_DESCRIPTION",
+      "value": "A very cold and rigid bug. Surprisingly crunchy, but probably shouldn't be eaten without heating it up first."
+    },
+    {
+      "key": "070020_NAME",
+      "value": "Ice Flower"
+    },
+    {
+      "key": "070020_DESCRIPTION",
+      "value": "A beautiful flower that never wilts, mainly because it's completely frozen solid."
+    },
+    {
+      "key": "070021_NAME",
+      "value": "Ice Heart"
+    },
+    {
+      "key": "070021_DESCRIPTION",
+      "value": "A freezing heart that still beats slowly. Holding it for too long might make your fingers go numb."
+    },
+    {
+      "key": "070022_NAME",
+      "value": "Monster Eye"
+    },
+    {
+      "key": "070022_DESCRIPTION",
+      "value": "It keeps staring at you no matter how you turn it. Creepy, but maybe useful for something... gross."
+    },
+    {
+      "key": "070023_NAME",
+      "value": "Obsidian Plate"
+    },
+    {
+      "key": "070023_DESCRIPTION",
+      "value": "A dark and heavy plate made of volcanic glass. Dropping it on your toe is highly disadvised."
+    },
+    {
+      "key": "070024_NAME",
+      "value": "Shyron Heart"
+    },
+    {
+      "key": "070024_DESCRIPTION",
+      "value": "A pulsing magical core from a Shyron. It radiates immense power and a faint smell of burnt air."
+    },
+    {
+      "key": "070025_NAME",
+      "value": "Spectral Soul"
+    },
+    {
+      "key": "070025_DESCRIPTION",
+      "value": "An eerie, floating essence of a defeated phantom. Please do not try to talk to it, it has no mouth."
     }
   ]
 }

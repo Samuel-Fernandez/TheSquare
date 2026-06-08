@@ -13,11 +13,11 @@ public class MarketManager : MonoBehaviour
     // SELL
     public GameObject UISell;
     public GameObject sellButtonContainer; // Contenant avant vente
-    public GameObject selledButtonContainer; // Contenant après vente
+    public GameObject selledButtonContainer; // Contenant aprï¿½s vente
     public GameObject sellPanel;
     public List<GameObject> sellButtonList;
-    GameObject selectedButton; // Dernier bouton cliqué
-    public GameObject counterPanel; // Panel permettant le compteur pour items spéciaux
+    GameObject selectedButton; // Dernier bouton cliquï¿½
+    public GameObject counterPanel; // Panel permettant le compteur pour items spï¿½ciaux
     public TextMeshProUGUI itemNameTxt;
     public TextMeshProUGUI itemValueTxt;
     public List<GameObject> buttonPlacedToSell;
@@ -36,7 +36,7 @@ public class MarketManager : MonoBehaviour
 
     // Prefabs
     public GameObject sellButton;
-    public GameObject buyButton; // Bouton permettant d'afficher les items à acheter
+    public GameObject buyButton; // Bouton permettant d'afficher les items ï¿½ acheter
 
     // Logic
     public TraderType type;
@@ -242,7 +242,7 @@ public class MarketManager : MonoBehaviour
                 return Mathf.RoundToInt(tempPrice * (1 - PlayerLevels.instance.explorerReputation / 100f));
             }
         }
-        // --- Cas : le joueur ACHÈTE chez le PNJ ---
+        // --- Cas : le joueur ACHï¿½TE chez le PNJ ---
         else
         {
             if (selectedButton != null && selectedButton.GetComponent<MarketButtonBuy>())
@@ -261,10 +261,10 @@ public class MarketManager : MonoBehaviour
                     quantity = actualNb;
                 }
 
-                // Prix = prix exponentiel unitaire × quantité
+                // Prix = prix exponentiel unitaire ï¿½ quantitï¿½
                 tempPrice = ExponentialPrice(unitValue) * quantity;
 
-                // Réputation appliquée
+                // Rï¿½putation appliquï¿½e
                 if (type == TraderType.ARMORER)
                     return Mathf.RoundToInt(tempPrice * (1 + PlayerLevels.instance.armorerReputation / 100f));
                 else if (type == TraderType.HEALER)
@@ -293,7 +293,7 @@ public class MarketManager : MonoBehaviour
         {
             if (actualNb > 0)
             {
-                // Vérifier si le type de l'item de selectedButton est déjà présent dans buttonPlacedToSell
+                // Vï¿½rifier si le type de l'item de selectedButton est dï¿½jï¿½ prï¿½sent dans buttonPlacedToSell
                 var existingButton = buttonPlacedToSell.FirstOrDefault(button =>
                     button.GetComponent<MarketButtonSell>().item is SpecialItems item &&
                     item.type == (selectedButton.GetComponent<MarketButtonSell>().item as SpecialItems).type);
@@ -338,11 +338,11 @@ public class MarketManager : MonoBehaviour
                     }
                     else if (actualNb < maxNb)
                     {
-                        // Mettre à jour la quantité de l'élément existant
+                        // Mettre ï¿½ jour la quantitï¿½ de l'ï¿½lï¿½ment existant
                         existingButton.GetComponent<MarketButtonSell>().nb += actualNb;
                         existingButton.GetComponent<MarketButtonSell>().UpdateNumber();
 
-                        // Mettre à jour la quantité de l'élément sélectionné
+                        // Mettre ï¿½ jour la quantitï¿½ de l'ï¿½lï¿½ment sï¿½lectionnï¿½
                         selectedButton.GetComponent<MarketButtonSell>().nb = maxNb - actualNb;
                         selectedButton.GetComponent<MarketButtonSell>().UpdateNumber();
 
@@ -369,7 +369,7 @@ public class MarketManager : MonoBehaviour
 
         if (type == TraderType.EXPLORER)
         {
-            // Vérifier si le type de l'item de selectedButton est déjà présent dans buttonPlacedToSell
+            // Vï¿½rifier si le type de l'item de selectedButton est dï¿½jï¿½ prï¿½sent dans buttonPlacedToSell
             var existingButton = sellButtonList.FirstOrDefault(button =>
                 button.GetComponent<MarketButtonSell>().item is SpecialItems item &&
                 item.type == (clickedButton.GetComponent<MarketButtonSell>().item as SpecialItems).type);
@@ -463,11 +463,11 @@ public class MarketManager : MonoBehaviour
                         // Cloner l'objet SpecialItems
                         SpecialItems clonedItem = ScriptableObjectUtility.Clone(item);
 
-                        // Créer un nouveau bouton et définir le bouton cloné
+                        // Crï¿½er un nouveau bouton et dï¿½finir le bouton clonï¿½
                         GameObject newButton = Instantiate(sellButton, sellButtonContainer.transform);
                         newButton.GetComponent<MarketButtonSell>().SetButton(clonedItem);
 
-                        // Ajouter le nouveau bouton à la liste
+                        // Ajouter le nouveau bouton ï¿½ la liste
                         sellButtonList.Add(newButton);
                     }
                 }

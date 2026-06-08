@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9ef7df9c4e4174688694dc6d8546d3, type: 3}
   m_Name: MirrorLakeOfMylia
   m_EditorClassIdentifier: 
-  type: 2
+  type: 5
   regionID: MIRROR_LAKE_OF_MYLIA
   scenes:
   - {fileID: 11400000, guid: 97daecdb2746fbd46b0cc57db3e8d1cc, type: 2}
+  - {fileID: 11400000, guid: 98a41d1108ca2e04b84200b7ca1a4dc6, type: 2}
+  - {fileID: 11400000, guid: 96941799b8cbf774c9a2eaa4ce9ade20, type: 2}
+  - {fileID: 11400000, guid: eedeefba57d8dc140aa054862df28bd7, type: 2}
+  - {fileID: 11400000, guid: 6224d9acb1f731c4e82ffe90829ca449, type: 2}
+  - {fileID: 11400000, guid: 7488c8c64fe508b4884e6ae173fb7f16, type: 2}

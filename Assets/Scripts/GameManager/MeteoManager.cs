@@ -46,7 +46,12 @@ public class MeteoManager : MonoBehaviour
 
     public GameObject rain;
     GameObject rainInstance = null;
-    const float chanceWeatherPerSecond = .005f;
+
+    public GameObject blizzard;
+    GameObject blizzardInstance = null;
+
+    // DÃ©faut Ã  0.005
+    const float chanceWeatherPerSecond = .05f;
 
     public List<GameObject> clouds;
     public GameObject cloudPrefab;
@@ -104,19 +109,19 @@ public class MeteoManager : MonoBehaviour
     {
         foreach (RegionData region in regions)
         {
-            // Parcours de toutes les scènes de chaque région
+            // Parcours de toutes les scï¿½nes de chaque rï¿½gion
             foreach (SceneData scene in region.scenes)
             {
-                // Vérifie si le nom de la scène correspond
+                // Vï¿½rifie si le nom de la scï¿½ne correspond
                 if (scene.SceneName == sceneName)
                 {
-                    // Si la scène est trouvée, retourne ses données
+                    // Si la scï¿½ne est trouvï¿½e, retourne ses donnï¿½es
                     return scene;
                 }
             }
         }
 
-        // Si aucune scène avec ce nom n'est trouvée, affiche un message et retourne null
+        // Si aucune scï¿½ne avec ce nom n'est trouvï¿½e, affiche un message et retourne null
         Debug.LogWarning($"No scene found with the name: {sceneName}");
         return null;
     }
@@ -226,13 +231,16 @@ public class MeteoManager : MonoBehaviour
         switch (actualRegion.type)
         {
             case RegionType.NONE:
-                actualWeatherType = WeatherType.RAINING; // Par défaut
+                actualWeatherType = WeatherType.RAINING; // Par dï¿½faut
                 break;
             case RegionType.FOREST:
                 actualWeatherType = WeatherType.RAINING;
                 break;
             case RegionType.DESERT:
                 actualWeatherType = WeatherType.DUST_STORM;
+                break;
+            case RegionType.SNOW:
+                actualWeatherType = WeatherType.BLIZZARD;
                 break;
             default:
                 actualWeatherType = WeatherType.RAINING;
@@ -246,21 +254,25 @@ public class MeteoManager : MonoBehaviour
         }
     }
 
+    public bool IsBlizzardActive()
+    {
+        return isWeather && actualWeatherType == WeatherType.BLIZZARD && actualScene != null && actualScene.sceneType == SceneType.OUTSIDE;
+    }
+
     public string ConvertTimeWorldToDayTime()
     {
-        // Durée d'une journée complète en secondes (30 minutes de jeu)
+        // Dure d'une journe complte en secondes (30 minutes de jeu)
         float dayCycleDuration = lengthOneDay * 60f;
 
-        // Nombre de jours écoulés
+        // Nombre de jours couls
         int days = Mathf.FloorToInt(timeWorld / dayCycleDuration);
 
-        // Temps restant dans la journée actuelle en secondes
         float timeInCurrentDay = timeWorld % dayCycleDuration;
 
-        // Calcul du temps de départ en secondes (8h00)
+        // Calcul du temps de dï¿½part en secondes (8h00)
         float initialTimeInSeconds = 8 * 60 * 60;
 
-        // Temps total depuis le début de la journée actuelle (en secondes)
+        // Temps total depuis le dï¿½but de la journï¿½e actuelle (en secondes)
         float totalSecondsInDay = initialTimeInSeconds + timeInCurrentDay * (24 * 60 * 60) / dayCycleDuration;
 
         // Conversion en heures et minutes
@@ -298,7 +310,7 @@ public class MeteoManager : MonoBehaviour
                 StartCoroutine(StopWeather(weatherDuration));
             }
 
-            // Vérifier si les effets de météo doivent être actifs
+            // Vï¿½rifier si les effets de mï¿½tï¿½o doivent ï¿½tre actifs
             if (isWeather)
             {
                 // CORRECTION 1 : Appliquer le filtre UNIQUEMENT si on est OUTSIDE
@@ -339,13 +351,30 @@ public class MeteoManager : MonoBehaviour
                             break;
 
                         case WeatherType.BLIZZARD:
+                            if (CameraManager.instance.GetFilter() == CameraFilter.NONE)
+                                CameraManager.instance.SetFilter(CameraFilter.BLIZZARD);
+
+                            if (blizzardInstance == null)
+                            {
+                                blizzardInstance = Instantiate(blizzard, PlayerManager.instance.player.transform.position, Quaternion.identity);
+                                blizzardInstance.transform.SetParent(PlayerManager.instance.player.transform);
+
+                                foreach (var cloud in clouds)
+                                {
+                                    if (cloud)
+                                        cloud.GetComponent<CloudBehiavour>().DestroyCloud();
+                                }
+
+                                if (PlayerManager.instance.player != null && PlayerManager.instance.player.GetComponent<Stats>() != null)
+                                    PlayerManager.instance.player.GetComponent<Stats>().UpdateStats();
+                            }
                             break;
 
                         default:
                             break;
                     }
                 }
-                else // CORRECTION 2 : Si on est en intérieur, nettoyer les effets
+                else // CORRECTION 2 : Si on est en intï¿½rieur, nettoyer les effets
                 {
                     CleanWeatherEffects();
                 }
@@ -369,7 +398,15 @@ public class MeteoManager : MonoBehaviour
             dustStormInstance = null;
         }
 
-        // Restaurer le filtre de la scène actuelle
+        if (blizzardInstance != null)
+        {
+            Destroy(blizzardInstance);
+            blizzardInstance = null;
+            if (PlayerManager.instance.player != null && PlayerManager.instance.player.GetComponent<Stats>() != null)
+                PlayerManager.instance.player.GetComponent<Stats>().UpdateStats();
+        }
+
+        // Restaurer le filtre de la scï¿½ne actuelle
         SetSceneFilter();
     }
 
@@ -378,14 +415,14 @@ public class MeteoManager : MonoBehaviour
         yield return new WaitForSeconds(weatherDuration);
 
         isWeather = false;
-        CleanWeatherEffects(); // Utiliser la méthode de nettoyage
+        CleanWeatherEffects(); // Utiliser la mï¿½thode de nettoyage
     }
 
     private int previousHour = -1;
 
     IEnumerator RoutineTimeWorld()
     {
-        float dayCycleDuration = lengthOneDay * 60f; // Durée d'une journée complète en secondes (1800 secondes)
+        float dayCycleDuration = lengthOneDay * 60f; // Durï¿½e d'une journï¿½e complï¿½te en secondes (1800 secondes)
 
         while (true)
         {
@@ -400,13 +437,13 @@ public class MeteoManager : MonoBehaviour
                 previousHour = currentHour;
             }
 
-            // Normalise le temps mondial dans une échelle de 0 à 1 (0 étant le début du cycle jour/nuit et 1 la fin)
+            // Normalise le temps mondial dans une ï¿½chelle de 0 ï¿½ 1 (0 ï¿½tant le dï¿½but du cycle jour/nuit et 1 la fin)
             float normalizedTime = (timeWorld % dayCycleDuration) / dayCycleDuration;
 
-            // Utilise une sinusoïde pour créer une transition douce entre jour et nuit
+            // Utilise une sinusoï¿½de pour crï¿½er une transition douce entre jour et nuit
             float intensity = Mathf.Lerp(minSunIntensity, maxSunIntensity, Mathf.Sin(normalizedTime * Mathf.PI * 2) * 0.5f + 0.5f);
 
-            // Définit l'intensité du soleil
+            // Dï¿½finit l'intensitï¿½ du soleil
             if (actualScene.sceneType == SceneType.OUTSIDE)
                 LightManager.instance.SetSunIntensity(intensity);
 

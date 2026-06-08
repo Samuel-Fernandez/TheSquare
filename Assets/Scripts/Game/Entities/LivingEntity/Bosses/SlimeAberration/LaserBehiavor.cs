@@ -42,7 +42,7 @@ public class LaserBehavior : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player)
+        if (collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player)
         {
             collision.GetComponent<LifeManager>().TakeDamage(this.strength, false);
         }
@@ -70,7 +70,7 @@ public class LaserBehavior : MonoBehaviour
         transform.position = a;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 
-        // Échelle du sprite
+        // ï¿½chelle du sprite
         Vector3 scale = laserVisual.localScale;
         scale.y = finalDistance;
         laserVisual.localScale = scale;
@@ -80,7 +80,7 @@ public class LaserBehavior : MonoBehaviour
         col.size = new Vector2(col.size.x, finalDistance);
         col.offset = new Vector2(0, finalDistance / 2f);
 
-        // Mise à jour rayon lumière
+        // Mise ï¿½ jour rayon lumiï¿½re
         if (laserLight != null)
         {
             laserLight.pointLightOuterRadius = finalDistance;
@@ -113,7 +113,7 @@ public class LaserBehavior : MonoBehaviour
 
         while (true)
         {
-            // Fade montée
+            // Fade montï¿½e
             float timer = 0f;
             while (timer < halfDuration)
             {

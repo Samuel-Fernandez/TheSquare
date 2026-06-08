@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3795486723645362524
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.4496155
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.83113617
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728381241275437094, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159486656453264997, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_Name
+      value: SnowyTree Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525591233576102983, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94b4f3ca289dcf74b80dac6586c462f5, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bad090206b9c1054fa4e764cefa649a7, type: 3}

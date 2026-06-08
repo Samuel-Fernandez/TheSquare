@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3614813743168573902
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 412713365646789124, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132196383661975120, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Size.x
+      value: 0.64742327
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132196383661975120, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132196383661975120, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.6906707
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764038729172364202, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: openedDoor
+      value: 
+      objectReference: {fileID: 21300000, guid: a06cc62257470f543a9674cb8ef32b1b, type: 3}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.107263
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.2028885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061949488184980074, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207357871243158569, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Name
+      value: SnowyWallCrackled Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325376181525095267, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6646366
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325376181525095267, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325376181525095267, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.69375515
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012281936519319051, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4eaedc2c5a8a0b648949353f90575495, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff2a4785f46464a4aaeb3202476a3489, type: 3}

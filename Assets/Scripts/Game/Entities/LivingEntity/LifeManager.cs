@@ -17,14 +17,20 @@ public class LifeManager : MonoBehaviour
     public GameObject deathParticle;
     SoundContainer soundContainer;
 
-    private void Start()
+    private void Awake()
     {
         stats = GetComponent<Stats>();
-        life = stats.health;
         soundContainer = GetComponent<SoundContainer>();
+    }
+
+    private void Start()
+    {
+        if (stats != null)
+        {
+            life = stats.health;
+        }
 
         StartCoroutine(RoutineRegeneration());
-
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -419,19 +425,32 @@ public class LifeManager : MonoBehaviour
         stats.isDying = false;
     }
 
+    private Coroutine knockbackCoroutine;
+
     public void KnockBack(GameObject target, float knockbackPower, GameObject attackingEntity)
     {
         isKnockbacking = true;
 
         // Calculer la direction du recul en fonction de la position de la cible et de l'entit� de ce script
-        Vector2 direction = (target.transform.position - attackingEntity.transform.position).normalized;
+        Vector2 diff = target.transform.position - attackingEntity.transform.position;
+        Vector2 direction = diff.normalized;
+        if (diff.sqrMagnitude < 0.001f)
+        {
+            direction = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
+            if (direction == Vector2.zero) direction = Vector2.up;
+        }
 
         float knockbackApplied = Mathf.Max(knockbackPower - stats.knockbackResistance, 0);
         // Appliquer le recul initial � la cible en fonction de la direction et de la puissance de recul
-        target.GetComponent<Rigidbody2D>().velocity = direction * knockbackApplied * 2;
+        Rigidbody2D targetRb = target.GetComponent<Rigidbody2D>();
+        if (targetRb != null) targetRb.velocity = direction * knockbackApplied * 2;
 
         // D�marrer la coroutine pour d�c�l�rer le recul
-        StartCoroutine(DecelerateKnockback(target.GetComponent<Rigidbody2D>(), direction));
+        if (targetRb != null)
+        {
+            if (knockbackCoroutine != null) StopCoroutine(knockbackCoroutine);
+            knockbackCoroutine = StartCoroutine(DecelerateKnockback(targetRb, direction));
+        }
     }
 
     private IEnumerator DecelerateKnockback(Rigidbody2D rbTarget, Vector2 direction)
@@ -440,7 +459,7 @@ public class LifeManager : MonoBehaviour
         float friction = 0.9f;
 
         // Tant que la v�locit� de l'objet touch� est significative
-        while (rbTarget.velocity.magnitude > 0.1f)
+        while (rbTarget != null && rbTarget.velocity.magnitude > 0.1f)
         {
             // Appliquer une force de frottement pour d�c�l�rer le recul
             rbTarget.velocity *= friction;
@@ -450,8 +469,9 @@ public class LifeManager : MonoBehaviour
         }
 
         // Assurer que la v�locit� devienne exactement z�ro une fois que le recul est termin�
-        rbTarget.velocity = Vector2.zero;
+        if (rbTarget != null) rbTarget.velocity = Vector2.zero;
 
         isKnockbacking = false;
+        knockbackCoroutine = null;
     }
 }

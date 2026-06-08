@@ -12,7 +12,7 @@ public class PlayerLevels : MonoBehaviour
     public int lvlHP = 1;
     public int lvlLuck = 1;
     public int price;
-    public bool lvlChanged; // a mettre à true quand achat
+    public bool lvlChanged; // a mettre ï¿½ true quand achat
 
     public GameObject UIPlayerLevels;
 
@@ -23,7 +23,7 @@ public class PlayerLevels : MonoBehaviour
     public List<TextMeshProUGUI> lifeText;
     public List<TextMeshProUGUI> strengthText;
     public List<TextMeshProUGUI> luckText;
-    
+
     public TextMeshProUGUI priceText;
     public TextMeshProUGUI actualSquareCoins;
 
@@ -96,7 +96,7 @@ public class PlayerLevels : MonoBehaviour
             if (attributesMenu.activeSelf)
             {
                 OpenSkillsMenu();
-                if(EventSystem.current)
+                if (EventSystem.current)
                     EventSystem.current.SetSelectedGameObject(attributesButton);
             }
             else
@@ -108,7 +108,7 @@ public class PlayerLevels : MonoBehaviour
             }
         }
 
-        if(PlayerManager.instance.playerInputActions.Menu.Pause.triggered && UIPlayerLevels.activeSelf)
+        if (PlayerManager.instance.playerInputActions.Menu.Pause.triggered && UIPlayerLevels.activeSelf)
         {
             ToggleUI();
         }
@@ -149,7 +149,7 @@ public class PlayerLevels : MonoBehaviour
         lvlChanged = true;
         UpdateStats();
 
-        // Garder une référence du bouton acheté pour le re-sélectionner
+        // Garder une rï¿½fï¿½rence du bouton achetï¿½ pour le re-sï¿½lectionner
         GameObject purchasedButton = selectedButton;
 
         foreach (GameObject button in skillButtons)
@@ -279,7 +279,7 @@ public class PlayerLevels : MonoBehaviour
 
         Skill skill = clickedButton.GetComponent<SkillButton>().skill;
 
-        if(skill.lvlLifeMin > 1)
+        if (skill.lvlLifeMin > 1)
         {
             requirements[0].GetComponentInChildren<TextMeshProUGUI>().text = "> " + (skill.lvlLifeMin - 1);
             requirements[0].SetActive(true);
@@ -352,7 +352,7 @@ public class PlayerLevels : MonoBehaviour
             requirements[0].GetComponentInChildren<TextMeshProUGUI>().color = missingRequirementColor;
         }
 
-        if(skill.lvlStrengthMin <= lvlSTR)
+        if (skill.lvlStrengthMin <= lvlSTR)
         {
             requirements[1].GetComponentInChildren<TextMeshProUGUI>().color = requirementGoodColor;
 
@@ -374,7 +374,7 @@ public class PlayerLevels : MonoBehaviour
             requirements[2].GetComponentInChildren<TextMeshProUGUI>().color = missingRequirementColor;
         }
 
-        if(skill.cost <= PlayerManager.instance.player.GetComponent<Stats>().money)
+        if (skill.cost <= PlayerManager.instance.player.GetComponent<Stats>().money)
         {
             requirements[3].GetComponentInChildren<TextMeshProUGUI>().color = requirementGoodColor;
         }
@@ -417,7 +417,7 @@ public class PlayerLevels : MonoBehaviour
 
     public void BuyLife()
     {
-        if(!waitBuy)
+        if (!waitBuy)
         {
             StartCoroutine(WaitBeforeBuy());
 
@@ -438,7 +438,7 @@ public class PlayerLevels : MonoBehaviour
 
     public void BuyStrength()
     {
-        if(!waitBuy)
+        if (!waitBuy)
         {
             StartCoroutine(WaitBeforeBuy());
 
@@ -456,7 +456,7 @@ public class PlayerLevels : MonoBehaviour
                 GetComponent<SoundContainer>().PlayUISound("denied", 1);
             }
         }
-        
+
     }
 
     public void BuyLuck()
@@ -478,7 +478,7 @@ public class PlayerLevels : MonoBehaviour
                 GetComponent<SoundContainer>().PlayUISound("denied", 1);
             }
         }
-           
+
     }
 
     IEnumerator WaitBeforeBuy()

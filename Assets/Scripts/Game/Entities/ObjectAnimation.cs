@@ -63,7 +63,7 @@ public class ObjectAnimation : MonoBehaviour
         currentAnimationName = null;
     }
 
-    // Méthode principale pour jouer l'animation
+    // Mï¿½thode principale pour jouer l'animation
     public void PlayAnimation(string animationName, bool lastImageStay = false, bool playInReverse = false, float animationSpeed = 1f)
     {
         if (!gameObject.activeSelf) return;
@@ -90,13 +90,13 @@ public class ObjectAnimation : MonoBehaviour
             {
                 StopCoroutine(currentAnimationCoroutine);
             }
-        
+
             currentAnimationCoroutine = StartCoroutine(AnimateSprite(foundAnimation, lastImageStay, playInReverse, animationSpeed));
             currentAnimationName = animationName;
         }
     }
 
-    // Méthode IEnumerator pour jouer l'animation
+    // Mï¿½thode IEnumerator pour jouer l'animation
     public IEnumerator PlayAnimationCoroutine(string animationName, bool lastImageStay = false, bool playInReverse = false, float animationSpeed = 1f)
     {
         if (!gameObject.activeSelf) yield break;
@@ -125,7 +125,7 @@ public class ObjectAnimation : MonoBehaviour
             currentAnimationCoroutine = StartCoroutine(AnimateSprite(foundAnimation, lastImageStay, playInReverse, animationSpeed));
             currentAnimationName = animationName;
 
-            // attendre la fin de l’animation
+            // attendre la fin de lï¿½animation
             yield return currentAnimationCoroutine;
         }
     }
@@ -146,7 +146,7 @@ public class ObjectAnimation : MonoBehaviour
     {
         int spriteCount = animation.sprites.Count;
 
-        if (spriteCount == 0) yield break; // S'assurer qu'il y a des sprites à animer
+        if (spriteCount == 0) yield break; // S'assurer qu'il y a des sprites ï¿½ animer
 
         float frameDuration = (animation.duration / spriteCount) / animationSpeed;
 
@@ -181,7 +181,7 @@ public class ObjectAnimation : MonoBehaviour
         }
         else
         {
-            // Redémarrer l'animation si elle ne doit pas rester sur la dernière image
+            // Redï¿½marrer l'animation si elle ne doit pas rester sur la derniï¿½re image
             if (currentAnimationCoroutine != null)
             {
                 StopCoroutine(currentAnimationCoroutine);
@@ -202,7 +202,7 @@ public class ObjectAnimation : MonoBehaviour
             currentAnimationCoroutine = null;
         }
 
-        // Remettre le sprite initial stocké
+        // Remettre le sprite initial stockï¿½
         if (spriteRenderer != null && initialSprite != null)
         {
             spriteRenderer.sprite = initialSprite;
@@ -213,7 +213,7 @@ public class ObjectAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        // Réinitialiser le sprite et stopper les animations lors de l'activation
+        // Rï¿½initialiser le sprite et stopper les animations lors de l'activation
         if (spriteRenderer != null)
         {
             spriteRenderer.sprite = initialSprite;

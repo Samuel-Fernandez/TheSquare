@@ -22,7 +22,7 @@ public class PoisonPlantBehiavor : MonoBehaviour
     bool isPerformingNearAttack = false;
 
     Coroutine currentMainRoutine;
-    Coroutine currentNearAttackRoutine; // Nouvelle référence pour tracking
+    Coroutine currentNearAttackRoutine; // Nouvelle rï¿½fï¿½rence pour tracking
     SpriteRenderer spriteRenderer;
 
     private void Start()
@@ -32,14 +32,14 @@ public class PoisonPlantBehiavor : MonoBehaviour
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        // S'assurer que la damage zone est désactivée au début
+        // S'assurer que la damage zone est dï¿½sactivï¿½e au dï¿½but
         if (damageZone != null)
             damageZone.SetActive(false);
     }
 
     private void Update()
     {
-        // Vérifier si le joueur existe
+        // Vï¿½rifier si le joueur existe
         if (PlayerManager.instance?.player == null) return;
 
         // Flip du sprite selon la position du joueur
@@ -74,19 +74,19 @@ public class PoisonPlantBehiavor : MonoBehaviour
         }
     }
 
-    // Nouvelle méthode pour gérer proprement la disparition
+    // Nouvelle mï¿½thode pour gï¿½rer proprement la disparition
     IEnumerator DisappearSequence()
     {
         isAppeared = false;
 
-        // Arrêter la routine principale proprement
+        // Arrï¿½ter la routine principale proprement
         if (currentMainRoutine != null)
         {
             StopCoroutine(currentMainRoutine);
             currentMainRoutine = null;
         }
 
-        // Si une attaque proche est en cours, l'arrêter proprement
+        // Si une attaque proche est en cours, l'arrï¿½ter proprement
         if (currentNearAttackRoutine != null)
         {
             StopCoroutine(currentNearAttackRoutine);
@@ -94,7 +94,7 @@ public class PoisonPlantBehiavor : MonoBehaviour
             yield return StartCoroutine(CleanupNearAttack());
         }
 
-        // Nettoyer les états
+        // Nettoyer les ï¿½tats
         isSpitting = false;
         isPerformingNearAttack = false;
 
@@ -104,14 +104,14 @@ public class PoisonPlantBehiavor : MonoBehaviour
         GetComponent<SoundContainer>().PlaySound("Appear", 2);
     }
 
-    // Méthode pour nettoyer l'état après interruption d'attaque proche
+    // Mï¿½thode pour nettoyer l'ï¿½tat aprï¿½s interruption d'attaque proche
     IEnumerator CleanupNearAttack()
     {
         var stats = GetComponent<Stats>();
         if (stats != null)
             stats.doingAttack = false;
 
-        // Désactiver la zone de dégâts si elle est active
+        // Dï¿½sactiver la zone de dï¿½gï¿½ts si elle est active
         if (damageZone != null && damageZone.activeInHierarchy)
         {
             damageZone.SetActive(false);
@@ -120,25 +120,25 @@ public class PoisonPlantBehiavor : MonoBehaviour
                 damageZoneBehavior.playerTouched = false;
         }
 
-        // Remettre l'animation à l'idle
+        // Remettre l'animation ï¿½ l'idle
         var objectAnimation = GetComponent<ObjectAnimation>();
         if (objectAnimation != null)
             objectAnimation.PlayAnimation("Idle");
 
         isPerformingNearAttack = false;
-        yield return null; // Attendre une frame pour s'assurer que tout est nettoyé
+        yield return null; // Attendre une frame pour s'assurer que tout est nettoyï¿½
     }
 
     void HandleNearAttack()
     {
-        // Correction de la condition problématique
+        // Correction de la condition problï¿½matique
         var stats = GetComponent<Stats>();
         bool statsDoingAttack = stats != null && stats.doingAttack;
 
         if (isAppeared && !isSpitting && !isPerformingNearAttack &&
             !statsDoingAttack &&
             PlayerIsInRadius(nearAttackRadius) &&
-            currentNearAttackRoutine == null) // Vérification supplémentaire
+            currentNearAttackRoutine == null) // Vï¿½rification supplï¿½mentaire
         {
             currentNearAttackRoutine = StartCoroutine(NearAttackRoutine());
         }
@@ -167,7 +167,7 @@ public class PoisonPlantBehiavor : MonoBehaviour
 
     IEnumerator DisappearRoutine()
     {
-        // Désactiver la damage zone si elle est active
+        // Dï¿½sactiver la damage zone si elle est active
         if (damageZone != null && damageZone.activeInHierarchy)
         {
             damageZone.SetActive(false);
@@ -195,24 +195,24 @@ public class PoisonPlantBehiavor : MonoBehaviour
 
             var objectAnimation = GetComponent<ObjectAnimation>();
 
-            // Animation de début d'attaque
+            // Animation de dï¿½but d'attaque
             if (objectAnimation != null)
                 yield return objectAnimation.PlayAnimationCoroutine("StartAttack", true);
 
             GetComponent<SoundContainer>().PlaySound("Whip", 2);
 
-            // Activer la zone de dégâts
+            // Activer la zone de dï¿½gï¿½ts
             if (damageZone != null)
                 damageZone.SetActive(true);
 
-            // Rotation 360°
+            // Rotation 360ï¿½
             yield return StartCoroutine(Rotate360Routine(0.5f));
 
             // Animation de fin d'attaque
             if (objectAnimation != null)
                 yield return objectAnimation.PlayAnimationCoroutine("FinishAttack", true);
 
-            // Désactiver la zone de dégâts
+            // Dï¿½sactiver la zone de dï¿½gï¿½ts
             if (damageZone != null)
             {
                 damageZone.SetActive(false);
@@ -221,11 +221,11 @@ public class PoisonPlantBehiavor : MonoBehaviour
                     damageZoneBehavior.playerTouched = false;
             }
 
-            // Retour à l'idle
+            // Retour ï¿½ l'idle
             if (objectAnimation != null)
                 objectAnimation.PlayAnimation("Idle");
         }
-        finally // S'assurer que l'état est toujours nettoyé
+        finally // S'assurer que l'ï¿½tat est toujours nettoyï¿½
         {
             if (stats != null)
                 stats.doingAttack = false;
@@ -233,7 +233,7 @@ public class PoisonPlantBehiavor : MonoBehaviour
             isPerformingNearAttack = false;
             currentNearAttackRoutine = null;
 
-            // Sécurité supplémentaire : s'assurer que la damage zone est désactivée
+            // Sï¿½curitï¿½ supplï¿½mentaire : s'assurer que la damage zone est dï¿½sactivï¿½e
             if (damageZone != null && damageZone.activeInHierarchy)
             {
                 damageZone.SetActive(false);
@@ -259,10 +259,10 @@ public class PoisonPlantBehiavor : MonoBehaviour
             if (objectAnimation != null)
                 objectAnimation.PlayAnimation("Idle");
 
-            // Attendre un délai aléatoire avant de cracher
+            // Attendre un dï¿½lai alï¿½atoire avant de cracher
             yield return new WaitForSeconds(Random.Range(spitCooldownMin, spitCooldownMax));
 
-            // Vérifier si on peut encore cracher (plante toujours apparue et pas d'attaque proche)
+            // Vï¿½rifier si on peut encore cracher (plante toujours apparue et pas d'attaque proche)
             if (isAppeared && !isPerformingNearAttack)
             {
                 yield return StartCoroutine(SpitAttackRoutine());
@@ -277,13 +277,13 @@ public class PoisonPlantBehiavor : MonoBehaviour
 
         try
         {
-            // Animation de début de crachat
+            // Animation de dï¿½but de crachat
             if (objectAnimation != null)
                 yield return objectAnimation.PlayAnimationCoroutine("StartSpit", true);
 
             GetComponent<SoundContainer>().PlaySound("Spit", 2);
 
-            // Créer le projectile
+            // Crï¿½er le projectile
             if (spitProjectilePrefab != null && spitSpawn != null && PlayerManager.instance?.player != null)
             {
                 Vector2 spawnPosition = spitSpawn.transform.position;
@@ -327,10 +327,10 @@ public class PoisonPlantBehiavor : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, startRotation);
     }
 
-    // Méthode utilitaire pour debug
+    // Mï¿½thode utilitaire pour debug
     private void OnDrawGizmosSelected()
     {
-        // Visualiser le rayon de détection
+        // Visualiser le rayon de dï¿½tection
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radiusDetection);
 
@@ -339,7 +339,7 @@ public class PoisonPlantBehiavor : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, nearAttackRadius);
     }
 
-    // Méthode de debug pour forcer le reset de l'état (utile pendant le développement)
+    // Mï¿½thode de debug pour forcer le reset de l'ï¿½tat (utile pendant le dï¿½veloppement)
     [System.Diagnostics.Conditional("UNITY_EDITOR")]
     public void ForceResetState()
     {

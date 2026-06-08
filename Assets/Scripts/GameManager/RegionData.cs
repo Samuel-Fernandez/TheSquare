@@ -9,7 +9,8 @@ public enum RegionType
     CINEMATIC,
     FOREST,
     PLAIN,
-    DESERT
+    DESERT,
+    SNOW
 }
 
 

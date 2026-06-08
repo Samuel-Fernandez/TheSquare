@@ -15,7 +15,7 @@ public class CyclopeStatueBehiavor : MonoBehaviour
 
     public Sprite upSprite;
     public Sprite downSprite;
-    public Sprite leftSprite; // utilisé aussi pour droite, mais inversé
+    public Sprite leftSprite; // utilisï¿½ aussi pour droite, mais inversï¿½
     public float radius = 5f;
 
     private GameObject player;
@@ -69,23 +69,23 @@ public class CyclopeStatueBehiavor : MonoBehaviour
                 UpdateSpriteAndCollider();
             }
 
-            // Déplacer uniquement si la case suivante est libre
+            // Dï¿½placer uniquement si la case suivante est libre
             if (!IsBlocked(nextPos))
             {
-                direction = newDir; // Mettre à jour la direction
+                direction = newDir; // Mettre ï¿½ jour la direction
                 UpdateSpriteAndCollider();
                 yield return MoveOneUnitInDirection();
             }
             else
             {
-                // Saut sur place si direction a changé mais case bloquée
+                // Saut sur place si direction a changï¿½ mais case bloquï¿½e
                 if (axisChange || opposite)
                 {
-                    // Déjà fait plus haut, donc pas besoin de sauter de nouveau
+                    // Dï¿½jï¿½ fait plus haut, donc pas besoin de sauter de nouveau
                 }
                 else
                 {
-                    // Case bloquée mais pas changement de direction rester sur place
+                    // Case bloquï¿½e mais pas changement de direction rester sur place
                     yield return JumpInPlace();
                 }
             }
@@ -106,7 +106,7 @@ public class CyclopeStatueBehiavor : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        // Si saut sur place, reste à la position actuelle
+        // Si saut sur place, reste ï¿½ la position actuelle
         if (IsAxisChange(oldDir, newDir) || IsOpposite(oldDir, newDir))
             return pos;
 
@@ -123,22 +123,22 @@ public class CyclopeStatueBehiavor : MonoBehaviour
 
     bool IsBlocked(Vector3 pos)
     {
-        // Vérifie les collisions avec des colliders dans la zone
+        // Vï¿½rifie les collisions avec des colliders dans la zone
         Collider2D[] hits = Physics2D.OverlapCircleAll(pos, 0.1f);
         foreach (var hit in hits)
         {
             if (hit == null) continue;
 
-            // Si c'est un collider non trigger et que ce n'est pas un Stats bloqué
+            // Si c'est un collider non trigger et que ce n'est pas un Stats bloquï¿½
             if (!hit.isTrigger && hit.GetComponent<Stats>() == null)
                 return true;
 
-            // Si c'est un trou ("Hole" + chiffre) bloqué
+            // Si c'est un trou ("Hole" + chiffre) bloquï¿½
             if (hit.tag.StartsWith("Hole"))
                 return true;
         }
 
-        // Aucun blocage détecté
+        // Aucun blocage dï¿½tectï¿½
         return false;
     }
 

@@ -207,6 +207,18 @@ EditorBuildSettings:
     path: Assets/Scenes/World/DesertOfIllusion/DesertOfIllusionGuardianCave.unity
     guid: 295b13f5e8eb3164298da816ac7231d2
   - enabled: 1
-    path: Assets/Scenes/World/MirrorLakeOfMylia/DeclineRiverEast.unity
+    path: Assets/Scenes/World/MirrorLakeOfMylia/DeclineRiver/DeclineRiverEast.unity
     guid: 01893283e44056046a2fa88ab5f9f8f4
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/DeclineRiver/DeclineRiverEastCave.unity
+    guid: 476500b3ed73e8d48922891a8691e996
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/DeclineRiver/DeclineRiverCenter.unity
+    guid: ec46538a965a009448db117ceb27ef90
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/DeclineRiver/MyliaLakeCaveEntry.unity
+    guid: 83ca32180b53cb24c83ab4d2d6da2eca
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaLakeEast.unity
+    guid: 278a1804cc473424f8d5daf76bdfe481
   m_configObjects: {}

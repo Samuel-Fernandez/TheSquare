@@ -78,16 +78,16 @@ public class SlimeCyclopeBehiavor : MonoBehaviour
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("LowHeight"))
                 continue;
 
-            // Ignorer les entités non-joueur
+            // Ignorer les entitï¿½s non-joueur
             Stats stats = hit.collider.GetComponent<Stats>();
             if (stats != null && stats.entityType != EntityType.Player)
                 continue;
 
-            // Ligne de vue claire si le joueur est touché
+            // Ligne de vue claire si le joueur est touchï¿½
             if (hit.collider.gameObject == PlayerManager.instance.player)
                 return true;
 
-            // Obstruction détectée
+            // Obstruction dï¿½tectï¿½e
             return false;
         }
 

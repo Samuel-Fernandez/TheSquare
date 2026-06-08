@@ -201,8 +201,28 @@
       "value": "River of Decline East"
     },
     {
+      "key": "RIVER_OF_DECLINE_EAST_CAVE_SCENE",
+      "value": "River of Decline East Cave"
+    },
+    {
+      "key": "RIVER_OF_DECLINE_CENTER_SCENE",
+      "value": "River of Decline Center"
+    },
+    {
+      "key": "MYLIA_LAKE_CAVE_ENTRY_SCENE",
+      "value": "Mirror Lake of Mylia - Cave Entry"
+    },
+    {
       "key": "MIRROR_LAKE_OF_MYLIA_REGION",
       "value": "Mirror Lake of Mylia"
+    },
+    {
+      "key": "MYLIA_LAKE_ENTRY_SCENE",
+      "value": "Mirror Lake of Mylia - Entry"
+    },
+    {
+      "key": "MYLIA_LAKE_EAST_SCENE",
+      "value": "Mirror Lake of Mylia - East"
     }
   ]
 }

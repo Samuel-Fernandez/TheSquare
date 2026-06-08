@@ -16,7 +16,7 @@ public class PoisonSpitBehiavor : MonoBehaviour
 
     public void Init(GameObject gameobjectToIgnore, Vector2? target = null, float speed = 3f)
     {
-        this.speed = speed; // On utilise le speed passé en paramètre
+        this.speed = speed; // On utilise le speed passï¿½ en paramï¿½tre
         this.gameobjectToIgnore = gameobjectToIgnore;
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -62,7 +62,7 @@ public class PoisonSpitBehiavor : MonoBehaviour
                 if (collision.gameObject.GetComponent<Stats>() != null &&
                     collision.gameObject.GetComponent<Stats>().entityType == EntityType.Player)
                 {
-                    collision.gameObject.GetComponent<EntityEffects>().SetState(isPoison:true);
+                    collision.gameObject.GetComponent<EntityEffects>().SetState(isPoison: true);
                 }
 
                 StartCoroutine(GoToGroundRoutine());

@@ -7,7 +7,7 @@ public class PNJMovementAnimation : MonoBehaviour
 
     private Vector2 lastVelocity;
 
-    // Variable pour garder en mémoire la dernière direction de mouvement
+    // Variable pour garder en mï¿½moire la derniï¿½re direction de mouvement
     private Vector2 lastDirection;
 
     public bool reversedSprite = false;
@@ -65,11 +65,11 @@ public class PNJMovementAnimation : MonoBehaviour
     }
 
 
-    // Méthode pour retourner le sprite horizontalement
+    // Mï¿½thode pour retourner le sprite horizontalement
     private void FlipSprite(bool flip)
     {
         Vector3 scale = transform.localScale;
-        scale.x = flip ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x); // Inverser seulement la valeur de l'échelle x
+        scale.x = flip ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x); // Inverser seulement la valeur de l'ï¿½chelle x
         transform.localScale = scale;
     }
 }

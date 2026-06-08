@@ -21,7 +21,7 @@ public class PhantomBehiavor : MonoBehaviour
         float alpha = Mathf.InverseLerp(2.5f, 1.5f, distance);
         spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
 
-        // Déclenchement de l'attaque si proche
+        // Dï¿½clenchement de l'attaque si proche
         if (distance <= 1.5f && !stats.doingAttack)
         {
             StartCoroutine(PhantomAttackRoutine());
