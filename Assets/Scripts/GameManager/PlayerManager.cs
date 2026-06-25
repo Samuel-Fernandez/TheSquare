@@ -36,12 +36,6 @@ public class PlayerManager : MonoBehaviour
 
     public void DodgeTime()
     {
-        if (player != null)
-        {
-            SealMomentumManager momentum = player.GetComponent<SealMomentumManager>();
-            if (momentum != null)
-                momentum.OnTrigger(MomentumTriggerType.OnPerfectDodge);
-        }
         StartCoroutine(DodgeTimeRoutine());
     }
 
@@ -491,30 +485,6 @@ public class PlayerManager : MonoBehaviour
                             vampire += weapon.enchantLevel * 5;
                             break;
                     }
-                }
-            }
-        }
-
-        if (SealManager.instance != null && SealManager.instance.HasSealEquipped())
-        {
-            Seal seal = SealManager.instance.equippedSeal;
-            if (seal.isBuffActive)
-            {
-                bowSpeed += seal.bowSpeedPercent;
-                pickaxeSpeed += seal.pickaxeSpeedPercent;
-                dodgeChance += seal.dodgeChancePercent * 100f;
-            }
-
-            if (seal.isMomentumActive && player != null)
-            {
-                SealMomentumManager momentum = player.GetComponent<SealMomentumManager>();
-                if (momentum != null)
-                {
-                    int stacks = momentum.currentStacks;
-                    bowSpeed += seal.bowSpeedPercentStack * stacks;
-                    pickaxeSpeed += seal.pickaxeSpeedPercentStack * stacks;
-                    dodgeChance += (seal.dodgeChancePercentStack * stacks) * 100f;
-                    doubleSquareCoinsChances += seal.squareCoinStack * stacks;
                 }
             }
         }

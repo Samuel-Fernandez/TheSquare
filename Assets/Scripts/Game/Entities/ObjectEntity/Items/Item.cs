@@ -80,12 +80,12 @@ public class Item : ScriptableObject
     // Poison           : 5% de chances poison
     // Glace            : 5% de chances glace
     // Flammes          : 5% de chances flammes
-    // Vol vie          : 10 % de chances de voler 20 % des dégâts donnés
+    // Vol vie          : 10 % de chances de voler 20 % des dï¿½gï¿½ts donnï¿½s
     // 
     // Armor            : 
-    // Régénération     : Régénère 10 % de la vie toutes les 20 secondes
+    // Rï¿½gï¿½nï¿½ration     : Rï¿½gï¿½nï¿½re 10 % de la vie toutes les 20 secondes
     // Peau de dragon   : 10 % de resistance aux coups
-    // Esquive fantôme  : 10 % de chance de supprimer des dégâts
+    // Esquive fantï¿½me  : 10 % de chance de supprimer des dï¿½gï¿½ts
     // 
 
 
@@ -151,12 +151,12 @@ public class Item : ScriptableObject
     public string EnchantRandomizer()
     {
         // CHANGER LE 0 PAR 900
-        if(Random.Range(0 + PlayerManager.instance.player.GetComponent<Stats>().luck * 2, 1000) >= 900)
+        if (Random.Range(0 + PlayerManager.instance.player.GetComponent<Stats>().luck * 2, 1000) >= 900)
         {
             int randomLevel = 1;
             int chance = Random.Range(1 + (PlayerManager.instance.player.GetComponent<Stats>().luck), 1000);
 
-            if(chance > 500 && chance < 850)
+            if (chance > 500 && chance < 850)
             {
                 randomLevel = 2;
             }
@@ -189,16 +189,16 @@ public class Item : ScriptableObject
         // Ajustement de la chance pour une transformation logistique inverse
         float adjustedLuck = Mathf.Exp((luck + (PlayerManager.instance.itemsAddChance / 2)) / 10f);
 
-        // Générer un nombre aléatoire entre 0 et 1
+        // Gï¿½nï¿½rer un nombre alï¿½atoire entre 0 et 1
         float randomValue = Random.value;
 
         // Appliquer la transformation logistique inverse
         float inverseLogistic = Mathf.Log(adjustedLuck * (randomValue / (1 - randomValue)));
 
-        // Convertir la valeur inversée en un nombre entre 0 et 99
+        // Convertir la valeur inversï¿½e en un nombre entre 0 et 99
         int biasedNumber = Mathf.FloorToInt(Mathf.Clamp01(inverseLogistic / 6f) * 99);
 
-        // Si le nombre est 0, on le remplace par 1 pour éviter des valeurs trop basses
+        // Si le nombre est 0, on le remplace par 1 pour ï¿½viter des valeurs trop basses
         if (biasedNumber == 0)
         {
             biasedNumber = 1;

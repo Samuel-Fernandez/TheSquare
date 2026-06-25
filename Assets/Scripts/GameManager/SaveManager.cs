@@ -176,7 +176,6 @@ public class SaveManager : MonoBehaviour
                 MonsterSpawnManager.instance.GetAllSpawnerStates(),
                 TeleportationManager.instance.teleportationsAvailable,
                 MapManager.instance.targetCoords,
-                SealManager.instance != null ? SealManager.instance.GetSaveData() : new SealManagerData(),
                 KeyItemManager.instance != null ? KeyItemManager.instance.GetAcquiredKeyItems() : new List<string>()));
 
         File.WriteAllText(saveFilePath, json);
@@ -229,11 +228,6 @@ public class SaveManager : MonoBehaviour
             if (targetCoords)
             {
                 MapManager.instance.targetCoords = saveData.targetCoords;
-            }
-
-            if (SealManager.instance != null)
-            {
-                SealManager.instance.LoadSaveData(saveData.sealManagerData);
             }
 
             if (keyItems && KeyItemManager.instance != null)
@@ -601,8 +595,6 @@ public struct SaveData
 
     public IntPair? targetCoords;
 
-    public SealManagerData sealManagerData;
-
     public List<string> acquiredKeyItems;
 
     public SaveData(
@@ -633,7 +625,6 @@ public struct SaveData
         List<SpawnerState> spawnerState,
         List<TeleportationAvailable> teleportationsAvailable,
         IntPair? targetCoords,
-        SealManagerData sealManagerData,
         List<string> acquiredKeyItems)
 
     {
@@ -664,7 +655,6 @@ public struct SaveData
         this.spawnerStates = spawnerState;
         this.teleportationsAvailable = teleportationsAvailable;
         this.targetCoords = targetCoords;
-        this.sealManagerData = sealManagerData;
         this.acquiredKeyItems = acquiredKeyItems;
     }
 }
@@ -779,30 +769,6 @@ public struct EquipementSlotData
         this.isEquipping = isEquipping;
         this.index = index;
         this.itemID = itemID;
-    }
-}
-
-[System.Serializable]
-public struct SaveSealData
-{
-    public List<string> originalItemIDs;
-
-    public SaveSealData(List<string> originalItemIDs)
-    {
-        this.originalItemIDs = originalItemIDs;
-    }
-}
-
-[System.Serializable]
-public struct SealManagerData
-{
-    public List<SaveSealData> createdSeals;
-    public int equippedSealIndex;
-
-    public SealManagerData(List<SaveSealData> createdSeals, int equippedSealIndex)
-    {
-        this.createdSeals = createdSeals;
-        this.equippedSealIndex = equippedSealIndex;
     }
 }
 

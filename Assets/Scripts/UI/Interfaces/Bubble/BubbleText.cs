@@ -20,6 +20,17 @@ public class BubbleText : MonoBehaviour
 
     public event System.Action OnBubbleTextFinished;
 
+    private void Update()
+    {
+        if (EventPlayer.GetSkipMultiplier() > 1f)
+        {
+            if (!isCinematicBubble && !isTyping)
+            {
+                SkipText();
+            }
+        }
+    }
+
     private void Awake()
     {
         Time.timeScale = 0;
@@ -79,7 +90,12 @@ public class BubbleText : MonoBehaviour
         foreach (char letter in currentText.ToCharArray())
         {
             textMeshPro.text += letter;
-            yield return new WaitForSecondsRealtime(typingSpeed);
+            float elapsed = 0f;
+            while (elapsed < typingSpeed)
+            {
+                elapsed += Time.unscaledDeltaTime * EventPlayer.GetSkipMultiplier();
+                yield return null;
+            }
         }
 
         isTyping = false;
@@ -108,7 +124,12 @@ public class BubbleText : MonoBehaviour
 
     private IEnumerator CinematicTimer()
     {
-        yield return new WaitForSecondsRealtime(cinematicDisplayDuration);
+        float elapsed = 0f;
+        while (elapsed < cinematicDisplayDuration)
+        {
+            elapsed += Time.unscaledDeltaTime * EventPlayer.GetSkipMultiplier();
+            yield return null;
+        }
 
         currentTextIndex++;
         if (currentTextIndex < texts.Count)

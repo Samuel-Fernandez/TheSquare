@@ -54,14 +54,14 @@ public class SoundManager : MonoBehaviour
             audioSourceMusic.volume = PlayerPrefs.GetFloat(MUSIC_VOLUME_KEY);
     }
 
-    // Méthode pour changer le volume de la musique
+    // Mï¿½thode pour changer le volume de la musique
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, volume);
         PlayerPrefs.Save();
     }
 
-    // Méthode pour changer le volume du son
+    // Mï¿½thode pour changer le volume du son
     public void SetSoundVolume(float volume)
     {
         PlayerPrefs.SetFloat(SOUND_VOLUME_KEY, volume);
@@ -110,7 +110,7 @@ public class SoundManager : MonoBehaviour
         if (sound == null)
             return;
 
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>(); // Crée une nouvelle instance d'AudioSource
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>(); // Crï¿½e une nouvelle instance d'AudioSource
         audioSource.pitch = pitch;
 
         if (sourcePosition.HasValue)
@@ -125,22 +125,22 @@ public class SoundManager : MonoBehaviour
         }
 
         audioSource.PlayOneShot(sound);
-        Destroy(audioSource, sound.length); // Détruit l'AudioSource après la fin du son
+        Destroy(audioSource, sound.length); // Dï¿½truit l'AudioSource aprï¿½s la fin du son
     }
 
-    // Joue un AudioClip aléatoire à partir d'une liste avec position
+    // Joue un AudioClip alï¿½atoire ï¿½ partir d'une liste avec position
     public void PlaySound(List<AudioClip> sounds, float pitch, Vector3? sourcePosition = null)
     {
-        if (sounds == null || sounds.Count == 0) return; // Vérifie que la liste n'est pas vide
+        if (sounds == null || sounds.Count == 0) return; // Vï¿½rifie que la liste n'est pas vide
 
-        int index = Random.Range(0, sounds.Count); // Sélectionne un index aléatoire
-        PlaySound(sounds[index], pitch, sourcePosition); // Utilise la première méthode PlaySound
+        int index = Random.Range(0, sounds.Count); // Sï¿½lectionne un index alï¿½atoire
+        PlaySound(sounds[index], pitch, sourcePosition); // Utilise la premiï¿½re mï¿½thode PlaySound
     }
 
     private float CalculateVolumeByDistance(Vector3 sourcePosition)
     {
         float maxVolume = PlayerPrefs.GetFloat(SOUND_VOLUME_KEY);
-        float maxDistance = 15f; // Distance maximale pour entendre le son à son volume maximal
+        float maxDistance = 15f; // Distance maximale pour entendre le son ï¿½ son volume maximal
         float distance = Vector3.Distance(PlayerManager.instance.player.transform.position, sourcePosition);
         float volume = Mathf.Clamp(1 - (distance / maxDistance), 0, maxVolume);
         return volume;
@@ -161,7 +161,7 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        // Si déjà en train de jouer ce clip, on ne fait rien
+        // Si dï¿½jï¿½ en train de jouer ce clip, on ne fait rien
         if (currentMusicClip == clip && audioSourceMusic.isPlaying && !isTransitioning)
         {
             return;
@@ -170,21 +170,21 @@ public class SoundManager : MonoBehaviour
         // Trouver l'ID de la musique si possible
         string clipId = GetIdForClip(clip);
 
-        // Si on n'a pas trouvé d'ID, utiliser le nom du clip
+        // Si on n'a pas trouvï¿½ d'ID, utiliser le nom du clip
         if (string.IsNullOrEmpty(clipId))
         {
             clipId = clip.name;
         }
 
 
-        // Arrêter la transition en cours si nécessaire
+        // Arrï¿½ter la transition en cours si nï¿½cessaire
         StopMusicTransition();
 
-        // Démarrer une nouvelle transition
+        // Dï¿½marrer une nouvelle transition
         musicTransitionCoroutine = StartCoroutine(TransitionToNewMusic(clip));
         isTransitioning = true;
 
-        // Mettre à jour les références actuelles
+        // Mettre ï¿½ jour les rï¿½fï¿½rences actuelles
         currentMusicClip = clip;
         currentMusicId = clipId;
     }
@@ -198,7 +198,7 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        // Vérifier si la musique actuelle correspond à l'ID
+        // Vï¿½rifier si la musique actuelle correspond ï¿½ l'ID
         if (currentMusicId == id && audioSourceMusic.isPlaying && !isTransitioning)
         {
             return;
@@ -213,14 +213,14 @@ public class SoundManager : MonoBehaviour
         }
 
 
-        // Arrêter la transition en cours si nécessaire
+        // Arrï¿½ter la transition en cours si nï¿½cessaire
         StopMusicTransition();
 
-        // Démarrer une nouvelle transition
+        // Dï¿½marrer une nouvelle transition
         musicTransitionCoroutine = StartCoroutine(TransitionToNewMusic(newClip));
         isTransitioning = true;
 
-        // Mettre à jour les références actuelles
+        // Mettre ï¿½ jour les rï¿½fï¿½rences actuelles
         currentMusicClip = newClip;
         currentMusicId = id;
     }
@@ -260,7 +260,7 @@ public class SoundManager : MonoBehaviour
 
     private IEnumerator TransitionToNewMusic(AudioClip newClip)
     {
-        // Charger le clip en mémoire avant de le jouer
+        // Charger le clip en mï¿½moire avant de le jouer
         if (!newClip.preloadAudioData)
         {
             newClip.LoadAudioData();
@@ -297,7 +297,7 @@ public class SoundManager : MonoBehaviour
         }
         audioSourceMusic.volume = initialVolume;
 
-        // Transition terminée
+        // Transition terminï¿½e
         isTransitioning = false;
     }
 
@@ -308,7 +308,7 @@ public class SoundManager : MonoBehaviour
         if (fadeOutDuration <= 0)
         {
             audioSourceMusic.Stop();
-            // Réinitialiser les références
+            // Rï¿½initialiser les rï¿½fï¿½rences
             currentMusicId = "";
             currentMusicClip = null;
         }
@@ -329,7 +329,7 @@ public class SoundManager : MonoBehaviour
         audioSourceMusic.Stop();
         audioSourceMusic.volume = initialVolume; // Reset the volume for future use
 
-        // Réinitialiser les références
+        // Rï¿½initialiser les rï¿½fï¿½rences
         currentMusicId = "";
         currentMusicClip = null;
     }
@@ -361,7 +361,7 @@ public class SoundManager : MonoBehaviour
 
     public IEnumerator AmbientSounds()
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSecondsRealtime(0.5f);
 
@@ -370,6 +370,6 @@ public class SoundManager : MonoBehaviour
                 PlaySound(MeteoManager.instance.actualScene.ambientSound[Random.Range(0, MeteoManager.instance.actualScene.ambientSound.Count)], 3);
             }
         }
-       
+
     }
 }

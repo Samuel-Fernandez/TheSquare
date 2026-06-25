@@ -16,11 +16,11 @@ public class SkillEditor : Editor
         skill.lvlLifeMin = EditorGUILayout.IntField("Level Vie Min", skill.lvlLifeMin);
         skill.lvlStrengthMin = EditorGUILayout.IntField("Level Force Min", skill.lvlStrengthMin);
         skill.lvlLuckMin = EditorGUILayout.IntField("Level Chance Min", skill.lvlLuckMin);
-        skill.cost = EditorGUILayout.IntField("Coût", skill.cost);
+        skill.cost = EditorGUILayout.IntField("Coï¿½t", skill.cost);
 
-        // Liste des compétences requises
+        // Liste des compï¿½tences requises
         SerializedProperty previousSkillsProperty = serializedObject.FindProperty("previousSkills");
-        EditorGUILayout.PropertyField(previousSkillsProperty, new GUIContent("Compétences Précédentes"), true);
+        EditorGUILayout.PropertyField(previousSkillsProperty, new GUIContent("Compï¿½tences Prï¿½cï¿½dentes"), true);
 
         skill.img = (Sprite)EditorGUILayout.ObjectField("Image", skill.img, typeof(Sprite), false);
         skill.type = (BONUS_TYPE)EditorGUILayout.EnumPopup("Type de Bonus", skill.type);
@@ -28,7 +28,7 @@ public class SkillEditor : Editor
         // Afficher le champ "statAdd" uniquement si le type de bonus est ADD_STATS
         if (skill.type == BONUS_TYPE.ADD_STATS)
         {
-            skill.statAdd = (STATS_ADD)EditorGUILayout.EnumPopup("Statistique à Ajouter", skill.statAdd);
+            skill.statAdd = (STATS_ADD)EditorGUILayout.EnumPopup("Statistique ï¿½ Ajouter", skill.statAdd);
 
             // Afficher intValue si statAdd est HP ou STR
             if (skill.statAdd == STATS_ADD.HP || skill.statAdd == STATS_ADD.STR || skill.statAdd == STATS_ADD.LUCK)
@@ -54,7 +54,7 @@ public class SkillEditor : Editor
         // Appliquer les modifications
         serializedObject.ApplyModifiedProperties();
 
-        // Si d'autres modifications ont été effectuées, marque l'objet comme modifié
+        // Si d'autres modifications ont ï¿½tï¿½ effectuï¿½es, marque l'objet comme modifiï¿½
         if (GUI.changed)
         {
             EditorUtility.SetDirty(skill);

@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using UnityEngine.InputSystem;
 
 
 public class EventPlayer : MonoBehaviour
@@ -44,6 +45,26 @@ public class EventPlayer : MonoBehaviour
         if (isTriggerCollisionEvent && collision.GetComponent<Stats>() && collision.GetComponent<Stats>().entityType == EntityType.Player && !eventStarted && eventContainer.RequirementsGood())
         {
             PlayAnimation();
+        }
+    }
+
+    public static float GetSkipMultiplier()
+    {
+        if (PlayerManager.instance != null && PlayerManager.instance.playerInputActions != null)
+        {
+            if (PlayerManager.instance.playerInputActions.Gameplay.Interaction.IsPressed())
+                return 10f;
+        }
+        return 1f;
+    }
+
+    private IEnumerator CustomWaitForSeconds(float duration)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.unscaledDeltaTime * GetSkipMultiplier();
+            yield return null;
         }
     }
 
@@ -155,7 +176,7 @@ public class EventPlayer : MonoBehaviour
                         }
                     }
 
-                    yield return new WaitForSecondsRealtime(1); // dur�e d'une �motion
+                    yield return CustomWaitForSeconds(1); // dure d'une motion
                 }
                 else if (actualEvent.pnjType == PnjEventType.SPEAK)
                 {
@@ -234,33 +255,33 @@ public class EventPlayer : MonoBehaviour
                 else if (actualEvent.cameraType == CameraEventType.MOVE)
                 {
                     MoveCamera(clonedEventContainer.camera, actualEvent.position, actualEvent.duration);
-                    yield return new WaitForSecondsRealtime(actualEvent.duration);
+                    yield return CustomWaitForSeconds(actualEvent.duration);
                 }
                 else if (actualEvent.cameraType == CameraEventType.EFFECT)
                 {
                     if (actualEvent.cameraEffect == CameraEffect.SHAKE)
                     {
                         CameraManager.instance.ShakeCamera(actualEvent.amplitudeShake, actualEvent.frequencyShake, actualEvent.duration, clonedEventContainer.camera.GetComponent<CinemachineVirtualCamera>());
-                        yield return new WaitForSecondsRealtime(actualEvent.duration);
+                        yield return CustomWaitForSeconds(actualEvent.duration);
 
                     }
                     else if (actualEvent.cameraEffect == CameraEffect.COLOR_CHANGE)
                     {
                         CameraManager.instance.ChangeCameraColor(actualEvent.colorChange, actualEvent.duration, CameraManager.instance.defaultCamera);
-                        yield return new WaitForSecondsRealtime(actualEvent.duration);
+                        yield return CustomWaitForSeconds(actualEvent.duration);
 
                     }
                     else if (actualEvent.cameraEffect == CameraEffect.ZOOM)
                     {
                         CameraManager.instance.ZoomCamera(actualEvent.zoomPower, actualEvent.duration, clonedEventContainer.camera.GetComponent<CinemachineVirtualCamera>());
-                        yield return new WaitForSecondsRealtime(actualEvent.duration);
+                        yield return CustomWaitForSeconds(actualEvent.duration);
 
 
                     }
                     else if (actualEvent.cameraEffect == CameraEffect.DEZOOM)
                     {
                         CameraManager.instance.DezoomCamera(actualEvent.zoomPower, actualEvent.duration, clonedEventContainer.camera.GetComponent<CinemachineVirtualCamera>());
-                        yield return new WaitForSecondsRealtime(actualEvent.duration);
+                        yield return CustomWaitForSeconds(actualEvent.duration);
 
                     }
                 }
@@ -271,7 +292,7 @@ public class EventPlayer : MonoBehaviour
             }
             else if (actualEvent.eventType == EventType.WAIT)
             {
-                yield return new WaitForSecondsRealtime(actualEvent.duration);
+                yield return CustomWaitForSeconds(actualEvent.duration);
             }
             else if (actualEvent.eventType == EventType.TEXT)
             {
@@ -421,7 +442,7 @@ public class EventPlayer : MonoBehaviour
                 else
                 {
                     SoundManager.instance.PlayUISound(textID.sound, 1);
-                    yield return new WaitForSecondsRealtime(textID.duration);
+                    yield return CustomWaitForSeconds(textID.duration);
                 }
 
             }
@@ -591,7 +612,7 @@ public class EventPlayer : MonoBehaviour
             Vector2 newPosition = Vector2.Lerp(startPos, targetPos, t);
             vcam.transform.position = new Vector3(newPosition.x, newPosition.y, vcam.transform.position.z);
 
-            elapsedTime += Time.unscaledDeltaTime;
+            elapsedTime += Time.unscaledDeltaTime * GetSkipMultiplier();
             yield return null;
         }
 
@@ -782,7 +803,7 @@ public class EventPlayer : MonoBehaviour
             Vector2 newPosition = Vector2.Lerp(startPos, targetPos, t);
             rb2d.MovePosition(newPosition);
 
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * GetSkipMultiplier();
             yield return null;
         }
 

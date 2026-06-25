@@ -28,8 +28,8 @@ public class ChestBehiavor : MonoBehaviour
     {
         SaveManager.instance.twoStateContainer.TryGetState(ID, out state);
 
-        // Considéré comme ouvert dans la sauvegarde
-        if(state)
+        // Considï¿½rï¿½ comme ouvert dans la sauvegarde
+        if (state)
         {
             GetComponentInChildren<SpriteRenderer>().sprite = openChest;
             GetComponent<InteractableBehiavor>().canInteract = false;
@@ -92,7 +92,7 @@ public class ChestBehiavor : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         GetComponent<SoundContainer>().PlaySound("Reward", 0);
 
-        if(chestType == CHEST_TYPE.NORMAL)
+        if (chestType == CHEST_TYPE.NORMAL)
         {
             Item itemInstance = ScriptableObjectUtility.Clone(item);
 

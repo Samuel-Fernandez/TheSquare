@@ -223,6 +223,38 @@
     {
       "key": "MYLIA_LAKE_EAST_SCENE",
       "value": "Mirror Lake of Mylia - East"
+    },
+    {
+      "key": "MYLIA_LAKE_SOUTH_EAST_SCENE",
+      "value": "Mirror Lake of Mylia - South East"
+    },
+    {
+      "key": "MYLIA_LAKE_SOUTH_SCENE",
+      "value": "Mirror Lake of Mylia - South"
+    },
+    {
+      "key": "MYLIA_LAKE_SOUTH_WEST_SCENE",
+      "value": "Mirror Lake of Mylia - South West"
+    },
+    {
+      "key": "MYLIA_LAKE_WEST_SCENE",
+      "value": "Mirror Lake of Mylia - West"
+    },
+    {
+      "key": "MYLIA_LAKE_NORTH_WEST_SCENE",
+      "value": "Mirror Lake of Mylia - North West"
+    },
+    {
+      "key": "MYLIA_LAKE_NORTH_SCENE",
+      "value": "Mirror Lake of Mylia - North"
+    },
+    {
+      "key": "MYLIA_LAKE_NORTH_EAST_SCENE",
+      "value": "Mirror Lake of Mylia - North East"
+    },
+    {
+      "key": "MYLIA_LAKE_CENTER_SCENE",
+      "value": "Mirror Lake of Mylia - Center"
     }
   ]
 }

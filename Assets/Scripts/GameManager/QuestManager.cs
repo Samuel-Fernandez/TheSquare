@@ -40,10 +40,10 @@ public class QuestManager : MonoBehaviour
     bool isOpen = false;
     public bool canOpenQuests = true;
 
-    // Censé contenir toutes les quêtes
+    // Censï¿½ contenir toutes les quï¿½tes
     public List<Quests> questsDB;
 
-    // Quêtes terminées ou en attente (identifiant)
+    // Quï¿½tes terminï¿½es ou en attente (identifiant)
     public List<QuestContainer> completedQuests = new List<QuestContainer>();
     public List<QuestContainer> waitingQuests = new List<QuestContainer>();
 
@@ -51,16 +51,16 @@ public class QuestManager : MonoBehaviour
     public GameObject rewardContainer;
     public GameObject equipementStats;
 
-    // UI pour accepter une quête
+    // UI pour accepter une quï¿½te
     public GameObject uiAcceptQuest;
     Quests actualQuest;
     public GameObject acceptButton;
 
-    // Text à traduire
+    // Text ï¿½ traduire
     public TextMeshProUGUI questObjectiveTitleTxt;
     public TextMeshProUGUI questRewardTitleTxt;
 
-    // Text à mettre à jour avec les infos de la quête
+    // Text ï¿½ mettre ï¿½ jour avec les infos de la quï¿½te
     public TextMeshProUGUI questNameTxt;
     public TextMeshProUGUI questDescriptionTxt;
     public TextMeshProUGUI questObjectiveTxt;
@@ -69,7 +69,7 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI questPNJTxt;
 
 
-    // Contient tous les selecteurs de quête
+    // Contient tous les selecteurs de quï¿½te
     public GameObject uiQuestSelector;
     public GameObject gridView;
     public GameObject questSelectorPrefab;
@@ -94,9 +94,9 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
-        if(PlayerManager.instance.playerInputActions.Menu.Quests.triggered && canOpenQuests)
+        if (PlayerManager.instance.playerInputActions.Menu.Quests.triggered && canOpenQuests)
         {
-            if(!isOpen)
+            if (!isOpen)
             {
                 OpenQuestMenu();
                 uiQuestSelector.SetActive(true);
@@ -109,7 +109,7 @@ public class QuestManager : MonoBehaviour
                 InventoryManager.instance.canOpenInventory = true;
                 uiQuestSelector.SetActive(false);
                 uiAcceptQuest.SetActive(false);
-                
+
             }
 
             isOpen = !isOpen;
@@ -120,7 +120,7 @@ public class QuestManager : MonoBehaviour
     // FAIRE QUAND INVENTAIRE PEUT PAS CONTENIR TOUTES LES RECOMPENSES
     public void FinishQuest(Quests quest)
     {
-        // Créer un QuestContainer correspondant
+        // Crï¿½er un QuestContainer correspondant
         QuestContainer completedQuest = new QuestContainer(
             quest.id,
             quest.location?.sceneID ?? "",
@@ -129,14 +129,14 @@ public class QuestManager : MonoBehaviour
             quest.rewardEquipement?.ConvertAll(item => item.itemId) ?? new List<string>()
         );
 
-        // Ajouter la quête au journal des quêtes terminées
+        // Ajouter la quï¿½te au journal des quï¿½tes terminï¿½es
         completedQuests.Add(completedQuest);
 
         if (quest.reward == QuestReward.EQUIPEMENT)
         {
             foreach (var waitingQuest in waitingQuests)
             {
-                if(waitingQuest.id == quest.id)
+                if (waitingQuest.id == quest.id)
                 {
                     for (int i = 0; i < waitingQuest.idEquipement.Count; i++)
                     {
@@ -146,7 +146,7 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        // Retirer la quête des quêtes en attente
+        // Retirer la quï¿½te des quï¿½tes en attente
         waitingQuests.RemoveAll(q => q.id == quest.id);
 
         NotificationManager.instance.ShowTitle(
@@ -154,10 +154,10 @@ public class QuestManager : MonoBehaviour
             LocalizationManager.instance.GetText("UI", "COMPLETED_QUEST")
         );
 
-        
 
-        //Retire les ressources demandées
-        if(quest.completionCondition == QuestCompletionCondition.RESOURCES)
+
+        //Retire les ressources demandï¿½es
+        if (quest.completionCondition == QuestCompletionCondition.RESOURCES)
         {
             foreach (var item in quest.resourcesObjective)
             {
@@ -193,7 +193,7 @@ public class QuestManager : MonoBehaviour
                     if (!Equipement.instance.InventoryFull())
                     {
                         Equipement.instance.AddItem(item);
-                        if(item is Weapon weapon)
+                        if (item is Weapon weapon)
                             weapon.GenerateStats();
                         if (item is Helmet helmet)
                             helmet.GenerateStats();
@@ -252,14 +252,14 @@ public class QuestManager : MonoBehaviour
         {
             foreach (var quest in questsDB)
             {
-                if(quest.id == waitingQuest.id)
+                if (quest.id == waitingQuest.id)
                 {
                     Quests questCopy = ScriptableObjectUtility.Clone(quest);
 
                     questCopy.pnjID = waitingQuest.pnjID;
 
 
-                    // Récupération de l'endroit
+                    // Rï¿½cupï¿½ration de l'endroit
                     foreach (var region in MeteoManager.instance.regions)
                     {
                         foreach (var scene in region.scenes)
@@ -271,19 +271,19 @@ public class QuestManager : MonoBehaviour
                         }
                     }
 
-                    // Récupération des nbMonsterKilled...
+                    // Rï¿½cupï¿½ration des nbMonsterKilled...
                     if (waitingQuest.nbMonsterKilledSinceAccepted.Count > 0)
                     {
                         for (int i = 0; i < waitingQuest.nbMonsterKilledSinceAccepted.Count; i++)
                         {
                             questCopy.monsterObjectiveList[i].nbMonsterKilledSinceAccepted = waitingQuest.nbMonsterKilledSinceAccepted[i];
-                        } 
+                        }
                     }
 
-                    // Récupération de l'équipement
-                    if(waitingQuest.idEquipement.Count > 0)
+                    // Rï¿½cupï¿½ration de l'ï¿½quipement
+                    if (waitingQuest.idEquipement.Count > 0)
                     {
-                        for(int i = 0; i < waitingQuest.idEquipement.Count; i++)
+                        for (int i = 0; i < waitingQuest.idEquipement.Count; i++)
                         {
                             questCopy.rewardEquipement[i].itemId = waitingQuest.idEquipement[i];
 
@@ -334,7 +334,7 @@ public class QuestManager : MonoBehaviour
 
                     questCopy.pnjID = completedQuest.pnjID;
 
-                    // Récupération de l'endroit
+                    // Rï¿½cupï¿½ration de l'endroit
                     foreach (var region in MeteoManager.instance.regions)
                     {
                         foreach (var scene in region.scenes)
@@ -346,7 +346,7 @@ public class QuestManager : MonoBehaviour
                         }
                     }
 
-                    // Récupération des nbMonsterKilled...
+                    // Rï¿½cupï¿½ration des nbMonsterKilled...
                     if (completedQuest.nbMonsterKilledSinceAccepted.Count > 0)
                     {
                         for (int i = 0; i < completedQuest.nbMonsterKilledSinceAccepted.Count; i++)
@@ -355,7 +355,7 @@ public class QuestManager : MonoBehaviour
                         }
                     }
 
-                    // Récupération de l'équipement
+                    // Rï¿½cupï¿½ration de l'ï¿½quipement
                     if (completedQuest.idEquipement.Count > 0)
                     {
                         for (int i = 0; i < completedQuest.idEquipement.Count; i++)
@@ -397,7 +397,7 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        if(questSelectors.Count > 0)
+        if (questSelectors.Count > 0)
             questSelectors[0].GetComponent<QuestSelection>().Selection();
 
     }
@@ -409,10 +409,10 @@ public class QuestManager : MonoBehaviour
         InventoryManager.instance.canOpenInventory = true;
 
         // TODO: FAIRE LE LOCALIZATION MANAGER ET VERIFIER
-        if(completedQuests.Count == 0 && waitingQuests.Count == 0)
+        if (completedQuests.Count == 0 && waitingQuests.Count == 0)
             NotificationManager.instance.ShowPopup("You can access the Quest menu with Q or SELECT");
 
-        // Initialiser les listes avec des valeurs par défaut vides
+        // Initialiser les listes avec des valeurs par dï¿½faut vides
         List<string> equipementID = actualQuest.reward == QuestReward.EQUIPEMENT
             ? actualQuest.rewardEquipement.ConvertAll(item => item.itemId)
             : new List<string>();
@@ -421,7 +421,7 @@ public class QuestManager : MonoBehaviour
             ? actualQuest.monsterObjectiveList.ConvertAll(item => item.nbMonsterKilledSinceAccepted)
             : new List<int>();
 
-        // Ajouter la quête en attente avec les données nécessaires
+        // Ajouter la quï¿½te en attente avec les donnï¿½es nï¿½cessaires
         waitingQuests.Add(new QuestContainer(
             actualQuest.id,
             actualQuest.location?.sceneID ?? "",
@@ -438,7 +438,7 @@ public class QuestManager : MonoBehaviour
     {
         foreach (var quest in questsDB)
         {
-            if(id == quest.id)
+            if (id == quest.id)
             {
                 return ScriptableObjectUtility.Clone(quest);
             }
@@ -462,10 +462,10 @@ public class QuestManager : MonoBehaviour
 
     public void ResetField()
     {
-        // Réinitialiser la quête actuelle
+        // Rï¿½initialiser la quï¿½te actuelle
         this.actualQuest = null;
 
-        // Réinitialiser les textes
+        // Rï¿½initialiser les textes
         questNameTxt.text = "";
         questDescriptionTxt.text = "";
         questObjectiveTxt.text = "";
@@ -473,7 +473,7 @@ public class QuestManager : MonoBehaviour
         questLocationTxt.text = "";
         questPNJTxt.text = "";
 
-        // Supprimer les slots de récompenses
+        // Supprimer les slots de rï¿½compenses
         foreach (Transform child in rewardContainer.transform)
         {
             Destroy(child.gameObject);
@@ -497,7 +497,7 @@ public class QuestManager : MonoBehaviour
         // Ouverture de l'UI
         uiAcceptQuest.SetActive(true);
 
-        if(fromPNJ)
+        if (fromPNJ)
             EventSystem.current.SetSelectedGameObject(acceptButton);
 
         questNameTxt.text = LocalizationManager.instance.GetText("QUEST", quest.id + "_NAME");
@@ -512,7 +512,7 @@ public class QuestManager : MonoBehaviour
             case QuestCompletionCondition.KILL_MONSTER:
                 foreach (var item in quest.monsterObjectiveList)
                 {
-                    if(fromPNJ)
+                    if (fromPNJ)
                         quest.UpdateMonsterProgression();
                     questObjectiveTxt.text = LocalizationManager.instance.GetText("UI", "KILL_MONSTER_QUEST") + item.nb + " " + LocalizationManager.instance.GetText("MONSTER", item.monster.name) + "\n";
 
@@ -570,12 +570,12 @@ public class QuestManager : MonoBehaviour
             case QuestCompletionCondition.EVENT:
                 questObjectiveTxt.text = "";
 
-                if(!fromPNJ)
+                if (!fromPNJ)
                 {
                     bool eventDone;
                     SaveManager.instance.twoStateContainer.TryGetState(quest.eventObjective.ID, out eventDone);
 
-                    if(eventDone)
+                    if (eventDone)
                         questObjectiveTxt.text += $"({LocalizationManager.instance.GetText("UI", "DONE")}) \n";
                 }
                 break;
@@ -631,7 +631,7 @@ public class QuestManager : MonoBehaviour
                     // Ajouter la copie dans la nouvelle liste
                     clonedEquipements.Add(itemCopy);
 
-                    // Créer l'interface avec la copie
+                    // Crï¿½er l'interface avec la copie
                     GameObject rewardSlot = Instantiate(rewardSlotPrefab, rewardContainer.transform);
                     rewardSlot.GetComponent<RewardItemSlot>().CreateRewardSlot(itemCopy, equipementStats.GetComponent<EquipementStats>());
                 }
@@ -704,14 +704,14 @@ public class QuestManager : MonoBehaviour
             return false;
         }
 
-        // Récupérer la quête en attente correspondante
+        // Rï¿½cupï¿½rer la quï¿½te en attente correspondante
         QuestContainer waitingQuest = waitingQuests.FirstOrDefault(q => q.id == quest.id);
         if (waitingQuest == null)
         {
-            return false;  // Si la quête n'est pas en attente
+            return false;  // Si la quï¿½te n'est pas en attente
         }
 
-        // Cloner la quête pour comparaison
+        // Cloner la quï¿½te pour comparaison
         Quests questCopy = ScriptableObjectUtility.Clone(quest);
 
         questCopy.pnjID = waitingQuest.pnjID;
@@ -727,7 +727,7 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        if(questCopy.monsterObjectiveList.Count > 0 && waitingQuest.nbMonsterKilledSinceAccepted.Count > 0)
+        if (questCopy.monsterObjectiveList.Count > 0 && waitingQuest.nbMonsterKilledSinceAccepted.Count > 0)
             for (int i = 0; i < questCopy.monsterObjectiveList.Count; i++)
             {
                 questCopy.monsterObjectiveList[i].nbMonsterKilledSinceAccepted = waitingQuest.nbMonsterKilledSinceAccepted[i];
@@ -738,8 +738,9 @@ public class QuestManager : MonoBehaviour
         switch (quest.completionCondition)
         {
             case QuestCompletionCondition.KILL_MONSTER:
-                bool monstersDone = quest.monsterObjectiveList.All(obj => {
-                    // Chercher le nombre de monstres tués avec l'id spécifique
+                bool monstersDone = quest.monsterObjectiveList.All(obj =>
+                {
+                    // Chercher le nombre de monstres tuï¿½s avec l'id spï¿½cifique
                     MonsterKilled killedMonster = StatsManager.instance.monsterKilled
                         .FirstOrDefault(m => m.idMonster == obj.monster.name);
 
@@ -751,7 +752,8 @@ public class QuestManager : MonoBehaviour
                 return monstersDone;
 
             case QuestCompletionCondition.RESOURCES:
-                bool resourcesDone = quest.resourcesObjective.All(obj => {
+                bool resourcesDone = quest.resourcesObjective.All(obj =>
+                {
                     bool isEnough = obj.nb <= PlayerManager.instance.GetSpecialItem(obj.item.GetID()).nb;
                     return isEnough;
                 });
@@ -777,13 +779,13 @@ public class QuestManager : MonoBehaviour
 
 
 
-    // Vérifie si une quête est dans la liste des quêtes en attente
+    // Vï¿½rifie si une quï¿½te est dans la liste des quï¿½tes en attente
     public bool IsInWaiting(Quests quest)
     {
         return quest != null && waitingQuests.Any(q => q.id == quest.id);
     }
 
-    // Vérifie si une quête est dans la liste des quêtes terminées
+    // Vï¿½rifie si une quï¿½te est dans la liste des quï¿½tes terminï¿½es
     public bool IsInFinished(Quests quest)
     {
         return quest != null && completedQuests.Any(q => q.id == quest.id);

@@ -12,7 +12,7 @@ public enum InteractableType
     CHEST,
     SIGN,
     TELEPORTER_STATUE,
-    SEAL_CRAFTER,
+    CRAFTING_TABLE,
 }
 
 public class InteractableBehiavor : MonoBehaviour
@@ -104,10 +104,9 @@ public class InteractableBehiavor : MonoBehaviour
             case InteractableType.TELEPORTER_STATUE:
                 TeleporterStatue();
                 break;
-            case InteractableType.SEAL_CRAFTER:
-                SealCrafter();
+            case InteractableType.CRAFTING_TABLE:
+                CraftingTable();
                 break;
-
             default:
                 break;
         }
@@ -165,11 +164,15 @@ public class InteractableBehiavor : MonoBehaviour
         GetComponent<SignBehiavor>().ShowText();
     }
 
-    void SealCrafter()
+    void CraftingTable()
     {
-        if (SealUI.instance != null)
+        if (GameManager.CraftingManager.instance != null)
         {
-            SealUI.instance.ToggleUI();
+            GameManager.CraftingManager.instance.OpenCrafting();
+        }
+        else
+        {
+            Debug.LogError("CraftingManager.instance est NULL !");
         }
     }
 }

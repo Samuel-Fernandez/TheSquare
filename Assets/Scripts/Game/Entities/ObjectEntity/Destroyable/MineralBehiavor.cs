@@ -40,12 +40,6 @@ public class MineralBehiavor : MonoBehaviour
             SpawnMinerals();
             GetComponent<ObjectParticles>().SpawnParticle("Destroy2", transform.position);
 
-            if (PlayerManager.instance.player != null)
-            {
-                SealMomentumManager momentum = PlayerManager.instance.player.GetComponent<SealMomentumManager>();
-                if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnMineralMined);
-            }
-
             Destroy(gameObject);
         }
     }

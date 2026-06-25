@@ -14,7 +14,7 @@ public class SoundContainer : MonoBehaviour
 
     public void PlayUISound(string id, int pitchPower)
     {
-        // Trouver le groupe de sons correspondant à l'ID
+        // Trouver le groupe de sons correspondant ï¿½ l'ID
         SoundGroup soundGroup = allSounds.Find(group => group.id.Contains(id));
 
         if (soundGroup == null)
@@ -28,10 +28,10 @@ public class SoundContainer : MonoBehaviour
             return;
         }
 
-        // Sélectionner un clip aléatoire
+        // Sï¿½lectionner un clip alï¿½atoire
         AudioClip clip = soundGroup.clips[Random.Range(0, soundGroup.clips.Count)];
 
-        // Déterminer le pitch
+        // Dï¿½terminer le pitch
         float pitch = 1f;
         switch (pitchPower)
         {
@@ -46,7 +46,7 @@ public class SoundContainer : MonoBehaviour
 
     public void PlaySound(string id, int pitchPower)
     {
-        // Trouver le groupe de sons correspondant à l'ID
+        // Trouver le groupe de sons correspondant ï¿½ l'ID
         SoundGroup soundGroup = allSounds.Find(group => group.id.Contains(id));
 
         if (soundGroup == null)
@@ -60,11 +60,11 @@ public class SoundContainer : MonoBehaviour
             return;
         }
 
-        // Sélectionner un clip aléatoire
+        // Sï¿½lectionner un clip alï¿½atoire
         AudioClip clip = soundGroup.clips[Random.Range(0, soundGroup.clips.Count)];
 
-        // Déterminer le pitch en fonction du pitchPower
-        float pitch = 1f; // Valeur par défaut
+        // Dï¿½terminer le pitch en fonction du pitchPower
+        float pitch = 1f; // Valeur par dï¿½faut
         switch (pitchPower)
         {
             case 1:
@@ -78,7 +78,7 @@ public class SoundContainer : MonoBehaviour
                 break;
         }
 
-        // Jouer le son avec le pitch déterminé
+        // Jouer le son avec le pitch dï¿½terminï¿½
         SoundManager.instance.PlaySound(clip, pitch, transform.position);
     }
 }

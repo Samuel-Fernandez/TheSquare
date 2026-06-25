@@ -19,7 +19,7 @@ public class DungeonManager : MonoBehaviour
 
     public bool isInDungeon;
     [NonSerialized] public Dungeon actualDungeon = null;
-    
+
     public List<Dungeon> dungeonDB = new List<Dungeon>();
 
     public GameObject uiDungeon;
@@ -36,7 +36,7 @@ public class DungeonManager : MonoBehaviour
 
     private void Update()
     {
-        // Si dans un donjon et pas de donjon ajouté
+        // Si dans un donjon et pas de donjon ajoutï¿½
         if (MeteoManager.instance.actualScene.sceneType == SceneType.DUNGEON && actualDungeon == null)
         {
             actualDungeon = GetDungeon(MeteoManager.instance.actualScene.dungeonName);
@@ -44,7 +44,7 @@ public class DungeonManager : MonoBehaviour
             uiDungeon.SetActive(true);
         }
         // Si pas dans un donjon 
-        else if(MeteoManager.instance.actualScene.sceneType != SceneType.DUNGEON && actualDungeon != null)
+        else if (MeteoManager.instance.actualScene.sceneType != SceneType.DUNGEON && actualDungeon != null)
         {
             actualDungeon = null;
             isInDungeon = false;
@@ -54,7 +54,7 @@ public class DungeonManager : MonoBehaviour
 
     public Dungeon GetDungeon(string title)
     {
-        // Recherche du donjon dans la base de données en fonction du titre
+        // Recherche du donjon dans la base de donnï¿½es en fonction du titre
         Dungeon foundDungeon = dungeonDB.Find(dungeon => dungeon.title == title);
 
         if (foundDungeon != null)
@@ -73,10 +73,10 @@ public class DungeonManager : MonoBehaviour
     {
         if (actualDungeon != null)
         {
-            // Augmente le nombre de clés du donjon
+            // Augmente le nombre de clï¿½s du donjon
             actualDungeon.nbKeys++;
 
-            // Met à jour l'interface utilisateur
+            // Met ï¿½ jour l'interface utilisateur
             UpdateUI();
 
             SaveManager.instance.SaveDungeonsOnly();
@@ -93,10 +93,10 @@ public class DungeonManager : MonoBehaviour
         {
             if (actualDungeon.nbKeys > 0)
             {
-                // Diminue le nombre de clés du donjon
+                // Diminue le nombre de clï¿½s du donjon
                 actualDungeon.nbKeys--;
 
-                // Met à jour l'interface utilisateur
+                // Met ï¿½ jour l'interface utilisateur
                 UpdateUI();
 
                 SaveManager.instance.SaveDungeonsOnly();

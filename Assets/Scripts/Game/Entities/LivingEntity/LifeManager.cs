@@ -131,11 +131,6 @@ public class LifeManager : MonoBehaviour
             {
                 baseDamage = Mathf.RoundToInt(baseDamage * (1 + stats.critDamage));
                 isCritical = true;
-
-                if (stats.entityType == EntityType.Player && GetComponent<SealMomentumManager>() != null)
-                {
-                    GetComponent<SealMomentumManager>().OnTrigger(MomentumTriggerType.OnCrit);
-                }
             }
 
             // Envoyer les dgts finaux
@@ -169,18 +164,10 @@ public class LifeManager : MonoBehaviour
                     if (stats.entityType == EntityType.Player)
                     {
                         CameraManager.instance.ShakeCamera(1, 1, 0.5f);
-                        SealAuraManager auraManager = GetComponent<SealAuraManager>();
-                        if (auraManager != null) auraManager.TryActivateAura();
                     }
 
                     int damageTaken = Mathf.Max(damage - stats.defense, 1);
                     life -= damageTaken;
-
-                    if (stats.entityType == EntityType.Player)
-                    {
-                        SealMomentumManager momentum = GetComponent<SealMomentumManager>();
-                        if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnDamageTaken);
-                    }
 
                     GetComponent<DamageEffect>().DamageEffects();
 
@@ -227,8 +214,6 @@ public class LifeManager : MonoBehaviour
                     if (stats.entityType == EntityType.Player)
                     {
                         CameraManager.instance.ShakeCamera(1, 1, 0.5f);
-                        SealAuraManager auraManager = GetComponent<SealAuraManager>();
-                        if (auraManager != null) auraManager.TryActivateAura();
                     }
 
                     // EFFECTS ATTACK
@@ -236,9 +221,6 @@ public class LifeManager : MonoBehaviour
                         attackingEntity.GetComponent<Stats>() &&
                         attackingEntity.GetComponent<Stats>().entityType == EntityType.Player)
                     {
-                        SealAuraManager auraManager = attackingEntity.GetComponent<SealAuraManager>();
-                        if (auraManager != null) auraManager.TryActivateAura();
-
                         if (Random.Range(0, 100) < PlayerManager.instance.fireAttackChance)
                             GetComponent<EntityEffects>().SetState(damage, true, false, false);
                         if (Random.Range(0, 100) < PlayerManager.instance.iceAttackChance)
@@ -261,12 +243,6 @@ public class LifeManager : MonoBehaviour
                     }
 
                     life -= damageTaken;
-
-                    if (stats.entityType == EntityType.Player)
-                    {
-                        SealMomentumManager momentum = GetComponent<SealMomentumManager>();
-                        if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnDamageTaken);
-                    }
 
                     if (attackingEntity.GetComponent<Stats>())
                         KnockBack(gameObject, attackingEntity.GetComponent<Stats>().knockbackPower * knockbackMultiplier, attackingEntity);
@@ -343,12 +319,6 @@ public class LifeManager : MonoBehaviour
         if (stats.entityType == EntityType.Monster)
         {
             StatsManager.instance.MonsterKilled(this.gameObject.name);
-
-            if (PlayerManager.instance.player != null)
-            {
-                SealMomentumManager momentum = PlayerManager.instance.player.GetComponent<SealMomentumManager>();
-                if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnKill);
-            }
 
             GetComponent<ObjectParticles>().StopAllCoroutines();
             stats.isDying = true;

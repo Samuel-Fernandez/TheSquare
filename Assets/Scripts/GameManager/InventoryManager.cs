@@ -141,16 +141,20 @@ public class InventoryManager : MonoBehaviour
 
     public void ToggleInventory(bool var = false)
     {
-        
+
         if (canOpenInventory)
         {
             if (PlayerManager.instance.playerInputActions.Menu.Pause.triggered || var)
             {
-                bool isSealUIAffixed = SealUI.instance != null && SealUI.instance.sealUI != null && SealUI.instance.sealUI.activeSelf;
-                if(!PlayerLevels.instance.UIPlayerLevels.activeSelf && (!isSealUIAffixed || inventory.activeSelf))
+                if (!PlayerLevels.instance.UIPlayerLevels.activeSelf)
                 {
                     if (!inventory.activeSelf)
                     {
+                        if (GameManager.CraftingManager.instance != null && GameManager.CraftingManager.instance.craftingMenu.activeSelf)
+                        {
+                            GameManager.CraftingManager.instance.CloseCrafting();
+                        }
+
                         UIAnimator.instance.ActivateObjectWithTransition(inventory, .2f);
 
                         Time.timeScale = 0f;

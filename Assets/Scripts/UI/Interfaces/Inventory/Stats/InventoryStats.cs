@@ -28,9 +28,6 @@ public class InventoryStats : MonoBehaviour
     public GameObject txtAntiMatter;
     public GameObject txtSquareBlock;
 
-    public GameObject sealButton;
-    public SealVisualUI sealVisualUI;
-
     private void OnEnable()
     {
         UpdateKeyItems();
@@ -75,16 +72,6 @@ public class InventoryStats : MonoBehaviour
 
     public void Update()
     {
-        if (SealManager.instance.equippedSeal != null)
-        {
-            sealButton.SetActive(true);
-            sealVisualUI.UpdateVisuals(SealManager.instance.equippedSeal);
-        }
-        else
-        {
-            sealButton.SetActive(false);
-        }
-
         txtHP.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.player.GetComponent<Stats>().health.ToString();
         txtStrength.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.player.GetComponent<Stats>().strength.ToString();
         txtDefense.GetComponentInChildren<TextMeshProUGUI>().text = PlayerManager.instance.player.GetComponent<Stats>().defense.ToString();

@@ -13,25 +13,25 @@ public class WorldMapGeneratorEditor : Editor
         GUILayout.Space(10);
 
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Auto-détecter\nTilemaps"))
+        if (GUILayout.Button("Auto-dï¿½tecter\nTilemaps"))
         {
             generator.AutoDetectTilemaps();
         }
 
-        if (GUILayout.Button("Auto-détecter\nSprites"))
+        if (GUILayout.Button("Auto-dï¿½tecter\nSprites"))
         {
             generator.AutoDetectSpriteRenderers();
         }
         GUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Auto-détecter TOUT", GUILayout.Height(30)))
+        if (GUILayout.Button("Auto-dï¿½tecter TOUT", GUILayout.Height(30)))
         {
             generator.AutoDetectAll();
         }
 
         GUILayout.Space(5);
 
-        if (GUILayout.Button("Générer la carte PNG", GUILayout.Height(40)))
+        if (GUILayout.Button("Gï¿½nï¿½rer la carte PNG", GUILayout.Height(40)))
         {
             generator.GenerateMap();
         }

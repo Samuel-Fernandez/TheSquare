@@ -71,6 +71,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeStance"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ea961b1-fbcb-401a-b269-26f4ef58d8ea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeRune"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b9133ce-d69a-46e1-8c69-db30baf50e7d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -236,6 +254,50 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb5f79f9-1d89-4c64-b392-50e3e88217f0"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeStance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74c4b875-035f-4408-9124-4db2e6378ef0"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeStance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4f959b1-e8a7-452d-9e3b-f93f598cd6f3"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeRune"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e751955-bf23-49dc-95d4-ac02aec3dcc5"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeRune"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -432,6 +494,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Gameplay_SpecialItem = m_Gameplay.FindAction("SpecialItem", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Interaction = m_Gameplay.FindAction("Interaction", throwIfNotFound: true);
+        m_Gameplay_ChangeStance = m_Gameplay.FindAction("ChangeStance", throwIfNotFound: true);
+        m_Gameplay_ChangeRune = m_Gameplay.FindAction("ChangeRune", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
@@ -507,6 +571,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_SpecialItem;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Interaction;
+    private readonly InputAction m_Gameplay_ChangeStance;
+    private readonly InputAction m_Gameplay_ChangeRune;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -516,6 +582,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @SpecialItem => m_Wrapper.m_Gameplay_SpecialItem;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Interaction => m_Wrapper.m_Gameplay_Interaction;
+        public InputAction @ChangeStance => m_Wrapper.m_Gameplay_ChangeStance;
+        public InputAction @ChangeRune => m_Wrapper.m_Gameplay_ChangeRune;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -540,6 +608,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
+            @ChangeStance.started += instance.OnChangeStance;
+            @ChangeStance.performed += instance.OnChangeStance;
+            @ChangeStance.canceled += instance.OnChangeStance;
+            @ChangeRune.started += instance.OnChangeRune;
+            @ChangeRune.performed += instance.OnChangeRune;
+            @ChangeRune.canceled += instance.OnChangeRune;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -559,6 +633,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
+            @ChangeStance.started -= instance.OnChangeStance;
+            @ChangeStance.performed -= instance.OnChangeStance;
+            @ChangeStance.canceled -= instance.OnChangeStance;
+            @ChangeRune.started -= instance.OnChangeRune;
+            @ChangeRune.performed -= instance.OnChangeRune;
+            @ChangeRune.canceled -= instance.OnChangeRune;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -677,6 +757,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnSpecialItem(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
+        void OnChangeStance(InputAction.CallbackContext context);
+        void OnChangeRune(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -56,7 +56,7 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        if (entityType == EntityType.Player && (HasEquipmentChanged() || PlayerLevels.instance.lvlChanged || AnvilUpgradeManager.instance.itemUpgraded || (SealManager.instance != null && SealManager.instance.sealChanged)))
+        if (entityType == EntityType.Player && (HasEquipmentChanged() || PlayerLevels.instance.lvlChanged || AnvilUpgradeManager.instance.itemUpgraded))
         {
             UpdateStats();
         }
@@ -94,9 +94,6 @@ public class Stats : MonoBehaviour
         if (AnvilUpgradeManager.instance.itemUpgraded)
             AnvilUpgradeManager.instance.itemUpgraded = false;
 
-        if (SealManager.instance != null && SealManager.instance.sealChanged)
-            SealManager.instance.sealChanged = false;
-
         // Get the current life manager
         LifeManager lifeManager = GetComponent<LifeManager>();
 
@@ -132,33 +129,6 @@ public class Stats : MonoBehaviour
                 else if (item is Weapon weapon)
                 {
                     AddStats(weapon);
-                }
-            }
-        }
-
-        // Apply Seal Buffs
-        if (SealManager.instance != null && SealManager.instance.HasSealEquipped())
-        {
-            Seal seal = SealManager.instance.equippedSeal;
-            if (seal.isBuffActive)
-            {
-                health += Mathf.RoundToInt(health * seal.hpPercent);
-                strength += Mathf.RoundToInt(strength * seal.forcePercent);
-                defense += Mathf.RoundToInt(defense * seal.defensePercent);
-                speed += speed * seal.speedPercent;
-                critDamage += seal.critDmg;
-                critChance += seal.critChance;
-            }
-
-            if (seal.isMomentumActive)
-            {
-                SealMomentumManager momentum = GetComponent<SealMomentumManager>();
-                if (momentum != null)
-                {
-                    int stacks = momentum.currentStacks;
-                    strength += Mathf.RoundToInt(strength * (seal.forceStack * stacks));
-                    defense += Mathf.RoundToInt(defense * (seal.defenseStack * stacks));
-                    speed += speed * (seal.speedStack * stacks);
                 }
             }
         }

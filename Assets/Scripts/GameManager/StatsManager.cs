@@ -28,18 +28,18 @@ public class StatsManager : MonoBehaviour
 
     public void MonsterKilled(string monsterID)
     {
-        // Nettoyer le nom du monstre pour enlever les suffixes ajoutés par Unity
+        // Nettoyer le nom du monstre pour enlever les suffixes ajoutï¿½s par Unity
         int index = monsterID.IndexOf(" (");
         if (index > 0)
         {
-            monsterID = monsterID.Substring(0, index); // Supprime tout après " ("
+            monsterID = monsterID.Substring(0, index); // Supprime tout aprï¿½s " ("
         }
 
         for (int i = 0; i < monsterKilled.Count; i++)
         {
             if (monsterKilled[i].idMonster == monsterID)
             {
-                // Incrémente le compteur
+                // Incrï¿½mente le compteur
                 MonsterKilled updatedMonster = monsterKilled[i];
                 updatedMonster.nb++;
                 monsterKilled[i] = updatedMonster;
@@ -48,7 +48,7 @@ public class StatsManager : MonoBehaviour
             }
         }
 
-        // Si le monstre n'est pas trouvé, on l'ajoute
+        // Si le monstre n'est pas trouvï¿½, on l'ajoute
         MonsterKilled newMonster = new MonsterKilled { idMonster = monsterID, nb = 1 };
         monsterKilled.Add(newMonster);
 

@@ -304,8 +304,6 @@ public class PlayerController : MonoBehaviour
                     if (!stats.isBowShooting && PlayerManager.instance.GetSpecialItem(SpecialItemType.ARROW).nb > 0 && SpecialObjectsManager.instance.actualObject.equiped)
                     {
                         specialObjects.ShootBow(currentDirection);
-                        SealMomentumManager momentum = GetComponent<SealMomentumManager>();
-                        if (momentum != null) momentum.OnTrigger(MomentumTriggerType.OnBowUsing);
                     }
                     break;
                 case ToolType.PICKAXE:

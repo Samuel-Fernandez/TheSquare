@@ -221,4 +221,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaLakeEast.unity
     guid: 278a1804cc473424f8d5daf76bdfe481
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaLakeEntry.unity
+    guid: fd08008088af4904eb100d39692347b1
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSouthWest.unity
+    guid: 0f67b7b8c922edd439f0f86f7433cdfb
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSouth.unity
+    guid: 156d5a85c7b7cb149ba78356946a1b64
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSouthEast.unity
+    guid: 7d9ed2c465a9474499d0bb923e72d5c5
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaWest.unity
+    guid: 699e5574b4312ac4fa0e17880922d6b4
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaNorth.unity
+    guid: e81a16b5dab3a874f89c94a3bc6738d1
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaNorthEast.unity
+    guid: 126ead915422592498ba30770d2224a7
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaCenter.unity
+    guid: 596add478e70fab4abfa46b48831fb86
   m_configObjects: {}

@@ -399,6 +399,14 @@
     {
       "key": "SEAL_UI_WARNING",
       "value": "You already have a seal. Crafting a new one will destroy it."
+    },
+    {
+      "key": "CRAFTING_MENU_TITLE",
+      "value": "Crafting"
+    },
+    {
+      "key": "CRAFT_BUTTON",
+      "value": "Craft"
     }
   ]
 }

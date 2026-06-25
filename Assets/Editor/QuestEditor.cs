@@ -16,7 +16,7 @@ public class QuestEditor : Editor
         SerializedProperty completionCondition = serializedObject.FindProperty("completionCondition");
         SerializedProperty reward = serializedObject.FindProperty("reward");
 
-        // Identification de la quête
+        // Identification de la quï¿½te
         EditorGUILayout.PropertyField(id, new GUIContent("Quest ID"));
 
         EditorGUILayout.Space();
