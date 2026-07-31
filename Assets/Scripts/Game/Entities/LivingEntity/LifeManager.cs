@@ -38,7 +38,12 @@ public class LifeManager : MonoBehaviour
         if (collision.gameObject.GetComponent<Stats>() && collision.gameObject.GetComponent<Stats>().isVulnerable && stats.entityType == EntityType.Monster && collision.gameObject.GetComponent<Stats>().entityType == EntityType.Player)
         {
             Attack(collision.gameObject);
-            StartCoroutine(MonsterWaitAfterAttackRoutine());
+
+            // L'IceBumper ne s'arrête pas après avoir attaqué, il doit rebondir et continuer immédiatement son rush
+            if (GetComponent<IceBumperBehiavor>() == null)
+            {
+                StartCoroutine(MonsterWaitAfterAttackRoutine());
+            }
         }
     }
 
@@ -119,11 +124,10 @@ public class LifeManager : MonoBehaviour
         bool isCritical = false;
         if (target.GetComponent<Stats>().isVulnerable && target.GetComponent<LifeManager>().life > 0)
         {
-            float variation = Random.Range(0.8f, 1.2f);
-            int baseDamage = Mathf.RoundToInt(stats.strength * variation * multiplier);
+            int baseDamage = Mathf.RoundToInt(stats.strength * multiplier);
 
-            // Appliquer r�duction dragon skin
-            if (PlayerManager.instance.dragonSkin > 0)
+            // Appliquer réduction dragon skin (dégâts absorbés)
+            if (target.GetComponent<Stats>().entityType == EntityType.Player && PlayerManager.instance.dragonSkin > 0)
                 baseDamage = Mathf.RoundToInt(baseDamage * (1f - PlayerManager.instance.dragonSkin));
 
             // Critiques
@@ -159,7 +163,7 @@ public class LifeManager : MonoBehaviour
             {
                 if (stats.entityType == EntityType.Monster ||
                     stats.entityType == EntityType.Boss ||
-                    (stats.entityType == EntityType.Player && Random.Range(0, 100) >= PlayerManager.instance.dodgeChance))
+                    (stats.entityType == EntityType.Player && Random.Range(0, 100) >= PlayerManager.instance.dodgeChance * 100))
                 {
                     if (stats.entityType == EntityType.Player)
                     {
@@ -209,7 +213,7 @@ public class LifeManager : MonoBehaviour
             {
                 if (stats.entityType == EntityType.Monster ||
                     stats.entityType == EntityType.Boss ||
-                    (stats.entityType == EntityType.Player && Random.Range(0, 100) >= PlayerManager.instance.dodgeChance))
+                    (stats.entityType == EntityType.Player && Random.Range(0, 100) >= PlayerManager.instance.dodgeChance * 100))
                 {
                     if (stats.entityType == EntityType.Player)
                     {
@@ -221,36 +225,160 @@ public class LifeManager : MonoBehaviour
                         attackingEntity.GetComponent<Stats>() &&
                         attackingEntity.GetComponent<Stats>().entityType == EntityType.Player)
                     {
-                        if (Random.Range(0, 100) < PlayerManager.instance.fireAttackChance)
+                        if (Random.Range(0, 100) < PlayerManager.instance.fireAttackChance * 100)
                             GetComponent<EntityEffects>().SetState(damage, true, false, false);
-                        if (Random.Range(0, 100) < PlayerManager.instance.iceAttackChance)
+                        if (Random.Range(0, 100) < PlayerManager.instance.iceAttackChance * 100)
                             GetComponent<EntityEffects>().SetState(damage, false, true, false);
-                        if (Random.Range(0, 100) < PlayerManager.instance.poisonAttackChance)
+                        if (Random.Range(0, 100) < PlayerManager.instance.poisonAttackChance * 100)
                             GetComponent<EntityEffects>().SetState(damage, false, false, true);
                     }
+                    else if (stats.entityType == EntityType.Player &&
+                        attackingEntity.GetComponent<Stats>() &&
+                        (attackingEntity.GetComponent<Stats>().entityType == EntityType.Monster || attackingEntity.GetComponent<Stats>().entityType == EntityType.Boss))
+                    {
+                        EntityEffects attackerEffects = attackingEntity.GetComponent<EntityEffects>();
+                        if (attackerEffects != null)
+                        {
+                            if (Random.Range(0, 100) < attackerEffects.fireChance * 100)
+                                GetComponent<EntityEffects>().SetState(damage, true, false, false);
+                            if (Random.Range(0, 100) < attackerEffects.freezeChance * 100)
+                                GetComponent<EntityEffects>().SetState(damage, false, true, false);
+                            if (Random.Range(0, 100) < attackerEffects.poisonChance * 100)
+                                GetComponent<EntityEffects>().SetState(damage, false, false, true);
+                            if (Random.Range(0, 100) < attackerEffects.slimeChance * 100)
+                                GetComponent<EntityEffects>().SetState(damage, false, false, false, true);
+                        }
+                    }
 
-                    int damageTaken = Mathf.Max(damage - stats.defense, 1);
+                    float stanceMultiplier = 1f;
+
+                    if ((stats.entityType == EntityType.Monster || stats.entityType == EntityType.Boss) && 
+                        attackingEntity.GetComponent<Stats>() && 
+                        attackingEntity.GetComponent<Stats>().entityType == EntityType.Player)
+                    {
+                        if (StanceAndRunicManager.instance != null)
+                        {
+                            var activeStance = StanceAndRunicManager.instance.stancesList.Find(s => s.isEquipped);
+                            if (activeStance != null && activeStance.stance != null)
+                            {
+                                switch (activeStance.stance.stanceType)
+                                {
+                                    case StanceType.Slashing:
+                                        if (stats.monsterType == MonsterType.Amorphous) stanceMultiplier = 1.5f;
+                                        else if (stats.monsterType == MonsterType.Rigid) stanceMultiplier = 0.5f;
+                                        break;
+                                    case StanceType.Blunt:
+                                        if (stats.monsterType == MonsterType.Rigid) stanceMultiplier = 1.5f;
+                                        else if (stats.monsterType == MonsterType.Amorphous) stanceMultiplier = 0.5f;
+                                        break;
+                                    case StanceType.Piercing:
+                                        if (stats.monsterType == MonsterType.Fleshy) stanceMultiplier = 1.5f;
+                                        else if (stats.monsterType == MonsterType.Ethereal) stanceMultiplier = 0.5f;
+                                        break;
+                                    case StanceType.Spiritual:
+                                        if (stats.monsterType == MonsterType.Ethereal) stanceMultiplier = 1.5f;
+                                        else if (stats.monsterType == MonsterType.Fleshy) stanceMultiplier = 0.5f;
+                                        break;
+                                    case StanceType.AntiSquare:
+                                        if (stats.monsterType == MonsterType.Anomaly) stanceMultiplier = 1.5f;
+                                        else stanceMultiplier = 0.5f;
+                                        break;
+                                    case StanceType.Neutral:
+                                    default:
+                                        break;
+                                }
+                                // Mimetisme
+                                if (StanceAndRunicManager.instance.GetActiveRuneType() == RuneType.Mimetisme)
+                                {
+                                    if (stanceMultiplier > 1.1f) stanceMultiplier = 3.0f;
+                                    else if (stanceMultiplier < 0.9f) stanceMultiplier = 0.25f;
+                                }
+
+                                if (stanceMultiplier > 1.1f)
+                                {
+                                    var sc = attackingEntity.GetComponent<SoundContainer>();
+                                    if (sc != null) sc.PlaySound("StanceBonus", 1);
+                                    
+                                    if (StanceAndRunicManager.instance.stanceLightPrefab != null)
+                                    {
+                                        GameObject lightObj = Instantiate(StanceAndRunicManager.instance.stanceLightPrefab, transform.position, Quaternion.identity, transform);
+                                        var light2D = lightObj.GetComponentInChildren<UnityEngine.Rendering.Universal.Light2D>();
+                                        if (light2D != null)
+                                        {
+                                            light2D.color = Color.yellow;
+                                            StartCoroutine(FadeAndDestroyLightCoroutine(lightObj, light2D, 0.5f));
+                                        }
+                                        else
+                                        {
+                                            Destroy(lightObj, 0.5f);
+                                        }
+                                    }
+                                }
+                                else if (stanceMultiplier < 0.9f)
+                                {
+                                    var sc = attackingEntity.GetComponent<SoundContainer>();
+                                    if (sc != null) sc.PlaySound("StanceMalus", 1);
+                                    // Pas de lumière pour le malus comme demandé
+                                }
+                            }
+                        }
+                    }
+
+                    int actualDamage = Mathf.RoundToInt(damage * stanceMultiplier);
+
+                    // -- RUNES (Dégâts infligés par le joueur) --
+                    if (attackingEntity != null && attackingEntity.GetComponent<Stats>() && attackingEntity.GetComponent<Stats>().entityType == EntityType.Player && StanceAndRunicManager.instance != null)
+                    {
+                        float runicDamageMult = StanceAndRunicManager.instance.GetRunicDamageMultiplier(attackingEntity.GetComponent<Stats>(), stats);
+                        actualDamage = Mathf.RoundToInt(actualDamage * runicDamageMult);
+                    }
+                    
+                    // -- RUNES (Dégâts reçus par le joueur) --
+                    if (stats.entityType == EntityType.Player && StanceAndRunicManager.instance != null)
+                    {
+                        float runicTakenMult = StanceAndRunicManager.instance.GetRunicDamageTakenMultiplier(stats);
+                        actualDamage = Mathf.RoundToInt(actualDamage * runicTakenMult);
+                    }
+
+                    int damageTaken = Mathf.Max(actualDamage - stats.defense, 1);
+
+                    // -- RUNES (Coup Critique) --
+                    if (isCritical && attackingEntity != null && attackingEntity.GetComponent<Stats>() && attackingEntity.GetComponent<Stats>().entityType == EntityType.Player && StanceAndRunicManager.instance != null)
+                    {
+                        StanceAndRunicManager.instance.OnCriticalHitDealt(attackingEntity.GetComponent<Stats>(), damageTaken);
+                    }
 
                     // VAMPIRE
                     if (attackingEntity.GetComponent<Stats>() &&
                         attackingEntity.GetComponent<Stats>().entityType == EntityType.Player &&
-                        Random.Range(0, 100) < PlayerManager.instance.vampire)
+                        Random.Range(0, 100) < PlayerManager.instance.vampire * 100)
                     {
-                        attackingEntity.GetComponent<LifeManager>().life += Mathf.Min(
-                            attackingEntity.GetComponent<Stats>().health,
-                            (int)(damageTaken * 0.1f)
-                        );
+                        int healAmount = (int)(damageTaken * 0.1f);
+                        if (healAmount > 0)
+                        {
+                            attackingEntity.GetComponent<LifeManager>().Heal(healAmount);
+                        }
                     }
 
                     life -= damageTaken;
 
-                    if (attackingEntity.GetComponent<Stats>())
-                        KnockBack(gameObject, attackingEntity.GetComponent<Stats>().knockbackPower * knockbackMultiplier, attackingEntity);
+                    // -- GESTION DU REBOND SPECIFIQUE DE L'ICEBUMPER --
+                    IceBumperBehiavor iceBumper = GetComponent<IceBumperBehiavor>();
+                    if (iceBumper != null)
+                    {
+                        iceBumper.OnDamageTaken();
+                    }
+                    else
+                    {
+                        if (attackingEntity.GetComponent<Stats>())
+                            KnockBack(gameObject, attackingEntity.GetComponent<Stats>().knockbackPower * knockbackMultiplier, attackingEntity);
 
-                    if (attackingEntity.GetComponent<ProjectileBehavior>())
-                        KnockBack(gameObject, attackingEntity.GetComponent<ProjectileBehavior>().knockbackPower * knockbackMultiplier, attackingEntity);
+                        if (attackingEntity.GetComponent<ProjectileBehavior>())
+                            KnockBack(gameObject, attackingEntity.GetComponent<ProjectileBehavior>().knockbackPower * knockbackMultiplier, attackingEntity);
+                    }
 
-                    GetComponent<DamageEffect>().DamageEffects();
+                    if (GetComponent<DamageEffect>())
+                        GetComponent<DamageEffect>().DamageEffects(true);
 
                     GameObject damageTextTemp = Instantiate(damageText, transform.position, Quaternion.identity);
                     var textComponent = damageTextTemp.GetComponentInChildren<TextMeshProUGUI>();
@@ -344,7 +472,12 @@ public class LifeManager : MonoBehaviour
 
             GetComponent<MonsterDeath>().OnMonsterDeath();
 
-            // Comportements sp�cifiques
+            if (StanceAndRunicManager.instance != null && PlayerManager.instance != null && PlayerManager.instance.player != null)
+            {
+                StanceAndRunicManager.instance.OnMonsterKilled(this.gameObject, PlayerManager.instance.player.GetComponent<Stats>());
+            }
+
+            // Comportements spcifiques
             if (GetComponent<DroxenHandBehiavor>())
             {
                 Instantiate(GetComponent<DroxenHandBehiavor>().explosionEffect, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
@@ -443,5 +576,26 @@ public class LifeManager : MonoBehaviour
 
         isKnockbacking = false;
         knockbackCoroutine = null;
+    }
+
+    private IEnumerator FadeAndDestroyLightCoroutine(GameObject lightObj, UnityEngine.Rendering.Universal.Light2D light2D, float duration)
+    {
+        float startIntensity = light2D.intensity;
+        float startRadius = light2D.pointLightOuterRadius;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            if (light2D == null) yield break;
+            time += Time.deltaTime;
+            light2D.intensity = Mathf.Lerp(startIntensity, 0f, time / duration);
+            light2D.pointLightOuterRadius = Mathf.Lerp(startRadius, 0f, time / duration);
+            yield return null;
+        }
+
+        if (lightObj != null)
+        {
+            Destroy(lightObj);
+        }
     }
 }

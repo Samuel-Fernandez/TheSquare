@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 253195382348122780, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: loots
+      value: 
+      objectReference: {fileID: 11400000, guid: fa4b62e411c611346b647ac5de4291f3, type: 2}
     - target: {fileID: 395713895748195523, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -54,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1029390846334795489, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Name
-      value: IceWarrior Variant
+      value: IceWarrior
       objectReference: {fileID: 0}
     - target: {fileID: 1029390846334795489, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_IsActive
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: allSounds.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: allSounds.Array.data[1].id
@@ -79,6 +83,14 @@ PrefabInstance:
     - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: allSounds.Array.data[4].id
       value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: allSounds.Array.data[5].id
+      value: IceSpike
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: allSounds.Array.data[6].id
+      value: Impact
       objectReference: {fileID: 0}
     - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: allSounds.Array.data[0].clips.Array.size
@@ -101,6 +113,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: allSounds.Array.data[5].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: allSounds.Array.data[6].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: allSounds.Array.data[0].clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 9f66c41965e17a14db2476082f5d2707, type: 3}
@@ -120,6 +140,14 @@ PrefabInstance:
       propertyPath: allSounds.Array.data[4].clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 71fd95cb97977f1488b68c27903e0da7, type: 3}
+    - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: allSounds.Array.data[5].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 580b6ea00c94f9f4fad9bc5ce07b4853, type: 3}
+    - target: {fileID: 2851420161718341012, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: allSounds.Array.data[6].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 766c1a7dfe4f44c42a15550586984ddd, type: 3}
     - target: {fileID: 2919083349108456988, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -143,6 +171,10 @@ PrefabInstance:
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: strength
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: monsterType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: knockbackPower
@@ -410,6 +442,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1029390846334795489, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4430983759830108557}
+    - targetCorrespondingSourceObject: {fileID: 1029390846334795489, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2313415080139182789}
   m_SourcePrefab: {fileID: 100100000, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
 --- !u!1 &2038114165263015334 stripped
 GameObject:
@@ -462,8 +497,130 @@ MonoBehaviour:
   attackCooldownMax: 5
   dashSpeedMultiplier: 6
   dashDuration: 0.5
-  prepareDuration: 1.2
+  initialPrepareDuration: 1
+  consecutivePrepareDuration: 0.5
+  timeBetweenDashes: 0.5
   walkSpriteReversed: 1
   reverseAttackSpriteSide: 1
   baseFreezeChance: 0.1
   dashFreezeChance: 0.5
+  spikePrefab: {fileID: 8070904238396115060, guid: e55b630c42754d94eaa2915872bdaff1, type: 3}
+  spikeCount: 12
+  spikeRadius: 1.5
+  smokePrefab: {fileID: 8043350695109731168, guid: ca0eff2356c2b9042beee199ca301339, type: 3}
+  shakeAmplitude: 3
+  shakeFrequency: 3
+  shakeDuration: 0.5
+--- !u!96 &2313415080139182789
+TrailRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038114165263015334}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 097ed0cabf69a6945998c238165ba2bd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -2
+  m_Time: 2
+  m_PreviewTimeScale: 1
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 0, g: 0.054792393, b: 0.4566037, a: 1}
+      key1: {r: 0, g: 1, b: 0.96660995, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 90
+    alignment: 0
+    textureMode: 3
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0
+    generateLightingData: 0
+  m_MinVertexDistance: 0.98
+  m_MaskInteraction: 0
+  m_Autodestruct: 0
+  m_Emitting: 1
+  m_ApplyActiveColorSpace: 1

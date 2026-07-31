@@ -8,4 +8,17 @@ public class StanceSO : ScriptableObject
     
     [Tooltip("L'icône qui sera affichée dans l'UI")]
     public Sprite iconSprite;
+
+    [Tooltip("Le type de posture pour l'application des modificateurs de dégâts")]
+    public StanceType stanceType;
+}
+
+public enum StanceType
+{
+    Neutral,
+    Slashing,     // Tranchante
+    Blunt,        // Contondante
+    Piercing,     // Perforante
+    Spiritual,    // Spirituelle
+    AntiSquare    // Anti-Square
 }

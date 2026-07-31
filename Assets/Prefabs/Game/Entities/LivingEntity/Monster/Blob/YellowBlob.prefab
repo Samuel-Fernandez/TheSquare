@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 4056800347154251852, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
       propertyPath: loots
       value: 
-      objectReference: {fileID: 11400000, guid: c66ac1bd3d565184a99e02747e5fad7c, type: 2}
+      objectReference: {fileID: 11400000, guid: 3c52fd10546b6bc47bbf1b5e671fe6f1, type: 2}
     - target: {fileID: 4517948283568479763, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
       propertyPath: m_Color.b
       value: 0

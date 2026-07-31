@@ -1,6 +1,38 @@
 {
   "entries": [
     {
+      "key": "MyliaMeeting-1",
+      "value": "...|Poor lost soul... If your steps have led you here, you must be determined to defy The Square...|I bow to your courage... and to the trials you have endured.|You have managed to materialize me in your world... With the intention of striking me down...|Please forgive me... As a guardian, I have cruelly failed to protect you...|I am heartbroken to see you endure such agony. The more you persist, the more unbearable your torments will become.|I beg of you, little one... Do not seek me out. There is not a single glimmer of hope left...|The Square is... Invincible..."
+    },
+    {
+      "key": "MyliaSquareWorld-1",
+      "value": "Ohh... I see.|You are currently in a dimension apart... Inside The Square.|It seems I wasn't able to come with you. But at least you can hear me, that's already something."
+    },
+    {
+      "key": "MyliaSquareWorld-2",
+      "value": "The guardians haven't materialized in the physical world.|They are kept safely imprisoned in this dimension. You have to recover and bring back the fragments of Mylia's heart if you want to see her physically."
+    },
+    {
+      "key": "MyliaSquareWorld-3",
+      "value": "However, the area seems heavily guarded. I wouldn't mess with those things if I were you.|That glowing spot over there is a safe zone. If you ever get spotted, you can take refuge in it."
+    },
+    {
+      "key": "MyliaSquareWorld-4",
+      "value": "Be careful, it looks like a lot of things can give away your position.|And time seems limited. You will need to be fast."
+    },
+    {
+      "key": "MyliaSquareWorld-5",
+      "value": "This isn't your physical body here. If you get caught, you will simply be sent back to the start.|You can try again as many times as you want. Just be careful not to lose your mind.|I will be waiting for you outside.|Good luck !"
+    },
+    {
+      "key": "TheSquareWorldMeeting-1",
+      "value": "Alright.|You want to know what this thing is ?"
+    },
+    {
+      "key": "TheSquareWorldMeeting-2",
+      "value": "Well, I have absolutely no idea.|Just... please be careful out there..."
+    },
+    {
       "key": "book-beggining-1",
       "value": "Hi... Sorry, I unfortunately don't have time to explain everything. | Just know that you can move, attack, and dodge, as shown by the drawings on the right and left. | I left you other books... I hope you'll find them... I'd like to... | [The author doesn't seem to have had time to finish the sentence]"
     },
@@ -563,6 +595,62 @@
     {
       "key": "archivistOpenSeal-2",
       "value": "It's open... Incredible... I'm going first !|I want to be the first to see what no one has seen for centuries !"
+    },
+    {
+      "key": "book-tutorial-posture",
+      "value": "Stances adapt your combat style to exploit enemy weaknesses. | Press [RT] to cycle through your unlocked stances. | Choose wisely: a stance highly effective against one monster type will deal reduced damage to others."
+    },
+    {
+      "key": "book-tutorial-rune",
+      "value": "Runes dynamically modify your strengths and weaknesses in combat. | You can equip up to 3 runes simultaneously in your inventory. | Press [LT] or [Q] (default) to cycle through your equipped runes. | Keep in mind that only the currently active rune will apply its effects."
+    },
+    {
+      "key": "evelyn-meeting-0",
+      "value": "Oh... A visitor...|It's been centuries since I last saw anyone... Did Mylia free the lake ?..."
+    },
+    {
+      "key": "evelyn-meeting-1",
+      "value": "Ah ?... You want to defeat her to find the Guardian of Gravity ?...|Good thing death doesn't exist anymore...|You can go through the basement... It will allow you to unlock the path...|Good luck... See you soon..."
+    },
+    {
+      "key": "myliaDoor-1",
+      "value": "Mhh... I suppose this bridge leads to Mylia's sanctuary...|But how do we get past this great barrier ?|Wake me up when you've figured it out ? This cold is putting me to sleep..."
+    },
+    {
+      "key": "BigIronBarrierOpen-1",
+      "value": "Mylia is gentle...|Far too gentle...|Her attacks seem so insignificant... That's precisely what makes them so dangerous.|Of all the battles you've faced, this will be by far the hardest.|Take care of yourself. Don't lose all your Square Coins.|We will meet again soon. I'm sorry..."
+    },
+    {
+      "key": "theSquareInteraction-1",
+      "value": "You...|Your tiny heartbeat threatens to shatter the rules of this world...|You are an anomaly, little one. A beautiful, yet dangerous flaw.|I hold no resentment towards you, but I must erase you..."
+    },
+    {
+      "key": "AraxieMyliaLake-1",
+      "value": "Woaaah !|There's snow everywhere !"
+    },
+    {
+      "key": "AraxieMyliaLake-2",
+      "value": "It's so beautiful !|Did you see ?? It's all white !"
+    },
+    {
+      "key": "AraxieMyliaLake-3",
+      "value": "Look at the trees !|Look everywhere ! Woaaaaaaw !!!"
+    },
+    {
+      "key": "AraxieMyliaLake-4",
+      "value": "Even the river is frozen !|You're taking me all over the world ! I don't regret coming with you !"
+    },
+    {
+      "key": "AraxieMyliaLake-5",
+      "value": "It's almost romantic, isn't it ! Are you taking me on a date ?"
+    },
+    {
+      "key": "AraxieMyliaLake-6",
+      "value": "Okay, I'm just kidding... Let's keep looking for Mylia.|(No sense of humor, huh...)"
+    },
+    {
+      "key": "AraxieAfterTheSquare-1",
+      "value": "What was that thing ?|The Square considers you... an anomaly ?|That is... very strange... I don't really understand why...|You say you don't know your name, where you're from... nothing at all...|Perhaps talking to Mylia will give us more information."
     }
   ]
 }

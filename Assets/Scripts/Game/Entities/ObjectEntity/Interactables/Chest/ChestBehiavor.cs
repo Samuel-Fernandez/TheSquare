@@ -9,6 +9,8 @@ public enum CHEST_TYPE
     DUNGEON_KEY,
     DUNGEON_BOSS_KEY,
     SPECIAL_OBJECT,
+    STANCE,
+    RUNE,
 }
 
 public class ChestBehiavor : MonoBehaviour
@@ -21,6 +23,8 @@ public class ChestBehiavor : MonoBehaviour
     public int nbIfSpecialItems;
     public CHEST_TYPE chestType;
     public ToolType toolToUnlock;
+    public StanceSO stanceToUnlock;
+    public RuneSO runeToUnlock;
 
     bool openPossible;
 
@@ -80,6 +84,20 @@ public class ChestBehiavor : MonoBehaviour
             GetComponent<InteractableBehiavor>().oneShot = true;
             StartCoroutine(RoutineOpenChest());
         }
+        else if (chestType == CHEST_TYPE.STANCE)
+        {
+            SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(ID, true);
+            GetComponent<InteractableBehiavor>().canInteract = false;
+            GetComponent<InteractableBehiavor>().oneShot = true;
+            StartCoroutine(RoutineOpenChest());
+        }
+        else if (chestType == CHEST_TYPE.RUNE)
+        {
+            SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(ID, true);
+            GetComponent<InteractableBehiavor>().canInteract = false;
+            GetComponent<InteractableBehiavor>().oneShot = true;
+            StartCoroutine(RoutineOpenChest());
+        }
 
     }
 
@@ -115,6 +133,22 @@ public class ChestBehiavor : MonoBehaviour
         else if (chestType == CHEST_TYPE.SPECIAL_OBJECT)
         {
             NotificationManager.instance.ShowItemResume(toolToUnlock);
+        }
+        else if (chestType == CHEST_TYPE.STANCE)
+        {
+            if (StanceAndRunicManager.instance != null && stanceToUnlock != null)
+            {
+                StanceAndRunicManager.instance.UnlockStance(stanceToUnlock.id);
+            }
+            NotificationManager.instance.ShowItemResume(stanceToUnlock);
+        }
+        else if (chestType == CHEST_TYPE.RUNE)
+        {
+            if (StanceAndRunicManager.instance != null && runeToUnlock != null)
+            {
+                StanceAndRunicManager.instance.UnlockRune(runeToUnlock.id);
+            }
+            NotificationManager.instance.ShowItemResume(runeToUnlock);
         }
 
     }

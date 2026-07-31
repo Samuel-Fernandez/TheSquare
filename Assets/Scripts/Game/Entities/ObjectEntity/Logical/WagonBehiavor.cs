@@ -10,16 +10,13 @@ public class WagonBehavior : MonoBehaviour
     private bool hasStarted = false;
     private bool wagonStopped = false;
 
-    // Compteur de rails END rencontrés
-    private int endRailCount = 0;
-
-    // Direction actuelle du wagon (normalisée)
+    // Direction actuelle du wagon (normalisï¿½e)
     private Vector2 currentDirection = Vector2.zero;
 
-    // Référence au joueur monté sur le wagon
+    // Rï¿½fï¿½rence au joueur montï¿½ sur le wagon
     private GameObject mountedPlayer = null;
 
-    // Dernier rail traité pour éviter les doubles détections
+    // Dernier rail traitï¿½ pour ï¿½viter les doubles dï¿½tections
     private TrackBehavior lastProcessedTrack = null;
 
     Rigidbody2D rb;
@@ -131,12 +128,12 @@ public class WagonBehavior : MonoBehaviour
 
         Debug.Log($"[HandleAxisChange] Direction actuelle: {currentDirection}, Nouvelle direction: {newDirection}");
 
-        // Durée totale identique à avant (0.175 + 0.175 = 0.35)
+        // Durï¿½e totale identique ï¿½ avant (0.175 + 0.175 = 0.35)
         float duration = 0.35f;
         Vector2 startPos = transform.position;
-        Vector2 endPos = startPos + newDirection; // déplacement d'1 unité dans la nouvelle direction
+        Vector2 endPos = startPos + newDirection; // dï¿½placement d'1 unitï¿½ dans la nouvelle direction
 
-        // Mettre à jour la direction immédiatement pour cohérence (dismount, jump, etc.)
+        // Mettre ï¿½ jour la direction immï¿½diatement pour cohï¿½rence (dismount, jump, etc.)
         currentDirection = newDirection;
 
         float elapsed = 0f;
@@ -170,7 +167,7 @@ public class WagonBehavior : MonoBehaviour
         if (distance > 1f)
         {
             lastProcessedTrack = null;
-            Debug.Log("[ResetLastProcessedTrack] Rail réinitialisé");
+            Debug.Log("[ResetLastProcessedTrack] Rail rï¿½initialisï¿½");
         }
     }
 
@@ -272,7 +269,7 @@ public class WagonBehavior : MonoBehaviour
                 currentDirection = track.initialDirection.normalized;
                 hasStarted = true;
                 lastProcessedTrack = track;
-                Debug.Log($"[MountPlayerRoutine] Démarrage - Direction: {currentDirection}");
+                Debug.Log($"[MountPlayerRoutine] Dï¿½marrage - Direction: {currentDirection}");
                 break;
             }
         }
@@ -284,7 +281,7 @@ public class WagonBehavior : MonoBehaviour
     {
         if (mountedPlayer == null) yield break;
 
-        Debug.Log("[DismountPlayer] Début de la descente");
+        Debug.Log("[DismountPlayer] Dï¿½but de la descente");
 
         GameObject player = mountedPlayer;
         Collider2D wagonCollider = GetComponent<Collider2D>();
@@ -317,9 +314,8 @@ public class WagonBehavior : MonoBehaviour
         mountedPlayer = null;
         hasStarted = false;
         wagonStopped = false;
-        endRailCount = 0;
         lastProcessedTrack = null;
 
-        Debug.Log("[DismountPlayer] Descente terminée - Reset complet");
+        Debug.Log("[DismountPlayer] Descente terminï¿½e - Reset complet");
     }
 }

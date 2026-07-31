@@ -50,6 +50,42 @@ public class EntityLight : MonoBehaviour
         }
     }
 
+    // Méthode pour régler le falloff (l'atténuation) de la lumière
+    public void SetLightFalloff(float falloff)
+    {
+        if (light2D != null)
+        {
+            light2D.falloffIntensity = falloff;
+            light2D.shapeLightFalloffSize = falloff; // Pour les lumières Freeform plus anciennes
+        }
+    }
+
+    // Méthode pour adapter la forme d'une lumière Freeform à la taille d'un Sprite
+    public void AdaptShapeToSprite(Vector2 spriteSize)
+    {
+        // En mode édition (OnValidate), Awake n'a pas forcément tourné, on s'assure d'avoir la lumière
+        if (light2D == null && entityLight != null)
+        {
+            light2D = entityLight.GetComponent<Light2D>();
+        }
+
+        if (light2D != null && light2D.lightType == Light2D.LightType.Freeform)
+        {
+            Vector3[] path = new Vector3[4];
+            float hw = spriteSize.x / 2f;
+            float hh = spriteSize.y / 2f;
+            
+            // On définit les 4 coins d'un rectangle qui correspond au sprite
+            path[0] = new Vector3(-hw, -hh, 0);
+            path[1] = new Vector3(hw, -hh, 0);
+            path[2] = new Vector3(hw, hh, 0);
+            path[3] = new Vector3(-hw, hh, 0);
+            
+            // Utiliser la méthode dédiée pour assigner le chemin, car la propriété est en lecture seule
+            light2D.SetShapePath(path);
+        }
+    }
+
     private Coroutine transitionCoroutine; // Stocker la référence à la coroutine en cours
     private Coroutine colorTransitionCoroutine; // Stocker la référence à la coroutine de couleur
     private Coroutine fadeOutCoroutine; // Coroutine spécifique pour le fade out final

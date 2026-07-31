@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: MyliaSquareWorld
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: MyliaSquareWorld
+  eventsList:
+  - {fileID: 11400000, guid: b9d117d8fdb455d4b8db10e6541bd318, type: 2}
+  - {fileID: 11400000, guid: 01dea2486943b9144bb9c41fedc55787, type: 2}
+  - {fileID: 11400000, guid: e47c9015d242f714e83f8f13d463490f, type: 2}
+  - {fileID: 11400000, guid: 42db0c484760a1d42ac0e63d09cc97fb, type: 2}
+  - {fileID: 11400000, guid: 18dbf8c050ab7e647be39fd32110cdee, type: 2}
+  - {fileID: 11400000, guid: c071cfd2101ca3345b006cd9058d367b, type: 2}
+  - {fileID: 11400000, guid: d97d2dcf8b908b5409c62982d56788e0, type: 2}
+  - {fileID: 11400000, guid: e5c35e2c53c63654b93e5b7d8fe614c3, type: 2}
+  - {fileID: 11400000, guid: 9e1c449206b7f304fa910ff1f6c83413, type: 2}
+  - {fileID: 11400000, guid: 57c1bbeaa677f1a40acec5917fd9ff99, type: 2}
+  - {fileID: 11400000, guid: e2783c128e9a4be4385b196fc4a5c25a, type: 2}
+  - {fileID: 11400000, guid: 25149d2b92aa96c44981d2088ef66777, type: 2}
+  - {fileID: 11400000, guid: 17d0eb936580b0948a031c917dccb1c2, type: 2}
+  - {fileID: 11400000, guid: c82d8da9e3282df40beeac064ccda590, type: 2}
+  requirements: []

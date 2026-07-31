@@ -24,6 +24,13 @@ public class EntityEffects : MonoBehaviour
     public bool canBePoison;
     public bool canBeSlimed;
 
+    // ----------- TAUX D'APPLICATION SUR LA CIBLE (au contact) -----------
+    [Range(0, 1)] public float fireChance;
+    [Range(0, 1)] public float freezeChance;
+    [Range(0, 1)] public float poisonChance;
+    [Range(0, 1)] public float slimeChance;
+    // ----------------------------------------------------------------
+
     public bool isFire;
     public bool isFreeze;
     public bool isPoison;

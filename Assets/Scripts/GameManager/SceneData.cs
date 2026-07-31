@@ -16,6 +16,7 @@ public enum SceneType
     CAVE,
     HOUSE,
     DUNGEON,
+    INSIDE_THE_SQUARE
 }
 
 [CreateAssetMenu(fileName = "Scene", menuName = "WorldData/Scenes")]
@@ -23,7 +24,7 @@ public class SceneData : ScriptableObject
 {
     public SceneType sceneType;
     public CameraFilter filter;
-    public string sceneID; // Nom de scène utilisable
+    public string sceneID; // Nom de scï¿½ne utilisable
     public string dungeonName;
     public AudioClip music;
     public List<AudioClip> ambientSound;
@@ -33,10 +34,10 @@ public class SceneData : ScriptableObject
     public bool playerCantOpenInventory;
 
 #if UNITY_EDITOR
-    [SerializeField] public SceneAsset sceneAsset; // Permet de sélectionner une scène dans l'inspecteur
+    [SerializeField] public SceneAsset sceneAsset; // Permet de sï¿½lectionner une scï¿½ne dans l'inspecteur
 #endif
 
-    [SerializeField] private string sceneName; // Stocke le nom de la scène pour le runtime
+    [SerializeField] private string sceneName; // Stocke le nom de la scï¿½ne pour le runtime
 
     public string SceneName => sceneName;
 
@@ -45,12 +46,12 @@ public class SceneData : ScriptableObject
     {
         if (sceneAsset != null)
         {
-            sceneName = sceneAsset.name; // Copie le nom de la scène pour le runtime
+            sceneName = sceneAsset.name; // Copie le nom de la scï¿½ne pour le runtime
         }
     }
 #endif
 
-    // Méthode pour charger la scène
+    // Mï¿½thode pour charger la scï¿½ne
     public void LoadScene()
     {
         if (!string.IsNullOrEmpty(sceneName))

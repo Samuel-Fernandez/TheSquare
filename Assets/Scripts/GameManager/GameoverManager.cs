@@ -101,20 +101,20 @@ public class GameoverManager : MonoBehaviour
         UIAnimator.instance.DeactivateObjectWithTransition(gameOverUI, 1);
         yield return new WaitForSecondsRealtime(1);
 
-        // 3. Charger (qui va changer de scène avec transition)
+        // 3. Charger (qui va changer de scï¿½ne avec transition)
         SaveManager.instance.Load(true, true, false);
 
         // 2. Restaurer la vie et l'argent avant le load
         PlayerManager.instance.player.GetComponent<LifeManager>().FullHealth();
         PlayerManager.instance.player.GetComponent<Stats>().money = 0;
 
-        // 4. Attendre que la scène soit complètement chargée
+        // 4. Attendre que la scï¿½ne soit complï¿½tement chargï¿½e
         while (!ScenesManager.instance.isSceneLoaded)
         {
             yield return null;
         }
 
-        // 5. Réactiver le joueur et sauvegarder
+        // 5. Rï¿½activer le joueur et sauvegarder
         PlayerManager.instance.TogglePlayer(0);
         SaveManager.instance.Save();
         Time.timeScale = 1f;
@@ -184,9 +184,9 @@ public class GameoverManager : MonoBehaviour
         {
             if (soulMoneyReductionRoutine != null)
             {
-                StopCoroutine(soulMoneyReductionRoutine); // Arrête la coroutine en cours
+                StopCoroutine(soulMoneyReductionRoutine); // Arrï¿½te la coroutine en cours
             }
-            soulMoneyReductionRoutine = StartCoroutine(SoulMoneyReductionRoutine()); // Démarre une nouvelle coroutine
+            soulMoneyReductionRoutine = StartCoroutine(SoulMoneyReductionRoutine()); // Dï¿½marre une nouvelle coroutine
         }
     }
 }

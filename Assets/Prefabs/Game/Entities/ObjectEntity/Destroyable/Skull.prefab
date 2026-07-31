@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3847271959540090326, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: m_Name
-      value: Skull Variant
+      value: Skull
       objectReference: {fileID: 0}
     - target: {fileID: 4490294724802277364, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: m_Sprite
@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 9127567251395021331, guid: b57e1109b121c9840afd529b53d03898, type: 3}
       propertyPath: loots
       value: 
-      objectReference: {fileID: 11400000, guid: 4f106fc6845e8d14483448553de640b3, type: 2}
+      objectReference: {fileID: 11400000, guid: 7fe073994dbaa6f41aca25e6bbd9a2fe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

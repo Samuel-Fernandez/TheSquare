@@ -161,19 +161,19 @@
       "value": "This weapon is for tests. If u have this, wtf"
     },
     {
-      "key": "020002_NAME",
+      "key": "020001_NAME",
       "value": "Old Sword"
     },
     {
-      "key": "020002_DESCRIPTION",
+      "key": "020001_DESCRIPTION",
       "value": "A sword passed through many hands, used until its last breath. As dangerous as a toothpick."
     },
     {
-      "key": "020001_NAME",
+      "key": "020002_NAME",
       "value": "Slimy Sword"
     },
     {
-      "key": "020001_DESCRIPTION",
+      "key": "020002_DESCRIPTION",
       "value": "A strike to send any threat flying. Just for pushing—they won’t feel much pain."
     },
     {
@@ -470,7 +470,111 @@
     },
     {
       "key": "020010_DESCRIPTION",
-      "value": "A sword crafted from the skin and magic of the Shyrons. Grants immeasurable attack power."
+      "value": "A jagged blade forged from the remains of a colossal Shyron. Swinging it unleashes a fraction of the monstrous fury imbued by TheSquare."
+    },
+    {
+      "key": "020011_NAME",
+      "value": "Icy Mace"
+    },
+    {
+      "key": "020011_DESCRIPTION",
+      "value": "A heavy chunk of eternal ice tied to a stick. Great for bashing skulls and cooling your drinks."
+    },
+    {
+      "key": "020012_NAME",
+      "value": "Spectral Sword"
+    },
+    {
+      "key": "020012_DESCRIPTION",
+      "value": "Forged from the lingering regrets of defeated phantoms. It feels surprisingly light, perhaps because it barely exists."
+    },
+    {
+      "key": "020013_NAME",
+      "value": "Snake Sword"
+    },
+    {
+      "key": "020013_DESCRIPTION",
+      "value": "A blade designed to slither through defenses. If you listen closely, it faintly hisses when swung."
+    },
+    {
+      "key": "020014_NAME",
+      "value": "Priest Stick"
+    },
+    {
+      "key": "020014_DESCRIPTION",
+      "value": "A holy rod blessed by ice priests. Useful for smiting evil or just whacking non-believers on the head."
+    },
+    {
+      "key": "020015_NAME",
+      "value": "Slimy Spear"
+    },
+    {
+      "key": "020015_DESCRIPTION",
+      "value": "A long polearm coated in disgusting gelatin. Good reach, but it slips out of your hands a bit too often."
+    },
+    {
+      "key": "020016_NAME",
+      "value": "Wolf Dagger"
+    },
+    {
+      "key": "020016_DESCRIPTION",
+      "value": "A vicious little blade carved from a beast's claw. Perfect for quick, feral strikes in the dark."
+    },
+    {
+      "key": "020017_NAME",
+      "value": "Wooden Sword"
+    },
+    {
+      "key": "020017_DESCRIPTION",
+      "value": "A child's toy or a training tool. It hurts if you poke an eye out, but don't expect to slay dragons with it."
+    },
+    {
+      "key": "020018_NAME",
+      "value": "Stone Sword"
+    },
+    {
+      "key": "020018_DESCRIPTION",
+      "value": "A blunt and absurdly heavy slab of rock. You need more muscle to lift it than to actually swing it."
+    },
+    {
+      "key": "020019_NAME",
+      "value": "Silver Sword"
+    },
+    {
+      "key": "020019_DESCRIPTION",
+      "value": "A finely crafted blade gleaming with a silvery sheen. It looks expensive, try not to scratch it."
+    },
+    {
+      "key": "020020_NAME",
+      "value": "Iron Sword"
+    },
+    {
+      "key": "020020_DESCRIPTION",
+      "value": "The reliable standard for any aspiring adventurer. Sturdy, sharp enough, and completely devoid of originality."
+    },
+    {
+      "key": "020021_NAME",
+      "value": "Diamond Sword"
+    },
+    {
+      "key": "020021_DESCRIPTION",
+      "value": "An incredibly hard and sharp blade. It cuts through armor like butter and makes you feel unnecessarily wealthy."
+    },
+    {
+      "key": "020022_NAME",
+      "value": "Antimatter Sword"
+    },
+    {
+      "key": "020022_DESCRIPTION",
+      "value": "A weapon that defies the laws of physics. It obliterates what it touches, hopefully not including its wielder."
+    },
+    {
+      "key": "020023_NAME",
+      "value": "Square Sword"
+    },
+    {
+      "key": "020023_DESCRIPTION",
+      "value": "A blade with perfectly right angles. Its geometric perfection is as deadly as it is mathematically satisfying."
     },
     {
       "key": "070018_NAME",
@@ -526,7 +630,7 @@
     },
     {
       "key": "070024_DESCRIPTION",
-      "value": "A pulsing magical core from a Shyron. It radiates immense power and a faint smell of burnt air."
+      "value": "The still-beating core of a gigantic Shyron. It radiates an oppressive, terrifying aura that whispers of TheSquare's dark designs."
     },
     {
       "key": "070025_NAME",
@@ -535,6 +639,358 @@
     {
       "key": "070025_DESCRIPTION",
       "value": "An eerie, floating essence of a defeated phantom. Please do not try to talk to it, it has no mouth."
+    },
+    {
+      "key": "060008_NAME",
+      "value": "Ninja Sandals"
+    },
+    {
+      "key": "060008_DESCRIPTION",
+      "value": "Light and silent footwear. Perfect for sneaking up on enemies or tiptoeing around at night."
+    },
+    {
+      "key": "060009_NAME",
+      "value": "Ice Boots"
+    },
+    {
+      "key": "060009_DESCRIPTION",
+      "value": "Very cold boots that prevent slipping. Warning: your toes might go completely numb."
+    },
+    {
+      "key": "060010_NAME",
+      "value": "Pegasus Boots"
+    },
+    {
+      "key": "060010_DESCRIPTION",
+      "value": "Winged boots that make you run incredibly fast. Trying to actually fly with them is not recommended."
+    },
+    {
+      "key": "060011_NAME",
+      "value": "Obsidian Boots"
+    },
+    {
+      "key": "060011_DESCRIPTION",
+      "value": "Heavy boots made of volcanic glass. Great for stomping, terrible for swimming."
+    },
+    {
+      "key": "060012_NAME",
+      "value": "Antimatter Boots"
+    },
+    {
+      "key": "060012_DESCRIPTION",
+      "value": "Boots that shouldn't technically exist. They make you feel weightless, but might annihilate the floor."
+    },
+    {
+      "key": "060013_NAME",
+      "value": "Shyron Boots"
+    },
+    {
+      "key": "060013_DESCRIPTION",
+      "value": "Woven from the dread-inducing hide of a Shyron. Every step reverberates with the terrifying might of TheSquare's behemoths."
+    },
+    {
+      "key": "060014_NAME",
+      "value": "Big Foot"
+    },
+    {
+      "key": "060014_DESCRIPTION",
+      "value": "Massive, furry boots. You'll leave huge footprints, confusing local monster hunters."
+    },
+    {
+      "key": "060015_NAME",
+      "value": "Square Boots"
+    },
+    {
+      "key": "060015_DESCRIPTION",
+      "value": "Perfectly cubic footwear. Surprisingly comfortable despite all the sharp right angles."
+    },
+    {
+      "key": "060016_NAME",
+      "value": "Gravity Boots"
+    },
+    {
+      "key": "060016_DESCRIPTION",
+      "value": "Boots that alter your personal pull. Just make sure you always remember which way is down."
+    },
+    {
+      "key": "050008_NAME",
+      "value": "Shyron Leggings"
+    },
+    {
+      "key": "050008_DESCRIPTION",
+      "value": "Crafted from the armored scales of a gargantuan Shyron. They offer incredible protection, but occasionally whisper TheSquare's terrifying decrees."
+    },
+    {
+      "key": "050009_NAME",
+      "value": "Antimatter Leggings"
+    },
+    {
+      "key": "050009_DESCRIPTION",
+      "value": "Made of pure antimatter. Putting them on is easy, taking them off without obliterating the galaxy is the tricky part."
+    },
+    {
+      "key": "050010_NAME",
+      "value": "Square Leggings"
+    },
+    {
+      "key": "050010_DESCRIPTION",
+      "value": "Perfectly angled at 90 degrees. They completely ruin your natural gait, but hey, you look incredibly geometric."
+    },
+    {
+      "key": "050011_NAME",
+      "value": "Ice Leggings"
+    },
+    {
+      "key": "050011_DESCRIPTION",
+      "value": "Keeps your legs chilled at all times. Great for summer, terrible for your knee joints."
+    },
+    {
+      "key": "050012_NAME",
+      "value": "Obsidian Leggings"
+    },
+    {
+      "key": "050012_DESCRIPTION",
+      "value": "Heavy, sharp, and incredibly durable. Running in these feels like dragging two anvils, but you won't get scratched."
+    },
+    {
+      "key": "050013_NAME",
+      "value": "Youth Leggings"
+    },
+    {
+      "key": "050013_DESCRIPTION",
+      "value": "They infuse your legs with the boundless energy of youth. You still have back pain, but your knees feel fantastic."
+    },
+    {
+      "key": "050014_NAME",
+      "value": "Kangaroo Leggings"
+    },
+    {
+      "key": "050014_DESCRIPTION",
+      "value": "Includes built-in pouches and an irresistible urge to bounce around. Box gloves not included."
+    },
+    {
+      "key": "050015_NAME",
+      "value": "The Stone"
+    },
+    {
+      "key": "050015_DESCRIPTION",
+      "value": "Literally just two hollowed-out boulders. Comfortable? No. Impenetrable? Absolutely."
+    },
+    {
+      "key": "050016_NAME",
+      "value": "Weak Interaction Leggings"
+    },
+    {
+      "key": "050016_DESCRIPTION",
+      "value": "Bound together by the fundamental forces of physics. Or just really cheap stitching, it's hard to tell."
+    },
+    {
+      "key": "040008_NAME",
+      "value": "Wizard Chestplate"
+    },
+    {
+      "key": "040008_DESCRIPTION",
+      "value": "A flowing robe that crackles with arcane energy. Doesn't stop swords very well, but you look incredibly wise."
+    },
+    {
+      "key": "040009_NAME",
+      "value": "Dragon Chestplate"
+    },
+    {
+      "key": "040009_DESCRIPTION",
+      "value": "Forged from the scales of a mighty beast. Smells faintly of smoke and roasted marshmallows."
+    },
+    {
+      "key": "040010_NAME",
+      "value": "Butcher Apron"
+    },
+    {
+      "key": "040010_DESCRIPTION",
+      "value": "Stained with questionable red spots. You keep telling people it's just ketchup, but nobody believes you."
+    },
+    {
+      "key": "040011_NAME",
+      "value": "Ice Chestplate"
+    },
+    {
+      "key": "040011_DESCRIPTION",
+      "value": "A solid block of permafrost carved into armor. Highly effective until someone turns on the heater."
+    },
+    {
+      "key": "040012_NAME",
+      "value": "Obsidian Chestplate"
+    },
+    {
+      "key": "040012_DESCRIPTION",
+      "value": "Extremely heavy and incredibly sharp. You'll probably cut yourself just trying to put it on."
+    },
+    {
+      "key": "040013_NAME",
+      "value": "Frozen Heart Chestplate"
+    },
+    {
+      "key": "040013_DESCRIPTION",
+      "value": "Radiates an aura of absolute zero. Makes you completely unapproachable, emotionally and physically."
+    },
+    {
+      "key": "040014_NAME",
+      "value": "Antimatter Chestplate"
+    },
+    {
+      "key": "040014_DESCRIPTION",
+      "value": "The pinnacle of theoretical armor. Just be careful not to hug anyone made of regular matter."
+    },
+    {
+      "key": "040015_NAME",
+      "value": "Shyron Chestplate"
+    },
+    {
+      "key": "040015_DESCRIPTION",
+      "value": "Torn from the hide of a gigantic, terrifying Shyron. Wearing it fills you with immense power, but also the oppressive presence of TheSquare."
+    },
+    {
+      "key": "040016_NAME",
+      "value": "Square Chestplate"
+    },
+    {
+      "key": "040016_DESCRIPTION",
+      "value": "A perfectly rigid box. It offers excellent protection at the cost of your ability to bend, sit, or breathe comfortably."
+    },
+    {
+      "key": "040017_NAME",
+      "value": "Strong Interaction Chestplate"
+    },
+    {
+      "key": "040017_DESCRIPTION",
+      "value": "Held together by the strongest force in the universe. It's virtually indestructible, but very hard to take off at night."
+    },
+    {
+      "key": "030008_NAME",
+      "value": "Crown"
+    },
+    {
+      "key": "030008_DESCRIPTION",
+      "value": "Heavy lies the head that wears it. Also very pointy on top, which is quite impractical."
+    },
+    {
+      "key": "030009_NAME",
+      "value": "Mining Helmet"
+    },
+    {
+      "key": "030009_DESCRIPTION",
+      "value": "Features a built-in light that sadly broke ages ago. Still protects you from falling stalactites."
+    },
+    {
+      "key": "030010_NAME",
+      "value": "Ice Helmet"
+    },
+    {
+      "key": "030010_DESCRIPTION",
+      "value": "A perpetual brain freeze. At least you'll never need a cold compress again."
+    },
+    {
+      "key": "030011_NAME",
+      "value": "Antimatter Helmet"
+    },
+    {
+      "key": "030011_DESCRIPTION",
+      "value": "The less you think about what happens if you scratch your nose, the better."
+    },
+    {
+      "key": "030012_NAME",
+      "value": "Obsidian Helmet"
+    },
+    {
+      "key": "030012_DESCRIPTION",
+      "value": "A solid dome of volcanic glass. Impenetrable to arrows, but very bad for your neck posture."
+    },
+    {
+      "key": "030013_NAME",
+      "value": "Deserter Hood"
+    },
+    {
+      "key": "030013_DESCRIPTION",
+      "value": "A dark hood favored by cowards and shadows. It obscures your face and your moral compass."
+    },
+    {
+      "key": "030014_NAME",
+      "value": "Shyron Helmet"
+    },
+    {
+      "key": "030014_DESCRIPTION",
+      "value": "Forged from the skull of a colossal Shyron. Its terrifying visage channels TheSquare's overwhelming, oppressive power."
+    },
+    {
+      "key": "030015_NAME",
+      "value": "Square Helmet"
+    },
+    {
+      "key": "030015_DESCRIPTION",
+      "value": "A perfect cube for a less-than-perfect head. Great for stacking, terrible for peripheral vision."
+    },
+    {
+      "key": "030016_NAME",
+      "value": "Electromagnetism Helmet"
+    },
+    {
+      "key": "030016_DESCRIPTION",
+      "value": "Repels danger and occasionally your own hair. Keep away from fridges."
+    },
+    {
+      "key": "070026_NAME",
+      "value": "Fire Orb"
+    },
+    {
+      "key": "070026_DESCRIPTION",
+      "value": "A burning orb that never stops radiating heat. Careful not to drop it on anything flammable."
+    },
+    {
+      "key": "070027_NAME",
+      "value": "Light Particle"
+    },
+    {
+      "key": "070027_DESCRIPTION",
+      "value": "A minuscule speck of pure light. It gently illuminates its surroundings and feels weightless."
+    },
+    {
+      "key": "070028_NAME",
+      "value": "Bone"
+    },
+    {
+      "key": "070028_DESCRIPTION",
+      "value": "Just a regular bone. It looks like it could be used for crafting or summoning something unpleasant."
+    },
+    {
+      "key": "070029_NAME",
+      "value": "Golden SquareAnt"
+    },
+    {
+      "key": "070029_DESCRIPTION",
+      "value": "A rare variant of the SquareAnt made of pure gold. It seems surprisingly heavy for its size."
+    },
+    {
+      "key": "070030_NAME",
+      "value": "Metal Heart"
+    },
+    {
+      "key": "070030_DESCRIPTION",
+      "value": "A cold, mechanical heart. Despite being made of metal, it still beats with a steady rhythm."
+    },
+    {
+      "key": "070031_NAME",
+      "value": "Artificial Spirit"
+    },
+    {
+      "key": "070031_DESCRIPTION",
+      "value": "A synthesized soul created through unknown means. It glows with an eerie, unnatural energy."
+    },
+    {
+      "key": "070032_NAME",
+      "value": "Square Matter"
+    },
+    {
+      "key": "070032_DESCRIPTION",
+      "value": "Raw material from The Square itself. It constantly shifts and reassembles into perfect geometric shapes."
     }
   ]
 }

@@ -7,26 +7,26 @@ public class OrderPuzzle : MonoBehaviour
     [Header("Identifiant unique pour la sauvegarde")]
     public string id;
 
-    [Header("Ordre défini par la position dans la liste")]
+    [Header("Ordre dï¿½fini par la position dans la liste")]
     public List<GameObject> logicalObjects; // Ordre attendu
-    public List<GameObject> logicalEntites; // Objets affectés quand l'énigme est réussie
+    public List<GameObject> logicalEntites; // Objets affectï¿½s quand l'ï¿½nigme est rï¿½ussie
 
     private List<GameObject> pressedOrder = new List<GameObject>();
     private Dictionary<GameObject, bool> previousStates = new Dictionary<GameObject, bool>();
 
     private void Start()
     {
-        // Charger l'état sauvegardé
+        // Charger l'ï¿½tat sauvegardï¿½
         bool savedState;
         if (SaveManager.instance.twoStateContainer.TryGetState(id, out savedState) && savedState)
         {
-            Debug.Log($"[OrderPuzzle:{id}] Énigme déjà résolue (chargée depuis sauvegarde)");
+            Debug.Log($"[OrderPuzzle:{id}] ï¿½nigme dï¿½jï¿½ rï¿½solue (chargï¿½e depuis sauvegarde)");
             ActivateLogicalEntities();
             enabled = false; // plus besoin de surveiller
             return;
         }
 
-        // Sauvegarder l'état initial de chaque bouton
+        // Sauvegarder l'ï¿½tat initial de chaque bouton
         foreach (var obj in logicalObjects)
         {
             previousStates[obj] = obj.GetComponent<GroundButton>().isOn;
@@ -40,7 +40,7 @@ public class OrderPuzzle : MonoBehaviour
             var button = obj.GetComponent<GroundButton>();
             bool currentState = button.isOn;
 
-            // Détection d'un passage False -> True
+            // Dï¿½tection d'un passage False -> True
             if (!previousStates[obj] && currentState)
             {
                 pressedOrder.Add(obj);
@@ -52,7 +52,7 @@ public class OrderPuzzle : MonoBehaviour
                 }
             }
 
-            // Mettre à jour l'état précédent
+            // Mettre ï¿½ jour l'ï¿½tat prï¿½cï¿½dent
             previousStates[obj] = currentState;
         }
     }
@@ -73,12 +73,12 @@ public class OrderPuzzle : MonoBehaviour
         if (correct)
         {
             SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(id, true);
-            Debug.Log($"[OrderPuzzle:{id}] Énigme résolue !");
+            Debug.Log($"[OrderPuzzle:{id}] ï¿½nigme rï¿½solue !");
 
-            // Met à jour l’eventContainer avant de jouer
+            // Met ï¿½ jour lï¿½eventContainer avant de jouer
             UpdateEventContainer();
 
-            // Déclenche la caméra si EventPlayer est présent
+            // Dï¿½clenche la camï¿½ra si EventPlayer est prï¿½sent
             if (logicalEntites.Count > 0 && TryGetComponent<EventPlayer>(out var eventPlayer))
             {
                 eventPlayer.PlayAnimation();
@@ -119,7 +119,7 @@ public class OrderPuzzle : MonoBehaviour
 
         foreach (var obj in logicalObjects)
         {
-            obj.GetComponent<GroundButton>().ToggleButton(); // on repart à zéro
+            obj.GetComponent<GroundButton>().ToggleButton(); // on repart ï¿½ zï¿½ro
             obj.GetComponent<Collider2D>().enabled = true;
             previousStates[obj] = false;
         }

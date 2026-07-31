@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: mylia_stele
   sprite: {fileID: 21300000, guid: 56229131f27646648b3de1a598e48978, type: 3}
-  isAcquired: 1
+  isAcquired: 0

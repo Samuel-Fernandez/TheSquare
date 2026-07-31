@@ -10,7 +10,9 @@ public enum ItemResumeType
 {
     ITEM,
     KEY_ITEM,
-    SPECIAL_OBJECT
+    SPECIAL_OBJECT,
+    STANCE,
+    RUNE
 }
 
 [Serializable]
@@ -35,7 +37,7 @@ public class ItemResume : MonoBehaviour
     string currentText;
     float typingSpeed = .05f;
 
-    // Permettra de donner des clés, carte du donjon, autres
+    // Permettra de donner des clï¿½s, carte du donjon, autres
     public ItemResumeType resumeType;
 
     AvailableObjects selectedSpecialObject;
@@ -46,7 +48,7 @@ public class ItemResume : MonoBehaviour
         InventoryManager.instance.canOpenInventory = false;
         QuestManager.instance.canOpenQuests = false;
 
-        if(resumeType != ItemResumeType.ITEM)
+        if (resumeType != ItemResumeType.ITEM)
             equipementDescription.SetActive(false);
 
     }
@@ -165,7 +167,7 @@ public class ItemResume : MonoBehaviour
                 string itemName = LocalizationManager.instance.GetText("items", itemInstance.GetID() + "_NAME");
 
 
-                // Problème ne trouve pas le nom
+                // Problï¿½me ne trouve pas le nom
                 if (itemInstance is SpecialItems specialItem_2)
                     itemName = specialItem_2.nb.ToString() + " " + itemName;
 
@@ -188,7 +190,43 @@ public class ItemResume : MonoBehaviour
             this.item = itemInstance;
             sprite.sprite = this.item.sprite;
         }
-            
+
+    }
+
+    public void Initialize(StanceSO stance)
+    {
+        nbTxt.gameObject.SetActive(false);
+        resumeType = ItemResumeType.STANCE;
+        sprite.sprite = stance.iconSprite;
+        sprite.enabled = stance.iconSprite != null;
+        sprite.color = Color.white;
+
+        string titleKey = stance.id + "_Title";
+        string descKey = stance.id + "_Description";
+
+        string title = LocalizationManager.instance != null ? LocalizationManager.instance.GetText("STANCES", titleKey) : stance.id;
+        string description = LocalizationManager.instance != null ? LocalizationManager.instance.GetText("STANCES", descKey) : "";
+
+        currentText = $"<b>{title ?? stance.id}</b>\n\n{description ?? ""}";
+        StartCoroutine(TypeText());
+    }
+
+    public void Initialize(RuneSO rune)
+    {
+        nbTxt.gameObject.SetActive(false);
+        resumeType = ItemResumeType.RUNE;
+        sprite.sprite = rune.iconSprite;
+        sprite.enabled = rune.iconSprite != null;
+        sprite.color = Color.white;
+
+        string titleKey = rune.id + "_Title";
+        string descKey = rune.id + "_Description";
+
+        string title = LocalizationManager.instance != null ? LocalizationManager.instance.GetText("RUNES", titleKey) : rune.id;
+        string description = LocalizationManager.instance != null ? LocalizationManager.instance.GetText("RUNES", descKey) : "";
+
+        currentText = $"<b>{title ?? rune.id}</b>\n\n{description ?? ""}";
+        StartCoroutine(TypeText());
     }
 
     private IEnumerator TypeText()

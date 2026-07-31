@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: TheSquareWorldMeeting
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: araxie
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: TheSquareWorldMeeting
+  eventsList:
+  - {fileID: 11400000, guid: 7323a74b6423eeb408e3cf6df45a297d, type: 2}
+  - {fileID: 11400000, guid: c7ec37caa8bb35648bb303f71dc4e85f, type: 2}
+  - {fileID: 11400000, guid: 0311c9602f96c8545891682b48812d21, type: 2}
+  - {fileID: 11400000, guid: b1c0c237d81549c41b7b8c22a9c1f2ff, type: 2}
+  - {fileID: 11400000, guid: 94d367042b7dd5f4eb8015f3187ecb55, type: 2}
+  - {fileID: 11400000, guid: c24c0ab7067241045ba0bf40a20efb1c, type: 2}
+  - {fileID: 11400000, guid: 1a36007f560db2345a9fa6dd54ad0906, type: 2}
+  - {fileID: 11400000, guid: 6029c444b1ad4074faf6440054e1640e, type: 2}
+  - {fileID: 11400000, guid: 42dc827e865e3474f9659482e4e6b275, type: 2}
+  - {fileID: 11400000, guid: b6818846178132941b3585fcd2da6d28, type: 2}
+  - {fileID: 11400000, guid: 5cdc1b669d521f648b9d541737e49491, type: 2}
+  - {fileID: 11400000, guid: 6dfcc9c5bc987fe46bf80e08a902a563, type: 2}
+  - {fileID: 11400000, guid: ab32e64b5d7604747bed25beec71cc07, type: 2}
+  requirements: []

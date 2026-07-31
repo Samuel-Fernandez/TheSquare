@@ -243,6 +243,66 @@ EditorBuildSettings:
     path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaNorthEast.unity
     guid: 126ead915422592498ba30770d2224a7
   - enabled: 1
-    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaCenter.unity
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaCave.unity
     guid: 596add478e70fab4abfa46b48831fb86
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaLakeSouthEastHouse.unity
+    guid: 4a9c0a3c669a1f740a76a2cd133625b0
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaLakeSouthEastCave.unity
+    guid: 2b99793b123cffe4281b382907f0e0ce
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaNorthWest.unity
+    guid: 40cb297b91be4ab4e8f973d11e810f5a
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaCenter.unity
+    guid: 75fefd18d291f9641922d8ef86f3121d
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSquareWorld.unity
+    guid: 6b84aeacd24950143aee9fbae1c7a6bd
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/1-MyliaSanctuaryEntrySouth.unity
+    guid: 6f08a8b30426e6d47939e66d508a0aed
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/2-MyliaSanctuaryEntrySouthEast.unity
+    guid: 315354c2a9419d3449f3e75fb111eea4
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/3-MyliaSanctuaryEntryCenter.unity
+    guid: 01b3205cbe34bd9428ce3dbea1d0c167
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/4-MyliaSanctuaryEntryWest.unity
+    guid: fcaadce8a40d82c4290178c2eaa8a222
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/5-MyliaSanctuaryEntryEast.unity
+    guid: 2ce7020edd3e39049b35336493ab44d1
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/6-MyliaSanctuaryEntryNorth.unity
+    guid: e4cb3dcd59c59d24fbb9634efbc4b37c
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/7-MyliaSanctuaryEntryNorthWest.unity
+    guid: fc7a7a4d26cd293439f7977f615d6abf
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/8-MyliaSanctuaryBottom.unity
+    guid: 676cd1778473bd241b4174a5649d7e92
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/9-MyliaSanctuaryTopWest.unity
+    guid: b9f195e584d17004ab370da3578fb92b
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/10-MyliaSanctuaryTopCenter.unity
+    guid: 0e6a5a36c9cad2442b3cc19dff79e025
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/11-MyliaSanctuaryTopSouth.unity
+    guid: 3f0079a3311db4b45a0df9257a91e6b8
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/12-MyliaSanctuaryTopNorth.unity
+    guid: 5a7ccdd9d31e6f645b6e045a100244c1
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/13-MyliaSanctuaryBossRoom.unity
+    guid: 3cbdf60e1f2ae424e97e640bcb5e5562
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/14-MyliaSanctuaryAfterBoss.unity
+    guid: 75f7179af7f20bc4c8ff69d39ea5aba2
+  - enabled: 1
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/15-MyliaEnigmaRoom.unity
+    guid: 4efa6fdb99a31a04e95b686dce35286c
   m_configObjects: {}

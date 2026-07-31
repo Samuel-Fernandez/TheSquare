@@ -36,6 +36,7 @@ public class MeteoManager : MonoBehaviour
     const float caveIntensity = .1f;
     const float houseIntensity = .3f;
     float dungeonIntensity = .5f;
+    public const float squareWorldIntensity = 0.05f;
 
     public SceneData actualScene;
     RegionData actualRegion;
@@ -50,8 +51,8 @@ public class MeteoManager : MonoBehaviour
     public GameObject blizzard;
     GameObject blizzardInstance = null;
 
-    // Défaut à 0.005
-    const float chanceWeatherPerSecond = .05f;
+    // 1% de chance toutes les 5 secondes
+    const float chanceWeather = .01f;
 
     public List<GameObject> clouds;
     public GameObject cloudPrefab;
@@ -223,6 +224,12 @@ public class MeteoManager : MonoBehaviour
                     else
                         LightManager.instance.SetSunIntensity(actualScene.sunIntensity);
                     break;
+                case SceneType.INSIDE_THE_SQUARE:
+                    if (actualScene.sunIntensity <= 0)
+                        LightManager.instance.SetSunIntensity(squareWorldIntensity);
+                    else
+                        LightManager.instance.SetSunIntensity(actualScene.sunIntensity);
+                    break;
                 default:
                     break;
             }
@@ -285,6 +292,7 @@ public class MeteoManager : MonoBehaviour
 
     IEnumerator RoutineIsWeather()
     {
+        float weatherCheckTimer = 0f;
         while (true)
         {
             // Gestion des nuages
@@ -303,11 +311,16 @@ public class MeteoManager : MonoBehaviour
             }
 
             // Activation evenement
-            if (!isWeather && UnityEngine.Random.value < chanceWeatherPerSecond)
+            weatherCheckTimer += 1f;
+            if (weatherCheckTimer >= 5f)
             {
-                isWeather = true;
-                weatherDuration = UnityEngine.Random.Range(60f, 300f);
-                StartCoroutine(StopWeather(weatherDuration));
+                weatherCheckTimer = 0f;
+                if (!isWeather && UnityEngine.Random.value < chanceWeather)
+                {
+                    isWeather = true;
+                    weatherDuration = UnityEngine.Random.Range(60f, 300f);
+                    StartCoroutine(StopWeather(weatherDuration));
+                }
             }
 
             // V�rifier si les effets de m�t�o doivent �tre actifs
@@ -386,28 +399,37 @@ public class MeteoManager : MonoBehaviour
 
     private void CleanWeatherEffects()
     {
+        bool hadEffects = false;
+
         if (rainInstance != null)
         {
             Destroy(rainInstance);
             rainInstance = null;
+            hadEffects = true;
         }
 
         if (dustStormInstance != null)
         {
             Destroy(dustStormInstance);
             dustStormInstance = null;
+            hadEffects = true;
         }
 
         if (blizzardInstance != null)
         {
             Destroy(blizzardInstance);
             blizzardInstance = null;
+            hadEffects = true;
             if (PlayerManager.instance.player != null && PlayerManager.instance.player.GetComponent<Stats>() != null)
                 PlayerManager.instance.player.GetComponent<Stats>().UpdateStats();
         }
 
-        // Restaurer le filtre de la sc�ne actuelle
-        SetSceneFilter();
+        // Restaurer le filtre de la scène actuelle SEULEMENT si on a vraiment supprimé un effet
+        // (Évite d'écraser les filtres d'alerte en intérieur toutes les secondes)
+        if (hadEffects)
+        {
+            SetSceneFilter();
+        }
     }
 
     IEnumerator StopWeather(float weatherDuration)

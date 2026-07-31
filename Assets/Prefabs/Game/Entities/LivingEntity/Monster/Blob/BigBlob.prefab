@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 253195382348122780, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: loots
       value: 
-      objectReference: {fileID: 11400000, guid: 29088c8a2de1e974bb3bf7280182cf54, type: 2}
+      objectReference: {fileID: 11400000, guid: 40b3d147ef87c0349bcf5bcbb4d33fc0, type: 2}
     - target: {fileID: 395713895748195523, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -135,6 +135,10 @@ PrefabInstance:
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: strength
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: monsterType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: isBowShooting

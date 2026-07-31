@@ -211,16 +211,16 @@ namespace UI.Interfaces.Crafting
                         DrawConnectionLine(parentRT, childRT);
                     }
 
-                    // B. Lier l'équipement requis (l'enfant est requis pour crafter le parent)
+                    // B. Lier l'équipement requis (le parent est requis pour crafter l'enfant)
                     CraftingSlot parentSlot = parentRT.GetComponent<CraftingSlot>();
                     CraftingSlot childSlot = childRT.GetComponent<CraftingSlot>();
 
-                    if (parentSlot != null && childSlot != null && childSlot.itemToCraft != null)
+                    if (parentSlot != null && childSlot != null && parentSlot.itemToCraft != null)
                     {
                         EquipmentRequirement eqReq = new EquipmentRequirement();
-                        eqReq.baseItem = childSlot.itemToCraft;
+                        eqReq.baseItem = parentSlot.itemToCraft;
                         eqReq.amount = 1;
-                        parentSlot.equipmentRequired.Add(eqReq);
+                        childSlot.equipmentRequired.Add(eqReq);
                     }
                 }
             }

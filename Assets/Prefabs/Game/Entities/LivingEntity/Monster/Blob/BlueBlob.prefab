@@ -50,8 +50,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3856770347881493553, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
       propertyPath: m_Name
-      value: BlueBlob Variant
+      value: BlueBlob
       objectReference: {fileID: 0}
+    - target: {fileID: 4056800347154251852, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
+      propertyPath: loots
+      value: 
+      objectReference: {fileID: 11400000, guid: 57346a64fcb651444a77ca4f61afe804, type: 2}
     - target: {fileID: 4517948283568479763, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -86,11 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
       propertyPath: defense
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
       propertyPath: strength
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8579119999083990667, guid: 58cfad35d66a883458d6e87f971d9fc1, type: 3}
       propertyPath: knockbackPower

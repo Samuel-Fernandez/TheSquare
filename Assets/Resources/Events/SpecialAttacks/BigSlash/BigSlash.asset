@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: BigSlash
+  m_EditorClassIdentifier: 
+  pnjContainer: []
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: 126197
+  eventsList:
+  - {fileID: 11400000, guid: 13fdd07ea124f724ba10efe76bf057fd, type: 2}
+  - {fileID: 11400000, guid: cafed12a34fa6284d9180292292eb639, type: 2}
+  - {fileID: 11400000, guid: 642a89f715a457f48b9ff17f299d22f3, type: 2}
+  - {fileID: 11400000, guid: 7de54e9a0ff95a6479b1d48d21383447, type: 2}
+  - {fileID: 11400000, guid: 15b6967c563ba60439ea6d4e720afd69, type: 2}
+  - {fileID: 11400000, guid: 8e81e162983b8434791f8f15bbd26284, type: 2}
+  - {fileID: 11400000, guid: 21b5ad907d2c6564a948b110e513e950, type: 2}
+  - {fileID: 11400000, guid: 939d4c1126599f145b27d9eddefe0251, type: 2}
+  requirements: []

@@ -255,6 +255,78 @@
     {
       "key": "MYLIA_LAKE_CENTER_SCENE",
       "value": "Mirror Lake of Mylia - Center"
+    },
+    {
+      "key": "MYLIA_CAVE_SCENE",
+      "value": "Mirror Lake of Mylia - Mylia Cave"
+    },
+    {
+      "key": "MYLIA_SQUARE_WORLD_SCENE",
+      "value": "Mylia's soul"
+    },
+    {
+      "key": "SQUARE_WORLD_REGION",
+      "value": "Square World"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_ENTRY_SOUTH_SCENE",
+      "value": "Mylia's Sanctuary - Entry South"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_ENTRY_SOUTH_EAST_SCENE",
+      "value": "Mylia's Sanctuary - Entry South East"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_ENTRY_CENTER_SCENE",
+      "value": "Mylia's Sanctuary - Entry Center"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_ENTRY_WEST_SCENE",
+      "value": "Mylia's Sanctuary - Entry West"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_ENTRY_EAST_SCENE",
+      "value": "Mylia's Sanctuary - Entry East"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_ENTRY_NORTH_SCENE",
+      "value": "Mylia's Sanctuary - Entry North"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_ENTRY_NORTH_WEST_SCENE",
+      "value": "Mylia's Sanctuary - Entry North West"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_BOTTOM_SCENE",
+      "value": "Mylia's Sanctuary - Bottom"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_TOP_WEST_SCENE",
+      "value": "Mylia's Sanctuary - Top West"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_TOP_CENTER_SCENE",
+      "value": "Mylia's Sanctuary - Top Center"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_TOP_SOUTH_SCENE",
+      "value": "Mylia's Sanctuary - Top South"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_TOP_NORTH_SCENE",
+      "value": "Mylia's Sanctuary - Top North"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_BOSS_ROOM_SCENE",
+      "value": "Mylia's Sanctuary - Boss Room"
+    },
+    {
+      "key": "MYLIA_SANCTUARY_AFTER_BOSS_SCENE",
+      "value": "Mylia's Sanctuary - After Boss"
+    },
+    {
+      "key": "MYLIA_ENIGMA_ROOM_SCENE",
+      "value": "Mylia's Enigma Room"
     }
   ]
 }

@@ -227,7 +227,7 @@ namespace UI.Interfaces.Crafting
             {
                 SetTextVisibility(txtDefense, boots.baseDefense);
                 SetTextVisibility(txtHealPoint, boots.baseLife);
-                SetTextVisibility(txtSpeed, boots.baseSpeed);
+                SetTextVisibility(txtSpeed, boots.baseSpeed * 100, true);
                 SetTextVisibility(txtDragonSkin, boots.dragonSkin * 100, true);
                 SetTextVisibility(txtRegenRate, boots.regenRate);
                 SetTextVisibility(txtNegativeEffectReducer, boots.negativeEffectReducer * 100, true);
@@ -267,7 +267,7 @@ namespace UI.Interfaces.Crafting
             {
                 SetTextVisibility(txtDefense, leggings.baseDefense);
                 SetTextVisibility(txtHealPoint, leggings.baseLife);
-                SetTextVisibility(txtSpeed, leggings.baseSpeed);
+                SetTextVisibility(txtSpeed, leggings.baseSpeed * 100, true);
                 SetTextVisibility(txtKnockbackResistance, leggings.baseKnockbackResistance);
                 SetTextVisibility(txtKnockbackPower, leggings.baseKnockbackPower);
                 SetTextVisibility(txtDragonSkin, leggings.dragonSkin * 100, true);

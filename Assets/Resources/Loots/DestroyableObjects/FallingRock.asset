@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loots:
   - item: {fileID: 405510180018779390, guid: 3fcf901d66417ea41adef3e5a7bf41d9, type: 3}
-    lootChance: 100
+    lootChance: 1000
   - item: {fileID: 7500601372771816494, guid: faeab726cd03afb40a357cb07095ad91, type: 3}
-    lootChance: 5
+    lootChance: 500
+  - item: {fileID: 825423999109376273, guid: 1a48f5bd0e7729447b7bd9ebafe48e54, type: 3}
+    lootChance: 200
   - item: {fileID: 8697176379118012144, guid: 4eb8e1ae63a61204d955a52632127429, type: 3}
-    lootChance: 50
-  - item: {fileID: 0}
-    lootChance: 800
+    lootChance: 2000
+  placesRestantes: 6300

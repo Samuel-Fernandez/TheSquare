@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loots:
   - item: {fileID: 405510180018779390, guid: 3fcf901d66417ea41adef3e5a7bf41d9, type: 3}
-    lootChance: 80
-  - item: {fileID: 19329449868831883, guid: 33aaa5f0146bbf84f8d4009840b0b5fc, type: 3}
-    lootChance: 80
-  - item: {fileID: 1072104702559440330, guid: 76e382f2b6477714ea3c183f6e8f2a94, type: 3}
-    lootChance: 40
+    lootChance: 600
   - item: {fileID: 7500601372771816494, guid: faeab726cd03afb40a357cb07095ad91, type: 3}
-    lootChance: 20
+    lootChance: 400
+  - item: {fileID: 19329449868831883, guid: 33aaa5f0146bbf84f8d4009840b0b5fc, type: 3}
+    lootChance: 400
+  - item: {fileID: 1072104702559440330, guid: 76e382f2b6477714ea3c183f6e8f2a94, type: 3}
+    lootChance: 200
+  - item: {fileID: 7675190661852668220, guid: 66a1ccfb5fe91dc498781bc92f302a87, type: 3}
+    lootChance: 100
   - item: {fileID: 5681792082613391854, guid: 9107480e7455ea74ab18980571b3bfb3, type: 3}
-    lootChance: 20
-  - item: {fileID: 0}
-    lootChance: 780
+    lootChance: 1200
+  - item: {fileID: 1590589687544661862, guid: fae228863bf78db4a83bbdd7380fdb14, type: 3}
+    lootChance: 800
+  placesRestantes: 6300

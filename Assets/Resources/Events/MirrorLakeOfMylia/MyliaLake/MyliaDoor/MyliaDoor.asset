@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: MyliaDoor
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: araxie
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: myliaDoor
+  eventsList:
+  - {fileID: 11400000, guid: caaabc2b0d8a5504fb43e14192533535, type: 2}
+  - {fileID: 11400000, guid: 5fe51b90979f3cf49add5bb488a540ab, type: 2}
+  - {fileID: 11400000, guid: 091c7e1abb9110d4db851dd4fd600724, type: 2}
+  - {fileID: 11400000, guid: 13087732b7f6925409534de78c75424e, type: 2}
+  - {fileID: 11400000, guid: 7ec22f262c0ac1149b2a741967f33c4d, type: 2}
+  - {fileID: 11400000, guid: 0666db6d3f495604782424aeab3bf393, type: 2}
+  - {fileID: 11400000, guid: 0f394187f8bab5b479ddf9153c5237cc, type: 2}
+  - {fileID: 11400000, guid: 08ed7609082bee54c9ea27191badbdf6, type: 2}
+  - {fileID: 11400000, guid: 4b885fd65ac419845a03fe80eada1cb4, type: 2}
+  - {fileID: 11400000, guid: 3528ebb2674ad6847a887faa5c2d2267, type: 2}
+  - {fileID: 11400000, guid: fe41fbda3525fdf42aa47cbabf9612ae, type: 2}
+  - {fileID: 11400000, guid: 642c4f8efc7f50240be7f2f2d9b21ff1, type: 2}
+  - {fileID: 11400000, guid: 7b730b702a9de57439df4f3bac9503fc, type: 2}
+  - {fileID: 11400000, guid: b362a5f6fc1a8f84e9848a5999342626, type: 2}
+  requirements: []

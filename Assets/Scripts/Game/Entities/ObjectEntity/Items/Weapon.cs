@@ -16,7 +16,7 @@ public class Weapon : Item
     public float baseCritDamage;
     public float baseKnockbackPower;
 
-    // A compléter
+    // A complï¿½ter
     public float vampire = 0;                               // FAIT
     public float fireAttackChance = 0;                      // FAIT
     public float iceAttackChance = 0;                       // FAIT
@@ -39,10 +39,10 @@ public class Weapon : Item
         float levelMultiplier = 1 + ((level - 1) * .2f);
 
         // Parsing des bonus de l'itemId
-        float damageBonus = int.Parse(this.itemId.Substring(6, 2)) / 100f;
-        float knockbackBonus = int.Parse(this.itemId.Substring(8, 2)) / 100f;
-        float critChanceBonus = int.Parse(this.itemId.Substring(10, 2)) / 100f;
-        float critDamageBonus = int.Parse(this.itemId.Substring(12, 2)) / 100f;
+        float damageBonus = (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f;
+        float knockbackBonus = (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f;
+        float critChanceBonus = (int.Parse(this.itemId.Substring(10, 2)) / 100f) - 0.5f;
+        float critDamageBonus = (int.Parse(this.itemId.Substring(12, 2)) / 100f) - 0.5f;
 
         // Calcul de base avec bonus et multiplicateur de niveau
         damage = (int)(baseDamage * (1 + damageBonus) * levelMultiplier);
@@ -52,7 +52,7 @@ public class Weapon : Item
 
         // Bonus par niveau uniquement si la valeur de base est non nulle
         if (baseDamage != 0)
-            damage += (level - 1); // +1 par niveau au-delà du premier
+            damage += (level - 1); // +1 par niveau au-delï¿½ du premier
 
         if (baseKnockbackPower != 0)
             knockbackPower += (level - 1) * 0.01f;
@@ -68,7 +68,7 @@ public class Weapon : Item
         float total = 0;
 
         total += Mathf.Pow(damage * 5, 1.3f);
-        total += Mathf.Pow(baseKnockbackPower * 100, 1.3f); // KBP (si c’est une stat séparée, ajuste)
+        total += Mathf.Pow(baseKnockbackPower * 100, 1.3f); // KBP (si cï¿½est une stat sï¿½parï¿½e, ajuste)
         total += Mathf.Pow(critChance * 200, 1.3f); // CC (si tu as une variable critChance)
         total += Mathf.Pow(critDamage * 200, 1.3f); // CD (si tu as une variable critDamage)
         total += Mathf.Pow(vampire * 500, 1.3f);
@@ -83,22 +83,22 @@ public class Weapon : Item
 
     public int GetBaseDamage()
     {
-        return (int)(baseDamage * (1 + int.Parse(this.itemId.Substring(6, 2)) / 100f));
+        return (int)(baseDamage * (1 + (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f));
     }
 
     public float GetBaseKnockbackPower()
     {
-        return baseKnockbackPower * (1 + int.Parse(this.itemId.Substring(8, 2)) / 100f);
+        return baseKnockbackPower * (1 + (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f);
     }
 
     public float GetBaseCritChance()
     {
-        return baseCritChance * (1 + int.Parse(this.itemId.Substring(10, 2)) / 100f);
+        return baseCritChance * (1 + (int.Parse(this.itemId.Substring(10, 2)) / 100f) - 0.5f);
     }
 
     public float GetBaseCritDamage()
     {
-        return baseCritDamage * (1 + int.Parse(this.itemId.Substring(12, 2)) / 100f);
+        return baseCritDamage * (1 + (int.Parse(this.itemId.Substring(12, 2)) / 100f) - 0.5f);
     }
 
 

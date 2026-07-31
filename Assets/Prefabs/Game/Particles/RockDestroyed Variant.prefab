@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7839543248633778963, guid: 7f0e2b69b820f3a42b7907cafb72c38f, type: 3}
       propertyPath: m_SortingOrder
-      value: -62
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7839543248633778963, guid: 7f0e2b69b820f3a42b7907cafb72c38f, type: 3}
       propertyPath: m_Materials.Array.data[0]

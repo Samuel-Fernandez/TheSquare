@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 253195382348122780, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: loots
       value: 
-      objectReference: {fileID: 11400000, guid: 68f8b743f9c1cf94c9bedf24f964c8c9, type: 2}
+      objectReference: {fileID: 11400000, guid: b9fc6ee9c118ba9479cf20acc522dd9e, type: 2}
     - target: {fileID: 395713895748195523, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -146,6 +146,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: critDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: monsterType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7400563872942088617, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}

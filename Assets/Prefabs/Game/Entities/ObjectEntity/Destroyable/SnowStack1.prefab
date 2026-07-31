@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: needFire
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9127567251395021331, guid: b57e1109b121c9840afd529b53d03898, type: 3}
+      propertyPath: loots
+      value: 
+      objectReference: {fileID: 11400000, guid: 90fdf7097fd7cc249846fcf1a0f8cfb5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

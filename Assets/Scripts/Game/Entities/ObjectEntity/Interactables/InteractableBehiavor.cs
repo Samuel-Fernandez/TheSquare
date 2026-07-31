@@ -13,6 +13,7 @@ public enum InteractableType
     SIGN,
     TELEPORTER_STATUE,
     CRAFTING_TABLE,
+    GUARDIAN_HEART,
 }
 
 public class InteractableBehiavor : MonoBehaviour
@@ -22,7 +23,16 @@ public class InteractableBehiavor : MonoBehaviour
     public float inactiveTime;
     public GameObject uiInteract;
     public bool oneShot;
+    public bool forceHideUI = false;
     GameObject instanceUiInteract;
+
+    public static List<InteractableBehiavor> nearbyInteractables = new List<InteractableBehiavor>();
+
+    private void OnDisable()
+    {
+        if (nearbyInteractables.Contains(this))
+            nearbyInteractables.Remove(this);
+    }
 
     private void Start()
     {
@@ -33,31 +43,81 @@ public class InteractableBehiavor : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (canInteract && PlayerManager.instance != null && PlayerManager.instance.playerInputActions.Gameplay.Interaction.triggered)
+        {
+            if (nearbyInteractables.Contains(this))
+            {
+                PlayerController pc = PlayerManager.instance.player.GetComponent<PlayerController>();
+                if (pc != null && pc.isHoldingObject)
+                {
+                    // Si on porte déjà un objet, la SEULE interaction autorisée est de lancer ce même objet
+                    bool isThisTheCarriedObject = false;
+                    if (type == InteractableType.GUARDIAN_HEART)
+                    {
+                        GuardianHeartBehiavor heart = GetComponent<GuardianHeartBehiavor>();
+                        if (heart != null && heart.isCarried)
+                        {
+                            isThisTheCarriedObject = true;
+                        }
+                    }
+
+                    if (!isThisTheCarriedObject)
+                    {
+                        return; // On ignore les autres objets (dont les autres coeurs au sol)
+                    }
+                }
+
+                InteractableBehiavor closest = null;
+                float minDistance = float.MaxValue;
+                // Nettoyer la liste au cas où des objets auraient été détruits sans OnDisable
+                nearbyInteractables.RemoveAll(item => item == null);
+
+                foreach (var interactable in nearbyInteractables)
+                {
+                    if (interactable.canInteract)
+                    {
+                        float dist = Vector3.Distance(PlayerManager.instance.player.transform.position, interactable.transform.position);
+                        if (dist < minDistance)
+                        {
+                            minDistance = dist;
+                            closest = interactable;
+                        }
+                    }
+                }
+
+                if (closest == this)
+                {
+                    StartCoroutine(RoutineInteraction());
+                    canInteract = false;
+                }
+            }
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         Stats stats = collision.GetComponent<Stats>();
         if (stats != null && stats.entityType == EntityType.Player)
         {
-            // Cr�er l'UI d'interaction si elle n'existe pas encore
-            if (instanceUiInteract == null && canInteract)
+            if (!nearbyInteractables.Contains(this))
+            {
+                nearbyInteractables.Add(this);
+            }
+
+            // Créer l'UI d'interaction si elle n'existe pas encore
+            if (instanceUiInteract == null && canInteract && !forceHideUI)
             {
                 Vector3 uiPosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
                 instanceUiInteract = Instantiate(uiInteract, uiPosition, Quaternion.identity);
             }
 
-            // Lancer l'interaction si le joueur appuie sur le bouton et que l'interaction est possible
-            if (PlayerManager.instance.playerInputActions.Gameplay.Interaction.triggered && canInteract)
-            {
-                StartCoroutine(RoutineInteraction());
-                canInteract = false;
-            }
-
-            if (instanceUiInteract != null && !canInteract)
+            if (instanceUiInteract != null && (!canInteract || forceHideUI))
             {
                 Destroy(instanceUiInteract);
                 instanceUiInteract = null;
             }
-
         }
     }
 
@@ -66,6 +126,11 @@ public class InteractableBehiavor : MonoBehaviour
         Stats stats = collision.GetComponent<Stats>();
         if (stats != null && stats.entityType == EntityType.Player)
         {
+            if (nearbyInteractables.Contains(this))
+            {
+                nearbyInteractables.Remove(this);
+            }
+
             if (instanceUiInteract != null)
             {
                 Destroy(instanceUiInteract);
@@ -106,6 +171,9 @@ public class InteractableBehiavor : MonoBehaviour
                 break;
             case InteractableType.CRAFTING_TABLE:
                 CraftingTable();
+                break;
+            case InteractableType.GUARDIAN_HEART:
+                GuardianHeart();
                 break;
             default:
                 break;
@@ -174,5 +242,10 @@ public class InteractableBehiavor : MonoBehaviour
         {
             Debug.LogError("CraftingManager.instance est NULL !");
         }
+    }
+
+    void GuardianHeart()
+    {
+        GetComponent<GuardianHeartBehiavor>().Interaction();
     }
 }

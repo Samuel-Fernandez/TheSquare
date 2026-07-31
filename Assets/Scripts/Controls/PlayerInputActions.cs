@@ -138,6 +138,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""10e899c4-ef37-4148-84a8-75ebc62d1352"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""1b9064f4-4b27-4786-bce7-543b83ad749c"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",

@@ -189,20 +189,19 @@ public class Item : ScriptableObject
         // Ajustement de la chance pour une transformation logistique inverse
         float adjustedLuck = Mathf.Exp((luck + (PlayerManager.instance.itemsAddChance / 2)) / 10f);
 
-        // G�n�rer un nombre al�atoire entre 0 et 1
+        // Gnrer un nombre alatoire entre 0 et 1
         float randomValue = Random.value;
 
         // Appliquer la transformation logistique inverse
+        // randomValue / (1 - randomValue) ncessite d'viter la division par zro
+        randomValue = Mathf.Clamp(randomValue, 0.001f, 0.999f);
         float inverseLogistic = Mathf.Log(adjustedLuck * (randomValue / (1 - randomValue)));
 
-        // Convertir la valeur invers�e en un nombre entre 0 et 99
-        int biasedNumber = Mathf.FloorToInt(Mathf.Clamp01(inverseLogistic / 6f) * 99);
+        // Normaliser la valeur inverse (qui varie environ de -6  +6) pour obtenir une valeur entre 0 et 1
+        float normalizedValue = (inverseLogistic / 12f) + 0.5f;
 
-        // Si le nombre est 0, on le remplace par 1 pour �viter des valeurs trop basses
-        if (biasedNumber == 0)
-        {
-            biasedNumber = 1;
-        }
+        // Convertir en un nombre entre 0 et 99
+        int biasedNumber = Mathf.FloorToInt(Mathf.Clamp01(normalizedValue) * 99);
 
         return biasedNumber.ToString("00"); // Retourne le nombre avec deux chiffres
     }

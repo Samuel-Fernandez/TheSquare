@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 253195382348122780, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: loots
       value: 
-      objectReference: {fileID: 11400000, guid: 976e85106d62a50448bfcd87ff0863b9, type: 2}
+      objectReference: {fileID: 11400000, guid: 46e5790b47e8dc846b65e36665062f40, type: 2}
     - target: {fileID: 395713895748195523, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -99,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: strength
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: monsterType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: knockbackResistance

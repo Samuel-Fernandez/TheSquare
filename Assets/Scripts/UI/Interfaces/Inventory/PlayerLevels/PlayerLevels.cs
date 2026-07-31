@@ -405,9 +405,14 @@ public class PlayerLevels : MonoBehaviour
             Time.timeScale = 0f;
 
         if (!UIPlayerLevels.activeSelf)
+        {
             UIAnimator.instance.ActivateObjectWithTransition(UIPlayerLevels, .5f);
+            OpenAttributesMenu();
+        }
         else
+        {
             UIAnimator.instance.DeactivateObjectWithTransition(UIPlayerLevels, .5f);
+        }
     }
 
     bool EnoughMoney()

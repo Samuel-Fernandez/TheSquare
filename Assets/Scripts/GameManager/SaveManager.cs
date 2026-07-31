@@ -135,6 +135,36 @@ public class SaveManager : MonoBehaviour
                 unlockedAttacks.Add(attack.attackName);
         }
 
+        List<StanceSaveData> stancesToSave = new List<StanceSaveData>();
+        List<RuneSaveData> runesToSave = new List<RuneSaveData>();
+
+        if (StanceAndRunicManager.instance != null)
+        {
+            if (StanceAndRunicManager.instance.stancesList != null)
+            {
+                foreach (var stance in StanceAndRunicManager.instance.stancesList)
+                {
+                    if (stance != null && stance.stance != null)
+                    {
+                        stancesToSave.Add(new StanceSaveData(stance.stance.id, stance.isUnlocked, stance.isEquipped));
+                    }
+                }
+            }
+
+            if (StanceAndRunicManager.instance.runesList != null)
+            {
+                foreach (var rune in StanceAndRunicManager.instance.runesList)
+                {
+                    if (rune != null && rune.rune != null)
+                    {
+                        runesToSave.Add(new RuneSaveData(rune.rune.id, rune.isUnlocked, rune.isEquipped, rune.isActive));
+                    }
+                }
+            }
+        }
+        
+        StanceAndRunicSaveData stanceAndRunicSaveData = new StanceAndRunicSaveData(stancesToSave, runesToSave);
+
         string json = JsonUtility.ToJson(
             new SaveData(
                 equipementSlotData,
@@ -164,7 +194,7 @@ public class SaveManager : MonoBehaviour
                 PlayerLevels.instance.explorerReputation,
                 PlayerLevels.instance.armorerReputation,
                 PlayerLevels.instance.healerReputation,
-                new MarketData(MarketManager.instance.timerNewMarket),
+                new MarketData(0), // Removed MarketManager
                 new StatsData(StatsManager.instance.monsterKilled,
                     StatsManager.instance.locationFound,
                     StatsManager.instance.pnjSpoken),
@@ -176,7 +206,8 @@ public class SaveManager : MonoBehaviour
                 MonsterSpawnManager.instance.GetAllSpawnerStates(),
                 TeleportationManager.instance.teleportationsAvailable,
                 MapManager.instance.targetCoords,
-                KeyItemManager.instance != null ? KeyItemManager.instance.GetAcquiredKeyItems() : new List<string>()));
+                KeyItemManager.instance != null ? KeyItemManager.instance.GetAcquiredKeyItems() : new List<string>(),
+                stanceAndRunicSaveData));
 
         File.WriteAllText(saveFilePath, json);
 
@@ -199,7 +230,7 @@ public class SaveManager : MonoBehaviour
         return File.Exists(saveFilePath);
     }
 
-    public void Load(bool equipement = true, bool eventID = true, bool soulData = true, bool specialObjects = true, bool mines = true, bool meteo = true, bool market = true, bool stats = true, bool quests = true, bool dungeon = true, bool specialAttacks = true, bool spawnerState = true, bool teleportationAvailable = true, bool targetCoords = true, bool keyItems = true)
+    public void Load(bool equipement = true, bool eventID = true, bool soulData = true, bool specialObjects = true, bool mines = true, bool meteo = true, bool market = true, bool stats = true, bool quests = true, bool dungeon = true, bool specialAttacks = true, bool spawnerState = true, bool teleportationAvailable = true, bool targetCoords = true, bool keyItems = true, bool stanceAndRunes = true)
     {
         if (File.Exists(saveFilePath))
         {
@@ -216,7 +247,7 @@ public class SaveManager : MonoBehaviour
             PlayerLevels.instance.healerReputation = saveData.healerReputation;
             PlayerManager.instance.player.GetComponent<LifeManager>().life = saveData.playerLife;
 
-            // NE PAS CHANGER LA POSITION ICI - sera fait apr�s le changement de sc�ne
+            // NE PAS CHANGER LA POSITION ICI - sera fait aprés le changement de scène
             // PlayerManager.instance.player.transform.position = saveData.position;
 
             PlayerManager.instance.player.GetComponent<Stats>().money = saveData.money;
@@ -252,11 +283,8 @@ public class SaveManager : MonoBehaviour
                     attack.isAvailable = saveData.unlockedSpecialAttacks.Contains(attack.attackName);
                 }
             }
-
-            if (market)
-            {
-                MarketManager.instance.timerNewMarket = saveData.marketData.timerNewMarket;
-            }
+            
+            // MarketManager est obsolète, on ne charge plus ses données.
 
             if (equipement)
             {
@@ -318,6 +346,14 @@ public class SaveManager : MonoBehaviour
                 }
             }
 
+            if (stanceAndRunes)
+            {
+                if (StanceAndRunicManager.instance != null)
+                {
+                    StanceAndRunicManager.instance.LoadSaveData(saveData.stanceAndRunicSaveData);
+                }
+            }
+
             if (dungeon)
             {
                 DungeonManager.instance.dungeonDB = saveData.dungeons;
@@ -336,11 +372,11 @@ public class SaveManager : MonoBehaviour
                     DungeonManager.instance.uiDungeon.SetActive(false);
                 }
 
-                // Mise � jour de l'interface utilisateur
+                // Mise à jour de l'interface utilisateur
                 DungeonManager.instance.UpdateUI();
             }
 
-            // Changer la sc�ne ET la position en m�me temps
+            // Changer la scène ET la position en même temps
             ScenesManager.instance.ChangeSceneObject(saveData.sceneName, saveData.position, 1);
             Debug.Log("Load successful!");
         }
@@ -596,6 +632,7 @@ public struct SaveData
     public IntPair? targetCoords;
 
     public List<string> acquiredKeyItems;
+    public StanceAndRunicSaveData stanceAndRunicSaveData;
 
     public SaveData(
         List<EquipementSlotData> equipementSlotData,
@@ -625,7 +662,8 @@ public struct SaveData
         List<SpawnerState> spawnerState,
         List<TeleportationAvailable> teleportationsAvailable,
         IntPair? targetCoords,
-        List<string> acquiredKeyItems)
+        List<string> acquiredKeyItems,
+        StanceAndRunicSaveData stanceAndRunicSaveData)
 
     {
         this.equipementSlotData = equipementSlotData;
@@ -656,6 +694,7 @@ public struct SaveData
         this.teleportationsAvailable = teleportationsAvailable;
         this.targetCoords = targetCoords;
         this.acquiredKeyItems = acquiredKeyItems;
+        this.stanceAndRunicSaveData = stanceAndRunicSaveData;
     }
 }
 
@@ -769,6 +808,51 @@ public struct EquipementSlotData
         this.isEquipping = isEquipping;
         this.index = index;
         this.itemID = itemID;
+    }
+}
+
+[System.Serializable]
+public struct StanceSaveData
+{
+    public string id;
+    public bool isUnlocked;
+    public bool isEquipped;
+
+    public StanceSaveData(string id, bool isUnlocked, bool isEquipped)
+    {
+        this.id = id;
+        this.isUnlocked = isUnlocked;
+        this.isEquipped = isEquipped;
+    }
+}
+
+[System.Serializable]
+public struct RuneSaveData
+{
+    public string id;
+    public bool isUnlocked;
+    public bool isEquipped;
+    public bool isActive;
+
+    public RuneSaveData(string id, bool isUnlocked, bool isEquipped, bool isActive)
+    {
+        this.id = id;
+        this.isUnlocked = isUnlocked;
+        this.isEquipped = isEquipped;
+        this.isActive = isActive;
+    }
+}
+
+[System.Serializable]
+public struct StanceAndRunicSaveData
+{
+    public List<StanceSaveData> stances;
+    public List<RuneSaveData> runes;
+
+    public StanceAndRunicSaveData(List<StanceSaveData> stances, List<RuneSaveData> runes)
+    {
+        this.stances = stances;
+        this.runes = runes;
     }
 }
 

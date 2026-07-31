@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: MyliaMeeting
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3267161777442550205, guid: 65b703962f5ce024ba312f929c0ea66d, type: 3}
+    id: Mylia
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: MyliaMeeting
+  eventsList:
+  - {fileID: 11400000, guid: 5ac51739c36d0e0419440a8e714059ea, type: 2}
+  - {fileID: 11400000, guid: 6326278c6d315454f98eb5d13e941562, type: 2}
+  - {fileID: 11400000, guid: af174be3166debc478c8fa7faa9b51f3, type: 2}
+  - {fileID: 11400000, guid: decff06ef556fc44da73aae4fde78e3e, type: 2}
+  - {fileID: 11400000, guid: 2d14e45621e5164459d07ca1ec86e28d, type: 2}
+  - {fileID: 11400000, guid: 73b37794e7f0a9547acf42fe0814fcd1, type: 2}
+  - {fileID: 11400000, guid: 0b4aef3fed2498c48b5a0999d33a4a03, type: 2}
+  - {fileID: 11400000, guid: 1cebacc28ce79b842aef825b7e5b4847, type: 2}
+  - {fileID: 11400000, guid: 147c29d56adf0804a84475ef0150ef88, type: 2}
+  - {fileID: 11400000, guid: 27d03748091ef4247b5eeda681aba1a4, type: 2}
+  requirements: []

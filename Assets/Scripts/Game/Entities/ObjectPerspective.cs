@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class ObjectPerspective : MonoBehaviour
 {
     int firstSorting = 0;
+    bool firstSortingCaptured = false;
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer shadowSpriteRenderer;
     public int sortingOrderBase = 1000;
@@ -21,8 +22,12 @@ public class ObjectPerspective : MonoBehaviour
     {
         if (spriteRenderer)
         {
-            if (firstSorting == 0)
+            if (!firstSortingCaptured)
+            {
                 firstSorting = spriteRenderer.sortingOrder;
+                firstSortingCaptured = true;
+                Debug.Log($"[ObjectPerspective] {name} : firstSorting capturé = {firstSorting} (Y={transform.position.y})");
+            }
 
             float adjustedPositionY = transform.position.y / 0.25f;
 

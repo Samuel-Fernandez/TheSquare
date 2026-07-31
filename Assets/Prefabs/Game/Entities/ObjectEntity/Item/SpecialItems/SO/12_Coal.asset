@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f9eda80c2b3604b8d180ea99770b21, type: 3}
+  m_Name: 12_Coal
+  m_EditorClassIdentifier: 
+  itemId: 070012
+  itemName: Coal
+  description: 
+  sprite: {fileID: 21300000, guid: cec4de8aaa4cf124cbd892aa898012ee, type: 3}
+  colorEnchant1: {r: 0, g: 0, b: 0, a: 0}
+  colorEnchant2: {r: 0, g: 0, b: 0, a: 0}
+  rarity: 2
+  value: 10
+  level: 0
+  type: 9
+  nb: 0
+  numberRequiredForSealing: 1
+  essenceComposition:
+  - essence: {fileID: 11400000, guid: 44282af071a683f4a975e72426b19012, type: 2}
+    percentage: 50
+  - essence: {fileID: 11400000, guid: 27e12910923b288438725c3368b03842, type: 2}
+    percentage: 30
+  - essence: {fileID: 11400000, guid: 99eb2083d6b9c8a48a84fb5503e877f6, type: 2}
+    percentage: 20
+  totalPercentage: 100

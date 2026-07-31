@@ -30,7 +30,7 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!off)
+        if (!off)
         {
             if (GetComponent<Stats>().isDying)
             {
@@ -175,64 +175,64 @@ public class PlayerAnimation : MonoBehaviour
                 else if (Mathf.Abs(controller.horizontalInput) > Mathf.Abs(controller.verticalInput))
                 {
                     GetComponentInChildren<SpriteRenderer>().flipX = controller.horizontalInput > 0;
-                    objectAnimation.PlayAnimation("MoveSide");
+                    objectAnimation.PlayAnimation(controller.isHoldingObject ? "HoldingSide" : "MoveSide");
 
-                    lastMove = 3; // Déplacement latéral
+                    lastMove = 3; // Dplacement latral
                 }
                 else if (controller.verticalInput > 0)
                 {
-                    objectAnimation.PlayAnimation("MoveUp");
+                    objectAnimation.PlayAnimation(controller.isHoldingObject ? "HoldingUp" : "MoveUp");
 
-                    lastMove = 1; // Déplacement vers le haut
+                    lastMove = 1; // Dplacement vers le haut
                 }
                 else if (controller.verticalInput < 0)
                 {
-                    objectAnimation.PlayAnimation("MoveDown");
+                    objectAnimation.PlayAnimation(controller.isHoldingObject ? "HoldingDown" : "MoveDown");
 
-                    lastMove = 2; // Déplacement vers le bas
+                    lastMove = 2; // Dplacement vers le bas
                 }
                 else
                 {
-                    // Si le joueur ne se déplace pas et n'attaque pas, jouer l'animation afk appropriée
+                    // Si le joueur ne se dplace pas et n'attaque pas, jouer l'animation afk approprie
                     switch (lastMove)
                     {
                         case 1:
-                            objectAnimation.PlayAnimation("AfkUp");
+                            objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingUp" : "AfkUp");
                             break;
                         case 2:
-                            objectAnimation.PlayAnimation("AfkDown");
+                            objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingDown" : "AfkDown");
                             break;
                         case 3:
-                            objectAnimation.PlayAnimation("AfkSide");
+                            objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingSide" : "AfkSide");
                             break;
                         default:
-                            objectAnimation.PlayAnimation("AfkDown");
+                            objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingDown" : "AfkDown");
                             break;
                     }
                 }
             }
             else
             {
-                // Si le joueur ne se déplace pas et n'attaque pas, jouer l'animation afk appropriée
+                // Si le joueur ne se dplace pas et n'attaque pas, jouer l'animation afk approprie
                 switch (lastMove)
                 {
                     case 1:
-                        objectAnimation.PlayAnimation("AfkUp");
+                        objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingUp" : "AfkUp");
                         break;
                     case 2:
-                        objectAnimation.PlayAnimation("AfkDown");
+                        objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingDown" : "AfkDown");
                         break;
                     case 3:
-                        objectAnimation.PlayAnimation("AfkSide");
+                        objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingSide" : "AfkSide");
                         break;
                     default:
-                        objectAnimation.PlayAnimation("AfkDown");
+                        objectAnimation.PlayAnimation(controller.isHoldingObject ? "AfkHoldingDown" : "AfkDown");
                         break;
                 }
             }
         }
-        
-        
+
+
     }
 
 

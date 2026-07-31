@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using TheSquare.Mechanics.UniverseHeart;
 
 public class PlayerController : MonoBehaviour
 {
@@ -81,6 +82,8 @@ public class PlayerController : MonoBehaviour
 
     void Dodge()
     {
+        if (InsideTheSquareManager.instance != null) return;
+
         if (canDodge && playerInputActions.Gameplay.Dodge.triggered && !stats.isBowShooting && !isAttacking && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isShielding && !isPushing && !GetComponent<EntityEffects>().isSlimed)
         {
             isDodging = true;
@@ -275,6 +278,8 @@ public class PlayerController : MonoBehaviour
 
     void UseSpecialObject()
     {
+        if (InsideTheSquareManager.instance != null) return;
+
         if (specialObjects.isHammering || specialObjects.isPickaxing)
         {
             actualSpeed = 0;
@@ -355,7 +360,8 @@ public class PlayerController : MonoBehaviour
                    !specialObjects.isPickaxing &&
                    !specialObjects.isShielding &&
                    !isPushing &&
-                   HasWeapon();
+                   HasWeapon() &&
+                   InsideTheSquareManager.instance == null;
         }
     }
 
@@ -617,9 +623,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public float damageReduction;
+    public bool isHoldingObject = false;
+
     public Vector2 GetAttackDirection()
     {
-        // Si le joueur est en train de maintenir une attaque, retourner la direction fix�e au d�but de l'attaque
+        // Si le joueur est en train de maintenir une attaque, retourner la direction fixe au dbut de l'attaque
         if (isHoldingAttack)
         {
             return lastAttackDirection;

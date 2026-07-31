@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2532286394657090883, guid: 94d18fc0b4f46e949aed2187eabbc720, type: 3}
+      propertyPath: loots
+      value: 
+      objectReference: {fileID: 11400000, guid: 34dab39a86b243048ae83f9eb89f29f6, type: 2}
     - target: {fileID: 2727529246103171868, guid: 94d18fc0b4f46e949aed2187eabbc720, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3381881513999391038, guid: 94d18fc0b4f46e949aed2187eabbc720, type: 3}
       propertyPath: m_Name
-      value: BluePhantom Variant
+      value: BluePhantom
       objectReference: {fileID: 0}
     - target: {fileID: 7811479588336395140, guid: 94d18fc0b4f46e949aed2187eabbc720, type: 3}
       propertyPath: money

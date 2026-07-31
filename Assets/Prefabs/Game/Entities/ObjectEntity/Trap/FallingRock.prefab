@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1b93d0b9bcf1d478c6ecb3d5b9cbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loots: {fileID: 11400000, guid: 29db09902c28cdf47a16f94625872cc3, type: 2}
+  loots: {fileID: 11400000, guid: 028ea1b2674f1464c809aeed24203607, type: 2}
 --- !u!114 &6254404520986062789
 MonoBehaviour:
   m_ObjectHideFlags: 0

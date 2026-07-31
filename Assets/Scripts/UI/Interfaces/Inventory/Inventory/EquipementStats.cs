@@ -85,7 +85,7 @@ public class EquipementStats : MonoBehaviour
         {
             txtSpeedBonus.SetActive(true);
             txtSpeedBonus.GetComponent<TextMeshProUGUI>().color = Color.yellow;
-            txtSpeedBonus.GetComponent<TextMeshProUGUI>().text = "+" + speed;
+            txtSpeedBonus.GetComponent<TextMeshProUGUI>().text = "+" + (speed * 100) + "%";
         }
         else
         {
@@ -272,7 +272,7 @@ public class EquipementStats : MonoBehaviour
             {
                 SetTextVisibility(txtDefense, boots.defense);
                 SetTextVisibility(txtHealPoint, boots.life);
-                SetTextVisibility(txtSpeed, boots.speed);
+                SetTextVisibility(txtSpeed, boots.speed * 100, true);
 
                 SetTextVisibility(txtDragonSkin, boots.dragonSkin * 100, true);
                 SetTextVisibility(txtRegenRate, boots.regenRate);
@@ -379,7 +379,7 @@ public class EquipementStats : MonoBehaviour
             {
                 SetTextVisibility(txtDefense, leggings.defense);
                 SetTextVisibility(txtHealPoint, leggings.life);
-                SetTextVisibility(txtSpeed, leggings.speed);
+                SetTextVisibility(txtSpeed, leggings.speed * 100, true);
                 SetTextVisibility(txtKnockbackResistance, leggings.knockbackResistance);
                 SetTextVisibility(txtKnockbackPower, leggings.knockbackPower);
 

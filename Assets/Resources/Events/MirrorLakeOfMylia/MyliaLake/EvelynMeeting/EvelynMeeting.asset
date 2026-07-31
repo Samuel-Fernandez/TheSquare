@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: EvelynMeeting
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 2531886523609802792, guid: 62e331decc87b6a4588e2b5f6419ef51, type: 3}
+    id: evelyn
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: k1769v
+  eventsList:
+  - {fileID: 11400000, guid: 0341c94619f390441935e0163fb82db6, type: 2}
+  - {fileID: 11400000, guid: 74b89a7bfd6cdf444a6712bc9c0254c9, type: 2}
+  - {fileID: 11400000, guid: f9f4f965c9147024f8ef2178f7d239f3, type: 2}
+  - {fileID: 11400000, guid: efe0bf361ce9d824c9e9411107eaeed4, type: 2}
+  - {fileID: 11400000, guid: 4d4b59965ddec174fba48c02a56d9b61, type: 2}
+  - {fileID: 11400000, guid: 962c37253a3d0d24099363ac92ae1ed6, type: 2}
+  - {fileID: 11400000, guid: 283023aa3c5468a49b9628cad645bdb4, type: 2}
+  - {fileID: 11400000, guid: 8444524487c176044a7ad2d7ef73525a, type: 2}
+  - {fileID: 11400000, guid: a8b97ca1d7c27e640b66935ec1842c98, type: 2}
+  - {fileID: 11400000, guid: e551acb140a993d4fb625581a5ce8e91, type: 2}
+  - {fileID: 11400000, guid: 5de08da0fb4a8fc4f8ccb2f6807dd38b, type: 2}
+  - {fileID: 11400000, guid: 794fe5b5594f63b4e95af69f0efb3c45, type: 2}
+  requirements: []

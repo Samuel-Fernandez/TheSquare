@@ -22,13 +22,13 @@ public class Chestplate : Item
     public float baseKnockbackResistance;
     public float baseKnockbackPower;
 
-    // A compléter
+    // A complï¿½ter
     public float dragonSkin = 0;                            // FAIT
-    public float regenRate = 0;                        // nb de coeur regénéré toutes les 60 secondes FAIT
-    public float negativeEffectReducer = 0;            // % de dégât / de temps en moins FAIT 
-    public float mineralChance = 0;                    // Chance que de meilleurs minéraux apparaissent FAIT
-    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dégât FAIT
-    public float doubleMineralDropChance = 0;          // Chance de doubler un minéral FAIT
+    public float regenRate = 0;                        // nb de coeur regï¿½nï¿½rï¿½ toutes les 60 secondes FAIT
+    public float negativeEffectReducer = 0;            // % de dï¿½gï¿½t / de temps en moins FAIT 
+    public float mineralChance = 0;                    // Chance que de meilleurs minï¿½raux apparaissent FAIT
+    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dï¿½gï¿½t FAIT
+    public float doubleMineralDropChance = 0;          // Chance de doubler un minï¿½ral FAIT
 
 
     // 04-XXXX-AA-LL-DD-CC-CC-KK-KK : Chestplate-ID-Defense-Life-Damage-CritC-CritD-KnockbackP-KnockbackR
@@ -39,10 +39,10 @@ public class Chestplate : Item
 
         float levelMultiplier = 1 + ((level - 1) * 0.2f);
 
-        float defenseBonus = int.Parse(this.itemId.Substring(6, 2)) / 100f;
-        float lifeBonus = int.Parse(this.itemId.Substring(8, 2)) / 100f;
-        float damageBonus = int.Parse(this.itemId.Substring(10, 2)) / 100f;
-        float critDamageBonus = int.Parse(this.itemId.Substring(12, 2)) / 100f;
+        float defenseBonus = (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f;
+        float lifeBonus = (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f;
+        float damageBonus = (int.Parse(this.itemId.Substring(10, 2)) / 100f) - 0.5f;
+        float critDamageBonus = (int.Parse(this.itemId.Substring(12, 2)) / 100f) - 0.5f;
 
         defense = (int)(baseDefense * (1 + defenseBonus) * levelMultiplier);
         life = (int)(baseLife * (1 + lifeBonus) * levelMultiplier);
@@ -81,7 +81,7 @@ public class Chestplate : Item
 
         total += Mathf.Pow(damage * 5, 1.3f);
         total += Mathf.Pow(baseKnockbackResistance * 100, 1.3f); // KBR
-        total += Mathf.Pow(baseKnockbackPower * 100, 1.3f); // KBP (si c’est une stat séparée, ajuste)
+        total += Mathf.Pow(baseKnockbackPower * 100, 1.3f); // KBP (si cï¿½est une stat sï¿½parï¿½e, ajuste)
         total += Mathf.Pow(life * 200, 1.3f);    // HP
         total += Mathf.Pow(critChance * 200, 1.3f); // CC (si tu as une variable critChance)
         total += Mathf.Pow(critDamage * 200, 1.3f); // CD (si tu as une variable critDamage)
@@ -98,37 +98,37 @@ public class Chestplate : Item
 
     public int GetBaseDefense()
     {
-        return (int)(baseDefense * (1 + int.Parse(this.itemId.Substring(6, 2)) / 100f));
+        return (int)(baseDefense * (1 + (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f));
     }
 
     public int GetBaseLife()
     {
-        return (int)(baseLife * (1 + int.Parse(this.itemId.Substring(8, 2)) / 100f));
+        return (int)(baseLife * (1 + (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f));
     }
 
     public int GetBaseDamage()
     {
-        return (int)(baseDamage * (1 + int.Parse(this.itemId.Substring(10, 2)) / 100f));
+        return (int)(baseDamage * (1 + (int.Parse(this.itemId.Substring(10, 2)) / 100f) - 0.5f));
     }
 
     public float GetBaseCritChance()
     {
-        return baseCritChance * (1 + int.Parse(this.itemId.Substring(10, 2)) / 100f);
+        return baseCritChance * (1 + (int.Parse(this.itemId.Substring(10, 2)) / 100f) - 0.5f);
     }
 
     public float GetBaseCritDamage()
     {
-        return baseCritDamage * (1 + int.Parse(this.itemId.Substring(12, 2)) / 100f);
+        return baseCritDamage * (1 + (int.Parse(this.itemId.Substring(12, 2)) / 100f) - 0.5f);
     }
 
     public float GetBaseKnockbackPower()
     {
-        return (baseKnockbackPower * (1 + int.Parse(this.itemId.Substring(8, 2)) / 100f));
+        return (baseKnockbackPower * (1 + (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f));
     }
 
     public float GetBaseKnockbackResistance()
     {
-        return (baseKnockbackResistance * (1 + int.Parse(this.itemId.Substring(8, 2)) / 100f));
+        return (baseKnockbackResistance * (1 + (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f));
     }
 
 
@@ -154,7 +154,7 @@ public class Chestplate : Item
                 colorEnchant2 = new Color(135f / 255f, 135f / 255f, 135f / 255f, 0.5f); // Normalized
                 break;
             case "04":
-                // À définir selon le besoin
+                // ï¿½ dï¿½finir selon le besoin
                 break;
             default:
                 armorEnchant = ARMOR_ENCHANT.NULL;

@@ -180,7 +180,14 @@ public class EventPlayer : MonoBehaviour
                 }
                 else if (actualEvent.pnjType == PnjEventType.SPEAK)
                 {
-                    NotificationManager.instance.ShowBubble(LocalizationManager.instance.GetTexts("pnj_text", actualEvent.idText));
+                    if (actualEvent.isImportantBubble)
+                    {
+                        NotificationManager.instance.ShowImportantBubble(LocalizationManager.instance.GetTexts("pnj_text", actualEvent.idText), null, actualEvent.bubbleSoundId, actualEvent.bubbleColor);
+                    }
+                    else
+                    {
+                        NotificationManager.instance.ShowBubble(LocalizationManager.instance.GetTexts("pnj_text", actualEvent.idText), null, actualEvent.bubbleSoundId);
+                    }
 
                     while (NotificationManager.instance.bubbleInstance != null)
                     {
@@ -196,6 +203,10 @@ public class EventPlayer : MonoBehaviour
                 {
                     RemovePNJ(clonedEventContainer, actualEvent.idPnj);
                 }
+                else if (actualEvent.pnjType == PnjEventType.CHANGE_SIZE)
+                {
+                    yield return StartCoroutine(ChangeSizePNJ(clonedEventContainer, actualEvent.idPnj, actualEvent.targetSize, actualEvent.duration));
+                }
             }
             else if (actualEvent.eventType == EventType.BATTLE)
             {
@@ -207,6 +218,7 @@ public class EventPlayer : MonoBehaviour
                     SpawnMonster(clonedEventContainer, actualEvent.idMonster, actualEvent.spawnMonsterPosition, actualEvent.colliderRadius);
                     InventoryManager.instance.canOpenInventory = true;
                     QuestManager.instance.canOpenQuests = true;
+                    PlayerManager.instance.isEventPlaying = false;
                     GameObject battleZone = null; // Utiliser le premier point comme centre du cercle
 
 
@@ -233,6 +245,7 @@ public class EventPlayer : MonoBehaviour
 
                     InventoryManager.instance.canOpenInventory = false;
                     QuestManager.instance.canOpenQuests = false;
+                    PlayerManager.instance.isEventPlaying = true;
 
                     if (battleZone != null)
                     {
@@ -269,7 +282,11 @@ public class EventPlayer : MonoBehaviour
                     {
                         CameraManager.instance.ChangeCameraColor(actualEvent.colorChange, actualEvent.duration, CameraManager.instance.defaultCamera);
                         yield return CustomWaitForSeconds(actualEvent.duration);
-
+                    }
+                    else if (actualEvent.cameraEffect == CameraEffect.FILTER)
+                    {
+                        CameraManager.instance.SetFilter(actualEvent.cameraFilter);
+                        yield return CustomWaitForSeconds(actualEvent.duration);
                     }
                     else if (actualEvent.cameraEffect == CameraEffect.ZOOM)
                     {
@@ -296,7 +313,14 @@ public class EventPlayer : MonoBehaviour
             }
             else if (actualEvent.eventType == EventType.TEXT)
             {
-                NotificationManager.instance.ShowBubble(LocalizationManager.instance.GetTexts("pnj_text", actualEvent.idText));
+                if (actualEvent.isImportantBubble)
+                {
+                    NotificationManager.instance.ShowImportantBubble(LocalizationManager.instance.GetTexts("pnj_text", actualEvent.idText), null, actualEvent.bubbleSoundId, actualEvent.bubbleColor);
+                }
+                else
+                {
+                    NotificationManager.instance.ShowBubble(LocalizationManager.instance.GetTexts("pnj_text", actualEvent.idText), null, actualEvent.bubbleSoundId);
+                }
 
                 while (NotificationManager.instance.bubbleInstance != null)
                 {
@@ -811,9 +835,68 @@ public class EventPlayer : MonoBehaviour
         if (pnj != null && rb2d != null)
         {
             rb2d.MovePosition(targetPos);
-            rb2d.isKinematic = wasKinematic; // Restaurer l'�tat initial
+            rb2d.isKinematic = wasKinematic; // Restaurer l'tat initial
         }
     }
 
+    public IEnumerator ChangeSizePNJ(EventContainer eventContainer, List<string> id, Vector2 targetSize, float duration)
+    {
+        List<Coroutine> activeCoroutines = new List<Coroutine>();
 
+        foreach (string idPnj in id)
+        {
+            if (idPnj == "player" || idPnj == "Player")
+            {
+                if (PlayerManager.instance != null && PlayerManager.instance.player != null)
+                {
+                    Vector3 currentScale = PlayerManager.instance.player.transform.localScale;
+                    Coroutine playerScaleCoroutine = StartCoroutine(ScaleOverTime(PlayerManager.instance.player, currentScale, new Vector3(targetSize.x, targetSize.y, currentScale.z), duration));
+                    activeCoroutines.Add(playerScaleCoroutine);
+                }
+                continue;
+            }
+
+            for (int i = 0; i < eventContainer.pnjContainer.Count; i++)
+            {
+                if (eventContainer.pnjContainer[i].id == idPnj)
+                {
+                    PNJContainer pnj = eventContainer.pnjContainer[i];
+                    if (pnj.pnj != null)
+                    {
+                        Vector3 currentScale = pnj.pnj.transform.localScale;
+                        Coroutine scaleCoroutine = StartCoroutine(ScaleOverTime(pnj.pnj, currentScale, new Vector3(targetSize.x, targetSize.y, currentScale.z), duration));
+                        activeCoroutines.Add(scaleCoroutine);
+                    }
+                }
+            }
+        }
+
+        foreach (Coroutine coroutine in activeCoroutines)
+        {
+            yield return coroutine;
+        }
+    }
+
+    private IEnumerator ScaleOverTime(GameObject obj, Vector3 startScale, Vector3 targetScale, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            if (obj == null)
+                yield break;
+
+            float t = elapsedTime / duration;
+            t = t * t * (3f - 2f * t); // Smoothstep
+
+            obj.transform.localScale = Vector3.Lerp(startScale, targetScale, t);
+            elapsedTime += Time.unscaledDeltaTime * GetSkipMultiplier();
+            yield return null;
+        }
+
+        if (obj != null)
+        {
+            obj.transform.localScale = targetScale;
+        }
+    }
 }

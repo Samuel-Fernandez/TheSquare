@@ -1,0 +1,52 @@
+{
+  "entries": [
+    {
+      "key": "neutralStance_Title",
+      "value": "Neutral Stance"
+    },
+    {
+      "key": "neutralStance_Description",
+      "value": "Standard damage (x1.0). The default stance: no weak points, but no outstanding strengths."
+    },
+    {
+      "key": "sharpStance_Title",
+      "value": "Sharp Stance"
+    },
+    {
+      "key": "sharpStance_Description",
+      "value": "+50% damage to shear unstable masses. -50% against armor and rock, where the blade bounces off miserably."
+    },
+    {
+      "key": "contondantStance_Title",
+      "value": "Contondant Stance"
+    },
+    {
+      "key": "contondantStance_Description",
+      "value": "+50% damage to shatter bones and metal. -50% against gelatinous bodies, which simply absorb the impact."
+    },
+    {
+      "key": "piercingStance_Title",
+      "value": "Piercing Stance"
+    },
+    {
+      "key": "piercingStance_Description",
+      "value": "+50% thrust damage to vital organs and sap. -50% against wraiths: trying to pierce the wind is foolish."
+    },
+    {
+      "key": "spiritualStance_Title",
+      "value": "Spiritual Stance"
+    },
+    {
+      "key": "spiritualStance_Description",
+      "value": "+50% damage disrupting astral entities. -50% on raw flesh and plants, whose life force rejects this type of resonance."
+    },
+    {
+      "key": "antiSquareStance_Title",
+      "value": "Anti-Square Stance"
+    },
+    {
+      "key": "antiSquareStance_Description",
+      "value": "+50% targeted annihilation on The Square entities. -50% against everything else. Devastating on its target, suicidal if used blindly."
+    }
+  ]
+}

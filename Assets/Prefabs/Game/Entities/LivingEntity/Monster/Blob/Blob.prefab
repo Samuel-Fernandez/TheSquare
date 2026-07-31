@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 253195382348122780, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: loots
       value: 
-      objectReference: {fileID: 11400000, guid: 524cecbd1a28d8544ae0fd34d491136a, type: 2}
+      objectReference: {fileID: 11400000, guid: 5dec6efa415de4246814a5c9b3eb5ef4, type: 2}
     - target: {fileID: 395713895748195523, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -126,6 +126,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
       propertyPath: strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
+      propertyPath: monsterType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5530430893161137243, guid: 4f86ad80e379c02469bdd90c3f1df82e, type: 3}
@@ -258,6 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19350ef531d4408419525a2e6d716bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blobType: 0
+  effectChance: 25
   minInterval: 1
   maxInterval: 3
   jumpLength: 0.8

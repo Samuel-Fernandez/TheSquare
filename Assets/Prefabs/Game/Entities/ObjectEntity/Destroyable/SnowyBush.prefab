@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3254713496575271568, guid: c35fadc3fc67bf64ab46c0ab9cc5e1ee, type: 3}
+      propertyPath: loots
+      value: 
+      objectReference: {fileID: 11400000, guid: 6207e5e624e7b684983e9e41cce4df65, type: 2}
     - target: {fileID: 6980662702524545814, guid: c35fadc3fc67bf64ab46c0ab9cc5e1ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.4810705
@@ -50,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7414318990587014485, guid: c35fadc3fc67bf64ab46c0ab9cc5e1ee, type: 3}
       propertyPath: m_Name
-      value: SnowyBush Variant
+      value: SnowyBush
       objectReference: {fileID: 0}
     - target: {fileID: 7912835413894236023, guid: c35fadc3fc67bf64ab46c0ab9cc5e1ee, type: 3}
       propertyPath: m_Sprite

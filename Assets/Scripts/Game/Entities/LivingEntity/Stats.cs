@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
+using TheSquare.Mechanics.UniverseHeart;
 
 public enum EntityType
 {
@@ -10,9 +11,20 @@ public enum EntityType
     PNJ
 }
 
+public enum MonsterType
+{
+    None,
+    Amorphous,
+    Rigid,
+    Fleshy,
+    Ethereal,
+    Anomaly
+}
+
 public class Stats : MonoBehaviour
 {
     public EntityType entityType;
+    public MonsterType monsterType;
     public int health;
     public int strength;
     public int defense;
@@ -103,32 +115,35 @@ public class Stats : MonoBehaviour
         // Reset player stats to base values here if needed
         ResetStats();
 
-        foreach (var equippedSlot in Equipement.instance.equippedSlots)
+        if (InsideTheSquareManager.instance == null)
         {
-            EquipementSlot slot = equippedSlot.GetComponent<EquipementSlot>();
-            Item item = slot.actualItem;
-
-            if (item != null)
+            foreach (var equippedSlot in Equipement.instance.equippedSlots)
             {
-                if (item is Helmet helmet)
+                EquipementSlot slot = equippedSlot.GetComponent<EquipementSlot>();
+                Item item = slot.actualItem;
+
+                if (item != null)
                 {
-                    AddStats(helmet);
-                }
-                else if (item is Chestplate chestplate)
-                {
-                    AddStats(chestplate);
-                }
-                else if (item is Leggings leggings)
-                {
-                    AddStats(leggings);
-                }
-                else if (item is Boots boots)
-                {
-                    AddStats(boots);
-                }
-                else if (item is Weapon weapon)
-                {
-                    AddStats(weapon);
+                    if (item is Helmet helmet)
+                    {
+                        AddStats(helmet);
+                    }
+                    else if (item is Chestplate chestplate)
+                    {
+                        AddStats(chestplate);
+                    }
+                    else if (item is Leggings leggings)
+                    {
+                        AddStats(leggings);
+                    }
+                    else if (item is Boots boots)
+                    {
+                        AddStats(boots);
+                    }
+                    else if (item is Weapon weapon)
+                    {
+                        AddStats(weapon);
+                    }
                 }
             }
         }
@@ -147,6 +162,12 @@ public class Stats : MonoBehaviour
         // Notify player controller of speed change
         if (playerController)
             playerController.UpdateSpeed(speed);
+
+        // -- RUNES PASSIVES --
+        if (StanceAndRunicManager.instance != null && InsideTheSquareManager.instance == null)
+        {
+            StanceAndRunicManager.instance.ApplyPassiveRuneStats(this);
+        }
     }
 
     private void ResetStats()
@@ -187,17 +208,16 @@ public class Stats : MonoBehaviour
     {
         defense += leggings.defense;
         health += leggings.life;
-        speed += leggings.speed;
-        critChance += leggings.knockbackResistance;
-        critDamage += leggings.knockbackPower;
+        speed += speed * leggings.speed;
+        knockbackResistance += leggings.knockbackResistance;
+        knockbackPower += leggings.knockbackPower;
     }
 
     private void AddStats(Boots boots)
     {
         defense += boots.defense;
         health += boots.life;
-        speed += boots.speed;
-
+        speed += speed * boots.speed;
     }
 
     private void AddStats(Weapon weapon)

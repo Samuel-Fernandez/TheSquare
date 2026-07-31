@@ -25,7 +25,7 @@ public class LocalizationManager : MonoBehaviour
     {
         localizationData.Clear(); // Reset pour �viter les conflits
 
-        string[] files = { "UI", "pnj_text", "items", "effects", "SKILLS", "QUEST", "LOCATION", "MONSTER", "SIGN", "CINEMATIC", "SPECIAL_OBJECTS", "BOSS", "SPIRIT", "SEALS_NAMES" };
+        string[] files = { "UI", "pnj_text", "items", "effects", "SKILLS", "QUEST", "LOCATION", "MONSTER", "SIGN", "CINEMATIC", "SPECIAL_OBJECTS", "BOSS", "SPIRIT", "SEALS_NAMES", "RUNES", "STANCES" };
 
         foreach (string file in files)
         {

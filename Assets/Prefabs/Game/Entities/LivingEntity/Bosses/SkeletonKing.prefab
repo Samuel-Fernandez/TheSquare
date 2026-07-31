@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3496745892840926237, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: knockbackResistance
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5905703720407750196, guid: f5bda739a24036b4cbaff65a0557ceb6, type: 3}
       propertyPath: fightMod

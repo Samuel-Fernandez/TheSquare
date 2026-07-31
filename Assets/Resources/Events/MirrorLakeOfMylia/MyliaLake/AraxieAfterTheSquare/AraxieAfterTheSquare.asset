@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: AraxieAfterTheSquare
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 3999230357859708812, guid: 6287c2ea22613974899cf3c7beff8e89, type: 3}
+    id: fairy
+  monsterContainer: []
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: AraxieAfterTheSquare
+  eventsList:
+  - {fileID: 11400000, guid: b681a4bcb333ecd42ae0e2b4e1afc94c, type: 2}
+  - {fileID: 11400000, guid: 5ca46eca668f5dd4bbbc01fd54222d68, type: 2}
+  - {fileID: 11400000, guid: 0301eeadb2f36ae41a257ec5ce401a71, type: 2}
+  - {fileID: 11400000, guid: cec8f124373681449b15a7c3138592c2, type: 2}
+  - {fileID: 11400000, guid: 708eaadd559d16b4aa4560af36b821d5, type: 2}
+  - {fileID: 11400000, guid: b2ee1c503e20eb648ac4487cdb985d25, type: 2}
+  - {fileID: 11400000, guid: 988e66f49ff6fdb44be2ed41fea3861c, type: 2}
+  - {fileID: 11400000, guid: 1be7ea0039c75a74a88a102e3e73b889, type: 2}
+  requirements:
+  - requirementType: 3
+    sceneData: {fileID: 0}
+    pnjIDSpoken: 
+    eventRequired: {fileID: 11400000, guid: ba5fa81c25b9256448b20aefd5867eac, type: 2}
+    specialObject: 0
+    monsterRequired: {fileID: 0}
+    nbMonsterRequired: 0

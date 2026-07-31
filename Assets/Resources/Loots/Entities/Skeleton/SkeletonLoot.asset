@@ -13,21 +13,18 @@ MonoBehaviour:
   m_Name: SkeletonLoot
   m_EditorClassIdentifier: 
   loots:
-  - item: {fileID: 825423999109376273, guid: 1a48f5bd0e7729447b7bd9ebafe48e54, type: 3}
-    lootChance: 30
-  - item: {fileID: 7500601372771816494, guid: faeab726cd03afb40a357cb07095ad91, type: 3}
-    lootChance: 60
   - item: {fileID: 405510180018779390, guid: 3fcf901d66417ea41adef3e5a7bf41d9, type: 3}
-    lootChance: 150
-  - item: {fileID: 7797097648409138479, guid: 7d2129a9d6c04cc448d8fc45c6d0f7c2, type: 3}
-    lootChance: 5
-  - item: {fileID: 7147522476223202614, guid: 0ccfad51b4521a541a4041c0c45cea46, type: 3}
-    lootChance: 5
-  - item: {fileID: 3577675995761348019, guid: 702a5ac3e6812b04fa01aa9e5475ae61, type: 3}
-    lootChance: 1
-  - item: {fileID: 8210642798853171078, guid: 1c2e8bf1ca2c755468ca59fb1af55756, type: 3}
-    lootChance: 5
-  - item: {fileID: 2763443352096288562, guid: 5986ab7914fa4834fbfcc52bc2aa63aa, type: 3}
-    lootChance: 2
-  - item: {fileID: 0}
-    lootChance: 700
+    lootChance: 600
+  - item: {fileID: 7500601372771816494, guid: faeab726cd03afb40a357cb07095ad91, type: 3}
+    lootChance: 400
+  - item: {fileID: 19329449868831883, guid: 33aaa5f0146bbf84f8d4009840b0b5fc, type: 3}
+    lootChance: 400
+  - item: {fileID: 1072104702559440330, guid: 76e382f2b6477714ea3c183f6e8f2a94, type: 3}
+    lootChance: 200
+  - item: {fileID: 7675190661852668220, guid: 66a1ccfb5fe91dc498781bc92f302a87, type: 3}
+    lootChance: 100
+  - item: {fileID: 6601253333710770771, guid: 1400eb97d0a65964b80dd1a818e4c57c, type: 3}
+    lootChance: 1600
+  - item: {fileID: 2324196259632353872, guid: 0e5589ca6dce97d419d632291f77abc6, type: 3}
+    lootChance: 400
+  placesRestantes: 6300

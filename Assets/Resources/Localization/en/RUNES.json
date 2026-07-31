@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "battleRune_Title",
+      "value": "Battle Rune"
+    },
+    {
+      "key": "battleRune_Description",
+      "value": "Constant passive +10% strength bonus."
+    },
+    {
+      "key": "rageRune_Title",
+      "value": "Rage Rune"
+    },
+    {
+      "key": "rageRune_Description",
+      "value": "+1% damage for each 1% of missing health."
+    },
+    {
+      "key": "impetusRune_Title",
+      "value": "Impetus Rune"
+    },
+    {
+      "key": "impetusRune_Description",
+      "value": "+20% damage for 1 second after performing a perfect dodge."
+    },
+    {
+      "key": "sacrificeRune_Title",
+      "value": "Sacrifice Rune"
+    },
+    {
+      "key": "sacrificeRune_Description",
+      "value": "Consumes 10% HP to deal 50% additional damage."
+    },
+    {
+      "key": "serenityRune_Title",
+      "value": "Serenity Rune"
+    },
+    {
+      "key": "serenityRune_Description",
+      "value": "+25% strength, +25% critical chance, and +25% critical damage if health is at 100%."
+    },
+    {
+      "key": "secondBreathRune_Title",
+      "value": "Triumph Rune"
+    },
+    {
+      "key": "secondBreathRune_Description",
+      "value": "Instantly restores 5% of the defeated entity's Max HP."
+    },
+    {
+      "key": "prosperityRune_Title",
+      "value": "Prosperity Rune"
+    },
+    {
+      "key": "prosperityRune_Description",
+      "value": "Each critical hit generates the damage amount in square coins."
+    },
+    {
+      "key": "overvoltageRune_Title",
+      "value": "Overvoltage Rune"
+    },
+    {
+      "key": "overvoltageRune_Description",
+      "value": "+50% damage against entities suffering from a status effect (Ice, fire, poison...)."
+    },
+    {
+      "key": "chaosRune_Title",
+      "value": "Chaos Rune"
+    },
+    {
+      "key": "chaosRune_Description",
+      "value": "Applies a random damage modifier between [-50% + luck]% and [+50% + luck]% to each attack."
+    },
+    {
+      "key": "mimesisRune_Title",
+      "value": "Mimesis Rune"
+    },
+    {
+      "key": "mimesisRune_Description",
+      "value": "Doubles the active multiplier of the active combat Stance (e.g. x1.5 becomes x3.0). The malus is also affected (-50% -> -75%)."
+    },
+    {
+      "key": "meteoRune_Title",
+      "value": "Storm Rune"
+    },
+    {
+      "key": "meteoRune_Description",
+      "value": "Under rain, blizzard, sandstorm etc... increases critical damage by 50%. If sunny, grants +15% critical chance."
+    },
+    {
+      "key": "surchargeRune_Title",
+      "value": "Surcharge Rune"
+    },
+    {
+      "key": "surchargeRune_Description",
+      "value": "Player takes +30% additional damage, but physical damage is increased by +40% and critical chance is increased by +20%."
+    },
+    {
+      "key": "conversionRune_Title",
+      "value": "Conversion Rune"
+    },
+    {
+      "key": "conversionRune_Description",
+      "value": "Converts half of your current defense. For each converted defense point, you gain +5% strength."
+    },
+    {
+      "key": "eclipseRune_Title",
+      "value": "Eclipse Rune"
+    },
+    {
+      "key": "eclipseRune_Description",
+      "value": "Grants +20% defense at night or in caves and dungeons, but applies a -20% defense penalty during the day."
+    },
+    {
+      "key": "encirclementRune_Title",
+      "value": "Encirclement Rune"
+    },
+    {
+      "key": "encirclementRune_Description",
+      "value": "Grants +5% defense and +5% critical chance per monster present within 5 units."
+    }
+  ]
+}

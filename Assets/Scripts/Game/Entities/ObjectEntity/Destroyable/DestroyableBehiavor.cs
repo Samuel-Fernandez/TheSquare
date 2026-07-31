@@ -18,7 +18,7 @@ public class DestroyableBehiavor : MonoBehaviour
     public int life = 2;
 
     public DestroyableType destroyableType;
-    
+
     // Uniquement pour door type
     public Sprite openedDoor;
     public BoxCollider2D colliderToRemove;
@@ -28,7 +28,7 @@ public class DestroyableBehiavor : MonoBehaviour
 
     private void Start()
     {
-        if(id != null && destroyableType == DestroyableType.DESTROY_EVENT)
+        if (id != null && destroyableType == DestroyableType.DESTROY_EVENT)
         {
             bool state;
 
@@ -39,7 +39,7 @@ public class DestroyableBehiavor : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if(destroyableType == DestroyableType.DOOR)
+        else if (destroyableType == DestroyableType.DOOR)
         {
             bool state;
 
@@ -52,7 +52,7 @@ public class DestroyableBehiavor : MonoBehaviour
                 colliderToRemove.enabled = false;
                 life = 0;
             }
-            
+
         }
     }
 
@@ -79,14 +79,14 @@ public class DestroyableBehiavor : MonoBehaviour
         EntityLight[] lights = GetComponentsInChildren<EntityLight>();
         foreach (var l in lights)
         {
-            l.TransitionLightIntensity(0f, 0f, 0f); // éteint immédiatement
+            l.TransitionLightIntensity(0f, 0f, 0f); // ï¿½teint immï¿½diatement
         }
     }
 
 
     public void DestroyObject(int power)
     {
-        if((power >=  powerRequired && !isDestroying && !needFire) || (needFire && GetComponent<EntityEffects>().isFire))
+        if ((power >= powerRequired && !isDestroying && !needFire) || (needFire && GetComponent<EntityEffects>().isFire))
         {
             if (DestroyableType.NORMAL == destroyableType)
             {
@@ -161,9 +161,9 @@ public class DestroyableBehiavor : MonoBehaviour
                     GetComponent<SoundContainer>().PlaySound("Destroy", 1);
                     Destroy(gameObject, 6);
                 }
-                
+
             }
-            
+
         }
     }
 }

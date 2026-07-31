@@ -13,18 +13,18 @@ public class Helmet : Item
     public int baseLife;
     public int baseDamage;
 
-    // A compléter
+    // A complï¿½ter
     public float vampire = 0;                               // FAIT
     public float dragonSkin = 0;                            // FAIT
     public float fireAttackChance = 0;                      // FAIT
     public float iceAttackChance = 0;                       // FAIT
     public float poisonAttackChance = 0;                    // FAIT
-    public float regenRate = 0;                        // nb de coeur regénéré toutes les 60 secondes FAIT
+    public float regenRate = 0;                        // nb de coeur regï¿½nï¿½rï¿½ toutes les 60 secondes FAIT
     public float doubleSquareCoinsChances = 0;         // % de chance de doubler en tuant FAIT
-    public float negativeEffectReducer = 0;            // % de dégât / de temps en moins FAIT 
-    public float mineralChance = 0;                    // Chance que de meilleurs minéraux apparaissent FAIT
-    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dégât FAIT
-    public float doubleMineralDropChance = 0;          // Chance de doubler un minéral FAIT
+    public float negativeEffectReducer = 0;            // % de dï¿½gï¿½t / de temps en moins FAIT 
+    public float mineralChance = 0;                    // Chance que de meilleurs minï¿½raux apparaissent FAIT
+    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dï¿½gï¿½t FAIT
+    public float doubleMineralDropChance = 0;          // Chance de doubler un minï¿½ral FAIT
     public float dropChance = 0;                       // Chance de tomber sur un meilleur item lors d'un drop FAIT
 
 
@@ -36,9 +36,9 @@ public class Helmet : Item
 
         float levelMultiplier = 1 + ((level - 1) * 0.2f);
 
-        float defenseBonus = int.Parse(this.itemId.Substring(6, 2)) / 100f;
-        float lifeBonus = int.Parse(this.itemId.Substring(8, 2)) / 100f;
-        float damageBonus = int.Parse(this.itemId.Substring(10, 2)) / 100f;
+        float defenseBonus = (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f;
+        float lifeBonus = (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f;
+        float damageBonus = (int.Parse(this.itemId.Substring(10, 2)) / 100f) - 0.5f;
 
         defense = (int)(baseDefense * (1 + defenseBonus) * levelMultiplier);
         life = (int)(baseLife * (1 + lifeBonus) * levelMultiplier);
@@ -82,17 +82,17 @@ public class Helmet : Item
 
     public int GetBaseDefense()
     {
-        return (int)(baseDefense * (1 + int.Parse(this.itemId.Substring(6, 2)) / 100f));
+        return (int)(baseDefense * (1 + (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f));
     }
 
     public int GetBaseLife()
     {
-        return (int)(baseLife * (1 + int.Parse(this.itemId.Substring(8, 2)) / 100f));
+        return (int)(baseLife * (1 + (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f));
     }
 
     public int GetBaseDamage()
     {
-        return (int)(baseDamage * (1 + int.Parse(this.itemId.Substring(10, 2)) / 100f));
+        return (int)(baseDamage * (1 + (int.Parse(this.itemId.Substring(10, 2)) / 100f) - 0.5f));
     }
 
     void GetEnchant()
@@ -117,7 +117,7 @@ public class Helmet : Item
                 colorEnchant2 = new Color(135f / 255f, 135f / 255f, 135f / 255f, 0.5f); // Normalized
                 break;
             case "04":
-                // À définir selon le besoin
+                // ï¿½ dï¿½finir selon le besoin
                 break;
             default:
                 armorEnchant = ARMOR_ENCHANT.NULL;

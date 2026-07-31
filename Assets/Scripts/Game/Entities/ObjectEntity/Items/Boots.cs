@@ -13,13 +13,13 @@ public class Boots : Item
     public int baseLife;
     public float baseSpeed;
 
-    // A compléter
+    // A complï¿½ter
     public float dragonSkin = 0;                            // FAIT
-    public float regenRate = 0;                        // nb de coeur regénéré toutes les 60 secondes FAIT
-    public float negativeEffectReducer = 0;            // % de dégât / de temps en moins FAIT 
-    public float mineralChance = 0;                    // Chance que de meilleurs minéraux apparaissent FAIT
-    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dégât FAIT
-    public float doubleMineralDropChance = 0;          // Chance de doubler un minéral FAIT
+    public float regenRate = 0;                        // nb de coeur regï¿½nï¿½rï¿½ toutes les 60 secondes FAIT
+    public float negativeEffectReducer = 0;            // % de dï¿½gï¿½t / de temps en moins FAIT 
+    public float mineralChance = 0;                    // Chance que de meilleurs minï¿½raux apparaissent FAIT
+    public float dodgeChance = 0;                      // Chance d'esquiver totalement un dï¿½gï¿½t FAIT
+    public float doubleMineralDropChance = 0;          // Chance de doubler un minï¿½ral FAIT
 
 
     // 06-XXXX-AA-LL-XX-XX-SS-00-00 : Boots-ID-Defense-Life-CritC-CritD-Speed
@@ -36,19 +36,19 @@ public class Boots : Item
 
         float levelMultiplier = 1 + ((level - 1) * 0.2f);
 
-        float defenseBonus = int.Parse(this.itemId.Substring(6, 2)) / 100f;
-        float lifeBonus = int.Parse(this.itemId.Substring(8, 2)) / 100f;
-        float speedBonus = int.Parse(this.itemId.Substring(14, 2)) / 100f;
+        float defenseBonus = (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f;
+        float lifeBonus = (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f;
+        float speedBonus = (int.Parse(this.itemId.Substring(14, 2)) / 100f) - 0.5f;
 
         defense = (int)(baseDefense * (1 + defenseBonus) * levelMultiplier);
         life = (int)(baseLife * (1 + lifeBonus) * levelMultiplier);
-        speed = baseSpeed * speedBonus * levelMultiplier;
+        speed = baseSpeed * (1 + speedBonus) * levelMultiplier;
 
         if (baseDefense != 0)
-            defense += (level - 1); // +1 par niveau au-delà du premier
+            defense += (level - 1); // +1 par niveau au-delï¿½ du premier
 
         if (baseLife != 0)
-            life += (level - 1) * 4; // +4 par niveau au-delà du premier
+            life += (level - 1) * 4; // +4 par niveau au-delï¿½ du premier
 
         if (baseSpeed != 0)
             speed += (level - 1) * 0.01f;
@@ -74,17 +74,17 @@ public class Boots : Item
 
     public float GetBaseSpeed()
     {
-        return baseSpeed * int.Parse(this.itemId.Substring(14, 2)) / 100f;
+        return baseSpeed * (1 + (int.Parse(this.itemId.Substring(14, 2)) / 100f) - 0.5f);
     }
 
     public int GetBaseDefense()
     {
-        return (int)(baseDefense * (1 + int.Parse(this.itemId.Substring(6, 2)) / 100f));
+        return (int)(baseDefense * (1 + (int.Parse(this.itemId.Substring(6, 2)) / 100f) - 0.5f));
     }
 
     public int GetBaseLife()
     {
-        return (int)(baseLife * (1 + int.Parse(this.itemId.Substring(8, 2)) / 100f));
+        return (int)(baseLife * (1 + (int.Parse(this.itemId.Substring(8, 2)) / 100f) - 0.5f));
     }
 
     void GetEnchant()
@@ -109,7 +109,7 @@ public class Boots : Item
                 colorEnchant2 = new Color(135f / 255f, 135f / 255f, 135f / 255f, 0.5f); // Normalized
                 break;
             case "04":
-                // À définir selon le besoin
+                // ï¿½ dï¿½finir selon le besoin
                 break;
             default:
                 armorEnchant = ARMOR_ENCHANT.NULL;

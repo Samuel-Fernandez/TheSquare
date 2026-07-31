@@ -20,5 +20,5 @@ MonoBehaviour:
   ambientSound: []
   sunIntensity: 0
   playerCantOpenInventory: 0
-  sceneAsset: {fileID: 102900000, guid: 278a1804cc473424f8d5daf76bdfe481, type: 3}
-  sceneName: MyliaLakeEast
+  sceneAsset: {fileID: 102900000, guid: 699e5574b4312ac4fa0e17880922d6b4, type: 3}
+  sceneName: MyliaWest

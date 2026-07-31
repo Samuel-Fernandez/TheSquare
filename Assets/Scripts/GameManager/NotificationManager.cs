@@ -11,6 +11,7 @@ public class NotificationManager : MonoBehaviour
     public GameObject popup;
     public GameObject bubbleCanvas;
     public GameObject cinematicBubbleCanvas;
+    public GameObject importantBubbleCanvas;
 
     public GameObject specialArrow;
     public GameObject specialSquareCoins;
@@ -98,6 +99,20 @@ public class NotificationManager : MonoBehaviour
         UIAnimator.instance.ActivateObjectWithTransition(itemResume, .5f);
         itemResume.GetComponent<ItemResume>().resumeType = ItemResumeType.SPECIAL_OBJECT;
         itemResume.GetComponent<ItemResume>().Initialize(tool);
+    }
+
+    public void ShowItemResume(StanceSO stance)
+    {
+        GameObject itemResume = Instantiate(itemResumePrefab);
+        UIAnimator.instance.ActivateObjectWithTransition(itemResume, .5f);
+        itemResume.GetComponent<ItemResume>().Initialize(stance);
+    }
+
+    public void ShowItemResume(RuneSO rune)
+    {
+        GameObject itemResume = Instantiate(itemResumePrefab);
+        UIAnimator.instance.ActivateObjectWithTransition(itemResume, .5f);
+        itemResume.GetComponent<ItemResume>().Initialize(rune);
     }
 
     public void ShowTitle(string title, string subTitle)
@@ -217,11 +232,21 @@ public class NotificationManager : MonoBehaviour
 
 
 
-    public void ShowBubble(List<string> texts, System.Action callback = null)
+    public void ShowBubble(List<string> texts, System.Action callback = null, string soundId = "")
     {
         onBubbleComplete = callback;
         bubbleCanvas.GetComponent<BubbleText>().texts = texts;
+        bubbleCanvas.GetComponent<BubbleText>().soundIdToPlay = soundId;
         bubbleInstance = Instantiate(bubbleCanvas);
+    }
+
+    public void ShowImportantBubble(List<string> texts, System.Action callback = null, string soundId = "", Color? bubbleColor = null)
+    {
+        onBubbleComplete = callback;
+        importantBubbleCanvas.GetComponent<BubbleText>().texts = texts;
+        importantBubbleCanvas.GetComponent<BubbleText>().soundIdToPlay = soundId;
+        importantBubbleCanvas.GetComponent<BubbleText>().bubbleColor = bubbleColor ?? Color.black;
+        bubbleInstance = Instantiate(importantBubbleCanvas);
     }
 
     public void OnBubbleDestroyed()

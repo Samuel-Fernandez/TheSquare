@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 5192976307277457494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8594751075433831578}
@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 8471393971250956812}
   - component: {fileID: 2190764044263813236}
   - component: {fileID: 8291989089735108768}
+  - component: {fileID: 2911419646257974471}
   m_Layer: 5
   m_Name: BubbleCanvas
   m_TagString: Untagged
@@ -384,12 +385,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 2431025323506496263}
+  backgroundImage: {fileID: 7086326207021036493}
   texts:
-  - yolo
-  - comment que ca va
-  - I am really good. this is a beautiful day.
-  - 'But the world is sad... So sad... '
+  - Mhh... I suppose this bridge leads to Mylia's sanctuary...
+  - But how do we get past this great barrier ?
+  - Wake me up when you've figured it out ? This cold is putting me to sleep...
   typingSpeed: 0.05
+  soundIdToPlay: Araxie
+  isCinematicBubble: 0
+  cinematicDisplayDuration: 2.5
+  isImportantBubble: 0
+  shakeIntensity: 3
+  glitchChance: 0.15
+  bubbleColor: {r: 0, g: 0, b: 0, a: 1}
+  bubbleTransformToFloat: {fileID: 0}
+  floatSpeed: 2
+  floatAmplitude: 10
+--- !u!114 &2911419646257974471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488797911216381655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92557c2c0fb8d4f428ab781c89fe5d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSounds:
+  - id: TheSquare
+    clips:
+    - {fileID: 8300000, guid: b60c58df245c7a243a73e2c8594c54b1, type: 3}
+  - id: Araxie
+    clips:
+    - {fileID: 8300000, guid: 7cc1772dfb5b52d498b7f8ccbeb5aeb3, type: 3}
+    - {fileID: 8300000, guid: ef9423c38b7a07442a8553490495467b, type: 3}
+    - {fileID: 8300000, guid: 52c8fb50f0537c14eb4744f36235e218, type: 3}
+    - {fileID: 8300000, guid: 4c5b87e2237496849a20f8bb8b3df5b1, type: 3}
+    - {fileID: 8300000, guid: c978de5b253ecc44b9cb94d0933d3a5e, type: 3}
+    - {fileID: 8300000, guid: 3632d3d9e980ee641a9da91649d6e656, type: 3}
 --- !u!1 &6927278765738647302
 GameObject:
   m_ObjectHideFlags: 0

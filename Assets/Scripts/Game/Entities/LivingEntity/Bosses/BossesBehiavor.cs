@@ -49,6 +49,13 @@ public class BossesBehiavor : MonoBehaviour
 
     private void OnDestroy()
     {
+        LifeManager lifeManager = GetComponent<LifeManager>();
+        if (lifeManager != null && lifeManager.life > 0)
+            return;
+
+        if (PlayerManager.instance == null || PlayerManager.instance.player == null)
+            return;
+
         NotificationManager.instance.ShowSpecialPopUpSquareCoins(
                 PlayerManager.instance.player.GetComponent<Stats>().money.ToString(),
                 (PlayerManager.instance.player.GetComponent<Stats>().money + GetComponent<Stats>().money).ToString());

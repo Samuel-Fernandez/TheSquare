@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -437882055, guid: e6f1932e5c1837646a4755a45879bab7, type: 3}
+    - target: {fileID: 2713717967751253499, guid: 1871a848b75ebb84eb30f2f9c7240c4d, type: 3}
+      propertyPath: loots
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f7c8385fd441c44fb8bd4d7aa4bfe80, type: 2}
     - target: {fileID: 2910370185860577670, guid: 1871a848b75ebb84eb30f2f9c7240c4d, type: 3}
       propertyPath: m_Name
       value: WizardSkeleton

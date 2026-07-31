@@ -12,7 +12,8 @@ public enum CameraFilter
     OLD,
     SHYRON,
     SHADOW_MEDAL,
-    BLIZZARD
+    BLIZZARD,
+    SQUARE_EMERGENCY
 }
 
 public class CameraManager : MonoBehaviour
@@ -114,6 +115,16 @@ public class CameraManager : MonoBehaviour
                 SetBloomEffect(0.6f, 0.5f); // Grosse diffusion lumineuse liée à la neige
                 SetLensDistortionEffect(-0.2f, 0.5f); // Légère distorsion pour l'effet de vent violent
                 SetDepthOfFieldEffect(1f, 8f, 0.5f); // Vision légèrement floutée
+                break;
+            case CameraFilter.SQUARE_EMERGENCY:
+                float transitionTime = 0.05f;
+                SetChromaticAberrationEffect(1f, transitionTime, defaultCamera); // Forte aberration chromatique pour stress
+                ChangeCameraColor(new Color(255f / 255f, 120f / 255f, 120f / 255f), transitionTime, defaultCamera); // Rouge moins vif, plus lumineux
+                SetVignetteEffect(0.35f, 0.8f, transitionTime, defaultCamera); // Vignettage allégé pour plus de luminosité
+                SetFilmGrainEffect(3f, transitionTime); // Bruit pour angoisse
+                SetBloomEffect(0.5f, transitionTime); // Bloom modéré
+                SetLensDistortionEffect(-0.3f, transitionTime); // Distorsion
+                SetDepthOfFieldEffect(0f, 0f, transitionTime);
                 break;
             default:
                 break;
@@ -347,12 +358,12 @@ public class CameraManager : MonoBehaviour
         ZoomCamera(defaultOrthoSize, zoomSpeed, camera);
     }
 
-    // R�f�rence publique pour le Volume
+    // Rfrence publique pour le Volume
     public Volume postProcessVolume;
 
-    public void ChangeCameraColor(Color targetColor, float transitionSpeed, Camera camera = null)
+    public void ChangeCameraColor(Color targetColor, float transitionTime, Camera camera = null)
     {
-        // Utiliser la cam�ra fournie ou chercher la cam�ra de la CinemachineVirtualCamera
+        // Utiliser la camra fournie ou chercher la camra de la CinemachineVirtualCamera
         if (camera == null)
         {
             CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
@@ -362,17 +373,17 @@ public class CameraManager : MonoBehaviour
             }
         }
 
-        // Assurer que la cam�ra est d�finie
+        // Assurer que la camra est dfinie
         if (camera != null)
         {
-            // Utiliser la r�f�rence publique de Volume
+            // Utiliser la rfrence publique de Volume
             if (postProcessVolume != null)
             {
                 VolumeProfile profile = postProcessVolume.profile;
                 ColorAdjustments colorAdjustments;
                 if (profile.TryGet(out colorAdjustments))
                 {
-                    StartCoroutine(ChangeColorRoutine(colorAdjustments, targetColor, transitionSpeed));
+                    StartCoroutine(ChangeColorRoutine(colorAdjustments, targetColor, transitionTime));
                 }
                 else
                 {
@@ -390,18 +401,16 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeColorRoutine(ColorAdjustments colorAdjustments, Color targetColor, float transitionSpeed)
+    private IEnumerator ChangeColorRoutine(ColorAdjustments colorAdjustments, Color targetColor, float transitionTime)
     {
         Color startColor = colorAdjustments.colorFilter.value;
         float elapsedTime = 0f;
 
-        // Calcul de la dur�e de transition (1 / transitionSpeed)
-        float transitionDuration = 1f / transitionSpeed;
-
-        while (elapsedTime < transitionDuration)
+        while (elapsedTime < transitionTime)
         {
-            colorAdjustments.colorFilter.value = Color.Lerp(startColor, targetColor, elapsedTime / transitionDuration);
-            elapsedTime += Time.deltaTime;
+            float t = transitionTime > 0 ? elapsedTime / transitionTime : 1f;
+            colorAdjustments.colorFilter.value = Color.Lerp(startColor, targetColor, t);
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 

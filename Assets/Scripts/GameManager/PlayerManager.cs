@@ -388,10 +388,10 @@ public class PlayerManager : MonoBehaviour
                             regenRate += helmet.enchantLevel;
                             break;
                         case ARMOR_ENCHANT.DRAGON_SKIN:
-                            dragonSkin += helmet.enchantLevel * 3;
+                            dragonSkin += helmet.enchantLevel * 0.03f;
                             break;
                         case ARMOR_ENCHANT.FANTOM_DODGE:
-                            dodgeChance += helmet.enchantLevel * 2;
+                            dodgeChance += helmet.enchantLevel * 0.02f;
                             break;
                     }
                 }
@@ -410,10 +410,10 @@ public class PlayerManager : MonoBehaviour
                             regenRate += chestplate.enchantLevel;
                             break;
                         case ARMOR_ENCHANT.DRAGON_SKIN:
-                            dragonSkin += chestplate.enchantLevel * 3;
+                            dragonSkin += chestplate.enchantLevel * 0.03f;
                             break;
                         case ARMOR_ENCHANT.FANTOM_DODGE:
-                            dodgeChance += chestplate.enchantLevel * 2;
+                            dodgeChance += chestplate.enchantLevel * 0.02f;
                             break;
                     }
                 }
@@ -432,10 +432,10 @@ public class PlayerManager : MonoBehaviour
                             regenRate += leggings.enchantLevel;
                             break;
                         case ARMOR_ENCHANT.DRAGON_SKIN:
-                            dragonSkin += leggings.enchantLevel * 3;
+                            dragonSkin += leggings.enchantLevel * 0.03f;
                             break;
                         case ARMOR_ENCHANT.FANTOM_DODGE:
-                            dodgeChance += leggings.enchantLevel * 2;
+                            dodgeChance += leggings.enchantLevel * 0.02f;
                             break;
                     }
                 }
@@ -454,10 +454,10 @@ public class PlayerManager : MonoBehaviour
                             regenRate += boots.enchantLevel;
                             break;
                         case ARMOR_ENCHANT.DRAGON_SKIN:
-                            dragonSkin += boots.enchantLevel * 3;
+                            dragonSkin += boots.enchantLevel * 0.03f;
                             break;
                         case ARMOR_ENCHANT.FANTOM_DODGE:
-                            dodgeChance += boots.enchantLevel * 2;
+                            dodgeChance += boots.enchantLevel * 0.02f;
                             break;
                     }
                 }
@@ -473,16 +473,16 @@ public class PlayerManager : MonoBehaviour
                     switch (weapon.enchant)
                     {
                         case WEAPON_ENCHANT.POISON:
-                            poisonAttackChance += weapon.enchantLevel * 5;
+                            poisonAttackChance += weapon.enchantLevel * 0.05f;
                             break;
                         case WEAPON_ENCHANT.ICE:
-                            iceAttackChance += weapon.enchantLevel * 5;
+                            iceAttackChance += weapon.enchantLevel * 0.05f;
                             break;
                         case WEAPON_ENCHANT.FLAME:
-                            fireAttackChance += weapon.enchantLevel * 5;
+                            fireAttackChance += weapon.enchantLevel * 0.05f;
                             break;
                         case WEAPON_ENCHANT.VAMPIRE:
-                            vampire += weapon.enchantLevel * 5;
+                            vampire += weapon.enchantLevel * 0.05f;
                             break;
                     }
                 }

@@ -19,25 +19,37 @@ public class LootChance : MonoBehaviour
 
     private GameObject GetRandomLootItem()
     {
-        List<GameObject> lootPool = new List<GameObject>();
+        if (loots == null || loots.loots.Count == 0) return null;
 
-        // Add each loot item to the pool according to its chance
+        // On tire un nombre entre 0 et 9999 (soit 10000 possibilités)
+        int roll = Random.Range(0, 10000);
+        int currentWeight = 0;
+
         foreach (LootContainer lootContainer in loots.loots)
         {
-            for (int i = 0; i < lootContainer.lootChance; i++)
+            float finalChance = lootContainer.lootChance;
+            
+            // J'applique le dropChance du joueur comme un multiplicateur.
+            // (Si c'est 1.5, tu auras 50% de chance en plus d'avoir cet objet)
+            if (PlayerManager.instance != null && PlayerManager.instance.dropChance > 0)
             {
-                lootPool.Add(lootContainer.item);
+                // Ajouter une valeur fixe favorise mathématiquement beaucoup plus les objets rares !
+                // Ex: si dropChance ajoute +50 chances...
+                // Un objet rare (5 chances) passe à 55 (probabilité x11) !
+                // Un objet très commun (3000 chances) passe à 3050 (presque inchangé).
+                finalChance += (PlayerManager.instance.dropChance * 10f); // Le *10f est à ajuster selon ton équilibrage
+            }
+
+            currentWeight += (int)finalChance;
+
+            // Si notre jet tombe dans la tranche de cet objet, on le drop
+            if (roll < currentWeight)
+            {
+                return lootContainer.item;
             }
         }
 
-        // If the loot pool is empty, return null
-        if (lootPool.Count == 0)
-        {
-            return null;
-        }
-
-        // Pick a random item from the pool
-        int randomIndex = Random.Range(0 + (int)(PlayerManager.instance.dropChance * 100 / lootPool.Count), lootPool.Count);
-        return lootPool[randomIndex];
+        // Si on dépasse le poids total de tous les objets, le tirage tombe dans les "places restantes"
+        return null;
     }
 }

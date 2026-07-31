@@ -150,6 +150,7 @@ MonoBehaviour:
   toolType: 0
   image: {fileID: 3786950883816487711}
   cursor: {fileID: 4420763042260518486}
+  button: {fileID: 0}
 --- !u!1 &3786950883816487711
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,8 +185,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000026077, y: 0.067}
-  m_SizeDelta: {x: 123.0686, y: 123.0686}
+  m_AnchoredPosition: {x: 0.00000026077, y: 0.04075229}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7469196460502468147
 CanvasRenderer:

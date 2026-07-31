@@ -7,7 +7,7 @@ public struct Particles
 {
     public GameObject particleSystem;
     public string id;
-    public bool makeChild; // Nouveau champ ajouté
+    public bool makeChild; // Nouveau champ ajoutï¿½
 }
 
 
@@ -52,7 +52,7 @@ public class ObjectParticles : MonoBehaviour
 
             GameObject temp = Instantiate(particle.particleSystem, position, rotation == default ? Quaternion.identity : rotation);
 
-            // Ajout de la parentalité si makeChild est vrai
+            // Ajout de la parentalitï¿½ si makeChild est vrai
             if (particle.makeChild)
             {
                 temp.transform.SetParent(transform);
@@ -150,7 +150,7 @@ public class ObjectParticles : MonoBehaviour
             }
             else
             {
-                particleCoroutine = null; // Réinitialise la coroutine
+                particleCoroutine = null; // Rï¿½initialise la coroutine
                 yield break;
             }
 

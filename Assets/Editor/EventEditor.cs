@@ -21,6 +21,7 @@ public class EventEditor : Editor
     SerializedProperty positionProp;
     SerializedProperty durationProp;
     SerializedProperty absolutePositionProp;
+    SerializedProperty targetSizeProp;
     SerializedProperty emotionsProp;
     SerializedProperty lastSpriteStayProp;
     SerializedProperty battleTypeProp;
@@ -38,6 +39,10 @@ public class EventEditor : Editor
     SerializedProperty componentTypeProp;
     SerializedProperty methodNameProp;
     SerializedProperty parametersProp;
+    SerializedProperty isImportantBubbleProp;
+    SerializedProperty bubbleSoundIdProp;
+    SerializedProperty bubbleColorProp;
+    SerializedProperty cameraFilterProp;
 
     void OnEnable()
     {
@@ -58,6 +63,7 @@ public class EventEditor : Editor
         positionProp = serializedObject.FindProperty("position");
         durationProp = serializedObject.FindProperty("duration");
         absolutePositionProp = serializedObject.FindProperty("absolutePosition");
+        targetSizeProp = serializedObject.FindProperty("targetSize");
         emotionsProp = serializedObject.FindProperty("emotions");
         lastSpriteStayProp = serializedObject.FindProperty("lastSpriteStay");
 
@@ -78,6 +84,10 @@ public class EventEditor : Editor
         componentTypeProp = serializedObject.FindProperty("componentType");
         methodNameProp = serializedObject.FindProperty("methodName");
         parametersProp = serializedObject.FindProperty("parameters");
+        isImportantBubbleProp = serializedObject.FindProperty("isImportantBubble");
+        bubbleSoundIdProp = serializedObject.FindProperty("bubbleSoundId");
+        bubbleColorProp = serializedObject.FindProperty("bubbleColor");
+        cameraFilterProp = serializedObject.FindProperty("cameraFilter");
     }
 
     public override void OnInspectorGUI()
@@ -125,10 +135,18 @@ public class EventEditor : Editor
                         break;
                     case PnjEventType.SPEAK:
                         EditorGUILayout.PropertyField(idTextProp);
+                        EditorGUILayout.PropertyField(isImportantBubbleProp, new GUIContent("Is Important Bubble"));
+                        EditorGUILayout.PropertyField(bubbleSoundIdProp, new GUIContent("Bubble Sound ID"));
+                        if (isImportantBubbleProp.boolValue)
+                            EditorGUILayout.PropertyField(bubbleColorProp, new GUIContent("Bubble Color"));
                         break;
                     case PnjEventType.ANIM:
                         EditorGUILayout.PropertyField(idTextProp, new GUIContent("Animation Name"));
                         EditorGUILayout.PropertyField(lastSpriteStayProp);
+                        break;
+                    case PnjEventType.CHANGE_SIZE:
+                        EditorGUILayout.PropertyField(targetSizeProp, new GUIContent("Target Size"));
+                        EditorGUILayout.PropertyField(durationProp);
                         break;
                 }
                 break;
@@ -173,6 +191,8 @@ public class EventEditor : Editor
                     }
                     else if (effect == CameraEffect.COLOR_CHANGE)
                         EditorGUILayout.PropertyField(colorChangeProp);
+                    else if (effect == CameraEffect.FILTER)
+                        EditorGUILayout.PropertyField(cameraFilterProp);
                 }
                 break;
 
@@ -182,6 +202,10 @@ public class EventEditor : Editor
 
             case EventType.TEXT:
                 EditorGUILayout.PropertyField(idTextProp);
+                EditorGUILayout.PropertyField(isImportantBubbleProp, new GUIContent("Is Important Bubble"));
+                EditorGUILayout.PropertyField(bubbleSoundIdProp, new GUIContent("Bubble Sound ID"));
+                if (isImportantBubbleProp.boolValue)
+                    EditorGUILayout.PropertyField(bubbleColorProp, new GUIContent("Bubble Color"));
                 break;
 
             case EventType.CHANGE_SCENE:

@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 332476439587847919, guid: 318c2065463bd934b8bb7bddb05ba625, type: 3}
       propertyPath: m_Name
-      value: BlueWolf Variant
+      value: BlueWolf
+      objectReference: {fileID: 0}
+    - target: {fileID: 673173597122071186, guid: 318c2065463bd934b8bb7bddb05ba625, type: 3}
+      propertyPath: loots
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1128657186520749261, guid: 318c2065463bd934b8bb7bddb05ba625, type: 3}
       propertyPath: m_Color.b
@@ -78,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5049689200110355541, guid: 318c2065463bd934b8bb7bddb05ba625, type: 3}
       propertyPath: strength
-      value: 11
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5049689200110355541, guid: 318c2065463bd934b8bb7bddb05ba625, type: 3}
       propertyPath: knockbackPower

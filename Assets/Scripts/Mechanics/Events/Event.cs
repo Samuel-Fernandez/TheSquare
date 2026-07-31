@@ -29,7 +29,8 @@ public enum CameraEffect
     ZOOM,
     DEZOOM,
     COLOR_CHANGE,
-    SHAKE
+    SHAKE,
+    FILTER
 }
 
 public enum BattleEventType
@@ -46,6 +47,7 @@ public enum PnjEventType
     SPEAK,
     ANIM,
     REMOVE,
+    CHANGE_SIZE
 }
 
 [System.Serializable]
@@ -111,11 +113,15 @@ public class Event : ScriptableObject
     public PnjEventType pnjType;
     public List<string> idPnj;
     public bool absolutePosition;
+    public Vector2 targetSize;
 
     // attributes pnj
     public string idText;
     public PnjEmotions emotions;
     public bool lastSpriteStay;
+    public bool isImportantBubble;
+    public string bubbleSoundId;
+    public Color bubbleColor = Color.black;
 
     // camera type
     public CameraEventType cameraType;
@@ -124,6 +130,7 @@ public class Event : ScriptableObject
     public float frequencyShake;
     public float zoomPower;
     public Color colorChange;
+    public CameraFilter cameraFilter;
 
     // battle type
     public bool canLeave;

@@ -19,21 +19,25 @@ MonoBehaviour:
   playerCanMove: 0
   stopMusic: 0
   position: {x: 0, y: 0}
-  duration: 4
+  duration: 3
   cinematicContainer: []
   alreadyOnScene: 0
   pnjType: 0
   idPnj: []
   absolutePosition: 0
+  targetSize: {x: 0, y: 0}
   idText: 
   emotions: 0
   lastSpriteStay: 0
+  isImportantBubble: 0
+  bubbleSoundId: 
   cameraType: 0
   cameraEffect: 0
   amplitudeShake: 0
   frequencyShake: 0
   zoomPower: 0
   colorChange: {r: 0, g: 0, b: 0, a: 0}
+  cameraFilter: 0
   canLeave: 0
   battleType: 0
   colliderRadius: 0
