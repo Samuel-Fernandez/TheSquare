@@ -14,10 +14,14 @@ public class ProjectileBehavior : MonoBehaviour
     public float knockbackPower;
     bool targeted; // Si true, emp�che de nouvelles interactions
     public bool destroyOnCollision = false; // Si se d�truit directement apr�s collision
+    public string fireParticleName = "Flames";
+    public GameObject fireEffect;
+    private bool isOnFire = false;
     GameObject launcher;
 
     ObjectAnimation anim;
     ObjectParticles particles;
+    EntityEffects entityEffects;
 
     private Vector2 movementDirection;
 
@@ -28,6 +32,7 @@ public class ProjectileBehavior : MonoBehaviour
     {
         anim = GetComponent<ObjectAnimation>();
         particles = GetComponent<ObjectParticles>();
+        entityEffects = GetComponent<EntityEffects>();
         //InitMovementAndRotation();
     }
 
@@ -105,6 +110,30 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Le projectile traverse le LittleBrasier sans s'y arr�ter, mais s'enflamme automatiquement
+        // au passage : il transmettra ensuite le feu � sa v�ritable cible d'impact, si elle le permet.
+        if (collision.GetComponent<LittleBrasierBehiavor>() != null)
+        {
+            if (!isOnFire)
+            {
+                isOnFire = true;
+
+                if (entityEffects != null)
+                {
+                    // Le fireEffect est piloté à chaque frame par EntityEffects.Update() (DetermineState) :
+                    // le SetActive direct se fait immédiatement écraser. Il faut passer par son isFire.
+                    entityEffects.fireForce = Mathf.Max(strength, 1);
+                    entityEffects.isFire = true;
+                }
+                else if (fireEffect != null)
+                    fireEffect.SetActive(true);
+                else if (particles != null)
+                    particles.SpawnParticle(fireParticleName, gameObject, 0.15f);
+            }
+
+            return;
+        }
+
         // Active les interrupteurs (SwitchBehiavor) en premier
         var switcher = collision.GetComponent<SwitchBehiavor>();
         if (switcher != null)
@@ -126,6 +155,8 @@ public class ProjectileBehavior : MonoBehaviour
         {
             if (particles != null)
                 particles.StopSpawningParticles();
+
+            TryIgniteTarget(collision);
 
             var targetStats = collision.GetComponent<Stats>();
             var destroyableObjects = collision.GetComponent<DestroyableBehiavor>();
@@ -186,6 +217,17 @@ public class ProjectileBehavior : MonoBehaviour
         }
     }
 
+
+    private void TryIgniteTarget(Collider2D collision)
+    {
+        if (!isOnFire) return;
+
+        EntityEffects targetEffects = collision.GetComponent<EntityEffects>();
+        if (targetEffects != null && targetEffects.canBeFire)
+        {
+            targetEffects.SetState(strength, true);
+        }
+    }
 
     public void AttachAndDestroy(Transform parent)
     {

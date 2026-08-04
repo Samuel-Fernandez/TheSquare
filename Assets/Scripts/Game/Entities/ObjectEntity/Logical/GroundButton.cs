@@ -19,21 +19,21 @@ public class GroundButton : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    // Système de synchronisation multi-boutons
+    // Systï¿½me de synchronisation multi-boutons
     private static Dictionary<GameObject, List<GroundButton>> sharedEntityButtons = new Dictionary<GameObject, List<GroundButton>>();
 
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        // Si pas d'entités logiques -> pas d'erreur bloquante, mais on continue
+        // Si pas d'entitï¿½s logiques -> pas d'erreur bloquante, mais on continue
         if (logicalEntites == null || logicalEntites.Count == 0 || logicalEntites[0] == null)
         {
-            Debug.LogWarning($"[GroundButton:{name}] Aucun logicalEntity assigné -> le bouton sera pressable mais n'activera rien.");
+            Debug.LogWarning($"[GroundButton:{name}] Aucun logicalEntity assignï¿½ -> le bouton sera pressable mais n'activera rien.");
         }
         else
         {
-            // Enregistrer ce bouton pour chaque entité logique qu'il contrôle
+            // Enregistrer ce bouton pour chaque entitï¿½ logique qu'il contrï¿½le
             RegisterSharedEntities();
 
             // Initialisation de l'eventContainer (event camera move)
@@ -50,7 +50,7 @@ public class GroundButton : MonoBehaviour
                 isOn = true;
                 spriteRenderer.sprite = onSprite;
 
-                // Exécute seulement si des entités existent
+                // Exï¿½cute seulement si des entitï¿½s existent
                 if (logicalEntites != null && logicalEntites.Count > 0 && logicalEntites[0] != null)
                     ToggleGenericEntities();
 
@@ -61,11 +61,11 @@ public class GroundButton : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Nettoyer les références lors de la destruction
+        // Nettoyer les rï¿½fï¿½rences lors de la destruction
         UnregisterSharedEntities();
     }
 
-    // Enregistre ce bouton dans le dictionnaire pour chaque entité partagée
+    // Enregistre ce bouton dans le dictionnaire pour chaque entitï¿½ partagï¿½e
     private void RegisterSharedEntities()
     {
         if (logicalEntites == null) return;
@@ -85,7 +85,7 @@ public class GroundButton : MonoBehaviour
             }
         }
 
-        // Debug: afficher les entités partagées
+        // Debug: afficher les entitï¿½s partagï¿½es
         Debug.Log($"[{name}] Registered entities:");
         foreach (GameObject entity in logicalEntites)
         {
@@ -117,13 +117,13 @@ public class GroundButton : MonoBehaviour
         }
     }
 
-    // Vérifie si une entité est partagée avec d'autres boutons
+    // Vï¿½rifie si une entitï¿½ est partagï¿½e avec d'autres boutons
     private bool IsEntityShared(GameObject entity)
     {
         return sharedEntityButtons.ContainsKey(entity) && sharedEntityButtons[entity].Count > 1;
     }
 
-    // Vérifie si tous les boutons partageant cette entité sont activés
+    // Vï¿½rifie si tous les boutons partageant cette entitï¿½ sont activï¿½s
     private bool AreAllSharedButtonsActive(GameObject entity)
     {
         if (!sharedEntityButtons.ContainsKey(entity))
@@ -132,7 +132,7 @@ public class GroundButton : MonoBehaviour
         return sharedEntityButtons[entity].All(button => button.isOn);
     }
 
-    // Vérifie si ce bouton est le dernier à être activé pour une entité partagée
+    // Vï¿½rifie si ce bouton est le dernier ï¿½ ï¿½tre activï¿½ pour une entitï¿½ partagï¿½e
     private bool IsLastButtonActivated(GameObject entity)
     {
         if (!sharedEntityButtons.ContainsKey(entity))
@@ -145,7 +145,7 @@ public class GroundButton : MonoBehaviour
     }
 
 
-    // Nouvelle méthode pour appliquer l'état uniquement aux entités génériques
+    // Nouvelle mï¿½thode pour appliquer l'ï¿½tat uniquement aux entitï¿½s gï¿½nï¿½riques
     private void ToggleGenericEntities()
     {
         foreach (GameObject entity in logicalEntites)
@@ -154,7 +154,8 @@ public class GroundButton : MonoBehaviour
 
             bool hasSpecificScript = entity.GetComponent<DoorBehiavor>() != null ||
                                      entity.GetComponent<Spades>() != null ||
-                                     entity.GetComponent<SkeletonBridgeBehiavor>() != null;
+                                     entity.GetComponent<SkeletonBridgeBehiavor>() != null ||
+                                     entity.GetComponent<RustCircleBehiavor>() != null;
 
             if (!hasSpecificScript)
             {
@@ -184,8 +185,10 @@ public class GroundButton : MonoBehaviour
 
         bool isValidPlayer = obj.GetComponent<Stats>() != null && obj.GetComponent<Stats>().entityType == EntityType.Player;
         bool isValidCrate = obj.GetComponent<WoodenCrateBehavior>() != null && CheckDistanceCrate(obj);
+        RockBoulderBehiavor boulder = obj.GetComponent<RockBoulderBehiavor>();
+        bool isValidBoulder = boulder != null && !boulder.IsSliding && CheckDistanceCrate(obj);
 
-        if (!activeObjects.Contains(obj) && (isValidPlayer || isValidCrate))
+        if (!activeObjects.Contains(obj) && (isValidPlayer || isValidCrate || isValidBoulder))
         {
             activeObjects.Add(obj);
 
@@ -194,12 +197,12 @@ public class GroundButton : MonoBehaviour
                 obj.transform.position = transform.position + new Vector3(0, 0.5f, 0);
                 playerInteraction = true;
 
-                // Met à jour l'eventContainer à chaque activation
+                // Met ï¿½ jour l'eventContainer ï¿½ chaque activation
                 UpdateEventContainer();
 
                 ToggleButton();
 
-                // Ne pas jouer l'événement ici, il sera géré dans ToggleLogicalEntities
+                // Ne pas jouer l'ï¿½vï¿½nement ici, il sera gï¿½rï¿½ dans ToggleLogicalEntities
 
                 if (isOneShot)
                     GetComponent<Collider2D>().enabled = false;
@@ -213,6 +216,8 @@ public class GroundButton : MonoBehaviour
 
         bool isValidPlayer = obj.GetComponent<Stats>() != null && obj.GetComponent<Stats>().entityType == EntityType.Player;
         bool isValidCrate = obj.GetComponent<WoodenCrateBehavior>() != null && !CheckDistanceCrate(obj);
+        RockBoulderBehiavor boulder = obj.GetComponent<RockBoulderBehiavor>();
+        bool isValidBoulder = boulder != null && !CheckDistanceCrate(obj);
 
         if (activeObjects.Contains(obj))
         {
@@ -273,12 +278,12 @@ public class GroundButton : MonoBehaviour
 
         if (playerInteraction && isOn)
         {
-            // Si au moins une entité est partagée
+            // Si au moins une entitï¿½ est partagï¿½e
             if (hasSharedEntities)
             {
                 Debug.Log($"[{name}] Has shared entities, checking if all buttons are active...");
 
-                // Vérifier si TOUTES les entités partagées ont tous leurs boutons activés
+                // Vï¿½rifier si TOUTES les entitï¿½s partagï¿½es ont tous leurs boutons activï¿½s
                 bool allSharedEntitiesReady = true;
                 foreach (GameObject entity in logicalEntites)
                 {
@@ -301,7 +306,7 @@ public class GroundButton : MonoBehaviour
             }
             else
             {
-                // Aucune entité partagée, comportement normal
+                // Aucune entitï¿½ partagï¿½e, comportement normal
                 Debug.Log($"[{name}] No shared entities, playing event normally");
                 shouldPlayEvent = true;
             }
@@ -325,11 +330,11 @@ public class GroundButton : MonoBehaviour
         {
             if (entity == null) continue;
 
-            // Si l'entité est partagée, ne l'activer que si tous les boutons sont pressés
+            // Si l'entitï¿½ est partagï¿½e, ne l'activer que si tous les boutons sont pressï¿½s
             if (IsEntityShared(entity) && !AreAllSharedButtonsActive(entity))
             {
                 Debug.Log($"[{name}] Skipping entity '{entity.name}' (not all buttons active)");
-                continue; // Passer à l'entité suivante sans activer celle-ci
+                continue; // Passer ï¿½ l'entitï¿½ suivante sans activer celle-ci
             }
 
             Debug.Log($"[{name}] Activating entity '{entity.name}'");
@@ -346,6 +351,10 @@ public class GroundButton : MonoBehaviour
             else if (entity.GetComponent<SkeletonBridgeBehiavor>() is SkeletonBridgeBehiavor bridge)
             {
                 bridge.Activate();
+            }
+            else if (entity.GetComponent<RustCircleBehiavor>() is RustCircleBehiavor rustCircle)
+            {
+                rustCircle.Toggle();
             }
             else
             {

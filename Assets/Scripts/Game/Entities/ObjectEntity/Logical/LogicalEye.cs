@@ -9,8 +9,8 @@ public class LogicalEye : MonoBehaviour
 
     [Header("State")]
     public bool isOn = false;
-    public bool isOneShot = false; // Si activable qu’une seule fois
-    public float timerBeforeOff = 3f; // Durée avant extinction automatique
+    public bool isOneShot = false; // Si activable quï¿½une seule fois
+    public float timerBeforeOff = 3f; // Durï¿½e avant extinction automatique
 
     [Header("Logic Links")]
     public List<GameObject> logicalObjects;
@@ -21,13 +21,13 @@ public class LogicalEye : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Coroutine deactivateRoutine;
-    private bool hasTriggeredEntities = false; // Pour éviter de relancer les entités plusieurs fois
+    private bool hasTriggeredEntities = false; // Pour ï¿½viter de relancer les entitï¿½s plusieurs fois
 
     private void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-        // Charger l’état sauvegardé
+        // Charger lï¿½ï¿½tat sauvegardï¿½
         bool state;
         SaveManager.instance.twoStateContainer.TryGetState(ID, out state);
 
@@ -46,7 +46,7 @@ public class LogicalEye : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Ne réagit qu’à un projectile, et seulement si pas déjà activé
+        // Ne rï¿½agit quï¿½ï¿½ un projectile, et seulement si pas dï¿½jï¿½ activï¿½
         if (collision.gameObject.GetComponent<ProjectileBehavior>() && !isOn)
         {
             Activate(true);
@@ -64,7 +64,7 @@ public class LogicalEye : MonoBehaviour
         GetComponent<ObjectAnimation>()?.PlayAnimation("Activate");
         spriteRenderer.sprite = activeSprite;
 
-        // Si pas en one-shot, démarrer la désactivation automatique
+        // Si pas en one-shot, dï¿½marrer la dï¿½sactivation automatique
         if (!isOneShot)
         {
             if (deactivateRoutine != null)
@@ -72,11 +72,11 @@ public class LogicalEye : MonoBehaviour
             deactivateRoutine = StartCoroutine(AutoDeactivateRoutine());
         }
 
-        // Vérifie si tous les yeux liés sont actifs avant d'activer les entités
+        // Vï¿½rifie si tous les yeux liï¿½s sont actifs avant d'activer les entitï¿½s
         if (AllLinkedEyesActive() && !hasTriggeredEntities)
         {
             hasTriggeredEntities = true;
-            // On arrête les timers de tous les yeux liés
+            // On arrï¿½te les timers de tous les yeux liï¿½s
             StopAllLinkedTimersAndLockState();
             StartCoroutine(ToggleLogicalEntities(triggerEvents));
         }
@@ -84,7 +84,7 @@ public class LogicalEye : MonoBehaviour
 
     public void Deactivate()
     {
-        if (!isOn || isOneShot) return; // Un œil one-shot ne peut pas être désactivé
+        if (!isOn || isOneShot) return; // Un ï¿½il one-shot ne peut pas ï¿½tre dï¿½sactivï¿½
 
         isOn = false;
         SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(ID, isOn);
@@ -102,14 +102,14 @@ public class LogicalEye : MonoBehaviour
 
     private bool AllLinkedEyesActive()
     {
-        // Vérifie si tous les LogicalEye partageant au moins un logicalObject sont actifs
+        // Vï¿½rifie si tous les LogicalEye partageant au moins un logicalObject sont actifs
         LogicalEye[] allEyes = FindObjectsOfType<LogicalEye>();
         foreach (LogicalEye eye in allEyes)
         {
             foreach (GameObject obj in logicalObjects)
             {
                 if (eye.logicalObjects.Contains(obj) && !eye.isOn)
-                    return false; // Un œil lié n’est pas encore activé
+                    return false; // Un ï¿½il liï¿½ nï¿½est pas encore activï¿½
             }
         }
         return true;
@@ -141,7 +141,7 @@ public class LogicalEye : MonoBehaviour
                 eye.isOn = true;
                 eye.spriteRenderer.sprite = eye.activeSprite;
 
-                // Sauvegarde l’état permanent
+                // Sauvegarde lï¿½ï¿½tat permanent
                 SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(eye.ID, true);
                 GetComponent<Collider2D>().enabled = false;
 
@@ -184,6 +184,10 @@ public class LogicalEye : MonoBehaviour
             else if (entity.TryGetComponent(out LeverBehiavor lever))
             {
                 lever.ToggleLever(false, false);
+            }
+            else if (entity.TryGetComponent(out RustCircleBehiavor rustCircle))
+            {
+                rustCircle.Toggle();
             }
             else
             {

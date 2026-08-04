@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2886743128212580232
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 338946549642014246, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.data[0].id
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.data[0].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: allSounds.Array.data[0].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a277eca70529eee43b8f7d0c55e4dfec, type: 3}
+    - target: {fileID: 3575798504290078807, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 604c12f6b37aa2b409f47f4915c5352b, type: 3}
+    - target: {fileID: 3658753477082252258, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: tempLight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_Name
+      value: Brasier
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.054391198
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8605134107535152261}
+    - targetCorrespondingSourceObject: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6981803166211744260}
+  m_SourcePrefab: {fileID: 100100000, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+--- !u!1 &1343469530708401661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+  m_PrefabInstance: {fileID: 2886743128212580232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &8605134107535152261
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343469530708401661}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0052895546, y: -0.11107826}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.962678, y: 1.2221565}
+  m_EdgeRadius: 0
+--- !u!114 &6981803166211744260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343469530708401661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5776d7a42ced2d4d81c957f8c74641a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firestickPrefab: {fileID: 4977252285876300700, guid: f68d4aeb4d179354e859acd37718e3b4, type: 3}
+  spawnInterval: 8
+  maxFireSticks: 2
+  spawnRadius: 4
+  spawnPositionAttempts: 8
+  obstacleCheckRadius: 1
+  jumpHeight: 0.75
+  jumpDuration: 0.4
+  lightColor: {r: 1, g: 0.55, b: 0.1, a: 1}
+  lightIntensityMin: 0.5
+  lightIntensityMax: 1.5
+  lightRadiusMin: 1
+  lightRadiusMax: 2
+  flickerIntervalMin: 0.05
+  flickerIntervalMax: 0.25
+  flickerTransitionTime: 0.1

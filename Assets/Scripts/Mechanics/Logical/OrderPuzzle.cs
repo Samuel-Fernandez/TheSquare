@@ -144,6 +144,10 @@ public class OrderPuzzle : MonoBehaviour
             {
                 bridge.Activate();
             }
+            else if (entity.GetComponent<RustCircleBehiavor>() is RustCircleBehiavor rustCircle)
+            {
+                rustCircle.Toggle();
+            }
             else
             {
                 entity.SetActive(!entity.activeSelf);

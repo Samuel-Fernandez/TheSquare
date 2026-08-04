@@ -19,11 +19,11 @@ public class SwitchBehiavor : MonoBehaviour
     public SwitchType type = SwitchType.ON_OFF;
     private EntityLight entityLight;
     private ObjectAnimation objectAnimation;
-    public GameObject logicalTarget; // Définit quel groupe ce switch appartient
+    public GameObject logicalTarget; // Dï¿½finit quel groupe ce switch appartient
 
     public string id;
 
-    // Liste statique associant chaque logicalTarget à sa liste de switches
+    // Liste statique associant chaque logicalTarget ï¿½ sa liste de switches
     private static Dictionary<GameObject, List<SwitchBehiavor>> switchesByLogicalTarget = new Dictionary<GameObject, List<SwitchBehiavor>>();
 
     bool playerInteracted = false;
@@ -33,7 +33,7 @@ public class SwitchBehiavor : MonoBehaviour
         entityLight = GetComponent<EntityLight>();
         objectAnimation = GetComponent<ObjectAnimation>();
 
-        // Si le logicalTarget est défini, ajouter ce switch au bon groupe
+        // Si le logicalTarget est dï¿½fini, ajouter ce switch au bon groupe
         if (logicalTarget != null)
         {
             if (!switchesByLogicalTarget.ContainsKey(logicalTarget))
@@ -42,7 +42,7 @@ public class SwitchBehiavor : MonoBehaviour
             }
             switchesByLogicalTarget[logicalTarget].Add(this);
 
-            // Mettre à jour l'état initial du logicalTarget
+            // Mettre ï¿½ jour l'ï¿½tat initial du logicalTarget
             UpdateLogicalTargetState();
         }
     }
@@ -59,25 +59,25 @@ public class SwitchBehiavor : MonoBehaviour
 
     void OnDestroy()
     {
-        // Nettoyer la liste si ce switch est détruit
+        // Nettoyer la liste si ce switch est dï¿½truit
         if (logicalTarget != null && switchesByLogicalTarget.ContainsKey(logicalTarget))
         {
             switchesByLogicalTarget[logicalTarget].Remove(this);
 
-            // Supprimer l'entrée si plus aucun switch n'est lié au logicalTarget
+            // Supprimer l'entrï¿½e si plus aucun switch n'est liï¿½ au logicalTarget
             if (switchesByLogicalTarget[logicalTarget].Count == 0)
             {
                 switchesByLogicalTarget.Remove(logicalTarget);
             }
             else
             {
-                // Mise à jour de l'état du groupe après la suppression de ce switch
+                // Mise ï¿½ jour de l'ï¿½tat du groupe aprï¿½s la suppression de ce switch
                 UpdateLogicalTargetState();
             }
         }
     }
 
-    // Vérifie si tous les switches d'un groupe sont activés
+    // Vï¿½rifie si tous les switches d'un groupe sont activï¿½s
     public bool AreAllSwitchesOn()
     {
         if (logicalTarget == null || !switchesByLogicalTarget.ContainsKey(logicalTarget))
@@ -92,7 +92,7 @@ public class SwitchBehiavor : MonoBehaviour
         return true;
     }
 
-    // Méthode pour mettre à jour l'état du logicalTarget
+    // Mï¿½thode pour mettre ï¿½ jour l'ï¿½tat du logicalTarget
     private void UpdateLogicalTargetState(bool playAnimation = true)
     {
         if (!gameObject.activeInHierarchy) return; // Ne fait rien si l'objet est inactif
@@ -123,7 +123,7 @@ public class SwitchBehiavor : MonoBehaviour
     }
 
 
-    // Arrête tous les timers pour tous les switches du groupe
+    // Arrï¿½te tous les timers pour tous les switches du groupe
     private void StopAllTimersInGroup()
     {
         if (logicalTarget == null || !switchesByLogicalTarget.ContainsKey(logicalTarget))
@@ -138,7 +138,7 @@ public class SwitchBehiavor : MonoBehaviour
         }
     }
 
-    // Arrête tous les timers pour ce switch
+    // Arrï¿½te tous les timers pour ce switch
     private void StopAllTimers()
     {
         StopAllCoroutines();
@@ -147,7 +147,7 @@ public class SwitchBehiavor : MonoBehaviour
     public void SwitchOn(bool playAnimation = true)
     {
         if (isOn)
-            return; // Déjà activé, ne rien faire
+            return; // Dï¿½jï¿½ activï¿½, ne rien faire
 
         isOn = true;
 
@@ -165,14 +165,14 @@ public class SwitchBehiavor : MonoBehaviour
         if (soundContainer != null)
             soundContainer.PlaySound("Switch", 2);
 
-        // Mettre à jour l'état du logicalTarget
+        // Mettre ï¿½ jour l'ï¿½tat du logicalTarget
         UpdateLogicalTargetState(playAnimation);
     }
 
     public void SwitchOff()
     {
         if (!isOn)
-            return; // Déjà désactivé, ne rien faire
+            return; // Dï¿½jï¿½ dï¿½sactivï¿½, ne rien faire
 
         isOn = false;
 
@@ -190,7 +190,7 @@ public class SwitchBehiavor : MonoBehaviour
         if (soundContainer != null)
             soundContainer.PlaySound("Switch", 2);
 
-        // Mettre à jour l'état du logicalTarget
+        // Mettre ï¿½ jour l'ï¿½tat du logicalTarget
         UpdateLogicalTargetState();
     }
 
@@ -198,7 +198,7 @@ public class SwitchBehiavor : MonoBehaviour
     {
         this.playerInteracted = playerInteracted;
         if (wait)
-            return; // Éviter les activations multiples rapprochées
+            return; // ï¿½viter les activations multiples rapprochï¿½es
 
         StartCoroutine(WaitRoutine());
 
@@ -213,7 +213,7 @@ public class SwitchBehiavor : MonoBehaviour
         {
             SwitchOn();
 
-            // Ne démarrer le timer que si tous les switches ne sont pas activés
+            // Ne dï¿½marrer le timer que si tous les switches ne sont pas activï¿½s
             if (!AreAllSwitchesOn())
             {
                 StartCoroutine(TimerRoutine());
@@ -225,7 +225,7 @@ public class SwitchBehiavor : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(timerOffDuration);
 
-        // Ne désactiver que si tous les switches ne sont pas activés
+        // Ne dï¿½sactiver que si tous les switches ne sont pas activï¿½s
         if (!AreAllSwitchesOn())
         {
             SwitchOff();
@@ -244,10 +244,15 @@ public class SwitchBehiavor : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
 
         DoorBehiavor door = logicalTarget.GetComponent<DoorBehiavor>();
+        RustCircleBehiavor rustCircle = logicalTarget.GetComponent<RustCircleBehiavor>();
 
         if (door != null)
         {
             door.OpenDoor();
+        }
+        else if (rustCircle != null)
+        {
+            rustCircle.Toggle();
         }
         else
         {

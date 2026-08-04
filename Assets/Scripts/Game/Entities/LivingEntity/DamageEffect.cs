@@ -14,7 +14,7 @@ public class DamageEffect : MonoBehaviour
         stats = GetComponent<Stats>();
     }
 
-    // Méthode pour déclencher l'effet de clignotement en rouge pendant 0.5 secondes
+    // Mï¿½thode pour dï¿½clencher l'effet de clignotement en rouge pendant 0.5 secondes
     public void DamageEffects(bool setVulnerability = true, Color? color = null)
     {
         StartCoroutine(FlashColorCoroutine(setVulnerability, color ?? Color.red));
@@ -28,10 +28,10 @@ public class DamageEffect : MonoBehaviour
         if (setVulnerability)
             stats.isVulnerable = false;
 
-        // Attendre 0.5 secondes
-        yield return new WaitForSecondsRealtime(0.15f);
+        float invulnerabilityDuration = stats.entityType == EntityType.Player ? 0.5f : 0.25f;
+        yield return new WaitForSecondsRealtime(invulnerabilityDuration);
 
-        // Revenir à la couleur normale
+        // Revenir ï¿½ la couleur normale
         spriteRenderer.color = colorSprite;
 
         if (setVulnerability)

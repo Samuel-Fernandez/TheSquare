@@ -40,12 +40,12 @@ public class UseSpecialObject : MonoBehaviour
 
     IEnumerator RoutineUsingShield(int direction)
     {
-        // Créer un GameObject pour le bouclier
+        // Crï¿½er un GameObject pour le bouclier
         GameObject shieldObject = new GameObject("Shield");
         shieldObject.transform.SetParent(transform);
         GetComponent<SoundContainer>().PlaySound("ShieldEquip", 1);
 
-        // Ajouter un BoxCollider2D pour représenter la zone de protection
+        // Ajouter un BoxCollider2D pour reprï¿½senter la zone de protection
         BoxCollider2D collider = shieldObject.AddComponent<BoxCollider2D>();
         ShieldBehiavor shield = shieldObject.AddComponent<ShieldBehiavor>();
         ObjectParticles particles = shieldObject.AddComponent<ObjectParticles>();
@@ -58,32 +58,32 @@ public class UseSpecialObject : MonoBehaviour
         // Positionner et orienter le bouclier en fonction de la direction
         Vector2 offset = Vector2.zero;
         Vector2 size = Vector2.zero;
-        float distanceOffset = 0.5f; // Distance divisée par 2
+        float distanceOffset = 0.5f; // Distance divisï¿½e par 2
 
         switch (direction)
         {
             case 0: // Up
                 offset = new Vector2(0, distanceOffset);
-                size = new Vector2(0.5f, 0.25f); // Taille divisée par 2
+                size = new Vector2(0.5f, 0.25f); // Taille divisï¿½e par 2
                 break;
             case 1: // Left
                 offset = new Vector2(-distanceOffset, 0);
-                size = new Vector2(0.25f, 0.5f); // Taille divisée par 2
+                size = new Vector2(0.25f, 0.5f); // Taille divisï¿½e par 2
                 break;
             case 2: // Right
                 offset = new Vector2(distanceOffset, 0);
-                size = new Vector2(0.25f, 0.5f); // Taille divisée par 2
+                size = new Vector2(0.25f, 0.5f); // Taille divisï¿½e par 2
                 break;
             case 3: // Down
                 offset = new Vector2(0, -distanceOffset);
-                size = new Vector2(0.5f, 0.25f); // Taille divisée par 2
+                size = new Vector2(0.5f, 0.25f); // Taille divisï¿½e par 2
                 break;
         }
 
         collider.size = size;
         shieldObject.transform.localPosition = offset;
 
-        // Attendre que le joueur relâche le bouton de bouclier
+        // Attendre que le joueur relï¿½che le bouton de bouclier
         while (isShielding)
         {
 
@@ -95,11 +95,11 @@ public class UseSpecialObject : MonoBehaviour
             yield return null; // Attendre la prochaine frame
         }
 
-        // Détruire le bouclier lorsque l'action est finie
+        // Dï¿½truire le bouclier lorsque l'action est finie
         Destroy(shieldObject);
     }
 
-    private float maxDistance = 10f; // Distance maximale pour arrêter l'attaque spéciale
+    private float maxDistance = 10f; // Distance maximale pour arrï¿½ter l'attaque spï¿½ciale
 
     public void UsingShadowMedal()
     {
@@ -170,21 +170,21 @@ public class UseSpecialObject : MonoBehaviour
                 float distance = Vector2.Distance(transform.position, playerSleepInstance.transform.position);
                 if (distance > maxDistance)
                 {
-                    // Arrêtez l'attaque spéciale si la distance est trop grande
+                    // Arrï¿½tez l'attaque spï¿½ciale si la distance est trop grande
                     UsingShadowMedal();
-                    yield break; // Quittez la coroutine si l'attaque est terminée
+                    yield break; // Quittez la coroutine si l'attaque est terminï¿½e
                 }
 
                 // Ajustez les effets en fonction de la distance
                 float t = Mathf.Clamp01(distance / maxDistance);
                 float vignetteIntensity = Mathf.Lerp(0.5f, 1f, t);
-                float chromaticAberrationIntensity = Mathf.Lerp(0f, 2f, t); // Inversé pour augmenter avec la distance
+                float chromaticAberrationIntensity = Mathf.Lerp(0f, 2f, t); // Inversï¿½ pour augmenter avec la distance
 
                 CameraManager.instance.SetVignetteEffect(vignetteIntensity, 2, 0f, CameraManager.instance.defaultCamera);
                 CameraManager.instance.SetChromaticAberrationEffect(chromaticAberrationIntensity, 0f, CameraManager.instance.defaultCamera);
             }
 
-            yield return null; // Vérifiez chaque frame
+            yield return null; // Vï¿½rifiez chaque frame
         }
     }
 
@@ -199,7 +199,7 @@ public class UseSpecialObject : MonoBehaviour
     {
         if (!lanternIsOn)
         {
-            // Calculer la position de détection en fonction de la direction
+            // Calculer la position de dï¿½tection en fonction de la direction
             Vector2 detectionPosition = transform.position;
             switch (direction)
             {
@@ -217,7 +217,7 @@ public class UseSpecialObject : MonoBehaviour
                     break;
             }
 
-            // Détection de l'objet avec un collider de 0.5 de rayon
+            // Dï¿½tection de l'objet avec un collider de 0.5 de rayon
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(detectionPosition, 0.1f);
             foreach (Collider2D hitCollider in hitColliders)
             {
@@ -247,7 +247,7 @@ public class UseSpecialObject : MonoBehaviour
         GetComponent<SoundContainer>().PlaySound("Attack", 1);
         yield return new WaitForSeconds(0.5f - (.5f * PlayerManager.instance.pickaxeSpeed));
 
-        // Calculer la position de détection en fonction de la direction
+        // Calculer la position de dï¿½tection en fonction de la direction
         Vector2 detectionPosition = transform.position;
         switch (direction)
         {
@@ -265,7 +265,7 @@ public class UseSpecialObject : MonoBehaviour
                 break;
         }
 
-        // Détection de l'objet avec un collider de 0.5 de rayon
+        // Dï¿½tection de l'objet avec un collider de 0.5 de rayon
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(detectionPosition, 0.1f);
         foreach (Collider2D hitCollider in hitColliders)
         {
@@ -277,6 +277,14 @@ public class UseSpecialObject : MonoBehaviour
             else if (hitCollider.GetComponent<MineralBehiavor>() != null)
             {
                 hitCollider.GetComponent<MineralBehiavor>().HitMineral(pickaxePower);
+            }
+            else if (hitCollider.GetComponent<RadioActiveIcePuzzle>() != null)
+            {
+                hitCollider.GetComponent<RadioActiveIcePuzzle>().HitIce(pickaxePower);
+            }
+            else if (hitCollider.GetComponent<RockBoulderBehiavor>() != null)
+            {
+                hitCollider.GetComponent<RockBoulderBehiavor>().Hit(direction);
             }
         }
 
@@ -317,7 +325,7 @@ public class UseSpecialObject : MonoBehaviour
                 break;
         }
 
-        // Instancier l'impact du marteau à la position calculée
+        // Instancier l'impact du marteau ï¿½ la position calculï¿½e
         GameObject hammerImpactInstance = Instantiate(hammerImpact, impactPosition, Quaternion.identity);
         hammerImpactInstance.GetComponent<HammerImpact>().SetHammerImpact(stats.strength);
         GetComponent<SoundContainer>().PlaySound("HammerImpact", 1);
@@ -338,7 +346,7 @@ public class UseSpecialObject : MonoBehaviour
         stats.isBowShooting = true;
         GetComponent<SoundContainer>().PlaySound("BowCharge", 1);
 
-        // --- Capture de la direction au moment du début de la charge ---
+        // --- Capture de la direction au moment du dï¿½but de la charge ---
         PlayerAnimation pa = GetComponent<PlayerAnimation>();
         if (pa != null)
         {
@@ -353,7 +361,7 @@ public class UseSpecialObject : MonoBehaviour
             {
                 bowChargeDirection = 3;
             }
-            else if (lm == 3) // Side (mouvement latéral)
+            else if (lm == 3) // Side (mouvement latï¿½ral)
             {
                 // Utiliser SpriteRenderer.flipX au lieu de localScale.x
                 SpriteRenderer sr = GetComponent<SpriteRenderer>();
@@ -361,7 +369,7 @@ public class UseSpecialObject : MonoBehaviour
                 {
                     if (sr.flipX)
                     {
-                        bowChargeDirection = 1; // Gauche (sprite flippé)
+                        bowChargeDirection = 1; // Gauche (sprite flippï¿½)
                         Debug.Log("Direction: GAUCHE (flipX = true)");
                     }
                     else
@@ -373,13 +381,13 @@ public class UseSpecialObject : MonoBehaviour
                 else
                 {
                     // Fallback si pas de SpriteRenderer
-                    Debug.LogWarning("Pas de SpriteRenderer trouvé!");
+                    Debug.LogWarning("Pas de SpriteRenderer trouvï¿½!");
                     bowChargeDirection = direction;
                 }
             }
             else
             {
-                // Fallback : utiliser la direction passée en paramètre
+                // Fallback : utiliser la direction passï¿½e en paramï¿½tre
                 bowChargeDirection = direction;
             }
 
@@ -404,7 +412,7 @@ public class UseSpecialObject : MonoBehaviour
             {
                 stats.isBowShooting = false;
 
-                // --- Utiliser la direction capturée au début ---
+                // --- Utiliser la direction capturï¿½e au dï¿½but ---
                 int finalDirection = bowChargeDirection;
 
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);

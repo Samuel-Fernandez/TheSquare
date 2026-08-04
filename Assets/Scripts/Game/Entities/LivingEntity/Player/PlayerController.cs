@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour
     public bool isPushing;
 
     // ----- Inertie de la glace -----
-    [HideInInspector]
     public bool isOnIce = false;
     private int iceContacts = 0;
     private Vector2 currentVelocity;
@@ -84,7 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         if (InsideTheSquareManager.instance != null) return;
 
-        if (canDodge && playerInputActions.Gameplay.Dodge.triggered && !stats.isBowShooting && !isAttacking && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isShielding && !isPushing && !GetComponent<EntityEffects>().isSlimed)
+        if (canDodge && playerInputActions.Gameplay.Dodge.triggered && !stats.isBowShooting && !isAttacking && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isShielding && !isPushing && !isHoldingObject && !GetComponent<EntityEffects>().isSlimed)
         {
             isDodging = true;
             if (GetComponent<EntityEffects>().isFire)
@@ -301,7 +300,7 @@ public class PlayerController : MonoBehaviour
             specialObjects.UsingShadowMedal();
         }
 
-        if (PlayerManager.instance.playerInputActions.Gameplay.SpecialItem.IsPressed() && !isAttacking && !isDodging && !stats.isDying && !isPushing)
+        if (PlayerManager.instance.playerInputActions.Gameplay.SpecialItem.IsPressed() && !isAttacking && !isDodging && !stats.isDying && !isPushing && !isHoldingObject)
         {
             switch (SpecialObjectsManager.instance.actualObject.toolType)
             {
@@ -360,6 +359,7 @@ public class PlayerController : MonoBehaviour
                    !specialObjects.isPickaxing &&
                    !specialObjects.isShielding &&
                    !isPushing &&
+                   !isHoldingObject &&
                    HasWeapon() &&
                    InsideTheSquareManager.instance == null;
         }

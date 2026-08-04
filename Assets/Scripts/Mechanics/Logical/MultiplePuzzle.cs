@@ -120,6 +120,10 @@ public class MultiplePuzzle : MonoBehaviour
             {
                 bridge.Activate();
             }
+            else if (entity.GetComponent<RustCircleBehiavor>() is RustCircleBehiavor rustCircle)
+            {
+                rustCircle.TurnOn();
+            }
             else
             {
                 entity.SetActive(true); // On force l'activation au lieu d'un toggle
@@ -144,6 +148,10 @@ public class MultiplePuzzle : MonoBehaviour
             else if (entity.GetComponent<SkeletonBridgeBehiavor>() is SkeletonBridgeBehiavor bridge)
             {
                 // bridge.Deactivate(); // A décommenter si SkeletonBridgeBehiavor possède une méthode Deactivate()
+            }
+            else if (entity.GetComponent<RustCircleBehiavor>() is RustCircleBehiavor rustCircle)
+            {
+                rustCircle.TurnOff();
             }
             else
             {

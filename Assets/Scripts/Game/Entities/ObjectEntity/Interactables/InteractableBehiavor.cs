@@ -14,6 +14,7 @@ public enum InteractableType
     TELEPORTER_STATUE,
     CRAFTING_TABLE,
     GUARDIAN_HEART,
+    FIRE_STICK,
 }
 
 public class InteractableBehiavor : MonoBehaviour
@@ -58,6 +59,14 @@ public class InteractableBehiavor : MonoBehaviour
                     {
                         GuardianHeartBehiavor heart = GetComponent<GuardianHeartBehiavor>();
                         if (heart != null && heart.isCarried)
+                        {
+                            isThisTheCarriedObject = true;
+                        }
+                    }
+                    else if (type == InteractableType.FIRE_STICK)
+                    {
+                        FireStickBehiavor fireStick = GetComponent<FireStickBehiavor>();
+                        if (fireStick != null && fireStick.isCarried)
                         {
                             isThisTheCarriedObject = true;
                         }
@@ -175,6 +184,9 @@ public class InteractableBehiavor : MonoBehaviour
             case InteractableType.GUARDIAN_HEART:
                 GuardianHeart();
                 break;
+            case InteractableType.FIRE_STICK:
+                FireStick();
+                break;
             default:
                 break;
         }
@@ -247,5 +259,10 @@ public class InteractableBehiavor : MonoBehaviour
     void GuardianHeart()
     {
         GetComponent<GuardianHeartBehiavor>().Interaction();
+    }
+
+    void FireStick()
+    {
+        GetComponent<FireStickBehiavor>().Interaction();
     }
 }

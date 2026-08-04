@@ -18,12 +18,16 @@ public class HourglassBehiavor : MonoBehaviour
                 if (entity.GetComponent<DoorBehiavor>())
                     entity.GetComponent<DoorBehiavor>().OpenDoor();
 
+                if (entity.GetComponent<RustCircleBehiavor>())
+                    entity.GetComponent<RustCircleBehiavor>().TurnOn();
             }
             else
             {
                 if (entity.GetComponent<DoorBehiavor>())
                     entity.GetComponent<DoorBehiavor>().CloseDoor();
 
+                if (entity.GetComponent<RustCircleBehiavor>())
+                    entity.GetComponent<RustCircleBehiavor>().TurnOff();
             }
 
             if (entity.GetComponent<Spades>())

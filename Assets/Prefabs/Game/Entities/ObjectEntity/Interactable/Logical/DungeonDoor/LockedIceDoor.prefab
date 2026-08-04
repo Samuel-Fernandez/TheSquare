@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: -1924555135, guid: ec3c63f9144df69408dc7a227f2c2ab6, type: 3}
     - target: {fileID: 3008412287157796210, guid: f38b06364006bc545933a7ccafe9d5de, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5335016346255706136, guid: f38b06364006bc545933a7ccafe9d5de, type: 3}
       propertyPath: animations.Array.data[0].sprites.Array.size
@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: openedSprite
       value: 
       objectReference: {fileID: 21300000, guid: a613d3df8b845634cac5b1b701a554e4, type: 3}
+    - target: {fileID: 8790025073050773539, guid: f38b06364006bc545933a7ccafe9d5de, type: 3}
+      propertyPath: sortingOrderBase
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
