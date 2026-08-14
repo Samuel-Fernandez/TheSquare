@@ -35,7 +35,7 @@ public class LifeManager : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Stats>() && collision.gameObject.GetComponent<Stats>().isVulnerable && stats.entityType == EntityType.Monster && collision.gameObject.GetComponent<Stats>().entityType == EntityType.Player)
+        if (collision.gameObject.GetComponent<Stats>() && collision.gameObject.GetComponent<Stats>().isVulnerable && stats.entityType == EntityType.Monster && stats.doingAttack && collision.gameObject.GetComponent<Stats>().entityType == EntityType.Player)
         {
             Attack(collision.gameObject);
 
@@ -201,7 +201,7 @@ public class LifeManager : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage, GameObject attackingEntity, bool isCritical, float knockbackMultiplier = 1)
+    public void TakeDamage(int damage, GameObject attackingEntity, bool isCritical, float knockbackMultiplier = 1, bool ignoreDefense = false)
     {
         if (stats.entityType == EntityType.Player && PlayerManager.instance != null && PlayerManager.instance.isEventPlaying) return;
 
@@ -340,7 +340,7 @@ public class LifeManager : MonoBehaviour
                         actualDamage = Mathf.RoundToInt(actualDamage * runicTakenMult);
                     }
 
-                    int damageTaken = Mathf.Max(actualDamage - stats.defense, 1);
+                    int damageTaken = ignoreDefense ? Mathf.Max(actualDamage, 1) : Mathf.Max(actualDamage - stats.defense, 1);
 
                     // -- RUNES (Coup Critique) --
                     if (isCritical && attackingEntity != null && attackingEntity.GetComponent<Stats>() && attackingEntity.GetComponent<Stats>().entityType == EntityType.Player && StanceAndRunicManager.instance != null)

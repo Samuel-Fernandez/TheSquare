@@ -69,7 +69,7 @@ Les runes déterminent le style de combat actif. Elles appliquent un multiplicat
 * **Description** : Renforce la résonance de la posture adoptée pour percer les défenses.
 * **Effet** : Double le multiplicateur actif de la Posture de combat active (ex: un multiplicateur de x1.5 devient x3.0). Le malus est aussi touché (-50% -> -75%)
 
-### 11. Rune de Tempête (Météorologie)
+### 11. Rune de Tempête (Météorologie)  OK
 * **Description** : Harmonise la rage du joueur avec le déchaînement du ciel.
 * **Effet** : Sous la pluie, le blizzard, la tempête de sable etc... augmente les dégâts critiques (`critDamage`) de 50%. S'il fait beau, confère +15% de chances de coup critique (`critChance`).
 

@@ -8,6 +8,10 @@ public class LittleBrasierBehiavor : MonoBehaviour
     [Header("Logique")]
     public string id;
     public List<GameObject> logicalEntites;
+    public GameObject logicalTarget; // Définit quel groupe ce brasier appartient
+
+    // Liste statique associant chaque logicalTarget à sa liste de brasiers
+    private static Dictionary<GameObject, List<LittleBrasierBehiavor>> brasiersByLogicalTarget = new Dictionary<GameObject, List<LittleBrasierBehiavor>>();
 
     [Header("Visuel")]
     public Sprite offSprite;
@@ -50,6 +54,87 @@ public class LittleBrasierBehiavor : MonoBehaviour
         soundContainer = GetComponent<SoundContainer>();
         objectParticles = GetComponent<ObjectParticles>();
         entityLight = GetComponent<EntityLight>();
+
+        if (logicalTarget != null)
+        {
+            if (!brasiersByLogicalTarget.ContainsKey(logicalTarget))
+            {
+                brasiersByLogicalTarget[logicalTarget] = new List<LittleBrasierBehiavor>();
+            }
+            brasiersByLogicalTarget[logicalTarget].Add(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (logicalTarget != null && brasiersByLogicalTarget.ContainsKey(logicalTarget))
+        {
+            brasiersByLogicalTarget[logicalTarget].Remove(this);
+
+            if (brasiersByLogicalTarget[logicalTarget].Count == 0)
+            {
+                brasiersByLogicalTarget.Remove(logicalTarget);
+            }
+        }
+    }
+
+    // Vérifie si tous les brasiers d'un groupe sont activés
+    public bool AreAllBrasiersOn()
+    {
+        if (logicalTarget == null || !brasiersByLogicalTarget.ContainsKey(logicalTarget))
+            return false;
+
+        foreach (var brasier in brasiersByLogicalTarget[logicalTarget])
+        {
+            if (!brasier.isOn)
+                return false;
+        }
+
+        return true;
+    }
+
+    private void UpdateLogicalTargetState(bool playAnimation = true)
+    {
+        if (!gameObject.activeInHierarchy) return;
+
+        if (logicalTarget == null || !brasiersByLogicalTarget.ContainsKey(logicalTarget))
+            return;
+
+        if (AreAllBrasiersOn())
+        {
+            StartCoroutine(DelayLogicalTargetActivation());
+
+            if (playAnimation)
+            {
+                EventPlayer eventPlayer = GetComponent<EventPlayer>();
+                if (eventPlayer != null)
+                {
+                    eventPlayer.eventContainer = EventGeneratorManager.instance.MoveCamera(new Vector2(0, 0), logicalTarget.transform.position - gameObject.transform.position, 1.5f, 1f);
+                    eventPlayer.PlayAnimation();
+                }
+            }
+        }
+    }
+
+    IEnumerator DelayLogicalTargetActivation()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+
+        DoorBehiavor door = logicalTarget.GetComponent<DoorBehiavor>();
+        RustCircleBehiavor rustCircle = logicalTarget.GetComponent<RustCircleBehiavor>();
+
+        if (door != null)
+        {
+            door.OpenDoor();
+        }
+        else if (rustCircle != null)
+        {
+            rustCircle.Toggle();
+        }
+        else
+        {
+            logicalTarget.SetActive(!logicalTarget.activeSelf);
+        }
     }
 
     private void Start()
@@ -146,6 +231,8 @@ public class LittleBrasierBehiavor : MonoBehaviour
         }
 
         SaveManager.instance.twoStateContainer.AddOrUpdateTemporaryState(id, isOn);
+
+        UpdateLogicalTargetState();
 
         if (toggleEntities)
         {

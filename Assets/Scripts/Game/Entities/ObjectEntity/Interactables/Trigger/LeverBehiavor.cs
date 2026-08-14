@@ -120,7 +120,8 @@ public class LeverBehiavor : MonoBehaviour
             }
             else if (entity.GetComponent<RustCircleBehiavor>())
             {
-                entity.GetComponent<RustCircleBehiavor>().Toggle();
+                if (playerInteraction)
+                    entity.GetComponent<RustCircleBehiavor>().Toggle();
             }
             else
             {

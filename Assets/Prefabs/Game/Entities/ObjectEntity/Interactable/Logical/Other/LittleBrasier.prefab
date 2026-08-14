@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 42d1e91ed9a9fba408d168bad9bd25c6, type: 3}
     - target: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       propertyPath: m_Name
-      value: LittleBrasier Variant
+      value: LittleBrasier
       objectReference: {fileID: 0}
     - target: {fileID: 4372867248001543222, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -134,6 +134,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6086448111809707914}
+    - targetCorrespondingSourceObject: {fileID: 4227529845703604853, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7549703094038988251}
   m_SourcePrefab: {fileID: 100100000, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
 --- !u!1 &7116942353284614190 stripped
 GameObject:
@@ -199,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   logicalEntites: []
+  logicalTarget: {fileID: 0}
   offSprite: {fileID: 21300000, guid: 42d1e91ed9a9fba408d168bad9bd25c6, type: 3}
   onSoundName: On
   smokeParticleName: Smoke
@@ -214,3 +218,21 @@ MonoBehaviour:
   isPerpetual: 1
   onDuration: 0
   isOn: 0
+--- !u!114 &7549703094038988251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116942353284614190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd72c5124d23dbf4ab82a7e697e29401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventContainer: {fileID: 0}
+  cloudPrefab: {fileID: 0}
+  removeObjectWhenEventEnd: 1
+  isTriggerCollisionEvent: 1
+  container: {fileID: 0}
+  bookImage: {fileID: 0}

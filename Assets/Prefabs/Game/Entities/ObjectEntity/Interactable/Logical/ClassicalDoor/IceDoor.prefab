@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4292407917676220799, guid: 7005d144aa23aed4f88f8d5d4d21ee98, type: 3}
+      propertyPath: sortingOrderBase
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6960663162437463564, guid: 7005d144aa23aed4f88f8d5d4d21ee98, type: 3}
       propertyPath: m_Name
       value: IceDoor

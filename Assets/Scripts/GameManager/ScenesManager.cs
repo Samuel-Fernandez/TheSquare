@@ -24,41 +24,32 @@ public class ScenesManager : MonoBehaviour
 
     public void ChangeSceneObject(string sceneName, Vector2 newPosition, float transitionDuration = .5f)
     {
-        PlayerManager.instance.player.GetComponent<Stats>().canMove = false;
-        StartCoroutine(RoutineChangeSceneObject(transitionDuration, newPosition, sceneName));
-    }
-
-    IEnumerator RoutineChangeSceneObject(float transitionDuration, Vector2 newPosition, string sceneName)
-    {
         canTeleportPlayer = false;
-        // Lancer le changement de sc�ne
-        StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration));
-
-        // Attendre que la sc�ne soit compl�tement charg�e
-        while (!isSceneLoaded)
-        {
-            yield return null;
-        }
-
-        // Maintenant la sc�ne est charg�e, on peut t�l�porter le joueur
-        PlayerManager.instance.player.transform.position = newPosition;
-        PlayerManager.instance.player.GetComponent<Stats>().canMove = true;
-
-        canTeleportPlayer = true;
-
+        StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration, newPosition));
     }
-
 
     public void ChangeScene(string sceneName, float transitionDuration = .5f)
     {
-        StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration));
+        StartCoroutine(ChangeSceneWithDelay(sceneName, transitionDuration, null));
     }
 
     public bool isSceneLoaded = false;
     public bool canTeleportPlayer = true;
-    private IEnumerator ChangeSceneWithDelay(string sceneName, float transitionDuration)
+
+    // Survit � la destruction de l'instance ScenesManager de l'ancienne sc�ne (contrairement � un
+    // champ d'instance) : le joueur de la NOUVELLE sc�ne le lit dans son propre Start() pour savoir
+    // s'il doit se prot�ger d'une chute avant m�me que ScenesManager n'ait pu le t�l�porter.
+    public static bool pendingTeleport = false;
+
+    private IEnumerator ChangeSceneWithDelay(string sceneName, float transitionDuration, Vector2? newPosition)
     {
         isSceneLoaded = false;
+        pendingTeleport = newPosition.HasValue;
+
+        // Bloque le joueur (d�placement, attaque, objets sp�ciaux, inventaire, qu�tes...)
+        // pendant toute la transition, jusqu'� la fin du fondu de sortie
+        LockPlayer(true);
+
         UIAnimator.instance.ActivateObjectWithTransition(transitionPanel, transitionDuration);
         yield return new WaitForSecondsRealtime(transitionDuration);
 
@@ -67,6 +58,16 @@ public class ScenesManager : MonoBehaviour
         {
             yield return null;
         }
+
+        // Le joueur de cette nouvelle sc�ne est une INSTANCE DIFFERENTE de celui d'avant (PlayerManager
+        // n'est pas DontDestroyOnLoad, chaque sc�ne a sa propre copie) : il d�marre � sa position par
+        // d�faut dans l'�diteur. On le reverrouille explicitement (son propre Start() s'est d�j� prot�g�
+        // via pendingTeleport, ceci confirme/maintient la protection) puis on le t�l�porte.
+        LockPlayer(true);
+        pendingTeleport = false;
+
+        if (newPosition.HasValue && PlayerManager.instance != null && PlayerManager.instance.player != null)
+            PlayerManager.instance.player.transform.position = newPosition.Value;
 
         yield return new WaitForSecondsRealtime(transitionDuration);
 
@@ -82,6 +83,35 @@ public class ScenesManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
 
         UIAnimator.instance.DeactivateObjectWithTransition(transitionPanel, transitionDuration);
+
+        // DeactivateObjectWithTransition tourne en fire-and-forget dans UIAnimator : on attend
+        // sa dur�e pour �tre s�r que le fondu est termin� avant de red�bloquer le joueur
+        yield return new WaitForSecondsRealtime(transitionDuration);
+
+        LockPlayer(false);
+        canTeleportPlayer = true;
+    }
+
+    private void LockPlayer(bool locked)
+    {
+        if (PlayerManager.instance != null && PlayerManager.instance.player != null)
+        {
+            PlayerManager.instance.player.GetComponent<Stats>().canMove = !locked;
+
+            // Le joueur de la nouvelle sc�ne d�marre � sa position par d�faut avant qu'on le
+            // t�l�porte � newPosition : si cette position par d�faut chevauche un trou, la
+            // physique peut d�clencher la chute avant m�me que la t�l�portation ne s'ex�cute.
+            // On bloque explicitement toute chute pendant toute la dur�e de la transition.
+            PlayerController playerController = PlayerManager.instance.player.GetComponent<PlayerController>();
+            if (playerController != null)
+                playerController.cantFall = locked;
+        }
+
+        if (InventoryManager.instance != null)
+            InventoryManager.instance.canOpenInventory = !locked;
+
+        if (QuestManager.instance != null)
+            QuestManager.instance.canOpenQuests = !locked;
     }
 
     void ShowSceneTitle()

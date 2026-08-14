@@ -1602,6 +1602,10 @@ PrefabInstance:
       propertyPath: money
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1076937803797935851, guid: fc80188ae69a1694089bbbc4a1d624f6, type: 3}
+      propertyPath: availableObjects.Array.data[1].available
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1565925798525324224, guid: fc80188ae69a1694089bbbc4a1d624f6, type: 3}
       propertyPath: cinematicImagePrefab
       value: 
@@ -1660,7 +1664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6081505855085443298, guid: fc80188ae69a1694089bbbc4a1d624f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.753042
+      value: 5.003042
       objectReference: {fileID: 0}
     - target: {fileID: 6918841575546768133, guid: fc80188ae69a1694089bbbc4a1d624f6, type: 3}
       propertyPath: lifeUI

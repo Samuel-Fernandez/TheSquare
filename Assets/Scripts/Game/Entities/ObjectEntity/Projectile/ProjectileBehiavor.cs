@@ -110,11 +110,22 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Le projectile traverse un RustCircle sans aucune interaction : ni impact, ni transport en rotation
+        if (collision.GetComponent<RustCircleBehiavor>() != null)
+            return;
+
         // Le projectile traverse le LittleBrasier sans s'y arr�ter, mais s'enflamme automatiquement
         // au passage : il transmettra ensuite le feu � sa v�ritable cible d'impact, si elle le permet.
+        // Si le projectile est d�j� enflamm� (fl�che enflamm�e), il allume au passage le brasier lui-m�me.
         if (collision.GetComponent<LittleBrasierBehiavor>() != null)
         {
-            if (!isOnFire)
+            if (isOnFire)
+            {
+                EntityEffects brasierEffects = collision.GetComponent<EntityEffects>();
+                if (brasierEffects != null && brasierEffects.canBeFire)
+                    brasierEffects.SetState(strength, true);
+            }
+            else
             {
                 isOnFire = true;
 

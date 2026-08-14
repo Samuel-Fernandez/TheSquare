@@ -12,10 +12,10 @@ public class Spades : MonoBehaviour
 
     private void Start()
     {
-        // Applique visuellement l’état initial défini dans l'inspecteur
+        // Applique visuellement lï¿½ï¿½tat initial dï¿½fini dans l'inspecteur
         UpdateSpadesVisual();
 
-        // Démarre la routine si nécessaire, après avoir affiché le bon état initial
+        // Dï¿½marre la routine si nï¿½cessaire, aprï¿½s avoir affichï¿½ le bon ï¿½tat initial
         if (!toggleSpades)
             StartCoroutine(RoutineSpades());
     }
@@ -29,7 +29,7 @@ public class Spades : MonoBehaviour
         else
             sr.sprite = spadesDown;
 
-        // Met à jour aussi le collider
+        // Met ï¿½ jour aussi le collider
         GetComponent<BoxCollider2D>().isTrigger = !canHurt;
     }
 
@@ -37,7 +37,7 @@ public class Spades : MonoBehaviour
 
     private void Update()
     {
-        // Mise à jour du collider pour empêcher ou permettre le passage
+        // Mise ï¿½ jour du collider pour empï¿½cher ou permettre le passage
         GetComponent<BoxCollider2D>().isTrigger = !canHurt;
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -47,7 +47,9 @@ public class Spades : MonoBehaviour
             collision.gameObject.GetComponent<LifeManager>().TakeDamage(
                 Mathf.RoundToInt(collision.gameObject.GetComponent<Stats>().health / 5),
                 gameObject,
-                false
+                false,
+                1,
+                true
             );
             collision.gameObject.GetComponent<LifeManager>().KnockBack(collision.gameObject, 5f, gameObject);
         }
@@ -64,7 +66,7 @@ public class Spades : MonoBehaviour
 
             if (!canHurt)
                 GetComponent<SoundContainer>().PlaySound("Spike", 3);
-            // Joue l’animation appropriée
+            // Joue lï¿½animation appropriï¿½e
             if (canHurt)
                 GetComponent<ObjectAnimation>().PlayAnimation("Spades", false, false);
             else
@@ -73,9 +75,9 @@ public class Spades : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             GetComponent<ObjectAnimation>().StopAnimation();
 
-            // Bascule l'état
+            // Bascule l'ï¿½tat
             canHurt = !canHurt;
-            UpdateSpadesVisual(); // utilise la méthode commune
+            UpdateSpadesVisual(); // utilise la mï¿½thode commune
         }
     }
 }

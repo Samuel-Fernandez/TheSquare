@@ -341,6 +341,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7704144241257005884, guid: 1871a848b75ebb84eb30f2f9c7240c4d, type: 3}
+      propertyPath: alwaysDoingAttack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704144241257005884, guid: 1871a848b75ebb84eb30f2f9c7240c4d, type: 3}
       propertyPath: knockbackResistance
       value: -2
       objectReference: {fileID: 0}

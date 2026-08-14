@@ -27,7 +27,7 @@ MonoBehaviour:
   - Mylia
   absolutePosition: 0
   targetSize: {x: 0, y: 0}
-  idText: MyliaMeeting-1
+  idText: MyliaMeetingSquareWorld-1
   emotions: 0
   lastSpriteStay: 0
   isImportantBubble: 1

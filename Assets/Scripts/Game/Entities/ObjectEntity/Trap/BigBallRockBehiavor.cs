@@ -154,7 +154,7 @@ public class BigBallRockBehiavor : MonoBehaviour
         {
             LifeManager targetLife = collision.gameObject.GetComponent<LifeManager>();
             int damage = Mathf.RoundToInt(targetStats.health * damagePercentOfPlayerMaxHealth);
-            targetLife.TakeDamage(damage, gameObject, false);
+            targetLife.TakeDamage(damage, gameObject, false, 1, true);
             targetLife.KnockBack(collision.gameObject, targetStats.knockbackResistance + 10, gameObject);
         }
     }

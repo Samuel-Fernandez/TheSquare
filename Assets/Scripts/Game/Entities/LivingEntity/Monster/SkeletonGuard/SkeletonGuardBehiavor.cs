@@ -10,6 +10,14 @@ public class SkeletonGuardBehavior : MonoBehaviour
     public List<Sprite> sideDash;
     public GameObject chargeDashPrefab;
 
+    [Header("Timing du Dash")]
+    public float dashCooldownMin = 1f;
+    public float dashCooldownMax = 8f;
+    public float chargeSpriteDuration = 0.4f;
+    public float dashDuration = 0.35f;
+    public float decelDuration = 0.1f;
+    public float postDashPause = 1f;
+
     private Transform player;
     private Stats stats;
     private Vector2 randomDirection;
@@ -76,7 +84,7 @@ public class SkeletonGuardBehavior : MonoBehaviour
         {
             anim.PlayAnimation("Side");
 
-            // Flip uniquement si déplacement significatif sur X
+            // Flip uniquement si dï¿½placement significatif sur X
             if (spriteRenderer != null && Mathf.Abs(currentDirection.x) > 0.01f)
             {
                 spriteRenderer.flipX = currentDirection.x < 0;
@@ -96,7 +104,6 @@ public class SkeletonGuardBehavior : MonoBehaviour
     IEnumerator DashRoutine()
     {
         isDashing = true;
-        stats.doingAttack = true;
         canAnimate = false;
         anim.StopAllAnimations();
 
@@ -104,52 +111,53 @@ public class SkeletonGuardBehavior : MonoBehaviour
 
         GetComponent<SoundContainer>().PlaySound("Charge", 1);
 
-        // ÉTAPE 1 : Prémices du dash
+        // ï¿½TAPE 1 : Prï¿½mices du dash
         Vector2 dashDirection = (player.position - transform.position).normalized;
 
-        // ÉTAPE 2 : Chargement du dash (0.9s -> 3 sprites * 0.3s)
+        // ï¿½TAPE 2 : Chargement du dash (0.9s -> 3 sprites * 0.3s)
         List<Sprite> dashSprites = GetDashSpritesFromDirection(dashDirection);
         for (int i = 0; i < 3 && i < dashSprites.Count; i++)
         {
             spriteRenderer.sprite = dashSprites[i];
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(chargeSpriteDuration);
         }
 
-        // ÉTAPE 3 : Dash initial (1s à 4x vitesse)
+        // ï¿½TAPE 3 : Dash initial (1s ï¿½ 4x vitesse)
         if (dashSprites.Count > 3)
             spriteRenderer.sprite = dashSprites[3];
 
         GetComponent<SoundContainer>().PlaySound("Dash", 2);
 
+        stats.doingAttack = true;
+
         float dashSpeed = stats.speed * 8f;
-        float dashTime = .35f;
         float elapsed = 0f;
 
-        while (elapsed < dashTime)
+        while (elapsed < dashDuration)
         {
             transform.position += (Vector3)(dashDirection * dashSpeed * Time.fixedDeltaTime);
             elapsed += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
 
-        // Décélération linéaire sur 1s (de 4x vitesse à 0)
-        float decelTime = .1f;
+        // Dï¿½cï¿½lï¿½ration linï¿½aire (de 4x vitesse ï¿½ 0)
         elapsed = 0f;
-        while (elapsed < decelTime)
+        while (elapsed < decelDuration)
         {
-            float t = 1f - (elapsed / decelTime); // interpolation inversée
+            float t = 1f - (elapsed / decelDuration); // interpolation inversï¿½e
             float currentSpeed = dashSpeed * t;
             transform.position += (Vector3)(dashDirection * currentSpeed * Time.fixedDeltaTime);
             elapsed += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
 
-        // ÉTAPE 4 : Pause post-dash (1s)
-        yield return new WaitForSeconds(1f);
+        stats.doingAttack = false;
+
+        // ï¿½TAPE 4 : Pause post-dash
+        yield return new WaitForSeconds(postDashPause);
 
         canAnimate = true;
         isDashing = false;
-        stats.doingAttack = false;
 
     }
 
@@ -160,7 +168,7 @@ public class SkeletonGuardBehavior : MonoBehaviour
         {
             if (!isDashing && DistanceToPlayer() <= detectionRadius)
             {
-                yield return new WaitForSeconds(Random.Range(1f, 8f));
+                yield return new WaitForSeconds(Random.Range(dashCooldownMin, dashCooldownMax));
                 StartCoroutine(DashRoutine());
             }
             else

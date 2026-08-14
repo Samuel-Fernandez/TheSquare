@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495973234332373636, guid: 86289465e8c108d49a10133554b17a2d, type: 3}
       propertyPath: m_Name
-      value: Archivist Variant
+      value: Archivist
+      objectReference: {fileID: 0}
+    - target: {fileID: 997256166938032294, guid: 86289465e8c108d49a10133554b17a2d, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 997256166938032294, guid: 86289465e8c108d49a10133554b17a2d, type: 3}
       propertyPath: m_Sprite

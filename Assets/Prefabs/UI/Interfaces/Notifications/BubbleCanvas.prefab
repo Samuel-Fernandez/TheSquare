@@ -387,11 +387,17 @@ MonoBehaviour:
   textMeshPro: {fileID: 2431025323506496263}
   backgroundImage: {fileID: 7086326207021036493}
   texts:
-  - Mhh... I suppose this bridge leads to Mylia's sanctuary...
-  - But how do we get past this great barrier ?
-  - Wake me up when you've figured it out ? This cold is putting me to sleep...
+  - Oh, you're here.
+  - How did I manage to get all the way here despite all the traps and monsters ?
+  - Nothing stops me when it comes to books. ESPECIALLY if they reveal more about
+    the guardians.
+  - The Guardian of Gravity, though, seems to be a complete mystery. Whether to humans
+    or to the guardians themselves...
+  - The books barely mention him. And yet, some of them were written by Mylia herself.
+  - She must know I devour every single one. I hope that makes her happy
+  - ...eheheh...
   typingSpeed: 0.05
-  soundIdToPlay: Araxie
+  soundIdToPlay: Archivist
   isCinematicBubble: 0
   cinematicDisplayDuration: 2.5
   isImportantBubble: 0
@@ -425,6 +431,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4c5b87e2237496849a20f8bb8b3df5b1, type: 3}
     - {fileID: 8300000, guid: c978de5b253ecc44b9cb94d0933d3a5e, type: 3}
     - {fileID: 8300000, guid: 3632d3d9e980ee641a9da91649d6e656, type: 3}
+  - id: Archivist
+    clips:
+    - {fileID: 8300000, guid: 635c32b03c7f4694799646950ea8f7b3, type: 3}
+    - {fileID: 8300000, guid: 5e502ca24b1fda24faecaac3c9f2f59a, type: 3}
 --- !u!1 &6927278765738647302
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f887c50eb925a489469f95c5dc0854, type: 3}
+  m_Name: MyliaFight
+  m_EditorClassIdentifier: 
+  pnjContainer:
+  - pnj: {fileID: 8671468634430143848, guid: d782eddd3a6210441abcd139b44f2f67, type: 3}
+    id: Mylia
+  - pnj: {fileID: 6753745874612863158, guid: c899671224331654a881f2c2b70c21ab, type: 3}
+    id: e1
+  - pnj: {fileID: 6753745874612863158, guid: c899671224331654a881f2c2b70c21ab, type: 3}
+    id: e2
+  - pnj: {fileID: 6753745874612863158, guid: c899671224331654a881f2c2b70c21ab, type: 3}
+    id: e3
+  monsterContainer:
+  - monster: {fileID: 7909903578527976790, guid: 04cd02cd492821248877e331b6de7409, type: 3}
+    id: Mylia
+    isBattleObject: 0
+  camera: {fileID: 1754421351517465880, guid: 5dd8b56e37a96944b9089c392690a72b, type: 3}
+  ID: MyliaFight
+  eventsList:
+  - {fileID: 11400000, guid: 1a3d344ba50cd6943aa9e2a7eba51233, type: 2}
+  - {fileID: 11400000, guid: 485aaf4d470967e4bb1b119a330c82fa, type: 2}
+  - {fileID: 11400000, guid: 8adf643186d33424fb92a466cb10a48c, type: 2}
+  - {fileID: 11400000, guid: 86ad46b8adfaef2448c10ae9cc6359be, type: 2}
+  - {fileID: 11400000, guid: 49736e179f2531c40bd5c3b3a5becdf6, type: 2}
+  - {fileID: 11400000, guid: 10628d06998ef854794bf80c08516cbd, type: 2}
+  - {fileID: 11400000, guid: 94d1a803db9c2ef4ea4fcdb5ea3eb179, type: 2}
+  - {fileID: 11400000, guid: ab78fb31b05401845a7a993c4e1111b1, type: 2}
+  - {fileID: 11400000, guid: 356f9f7e259776d459b2a62ced96ea7a, type: 2}
+  - {fileID: 11400000, guid: 46ebff0c59554df429902373df7c11bc, type: 2}
+  - {fileID: 11400000, guid: 35e2c52753ff80e469c036635440b4a6, type: 2}
+  - {fileID: 11400000, guid: b35731c3731e3024cbc486c7d853319e, type: 2}
+  - {fileID: 11400000, guid: 3905e4ead009b7041af968e13ed4ee9a, type: 2}
+  - {fileID: 11400000, guid: 3905e4ead009b7041af968e13ed4ee9a, type: 2}
+  - {fileID: 11400000, guid: 5c7c81166c1bc7344a272dda946918c1, type: 2}
+  - {fileID: 11400000, guid: a0f3b4c7dbb0d5a449f05cb650f401fd, type: 2}
+  - {fileID: 11400000, guid: be3035a02cf82fe4587b67c2c4d2ce91, type: 2}
+  - {fileID: 11400000, guid: 5db214fe7a04ff3469d048fdbe36ef5c, type: 2}
+  - {fileID: 11400000, guid: c10835e8e4932c14f9bdb06b5b78bc0d, type: 2}
+  - {fileID: 11400000, guid: 769f96648f254684dac7f8e158f59d33, type: 2}
+  - {fileID: 11400000, guid: 4b5fe0b002e17a04c96e82849718bec5, type: 2}
+  - {fileID: 11400000, guid: c020a6d89663b3e48b2cfd19a56c5e80, type: 2}
+  - {fileID: 11400000, guid: ae5f4cc497d6df4458a320ba48d15b7f, type: 2}
+  - {fileID: 11400000, guid: af4b84c1d85da0f49bb2bc0f54d92728, type: 2}
+  - {fileID: 11400000, guid: 73f298dc4f74ef5499041ed3d03a9cfd, type: 2}
+  requirements:
+  - requirementType: 3
+    sceneData: {fileID: 0}
+    pnjIDSpoken: 
+    eventRequired: {fileID: 11400000, guid: 35321e672a83cf64cb64adaa4726a4b4, type: 2}
+    specialObject: 0
+    monsterRequired: {fileID: 0}
+    nbMonsterRequired: 0

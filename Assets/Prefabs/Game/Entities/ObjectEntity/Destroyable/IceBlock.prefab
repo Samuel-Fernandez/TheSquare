@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 338946549642014246, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 559288071939371068, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 559288071939371068, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1400714032663447808, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       propertyPath: allSounds.Array.size
       value: 1
@@ -24,6 +36,10 @@ PrefabInstance:
       propertyPath: allSounds.Array.data[0].clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: adddaa7ef5973374cb614cdc7688b887, type: 3}
+    - target: {fileID: 3045748360759330952, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3575798504290078807, guid: d93b335b2cdc6c844ab3ab2fd158179a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -143,6 +159,7 @@ MonoBehaviour:
   smokeParticleName: Smoke
   meltingSoundName: Melting
   meltDuration: 1
+  growDuration: 0.3
 --- !u!61 &795917016395450151
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -303,6 +303,6 @@ EditorBuildSettings:
     path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/14-MyliaSanctuaryAfterBoss.unity
     guid: 75f7179af7f20bc4c8ff69d39ea5aba2
   - enabled: 1
-    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/15-MyliaEnigmaRoom.unity
+    path: Assets/Scenes/World/MirrorLakeOfMylia/MyliaLake/MyliaSanctuary/15-MyliaLibrary.unity
     guid: 4efa6fdb99a31a04e95b686dce35286c
   m_configObjects: {}

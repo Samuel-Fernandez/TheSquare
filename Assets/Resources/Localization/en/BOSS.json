@@ -15,7 +15,42 @@
     {
       "key": "DROXEN_PHASE2",
       "value": "Droxea - The protector of guardians"
+    },
+    {
+      "key": "MYLIA_PHASE1",
+      "value": "Mylia"
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-1",
+      "value": "You truly are incredible. But you must stop..."
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-2",
+      "value": "I apologize on behalf of all the guardians... You shouldn't have to endure any of this..."
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-3",
+      "value": "You are strong... but not strong enough to change fate..."
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-4",
+      "value": "Please... Accept this world as it was given to you. We cannot do otherwise..."
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-5",
+      "value": "The cold is not a punishment... It's all I have left to protect you from myself."
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-6",
+      "value": "Every blow I strike costs me more than you could imagine..."
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-7",
+      "value": "I don't want to be the one who breaks your courage..."
+    },
+    {
+      "key": "MYLIA_PHASE1_ATTACK_TEXT-8",
+      "value": "The lake remembers every tear shed here... Don't add any more."
     }
   ]
 }
-

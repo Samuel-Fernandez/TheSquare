@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 214647935392562229, guid: 1e0e25cde2146f04a9ba67af7ef49c08, type: 3}
       propertyPath: m_Name
-      value: YellowSkeletonGuard Variant
+      value: YellowSkeletonGuard
       objectReference: {fileID: 0}
     - target: {fileID: 359774773293361782, guid: 1e0e25cde2146f04a9ba67af7ef49c08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63,6 +63,18 @@ PrefabInstance:
     - target: {fileID: 706624360458950167, guid: 1e0e25cde2146f04a9ba67af7ef49c08, type: 3}
       propertyPath: m_Color.r
       value: 0.85660374
+      objectReference: {fileID: 0}
+    - target: {fileID: 903554706400391004, guid: 1e0e25cde2146f04a9ba67af7ef49c08, type: 3}
+      propertyPath: dashDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 903554706400391004, guid: 1e0e25cde2146f04a9ba67af7ef49c08, type: 3}
+      propertyPath: postDashPause
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 903554706400391004, guid: 1e0e25cde2146f04a9ba67af7ef49c08, type: 3}
+      propertyPath: dashCooldownMax
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1094431293257271368, guid: 1e0e25cde2146f04a9ba67af7ef49c08, type: 3}
       propertyPath: loots

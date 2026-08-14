@@ -200,9 +200,10 @@ public class GargouilleBehiavor : MonoBehaviour
         currentState = State.Flying;
         flyTimer = 0f;
         flySoundTimer = 0f;
-        
-        SetHitboxActive(false); 
-        if (movement != null) movement.enabled = true; 
+
+        SetHitboxActive(false);
+        if (movement != null) movement.enabled = true;
+        if (stats != null) stats.doingAttack = false;
     }
 
     private IEnumerator PrepareAndDropRoutine()
@@ -225,6 +226,7 @@ public class GargouilleBehiavor : MonoBehaviour
 
         // Fige le sprite de chute sur sa dernière frame (lastSpriteStay à true)
         if (objectAnim != null) objectAnim.PlayAnimation("Falling", true);
+        if (stats != null) stats.doingAttack = true;
 
         t = 0;
         while (t < dropDuration)
@@ -275,8 +277,9 @@ public class GargouilleBehiavor : MonoBehaviour
 
     private IEnumerator ReturnRoutine()
     {
-        if (movement != null) movement.enabled = false; 
-        SetHitboxActive(false); 
+        if (movement != null) movement.enabled = false;
+        SetHitboxActive(false);
+        if (stats != null) stats.doingAttack = false;
 
         if (objectAnim != null) objectAnim.PlayAnimation("Fly");
         

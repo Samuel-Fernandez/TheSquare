@@ -23,6 +23,10 @@ public class EntityLight : MonoBehaviour
         }
     }
 
+    public Color CurrentColor => light2D != null ? light2D.color : Color.white;
+    public float CurrentIntensity => light2D != null ? light2D.intensity : 0f;
+    public float CurrentRadius => light2D != null ? light2D.pointLightOuterRadius : 0f;
+
     // Méthode pour régler l'intensité de la lumière
     public void SetLightIntensity(float intensity = .25f, float radius = 1.5f)
     {

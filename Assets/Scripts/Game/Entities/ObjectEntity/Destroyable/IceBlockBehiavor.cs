@@ -11,6 +11,9 @@ public class IceBlockBehiavor : MonoBehaviour
     public string meltingSoundName = "Melting";
     public float meltDuration = 1f;
 
+    [Header("Spawn Settings")]
+    public float growDuration = 0.3f;
+
     private EntityEffects entityEffects;
     private SoundContainer soundContainer;
     private ObjectParticles objectParticles;
@@ -32,7 +35,54 @@ public class IceBlockBehiavor : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(GrowRoutine());
         StartCoroutine(WatchFireState());
+    }
+
+    private IEnumerator GrowRoutine()
+    {
+        Vector3 spriteTargetScale = spriteRenderer != null ? spriteRenderer.transform.localScale : Vector3.one;
+        Vector3 shadowTargetScale = shadowTransform != null ? shadowTransform.localScale : Vector3.one;
+
+        if (spriteRenderer != null)
+        {
+            Vector3 scale = spriteTargetScale;
+            scale.y = 0f;
+            spriteRenderer.transform.localScale = scale;
+        }
+
+        if (shadowTransform != null)
+        {
+            Vector3 scale = shadowTargetScale;
+            scale.y = 0f;
+            shadowTransform.localScale = scale;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < growDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / growDuration;
+
+            if (spriteRenderer != null)
+            {
+                Vector3 scale = spriteTargetScale;
+                scale.y = Mathf.Lerp(0f, spriteTargetScale.y, t);
+                spriteRenderer.transform.localScale = scale;
+            }
+
+            if (shadowTransform != null)
+            {
+                Vector3 scale = shadowTargetScale;
+                scale.y = Mathf.Lerp(0f, shadowTargetScale.y, t);
+                shadowTransform.localScale = scale;
+            }
+
+            yield return null;
+        }
+
+        if (spriteRenderer != null) spriteRenderer.transform.localScale = spriteTargetScale;
+        if (shadowTransform != null) shadowTransform.localScale = shadowTargetScale;
     }
 
     private IEnumerator WatchFireState()

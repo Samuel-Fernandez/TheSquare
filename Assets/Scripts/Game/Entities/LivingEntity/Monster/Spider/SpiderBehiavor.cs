@@ -169,7 +169,18 @@ public class SpiderBehiavor : MonoBehaviour
             currentState = SpiderState.Chasing;
             // Optionnel : s'assurer qu'elle ne bouge plus dans ce frame après impact
             threadCooldownTimer = Random.Range(threadCooldownMin, threadCooldownMax);
+
+            if (myStats != null) StartCoroutine(BiteWindowRoutine(myStats));
         }
+    }
+
+    // Un court instant après avoir atteint le joueur (fin du dash), la morsure de l'araignée reste dangereuse au contact
+    private IEnumerator BiteWindowRoutine(Stats spiderStats)
+    {
+        yield return new WaitForSeconds(0.15f);
+        spiderStats.doingAttack = true;
+        yield return new WaitForSeconds(0.3f);
+        spiderStats.doingAttack = false;
     }
 
     public void OnThreadHitPlayer(Transform playerTransform)

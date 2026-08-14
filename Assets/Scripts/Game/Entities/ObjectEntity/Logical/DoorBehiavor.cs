@@ -33,9 +33,9 @@ public class DoorBehiavor : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         Stats stats = collision.GetComponent<Stats>();
-        if (type == DoorType.LOCKED && stats != null && stats.entityType == EntityType.Player)
+        if (type == DoorType.LOCKED && !isOpen && stats != null && stats.entityType == EntityType.Player)
         {
-            // Créer l'UI d'interaction si elle n'existe pas encore
+            // Crï¿½er l'UI d'interaction si elle n'existe pas encore
             if (instanceUiInteract == null && DungeonManager.instance.actualDungeon.nbKeys > 0)
             {
                 Vector3 uiPosition = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);

@@ -46,6 +46,10 @@ public class Stats : MonoBehaviour
 
     public bool doingAttack = false;
 
+    // Pour les monstres sans fenêtre d'attaque dédiée (contact-only) : force doingAttack à true en permanence (voir Update),
+    // afin que tous les systèmes qui lisent doingAttack (dégâts de contact, esquive du joueur, etc.) traitent ce monstre comme toujours en train d'attaquer
+    public bool alwaysDoingAttack = false;
+
     // Interromp l'attaque � l'�p�e du joueur
     public bool blockPlayerAttack;
 
@@ -68,6 +72,9 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
+        if (alwaysDoingAttack)
+            doingAttack = true;
+
         if (entityType == EntityType.Player && (HasEquipmentChanged() || PlayerLevels.instance.lvlChanged || AnvilUpgradeManager.instance.itemUpgraded))
         {
             UpdateStats();

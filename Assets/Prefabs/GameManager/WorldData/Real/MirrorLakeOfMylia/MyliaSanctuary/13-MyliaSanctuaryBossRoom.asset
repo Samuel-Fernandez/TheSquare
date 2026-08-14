@@ -16,7 +16,7 @@ MonoBehaviour:
   filter: 0
   sceneID: MYLIA_SANCTUARY_BOSS_ROOM
   dungeonName: MyliaSanctuary
-  music: {fileID: 8300000, guid: 419c97d24473e42479afc1e0a45d488e, type: 3}
+  music: {fileID: 8300000, guid: ab0d9b3e1ec9e9241804f95564abe958, type: 3}
   ambientSound: []
   sunIntensity: 0
   playerCantOpenInventory: 0

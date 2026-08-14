@@ -119,6 +119,7 @@ MonoBehaviour:
   objectToFollow: {fileID: 0}
   duration: 0
   textToWrite: 
+  upOffset: 0
   text: {fileID: 5649830850717406141}
 --- !u!1 &1945350346968167656
 GameObject:

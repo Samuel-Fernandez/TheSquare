@@ -2,6 +2,22 @@
   "entries": [
     {
       "key": "MyliaMeeting-1",
+      "value": "You have come this far... Then I take it Droxen has fallen as well...|I found him when he was already barely more than a shapeless mass... a breath away from becoming just another Slime.|I never managed to spare him from that, not truly. I only delayed the inevitable... by naming him guardian of the stele.|I already lost to The Square, once. I couldn't afford to lose anything else... so I tried to protect what little I had left.|That is why you must give up. I don't even know if the Guardian of Gravity would show himself, even for that...|And even if he came... a single guardian is not enough against The Square. We learned that the hard way.|He didn't come, that day, against The Square. Good reason or not... there were only three of us. Not four.|Fighting only prolongs the suffering, when there is no hope left at all."
+    },
+    {
+      "key": "MyliaMeeting-2",
+      "value": "...You're not backing down. Of course not... Why would you, after coming all this way."
+    },
+    {
+      "key": "MyliaMeeting-3",
+      "value": "Very well. All I have left are my actions, since my words aren't enough."
+    },
+    {
+      "key": "MyliaMeeting-4",
+      "value": "Forgive me for what comes next... I never wanted things to end this way."
+    },
+    {
+      "key": "MyliaMeetingSquareWorld",
       "value": "...|Poor lost soul... If your steps have led you here, you must be determined to defy The Square...|I bow to your courage... and to the trials you have endured.|You have managed to materialize me in your world... With the intention of striking me down...|Please forgive me... As a guardian, I have cruelly failed to protect you...|I am heartbroken to see you endure such agony. The more you persist, the more unbearable your torments will become.|I beg of you, little one... Do not seek me out. There is not a single glimmer of hope left...|The Square is... Invincible..."
     },
     {
@@ -651,6 +667,34 @@
     {
       "key": "AraxieAfterTheSquare-1",
       "value": "What was that thing ?|The Square considers you... an anomaly ?|That is... very strange... I don't really understand why...|You say you don't know your name, where you're from... nothing at all...|Perhaps talking to Mylia will give us more information."
+    },
+    {
+      "key": "ArchivistLibrary-1",
+      "value": "Mhh... Alright...|This library is incredible. I'm learning so much about the guardians..."
+    },
+    {
+      "key": "ArchivistLibrary-2",
+      "value": "Oh, you're here.|How did I manage to get all the way here despite all the traps and monsters ?|Archivists's secrets.|The Guardian of Gravity, though, seems to be a complete mystery. Whether to humans or to the guardians themselves...|The books barely mention him. And yet, some of them were written by Mylia herself.|She must know I devour every single one. I hope that makes her happy|...eheheh..."
+    },
+    {
+      "key": "archivist_mylia_LITTLE_BUBBLE",
+      "value": "The guardian of electromagnetism is drawn to the guardian of gravity...|The guardian of the strong interaction is... quite short-tempered|The archivist is way too beautiful... Nah, just kidding, haha"
+    },
+    {
+      "key": "archivist_mylia_BUBBLE",
+      "value": "What do you want ?|Let me enjoy this, it's not every day we get something like THIS.|Go find your little keys."
+    },
+    {
+      "key": "MyliaFight-1",
+      "value": "You don't yield an inch..."
+    },
+    {
+      "key": "MyliaFight-2",
+      "value": "Impressive."
+    },
+    {
+      "key": "MyliaFight-3",
+      "value": "You are very impressive."
     }
   ]
 }

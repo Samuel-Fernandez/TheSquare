@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UseSpecialObject : MonoBehaviour
 {
@@ -17,6 +18,23 @@ public class UseSpecialObject : MonoBehaviour
     public GameObject lanternLight;
     public bool isLightning;
     public bool lanternIsOn;
+    public GameObject lanternActivationEffectPrefab;
+    // Corrige le décalage vertical du point de détection/effet quand le joueur regarde sur le côté
+    // (le pivot du joueur n'est pas à la même hauteur que pour les directions haut/bas)
+    public float sideDetectionVerticalOffset = -0.15f;
+
+    // Huile de la lanterne (lanterne magique : se régénère toute seule)
+    [Header("Huile de la lanterne")]
+    public GameObject lanternOilGaugePrefab;
+    public float oilGaugeHeightOffset = 1.1f;
+    public float maxOil = 100f;
+    public float currentOil;
+    public float igniteOilCost = 20f;
+    public float minOilToIgnite = 20f;
+    public float oilDrainPerSecond = 10f;
+    public float oilRegenPerSecond = 10f;
+    public float refuseCooldown = 0.5f;
+    private GameObject lanternOilGaugeInstance;
 
     // Shadow Medal
     public bool isShadowing;
@@ -30,6 +48,60 @@ public class UseSpecialObject : MonoBehaviour
     private void Start()
     {
         stats = GetComponent<Stats>();
+
+        currentOil = maxOil;
+    }
+
+    private void Update()
+    {
+        if (lanternIsOn)
+        {
+            currentOil = Mathf.Max(0f, currentOil - oilDrainPerSecond * Time.deltaTime);
+
+            if (currentOil <= 0f)
+                ForceExtinguishLantern();
+        }
+        else if (currentOil < maxOil)
+        {
+            currentOil = Mathf.Min(maxOil, currentOil + oilRegenPerSecond * Time.deltaTime);
+        }
+
+        UpdateOilGauge();
+    }
+
+    private void ForceExtinguishLantern()
+    {
+        if (!lanternIsOn) return;
+
+        lanternIsOn = false;
+        lanternLight.SetActive(false);
+        GetComponent<SoundContainer>().PlaySound("StopLantern", 1);
+    }
+
+    private void UpdateOilGauge()
+    {
+        if (currentOil >= maxOil)
+        {
+            if (lanternOilGaugeInstance != null)
+            {
+                Destroy(lanternOilGaugeInstance);
+                lanternOilGaugeInstance = null;
+            }
+
+            return;
+        }
+
+        if (lanternOilGaugeInstance == null && lanternOilGaugePrefab != null)
+        {
+            lanternOilGaugeInstance = Instantiate(lanternOilGaugePrefab, transform.position + Vector3.up * oilGaugeHeightOffset, Quaternion.identity, transform);
+        }
+
+        if (lanternOilGaugeInstance != null)
+        {
+            Scrollbar scrollbar = lanternOilGaugeInstance.GetComponentInChildren<Scrollbar>();
+            if (scrollbar != null)
+                scrollbar.size = currentOil / maxOil;
+        }
     }
 
     public void UsingShield(int direction)
@@ -199,6 +271,22 @@ public class UseSpecialObject : MonoBehaviour
     {
         if (!lanternIsOn)
         {
+            if (currentOil < minOilToIgnite)
+            {
+                GetComponent<SoundContainer>().PlaySound("LanternRefuse", 1);
+
+                // isLightning reste vrai le temps du cooldown pour emp�cher le son de spammer
+                // si le joueur maintient l'action enfonc�e.
+                yield return new WaitForSeconds(refuseCooldown);
+
+                isLightning = false;
+                GetComponent<PlayerController>().actualSpeed = stats.speed;
+                yield break;
+            }
+
+            currentOil -= igniteOilCost;
+            UpdateOilGauge();
+
             // Calculer la position de d�tection en fonction de la direction
             Vector2 detectionPosition = transform.position;
             switch (direction)
@@ -207,23 +295,29 @@ public class UseSpecialObject : MonoBehaviour
                     detectionPosition += new Vector2(0, 0.5f); // +0.5 en Y
                     break;
                 case 1:
-                    detectionPosition += new Vector2(-0.5f, 0); // -0.5 en X
+                    detectionPosition += new Vector2(-0.5f, sideDetectionVerticalOffset); // -0.5 en X
                     break;
                 case 2:
-                    detectionPosition += new Vector2(0.5f, 0); // +0.5 en X
+                    detectionPosition += new Vector2(0.5f, sideDetectionVerticalOffset); // +0.5 en X
                     break;
                 case 3:
                     detectionPosition += new Vector2(0, -0.5f); // -0.5 en Y
                     break;
             }
 
+            if (lanternActivationEffectPrefab != null)
+                Instantiate(lanternActivationEffectPrefab, detectionPosition, Quaternion.identity);
+
             // D�tection de l'objet avec un collider de 0.5 de rayon
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(detectionPosition, 0.1f);
             foreach (Collider2D hitCollider in hitColliders)
             {
-                if (hitCollider.GetComponent<EntityEffects>() && hitCollider.GetComponent<EntityEffects>().canBeFire && hitCollider != this.gameObject.GetComponent<Collider2D>())
+                // GetComponentInParent (et non GetComponent) : certains prefabs portent le collider
+                // trigger sur un enfant visuel distinct du GameObject racine qui porte EntityEffects.
+                EntityEffects hitEntityEffects = hitCollider.GetComponentInParent<EntityEffects>();
+                if (hitEntityEffects != null && hitEntityEffects.canBeFire && hitCollider != this.gameObject.GetComponent<Collider2D>())
                 {
-                    hitCollider.GetComponent<EntityEffects>().SetState(Mathf.Max(GetComponent<Stats>().strength / 2, 1), true);
+                    hitEntityEffects.SetState(Mathf.Max(GetComponent<Stats>().strength / 2, 1), true);
                 }
             }
         }
@@ -232,8 +326,11 @@ public class UseSpecialObject : MonoBehaviour
 
         lanternLight.SetActive(lanternIsOn);
 
+        GetComponent<SoundContainer>().PlaySound(lanternIsOn ? "InitLantern" : "StopLantern", 1);
+
         yield return new WaitForSeconds(0.5f);
         isLightning = false;
+        GetComponent<PlayerController>().actualSpeed = stats.speed;
     }
 
     public void UsingPickaxe(int direction)

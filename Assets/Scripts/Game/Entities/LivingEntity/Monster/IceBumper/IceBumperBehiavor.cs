@@ -129,6 +129,7 @@ public class IceBumperBehiavor : MonoBehaviour
         }
 
         isRushing = true;
+        if (stats != null) stats.doingAttack = true;
         UpdateSpeed();
     }
 

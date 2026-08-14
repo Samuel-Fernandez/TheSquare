@@ -574,3 +574,9 @@ MonoBehaviour:
   - {fileID: -1474333997, guid: 045d05046a7604147a81b2cbb05c33fc, type: 3}
   - {fileID: 1394118506, guid: 045d05046a7604147a81b2cbb05c33fc, type: 3}
   chargeDashPrefab: {fileID: 6134515802983017913, guid: f66694c99b3b5aa49b2d0b6ada4dac67, type: 3}
+  dashCooldownMin: 1
+  dashCooldownMax: 5
+  chargeSpriteDuration: 0.4
+  dashDuration: 0.35
+  decelDuration: 0.1
+  postDashPause: 0.5

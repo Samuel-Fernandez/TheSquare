@@ -337,14 +337,14 @@ public class EventPlayer : MonoBehaviour
                 if (targetObject == null)
                 {
                     Debug.LogWarning($"Objet '{actualEvent.targetObjectName}' non trouv�.");
-                    yield break;
+                    continue;
                 }
 
                 Component targetComponent = targetObject.GetComponent(actualEvent.componentType);
                 if (targetComponent == null)
                 {
                     Debug.LogWarning($"Composant '{actualEvent.componentType}' non trouv� sur '{actualEvent.targetObjectName}'.");
-                    yield break;
+                    continue;
                 }
 
                 // R�cup�rer toutes les m�thodes avec le nom donn�
@@ -383,7 +383,7 @@ public class EventPlayer : MonoBehaviour
                 if (method == null)
                 {
                     Debug.LogWarning($"M�thode '{actualEvent.methodName}' avec les param�tres sp�cifi�s non trouv�e sur {targetComponent.name}");
-                    yield break;
+                    continue;
                 }
 
                 // Ex�cution de la m�thode
@@ -770,7 +770,9 @@ public class EventPlayer : MonoBehaviour
                         SpriteRenderer sr = pnj.pnj.GetComponentInChildren<SpriteRenderer>();
                         if (sr != null)
                         {
-                            sr.flipX = (targetPos.x - currentPos.x) > 0;
+                            PNJMovementAnimation movementAnim = pnj.pnj.GetComponent<PNJMovementAnimation>();
+                            bool reversed = movementAnim != null && movementAnim.reversedSprite;
+                            sr.flipX = ((targetPos.x - currentPos.x) > 0) ^ reversed;
                         }
 
                         // Stocker la coroutine pour l'attendre plus tard

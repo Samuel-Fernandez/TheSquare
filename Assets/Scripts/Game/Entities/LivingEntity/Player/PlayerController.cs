@@ -33,6 +33,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        // Sc�ne charg�e au milieu d'une t�l�portation (changement de sc�ne) : ce joueur est une
+        // instance fra�chement recr��e, encore � sa position par d�faut dans l'�diteur. On se
+        // prot�ge d'une chute imm�diatement, avant qu'un seul frame de physique ne s'ex�cute,
+        // en attendant que ScenesManager nous t�l�porte � la bonne position.
+        if (ScenesManager.pendingTeleport)
+            cantFall = true;
+
         stats = GetComponent<Stats>();
         actualSpeed = stats.speed;
         rb = GetComponent<Rigidbody2D>();
@@ -83,7 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         if (InsideTheSquareManager.instance != null) return;
 
-        if (canDodge && playerInputActions.Gameplay.Dodge.triggered && !stats.isBowShooting && !isAttacking && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isShielding && !isPushing && !isHoldingObject && !GetComponent<EntityEffects>().isSlimed)
+        if (canDodge && playerInputActions.Gameplay.Dodge.triggered && !stats.isBowShooting && !isAttacking && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isLightning && !specialObjects.isShielding && !isPushing && !isHoldingObject && !GetComponent<EntityEffects>().isSlimed)
         {
             isDodging = true;
             if (GetComponent<EntityEffects>().isFire)
@@ -279,7 +286,7 @@ public class PlayerController : MonoBehaviour
     {
         if (InsideTheSquareManager.instance != null) return;
 
-        if (specialObjects.isHammering || specialObjects.isPickaxing)
+        if (specialObjects.isHammering || specialObjects.isPickaxing || specialObjects.isLightning)
         {
             actualSpeed = 0;
         }
@@ -357,6 +364,7 @@ public class PlayerController : MonoBehaviour
                    !stats.isBowShooting &&
                    !specialObjects.isHammering &&
                    !specialObjects.isPickaxing &&
+                   !specialObjects.isLightning &&
                    !specialObjects.isShielding &&
                    !isPushing &&
                    !isHoldingObject &&
@@ -565,6 +573,16 @@ public class PlayerController : MonoBehaviour
                             soundContainer.PlaySound("SwordHit", 2);
                             lastAttackTouchEnemy = true;
                         }
+                        else
+                        {
+                            // Mylia esquive en se teleportant si le coup la touche hors vulnerabilite
+                            // et hors attaque (cf. MyliaPhase1Behiavor.TriggerDodgeTeleport).
+                            MyliaPhase1Behiavor myliaBehavior = hitEntity.GetComponent<MyliaPhase1Behiavor>();
+                            if (myliaBehavior != null)
+                            {
+                                myliaBehavior.TriggerDodgeTeleport();
+                            }
+                        }
 
                         GetComponent<LifeManager>().Attack(hitEntity.gameObject);
                     }
@@ -592,6 +610,10 @@ public class PlayerController : MonoBehaviour
                     DamageZoneBehiavor damageZoneBehiavor = hitEntity.GetComponent<DamageZoneBehiavor>();
                     if (damageZoneBehiavor != null)
                         damageZoneBehiavor.SwordCollide();
+
+                    MyliaIceSpadeBehiavor iceSpade = hitEntity.GetComponent<MyliaIceSpadeBehiavor>();
+                    if (iceSpade != null)
+                        iceSpade.Deviate();
                 }
             }
 
@@ -688,7 +710,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateSpeed(float newSpeed)
     {
-        if (GetComponent<Stats>() && specialObjects && !isDodging && !isAttacking && !GetComponent<Stats>().isBowShooting && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isShielding)
+        if (GetComponent<Stats>() && specialObjects && !isDodging && !isAttacking && !GetComponent<Stats>().isBowShooting && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isLightning && !specialObjects.isShielding)
         {
             actualSpeed = newSpeed;
         }
@@ -696,7 +718,7 @@ public class PlayerController : MonoBehaviour
 
     void GetLastDirection()
     {
-        if (!stats.isBowShooting && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isShielding)
+        if (!stats.isBowShooting && stats.canMove && !specialObjects.isHammering && !specialObjects.isPickaxing && !specialObjects.isLightning && !specialObjects.isShielding)
         {
             Vector2 moveInput = playerInputActions.Gameplay.Move.ReadValue<Vector2>();
 

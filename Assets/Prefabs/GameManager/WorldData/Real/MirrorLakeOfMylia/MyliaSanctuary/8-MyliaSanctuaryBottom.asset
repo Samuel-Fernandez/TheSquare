@@ -18,7 +18,7 @@ MonoBehaviour:
   dungeonName: MyliaSanctuary
   music: {fileID: 8300000, guid: 419c97d24473e42479afc1e0a45d488e, type: 3}
   ambientSound: []
-  sunIntensity: 0
+  sunIntensity: 0.0001
   playerCantOpenInventory: 0
   sceneAsset: {fileID: 102900000, guid: 676cd1778473bd241b4174a5649d7e92, type: 3}
   sceneName: 8-MyliaSanctuaryBottom
